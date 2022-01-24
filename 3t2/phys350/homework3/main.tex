@@ -1,0 +1,188 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx, float}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\st}{\text{ s.t.}\ }
+\newcommand{\tn}[1]{\textnormal{#1}}
+\newcommand{\m}{\textnormal{ m}}
+\newcommand{\s}{\textnormal{ s}}
+\newcommand{\K}{\textnormal{ K}}
+\newcommand{\h}{\textnormal{ h}}
+\newcommand{\W}{\textnormal{ W}}
+\newcommand{\J}{\textnormal{ J}}
+\newcommand{\Pa}{\textnormal{ Pa}}
+\newcommand{\mol}{\textnormal{ mol}}
+\newcommand{\Hz}{\textnormal{ Hz}}
+\newcommand{\kg}{\textnormal{ kg}}
+\newcommand{\cm}{\textnormal{ cm}}
+\newcommand{\mm}{\textnormal{ mm}}
+\newcommand{\N}{\textnormal{ N}}
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 220 Homework 3}
+\date{October 04, 2021}
+\author{Xander Naumenko}
+\maketitle
+
+{\noindent\bf Question 1.} Negate the following statement: For every positive number $\epsilon$ there is a positive number $M$ for which 
+
+$$
+    \bigg|1-\frac{x^2}{x^2+1}\bigg|<\epsilon,
+$$
+whenever $x\geq M$. 
+
+\medskip
+
+The negation of the given statement is the following: There exists a positive number $\epsilon$ such that for every positive number $M$, there exists $x\geq M$ such that
+
+$$
+    \bigg|1-\frac{x^2}{x^2+1}\bigg|>\epsilon,
+$$
+
+{\noindent\bf Question 2.} Write down the negation of the statement
+
+$$
+    \forall x\in\ZZ, \exists y\in\RR, (x\geq y\Rightarrow\frac xy=1)
+$$
+
+and determine if the statement is true or false. 
+
+\medskip
+
+The negation of the statement is 
+
+$$
+    \exists x\in\ZZ \st \forall y\in\RR \text{ with } x\geq y, \frac xy\neq 1
+$$
+
+The negation is true, i.e. the original statement is false. To show this let $x=0$ and $y\in\RR$ be arbitrary with $y\leq 0$. There are two cases: $y=0$ or $y\neq0$. If $y=0$ then $\frac xy=\frac00$ is undefined and as such does not equal $1$. If $y\neq 0$ then $\frac xy=\frac0y=0\neq1$ which is the requirement for the negation. Since in both cases the negation is true, the original statement is false. $\square$
+
+{\noindent\bf Question 3.} Let $A=\{n\in\NN:3|n\text{ or }4|n\}\subset \NN$. Note that all numbers in $A$ are positive. Determine whether the following four statements are true or false - explain your answers. 
+
+{\noindent\bf Question 3a.} $\exists x\in A\st\exists y\in A\st x+y\in A$. 
+
+\medskip
+
+This statement is true. Choose $x=4$ and $y=4$. Then both $x, y\in A$ and $x+y=8\in S$. $\square$
+
+{\noindent\bf Question 3b.} $\forall x\in A, \forall y\in A\st x+y\in A$. 
+
+\medskip
+
+This statement is false. Choose $x=4$ and $y=3$, then $x+y=4+3=7\notin A$, so the statement is false. $\square$
+
+{\noindent\bf Question 3c.} $\exists x\in A\st \forall y\in A, x+y\in A$. 
+
+\medskip
+
+This statement is true. Let $x=12$ and $y\in A$ be arbitrary. There are two cases: $3|y$ or $4|y$ (or both, but if that's the case then either argument works). If $3|y$ then $\exists m\in\ZZ$ s.t. $y=3m$, so $x+y=12+3m=3(4+m)\in S$. If $4|y$ then $\exists n\in\ZZ$ s.t. $y=4n$, so $x+y=12+4n=4(3+n)\in S$. In either case the statement is true so we conclude that the statement itself is true in general. $\square$
+
+{\noindent\bf Question 4.} Negate the following statements and determine whether the original statements are true or false. Justify your answer. 
+
+{\noindent\bf Question 4a.} $\forall n\in\ZZ, \exists y\in\RR-\{0\}$ such that $y^n\leq y$. 
+
+\medskip
+
+Negation of statement: $\exists n\in\ZZ\st\forall y\in\RR-\{0\}, y^n>y$
+
+The original statement is false. We will prove this using cases, so let $n\in\ZZ$ and we have that either $n>0$ or $n\leq0$. If $n>0$ then let $y=\frac12$, and since $2^n>2$ we get $y^n=\frac12^n=\frac1{2^n}\leq\frac1{2}=y$. If instead $n\leq0$, then let $y=2$ and we get $y^n=2^n=\frac1{2^{-n}}\leq 1\leq 2=y$. In either case the result holds so we're done. $\square$
+
+{\noindent\bf Question 4b.} $\exists y\in\RR-\{0\}$ such that $\forall n\in\ZZ, y^n\leq y$. 
+
+\medskip
+
+Negation of statement: $\forall y\in\RR-\{0\}, \exists n\in\ZZ\st y^n>y$
+
+The original statement is true. Let $y=0$, then no matter what $N\in\ZZ$ is chosen then $y^n=1^n=1=y$ and the result holds. $\square$
+
+{\noindent\bf Question 4c.} $\forall x\in\RR$ where $x\neq 0$, we have $x\leq 1$ or $\frac1x\leq1$. 
+
+\medskip
+
+Negation of statement: $\exists x\in\RR$ where $x\neq0$ such that $x>1$ and $\frac1x>1$
+
+The original statement is true. Let $x\in\RR$, and consider the cases where either $x\leq 1$ or $x>1$. If $x\leq 1$ then the first part of the result holds and we're done. If $x>1$ then dividing by $x$ (we can do so without flipping the inequality because $x$ is positive in this case) we have $1>\frac1x$, which gives us the second part of the requirements. Since in either case the result is true the original statement is true. $\square$
+
+{\noindent\bf Question 5.} After cleaning your basement, you find a set of keys $K$ and a set of locks $L$. For every one of the following statements, 
+
+1. re-express the statement in a mathematical form using quantifiers $\forall$ and/or $\exists$, 
+
+2. negate this mathematical statement, 
+
+3. re-express the negation in standard english. 
+
+{\noindent\bf Question 5a.} At least one of the keys unlocks one of the locks. 
+
+\medskip
+
+1. $\exists k\in K, \exists l\in L\st k\text{unlocks }l$
+
+2. $\forall k\in K, \forall l\in L, k\text{ does not unlock } l$
+
+3. No key unlocks any lock. 
+
+{\noindent\bf Question 5b.} Some keys unlock all the locks. 
+
+\medskip
+
+1. $\exists k\in K \st \forall l\in L, k\text{ unlocks } l$
+
+2. $\forall k\in K, \exists l\in L\st k\text{ does not unlock } k$
+
+3. No key unlocks all locks. 
+
+{\noindent\bf Question 5c.} Some lock is not unlocked by any key. 
+
+\medskip
+
+1. $\exists l\in L\st\forall k\in K, k\text{ does not unlock }l$
+
+2. $\forall l\in L, \exists k\in K\st k\text{ unlocks }l$
+
+3. Every lock is unlocked by at least one key. 
+
+{\noindent\bf Question 6.} Prove that $\forall a\in\ZZ, \exists b\in\ZZ, a^2+b^2\equiv 1\text{ mod }3$. 
+
+
+Let $a\in\ZZ$. There are three cases: either $a\equiv 0\text{ mod }3$ (first case), $a\equiv 1\mod 3$ (second case), or $a\equiv 2\mod 3$ (third case). In the first case, let $b=2$ and $\exists m\in\ZZ\st a^2+b^2=9m^2+4\equiv 0+4\mod 3\equiv 1\mod3$. In the second case then let $b=3$ and we have that $\exists m\in\ZZ\st a^2+b^2=9m^2+6m+1\equiv 1+9\mod3\equiv1\mod3$. Finally in the third case let $b=3$ again and $\exists m\in\ZZ\st a^2+b^2=9m^2+12m^2+4+9\equiv1+9\mod3=1\mod3$. Since in all cases the result holds we have proven it in general. $\square$
+
+{\noindent\bf Question 7.} Prove or disprove: 
+
+$$
+    \forall x, y, z\in\{3, 6\}, \bigg(x=y=z\text{ or }\frac{x+y+z}{3}>\frac xy+\frac yz+\frac zx\bigg)
+$$
+
+\medskip
+
+The statement is true. Let $x, y, z\in\{3, 6\}$. If $x=y=z=3$ or $x=y=z=6$ then the result holds automatically, so all we must do is show the cases where they are not all equal. Thus there is either one three and two sixes among the variables, or two threes and one 6. Since the result is completely symmetric in $x, y$ and $z$ then without generality assume that $x\leq y\leq z$. Then there are only two cases to consider: $x=y=3, z=6$ (first case) and $x=3, y=z=6$ (second case). In the first case then we have 
+
+$$
+    \frac{x+y+z}{3}=\frac{3+3+6}{3}=4>3.5=\frac33+\frac36+\frac63=\frac xy+\frac yz+\frac zx
+$$
+
+In the second case we get 
+
+$$
+    \frac{x+y+z}{3}=\frac{3+6+6}{3}=5>3.5=\frac36+\frac66+\frac63=\frac xy+\frac yz+\frac zx
+$$
+
+Thus no matter what permutation of $x, y, z$ is chosen the result holds. $\square$
+
+
+\end{document}

@@ -1,0 +1,169 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb, listings}
+
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\st}{\mathrm{ s.t.}\ }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 220 Homework 1}
+\date{September 20, 2021}
+% \author{Xander Naumenko}
+\newtheorem{thm}{Theorem}
+\maketitle
+
+\noindent {\bf 1.} Let $n\in\ZZ$. Prove that if $3 | n+1$ then $3\not| n^2 + 5n + 5$. 
+
+\medskip
+
+Because $3 | n+1$, by definition $\exists m\in\ZZ$ s.t. $n+1=3m$, i.e. $n=3m-1$. Using this identity we get that 
+
+$$
+    n^2+5n+5=(3m-1)^2+5(3m-1)+5=9m^2+9m+1=3(3m^2+3m)+1
+$$
+
+By axiom, because $m\in\ZZ$ we know that $3m^2+3m\in\ZZ$. To show that the expression above is not divisible by 3, we will use proof by contradiction, so suppose that it was. Then we would have that for some $m^\prime\in\ZZ$, 
+
+$$
+    n^2+5n+5 = 3(3m^2+3m)+1=3m^\prime\Rightarrow m^\prime-3m^2-3m=\frac13
+$$
+
+The right side of this expression is clearly not an integer and the left side has to be an integer by axiom, so our assumption must be incorrect and $3\not|n^2+5n+5$ as desired. $\square$
+
+\noindent {\bf 2.} Let $a\in\ZZ$. Prove that if $5a+11$ is odd then $9a+13$ is odd. 
+
+\medskip
+
+By definition, if $5a+11$ is odd then $\exists m\in\ZZ$ s.t. $5a+11=2m+1$. Rearranging, we get 
+
+$$
+    5a+11=2m+1\Rightarrow 5a=2m-10
+$$
+
+Using this we get that 
+
+$$
+    9a+13=5a+4a+13=2m-10+4a+13=2(m+2a)+3=2(m+2a+1)+1
+$$
+
+Since $m$ and $a$ are both integers by axiom $m+2a+1\in\ZZ$, which means that $9a+13$ matches the definition of being odd. $\square$
+
+\noindent {\bf 3.} If $-1<x<2$, then $x^2-x-2<0$. 
+
+\medskip
+
+First note that because $x>-1$, we have that 
+
+$$
+    x+1>-1+1=0
+$$
+
+Next note that because $x<2$, we have that 
+
+$$
+    x-2 < 2-2 < 0
+$$
+
+Thus we have that $x+1$ is always positive and $x-2$ is always negative. Therefore their product is negative, i.e. $(x-2)(x+1)=x^2-x-2<0$. $\square$
+
+\noindent {\bf 4.} Let $a, b, c, d$ be integers. Suppose that $a, c, b+d$ are all odd numbers. Prove that $ab+cd$ is odd. 
+
+\medskip
+
+By definition of being odd, we have that $\exists m, n, o$ s.t. $a=2m+1, b=2n+1, b+d=2o+1$. Using this we get that 
+
+$$
+    ab+cd=(2m+1)b+(2n+1)d=2(mb+nd)+b+d=2(mb+nd)+2o+1=2(mb+nd+o)+1
+$$
+
+Since $mb+nd+o$ is an integer by axiom, we have that $ab+cd$ matches the definition for being odd. $\square$
+
+\noindent {\bf 5.} Let $x$ and $y$ be real numbers. Show that 
+
+\medskip
+
+$$
+    xy\leq \frac12(x^2+y^2)
+$$
+
+\medskip
+
+First, note that $z^2\geq0\forall z\in\RR$ (this was stated in class). Thus we have 
+
+$$
+    0 \leq (x-y)^2=x^2-2xy+y^2
+$$
+
+Rearranging the inequality, we arrive at 
+
+$$
+    2xy\geq x^2+y^2\Rightarrow \geq \frac12(x^2+y^2)
+$$
+
+This is what was desired, so we are done. $\square$
+
+\noindent {\bf 6.} Let $x$ and $y$ be real numbers. Suppose that $x<y$ and $y^2<x^2$. Show that $x+y<0$. 
+
+\medskip
+
+Starting from the second inequality given, we rearrange to get 
+
+$$
+    y^2<x^2\Rightarrow 0>y^2-x^2=(y+x)(y-x)
+$$
+
+Since $x<y$, $y-x>0$ and $x\neq 0$. Therefore we can divide the above inequality on both sides by $y-x$ without switching the inequality or dividing by zero. This leaves us with 
+
+$$
+    y+x<0
+$$
+
+as required. $\square$
+
+\noindent {\bf 7.} Since $5|(n+7)$, by definition $\exists m$ s.t. $n+7=5m\Rightarrow n=5m-7$. Using this, we get that 
+
+\medskip
+
+$$
+    n^2+1=(5m+7)^2+1=25m^2+70m+49+1=5(5m^2+14m+10)
+$$
+
+Since $5m^2+14m+10$ is an integer by axiom, we have that $5|n^2+1$ as required. $\square$
+
+\noindent {\bf 8.} Let $n, a, b, x, y\in \ZZ$.  If $n|a$ and $n|b$, then $n|(ax+by)$.
+
+\medskip
+
+By definition of divisibility $\exists c, d$ s.t. $a=cn$ and $b=dn$. Using this we have that 
+
+$$
+    ax+by=cnx+dny=n(cx+dy)
+$$
+
+$cx+dy$ is an integer by axiom, which means that $ax+by$ matches the definition required for $n|(ax+by)$. $\square$
+
+\noindent {\bf 9.} If $a$ and $b$ are integer roots, prove that so is $ab$. 
+
+\medskip
+
+By the given definition of integer roots, we know that $\exists k_1, k_2\in\NN, m_1, m_2\in\ZZ$ s.t. $a^{k_1}=m_1$ and $b^{k_2}=m_2$. Using this we get 
+
+$$
+    (ab)^{k_1k_2}=(a^{k_1})^{k_2}(b^{k_2})^{k_1}=m_1^{k_2}\cdot m_2^{k_1}
+$$
+
+Let $k^\prime=k_1k_2$ and $m^\prime=(m_1)^{k_2}(m_2)^{k_1}$. By the axioms given in class both $k^\prime$ and $m^\prime$ are integers since $k_1, k_2\in\NN, m_1, m_2\in\ZZ$. Thus we have that 
+
+$$
+    (ab)^{k^\prime}=m^\prime
+$$
+
+which matches the definition for an integer roots given, so we're done. $\square$
+
+
+\end{document}

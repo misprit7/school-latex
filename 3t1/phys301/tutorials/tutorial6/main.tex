@@ -1,0 +1,166 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx, float}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\st}{\text{ s.t.}\ }
+\newcommand{\tn}[1]{\textnormal{#1}}
+\newcommand{\m}{\textnormal{ m}}
+\newcommand{\s}{\textnormal{ s}}
+\newcommand{\K}{\textnormal{ K}}
+\newcommand{\h}{\textnormal{ h}}
+\newcommand{\W}{\textnormal{ W}}
+\newcommand{\J}{\textnormal{ J}}
+\newcommand{\Pa}{\textnormal{ Pa}}
+\newcommand{\mol}{\textnormal{ mol}}
+\newcommand{\Hz}{\textnormal{ Hz}}
+\newcommand{\kg}{\textnormal{ kg}}
+\newcommand{\cm}{\textnormal{ cm}}
+\newcommand{\mm}{\textnormal{ mm}}
+\newcommand{\N}{\textnormal{ N}}
+
+\begin{document}
+\pagenumbering{arabic}
+\title{PHYS 301 Tutorial 6}
+\date{October 27, 2021}
+\author{Xander Naumenko, Renu Rajamagesh, Nathan Van Rumpt, Sabrina Ashik}
+\maketitle
+
+
+{\noindent\bf Question 1a.} First we use the definition of $\vec D$. Consider a Gaussian cylinder of radius $r$ around one of the plates. Then we have 
+
+$$
+    \oint \vec D\cdot\vec {dA}=Q_{free}=D\pi r^2=\frac{Q}{LW}\pi r^2\implies \vec D=-\frac{Q}{LW}\hat z
+$$
+
+To calculate the $E$ field we would get the exact same as what we previously calculated except with a term coming from $\sigma_b$ in the Gaussian cylinder, so we get 
+
+$$
+    \vec E=-\frac1{\epsilon_0}(\frac Q{LW}+\sigma_b)\hat z
+$$
+
+Finally to find $\sigma_b$ we can use the relationship between $E$ and $D$: 
+
+$$
+    D=\epsilon_0\epsilon_r E
+$$
+
+$$
+    \epsilon_0\epsilon_r E=-\epsilon_r(\frac Q{LW}+\sigma_b)=-\frac{Q}{LW}\implies \sigma_b=\frac{Q}{\epsilon_rLW}-\frac Q{LW}=\frac{Q}{LW}(\frac1{\epsilon_r}-1)
+$$
+
+{\noindent\bf Question 1b.} To find the voltage we do the line integral of the electric field and set the voltage at one of the plates to be zero: 
+
+$$
+    \int \vec E\cdot \vec{dl}=\int_0^z\frac1{\epsilon_0\epsilon_r}\frac{Q}{LW}dl=\frac{Qz}{\epsilon_0\epsilon_rLW}
+$$
+
+{\noindent\bf Question 1c.} We calculate capacitance with the standard formula: 
+
+$$
+    C=\frac{Q}{V}=Q\frac{\epsilon_0\epsilon_rLW}{Qz}=\frac{\epsilon_0\epsilon_rLW}{z}
+$$
+
+{\noindent\bf Question 1d.} Using the formula for capacitor energy we get 
+
+$$
+    U=\frac12 CV^2=\frac12 \frac{\epsilon_0\epsilon_r LW}{z}\bigg(\frac{Qz}{\epsilon_0\epsilon_r LW}\bigg)^2=\frac{Q^2z}{2\epsilon_0\epsilon_r LW}
+$$
+
+{\noindent\bf Question 1e.} Inspecting our formulas derived only the capacitance increases as $\epsilon_r$ increases. 
+
+{\noindent\bf Question 1f.} We assume the charge distribution remains uniform despite the voltage difference on the plate. Then we have that for the left section, we can treat it as a seperate capacitor and the voltage difference is $V_1=\frac{(Q\frac xL)z}{\epsilon_0 xW}=\frac{Qz}{\epsilon_0LW}$. The one on the right is the same as what we calculated for part b except with a smaller area, so the voltage difference for that section is $V_2=\frac{(Q\frac{L-x}{L})z}{\epsilon_0\epsilon_r (L-x)W}=\frac{Qz}{\epsilon_0\epsilon_rLW}$. We can then treat the two sections as capacitors in parrallel and 
+
+$$
+    C_{total}=C_1+C_2=\frac{Q_1}{V_1}+\frac{Q_2}{V_2}=\frac{\epsilon_0xW}{z}+\frac{\epsilon_0\epsilon_r(L-x)W}z=\frac{\epsilon_0W}{z}(x+\epsilon_r(L-x))
+$$
+
+{\noindent\bf Question 1g.} Using the same method as question 1d we get 
+
+$$
+    U=\frac12\frac{Q^2}{C}=\frac12\frac{zQ^2}{\epsilon_0W(x+\epsilon_r(L-x))}
+$$
+
+{\noindent\bf Question h.} There is a force on the dialectric. The energy is the integral of force, so we also know that $F=-\frac{dU}{dx}=\frac12\frac{Q^2}{C^2}\frac{dC}{dx}$. Expanding we get 
+
+$$
+    F=\frac12\frac{Q^2}{C^2}\frac{\epsilon_0W}{z}(1-\epsilon_r)
+$$
+
+{\noindent\bf Question i.} We conclude that the get polarized and produce an electric field in opposition to the applied one. 
+
+{\noindent\bf Question 2a.} For above the liquid, we get that the voltage difference is 
+
+$$
+    \Delta V_1=\frac{-\sigma r_a}{\epsilon_0}\log(\frac{r_b}{r_a})
+$$
+
+For below the liquid, we get that the voltage is 
+
+$$
+    \Delta V_2=\frac{-\sigma r_a}{(1+\chi_e)\epsilon_0}\log(\frac{r_b}{r_a})
+$$
+
+The total capacitance is then 
+
+$$
+    C=C_1+C_2=\frac{Q_1}{V_1}+\frac{Q_2}{V_2}=\frac{\sigma2\pi r_a(L-h)\epsilon_0}{\sigma r_a\log(\frac{r_b}{r_a})}+\frac{\sigma2\pi r_ah\epsilon_0(1+\chi_e)}{\sigma r_a\log(\frac{r_b}{r_a})}
+$$
+
+$$
+    =\frac{2\pi\epsilon_0}{\log(\frac{r_b}{r_a})}\bigg((L-h)+h(1+\chi_e)\bigg)
+$$
+
+$$
+    =\frac{2\pi\epsilon_0}{\log(\frac{r_b}{r_a})}\bigg(L+h\chi_e\bigg)
+$$
+
+{\noindent\bf Question 2b.} To calculate energy we use $U=\frac{Q^2}{2C}$: 
+
+$$
+    U=\frac{Q^2}{2C}=4\pi^2r_a^2\sigma^2L^2\frac{\log(\frac{r_b}{r_a})}{2\pi\epsilon_0(L+h\chi_e)}=\frac{2\pi r_a^2\sigma^2L^2\log(\frac{r_b}{r_a})}{\epsilon_0(L+h\chi_e)}
+$$
+
+{\noindent\bf Question 2c.} Using the same method as for the previous question, we get 
+
+$$
+    F=-\frac{dU}{dh}=\frac12\frac{Q^2}{C^2}\frac{dC}{dh}=\frac124\pi^2r_a^2\sigma^2L^2\bigg(\frac{\log(\frac{r_b}{r_a})}{2\pi\epsilon_0(L+h\chi_e)}\bigg)^2\frac{2\pi\epsilon_0\chi_e}{\log(\frac{r_b}{r_a})}
+$$
+
+$$
+    =\frac{\pi r_a^2\sigma^2L^2\log(\frac{r_b}{r_a})\chi_e}{\epsilon_0(L+h\chi_e)}
+$$
+
+{\noindent\bf Question 2d.} The force of gravity on the liquid will be $\rho\pi g(r_b^2-r_a^2)h$. For equilibrium the forces should be equal so 
+
+$$
+    \rho\pi g(r_b^2-r_a^2)h=\frac{\pi r_a^2\sigma^2L^2\log(\frac{r_b}{r_a})\chi_e}{\epsilon_0(L+h\chi_e)}
+$$
+
+$$
+    \rho\pi g(r_b^2-r_a^2)h=\frac{\pi r_a^2\sigma^2L^2\log(\frac{r_b}{r_a})\chi_e}{\epsilon_0(L+h\chi_e)}
+$$
+$$
+    \implies\rho\pi g(r_b^2-r_a^2)\epsilon_0\chi_e h^2+\rho\pi g(r_b^2-r_a^2)\epsilon_0Lh-\pi r_a^2\sigma^2L^2\log(\frac{r_b}{r_a})\chi_e=0
+$$
+
+This is a quadratic equation which can be solved with the quadratic formula for $h$. 
+
+
+
+
+\end{document}

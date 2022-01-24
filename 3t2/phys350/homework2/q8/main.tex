@@ -1,0 +1,54 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx, float}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\st}{\mathrm{ s.t.}\ }
+\newcommand{\tn}[1]{\textnormal{#1}}
+\newcommand{\m}{\textnormal{ m}}
+\newcommand{\s}{\textnormal{ s}}
+\newcommand{\K}{\textnormal{ K}}
+\newcommand{\h}{\textnormal{ h}}
+\newcommand{\W}{\textnormal{ W}}
+\newcommand{\J}{\textnormal{ J}}
+\newcommand{\Pa}{\textnormal{ Pa}}
+\newcommand{\mol}{\textnormal{ mol}}
+\newcommand{\Hz}{\textnormal{ Hz}}
+\newcommand{\kg}{\textnormal{ kg}}
+\newcommand{\cm}{\textnormal{ cm}}
+\newcommand{\mm}{\textnormal{ mm}}
+\newcommand{\N}{\textnormal{ N}}
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 220 Homework 2 Question 8}
+\date{September 27, 2021}
+\maketitle
+
+{\noindent\bf Question 8.} Let $a, b, k\in\ZZ$ and assume that $a, b$ are not zero. Then, using B\'ezout's Identity, show that if $k\not|\gcd(a, b)$, then $k\not|a$ or $k\not|b$. 
+
+\medskip
+
+We will prove the contrapositive, i.e. that if $k|a$ and $k|b$ then $k|\gcd(a, b)$. Applying B\'ezout's Identity, we have that $\exists x, y\in\ZZ$ s.t. $\gcd(a, b)=ax+by$. Applying the divisibility requirements we also have that $\exists m, n\in\ZZ$ s.t. $a=km, b=kn$. Putting these together we get 
+
+$$
+    \gcd(a, b)=ax+by=xmk+ynk=k(xm+yn)
+$$
+
+This is clearly divisible by $k$ so we're done. $\square$
+
+\end{document}

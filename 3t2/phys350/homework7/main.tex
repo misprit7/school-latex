@@ -1,0 +1,83 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx, float}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\st}{\text{ s.t.}\ }
+\newcommand{\tn}[1]{\textnormal{#1}}
+\newcommand{\m}{\textnormal{ m}}
+\newcommand{\s}{\textnormal{ s}}
+\newcommand{\K}{\textnormal{ K}}
+\newcommand{\h}{\textnormal{ h}}
+\newcommand{\W}{\textnormal{ W}}
+\newcommand{\J}{\textnormal{ J}}
+\newcommand{\Pa}{\textnormal{ Pa}}
+\newcommand{\mol}{\textnormal{ mol}}
+\newcommand{\Hz}{\textnormal{ Hz}}
+\newcommand{\kg}{\textnormal{ kg}}
+\newcommand{\cm}{\textnormal{ cm}}
+\newcommand{\mm}{\textnormal{ mm}}
+\newcommand{\N}{\textnormal{ N}}
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 220 Assignment 7}
+\date{November 01, 2021}
+\author{Xander Naumenko}
+\maketitle
+
+ {\noindent\bf Question 1.} Note that the power set given expands to $\mathcal{P}(\{1, 2\})=\{\{1, 2\}, \{1\}, \{2\}, \emptyset\}$. This is only 4 elements, so writing out all possible combinations that fulfill the requirements we get 
+
+ $$
+    \mathcal{R}=\{(\{1\}, \emptyset),(\emptyset, \{1\}), (\{2\}, \emptyset),(\emptyset, \{2\}), (\{1, 2\}, \emptyset), ( \emptyset, \{1, 2\}), (\emptyset, \emptyset), (\{1\}, \{2\}), (\{2\}, \{1\})\}
+ $$
+
+{\noindent\bf Question 2-1.} The statement is false. Since $R$ is reflexive, $\forall a\in A, (a, a)\in R$. By the definition of set subtraction this means that $(a, a)\notin A\times A-R=\bar R$. However being a reflexive relation requires $(a, a)\in R\forall A$, so $\bar R$ is not reflexive. $\square$
+
+{\noindent\bf Question 2-2.} The statement is true. We will use proof by contradiction, so suppose not. Then $\exists a, b\in A\st (a, b)\in\bar R$ but $(b, a)\notin\bar R$. By the definition of $\bar R$ though that means that $(a, b)\notin R$ and $(b, a)\in R$, which can't be the case due to the assumption that $R$ is symmetric. Therefore by contradiction $\bar R$ must be symmetric. $\square$
+
+{\noindent\bf Question 2-3.} The statement is false. Choose $A=\{1, 2, 3, 4\}$ with $R=\{(1, 2), (2, 3), (1, 3)\}$. Then $R$ is transitive by simple inspection ($1R2$ and $2R3\Rightarrow 1R3$) However $\bar R=A\times A-R$ is not transitive since $1\bar R4$ and $4\bar R 3$ but $(1, 3)\notin\bar R$. $\square$
+
+{\noindent\bf Question 3.} First we will prove symmetric. Let $a, b\in A$ with $a Rb$. Next let $c=a$. Then from the given fact about $R$ we have that $(aRa\wedge bRa)=bRa\Rightarrow aRb$, which is the definition of symmetric. 
+
+For transitive, we can use the fact that we just proved that $R$ is reflexive. Let $a, b, c\in A$ and then we have $(aRc\wedge bRc)=(aRc\wedge cRb)=aR b$, which is the definition of transitive so we're done. $\square$
+ 
+{\noindent\bf Question 4a.} This statement is false. Let $f=x^2$, and we have $f:\RR\to\RR$. Then let $b=-1\in B=\RR$, but since $f(a)=a^2\neq -1\forall a\in A$ then $(-1, -1)\notin \mathcal{R}^\prime$, which means that $\mathcal{R}^\prime$ is not reflexive. 
+
+We are using the fact that here $B$ is the codomain of $f$ not the image of $f$. If $f$ was surjective it then the original statement would be true, but since it is possible that $f$ is not surjective $\mathcal{R}$ is not necessarily reflexive. $\square$
+
+{\noindent\bf Question 4b.} The statement is true. Let $(a, b)\in\mathcal{R}^\prime$. Then $\exists x, y\in\RR\st (x, y)\in\mathcal{R}$ and $f(x)=a, f(y)=b$. By assumption of symmetry we also have $(y, x)\in\mathcal{R}$, which implies that $(f(y), f(x))=(b, a)\in\mathcal{R}^\prime$ which is the definition of symmetry. $\square$
+
+{\noindent\bf Question 5a.} The statement is true. By assumption $x_1\mathcal{R}y_1\implies \exists n_1\in\NN\st y_1=x_1+n_1$ and $x_2\mathcal{R}y_2\implies \exists n_2\in\NN\st y_2=x_2+n_2$. It follows that $y_1+y_2 = x_1+x_2+(n_1+n_2)$. Let $n_3=n_1+n_2$. Then $y_1+y_2=(x_1+x_2)+n_3\implies (x_1+x_2)\mathcal{R}(y_1+y_2)$ as required. $\square$
+
+{\noindent\bf Question 5b.} The statement is not true. Let $x_1=0$, $y_1=1$, $x_2=\frac12$ and $y_2=\frac12$. Then $x_1\mathcal{R}y_1$ and $x_2\mathcal{R}y_2$ as required, but $(x_1\cdot y_1, x_2\cdot y_2)=(0, \frac12)\notin\mathcal{R}$. $\square$
+
+{\noindent\bf Question 6.} For reflexive, note that $aTa$ since $\frac aa=1\in\QQ\forall a\in\RR-\{0\}$. For symmetric, assume $aTb$. Then $\frac ab\in\QQ$, so $\frac ba=(\frac ab)^{-1}$ is also a rational and $(b, a)\in T$ as well. Finally for transitive assume that $aTb$ and $bTc$. Then $\frac ab\in\QQ$ and $\frac bc\in\QQ$. This means that $\frac ac=\frac ab\frac bc$ must also be rational since it is just two rationals multiplied together, which fulfills the definition of transitive and we're done. $\square$
+
+{\noindent\bf Question 7a.} 
+
+$$
+   \mathcal{R}=\{(0, 0), (0, 3), (3, 0), (1, 2), (2, 1), (3, 3)\}
+$$
+
+{\noindent\bf Question 7b.} The relation is not reflexive, since for example $(1, 1)\notin\mathcal{R}$ since $3\not|1+1$. $\square$
+
+{\noindent\bf Question 7c.} The relation is symmetric. If $(a, b)\in\mathcal{R}$, then $3|(a+b)\implies 3|(b+a)\implies (b, a)\in\mathcal{R}$. $\square$
+
+{\noindent\bf Question 7d.} The only elements of $\mathcal{R}$ that make it non-transitive is the fact that $1\mathcal{R}2\wedge 2\mathcal{R}1$ but $1\not\mathcal{R}1$ and $2\mathcal{R}1\wedge 1\mathcal{R}2$ but $2\not\mathcal{R}2$. Thus to make it transitive all we have to do is add $(1, 1)$ and $(2, 2)$ to $\mathcal{R}$. $\square$
+
+\end{document}

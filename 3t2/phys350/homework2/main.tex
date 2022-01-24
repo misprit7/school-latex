@@ -1,0 +1,200 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx, float}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\st}{\mathrm{ s.t.}\ }
+\newcommand{\tn}[1]{\textnormal{#1}}
+\newcommand{\m}{\textnormal{ m}}
+\newcommand{\s}{\textnormal{ s}}
+\newcommand{\K}{\textnormal{ K}}
+\newcommand{\h}{\textnormal{ h}}
+\newcommand{\W}{\textnormal{ W}}
+\newcommand{\J}{\textnormal{ J}}
+\newcommand{\Pa}{\textnormal{ Pa}}
+\newcommand{\mol}{\textnormal{ mol}}
+\newcommand{\Hz}{\textnormal{ Hz}}
+\newcommand{\kg}{\textnormal{ kg}}
+\newcommand{\cm}{\textnormal{ cm}}
+\newcommand{\mm}{\textnormal{ mm}}
+\newcommand{\N}{\textnormal{ N}}
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 220 Homework 2}
+\date{September 27, 2021}
+\author{Xander Naumenko}
+\maketitle
+
+{\noindent\bf Question 1.} Prove that if $a\in\ZZ$, then $4\not| a^2+1$. 
+
+\medskip
+
+There are two cases: either $a$ is even or it is odd. If it is even, then it can be represented as $a=2m$, $m\in\ZZ$ and we get 
+
+$$
+    a^2+1=4m^2+1
+$$
+
+Since $m^2\in\ZZ$, $a^2+1$ is not divisible by four in this case. In the other case, $a$ being odd, it can be represented as $a=2n+1$ and we get 
+
+$$
+    a^2+1=(2n+1)^2+1=4n^2+4n+1+1=4(n^2+n)+2
+$$
+
+Since $n^2+n\in\ZZ$ this also isn't divisible by four. Thus in all cases $4\not|a^2+1$ and so we are done. $\square$
+
+{\noindent\bf Question 2.} Let $x$ be a positive real number. Prove that if $x-\frac3x>2$, then $x>3$. 
+
+\medskip
+
+Rearranging, we get 
+
+$$
+    x-\frac3x>2\Rightarrow x^2-2x-3>0\Rightarrow (x-3)(x+1)>0
+$$
+
+Since $x+1$ is always positive (since $x>0$), the only way this is true is if $x-3>0$, i.e. $x>3$ and we're done. $\square$
+
+{\noindent\bf Question 3.} Prove that if $k\in\ZZ$, then $3|k(2k+1)(4k+1)$. 
+
+\medskip
+
+By Euclidean division there are three possible cases: $k=3m, k=3m+1$ or $k=3m+2, m\in\ZZ$. 
+
+{\bf Case $k=3m$:} In this case, we have that the expression in the question becomes
+
+$$
+    k(2k+1)(4k+1)=3m(2k+1)(4k+1)
+$$
+
+This is divisible by 3 so we're done with this case. 
+
+{\bf Case $k=3m+1$:} Again writing the expression we get 
+
+$$
+    k(2k+1)(4k+1)=k(4k+1)(6m+3)=3k(4k+1)(2m+1)
+$$
+
+This is divisible by 3 so we're done with this case. 
+
+{\bf Case $k=3m+2$:} Rewriting the expression one last time gives 
+
+$$
+    k(2k+1)(4k+1)=k(2k+1)(12m+9)=3k(2k+1)(4m+3)
+$$
+
+This is divisible by 3 so we're done with this case. 
+
+Since all cases were consistent with the result the given expression must be divisible by $3$. $\square$
+
+{\noindent\bf Question 4.} Let $n\in\ZZ$. {\bf a.} Show that if $3|n$ and $4|n$, then $12|n$. {\bf b.} Use the previous part to show that if $n>3$ is a prime, then $n^2\equiv 1(\textnormal{mod }12)$. 
+
+\medskip
+
+{\noindent\bf Question 4a.} Using the hypotheses we can write $n=3a, a\in\ZZ$. Since $n$ is also divisible by 4 and $4\not|3$, $a$ must be divisible by 4, i.e. $a=4b, a\in\ZZ$. Thus $n=12b$ and we're done. $\square$
+
+{\noindent\bf Question 4b.} Since $n$ is prime it is not divisible by either 2 or 3. Thus we have $n^2=(2a+1)^2=4a^2+4a+1=4(a^2+a)+1, a\in\ZZ$. Define $m=n^2-1=4(m^2+m)$ Since it also isn't divisible by $3$ we either get $n=3b+1$ or $n=3c+2,b, c\in\ZZ$. In the first case, we get
+
+$$
+    n^2=9b^2+6b+1=3(3b^2+2b)+1=m+1
+$$
+
+In the second we get that 
+
+$$
+    n^2=9c^2+12c+4=3(3c^2+4c+1)+1=m+1
+$$
+
+Either way $m$ is divisible by both $3$ and $4$, so by the first part of the question $12|m$. Since $n^2=m+1$ we have that $n^2\equiv1(\textnormal{mod } 12)$. $\square$
+
+{\noindent\bf Question 5.} Prove that if $n^3+n^2-n+3$ is a multiple of three, then $n$ is a multiple of three. 
+
+\medskip
+
+We will use proof by contradiction, so assume that $n^3+n^2-n+3$ is divisible by 3 but $n$ isn't divisible by $3$. We will consider the cases that $n=3m+1$ and $n=3m+2$. 
+
+{\bf Case $n=3m+1$:} Expanding we get 
+
+$$
+    n^3+n^2-n+3=27m^3+27m^2+9m+1+9m^2+6m+1-3m-1+3
+$$
+
+$$
+    =3(9m^3+18m^2+5m)+1
+$$
+
+Thus the expression isn't divisible by $3$ which contradicts our assumption it was. 
+
+{\bf Case $n=3m+2$:} Expanding we get 
+
+$$
+    n^3+n^2-n+3=27m^3+54m^2+36m+8+9m^2+12m+4-3m+2+3=3(18m^3+21m^2+17m)+2
+$$
+
+It is not divisible by $3$, which contradicts our assumption it was. In both cases a contradiction arises, so our original assumption must have been false and $n$ is divisible by 3. $\square$
+
+{\noindent\bf Question 6.} Let $x\in\RR$. Then, prove that $x^2+|x-6|>5$. 
+
+\medskip
+
+Consider three possibilities: $x<1$, $1\leq x\leq 2$, $2< x\leq3$ and $x>3$. 
+
+{\bf Case $x<1$:} In this case we have 
+
+$$
+    x^2+|x-6|>0+|1-6|=5
+$$
+
+{\bf Case $1\leq x\leq 2$:} In this case we have
+
+$$
+    x^2+|x-6|>1+|2-6|=5>5
+$$
+
+{\bf Case $2<x\leq 3$:} In this case we have
+
+$$
+    x^2+|x-6|>4+|3-6|=7>5
+$$
+
+{\bf Case $x>3$:} In this case we have 
+
+$$
+    x^2+|x-6|>9+0=0>5
+$$
+
+Since this covers all cases we're done. $\square$
+
+{\noindent\bf Question 7.} Let $x, y\in\ZZ$. Prove that $3\not|(x^3+y^3)$ if and only if $3\not|(x+y)$. 
+
+We will prove the contrapositive, i.e. that $3|(x+y)$ if and only if $3|(x^3+y^3)$. For the forward direction of this statement, assume that $3|(x+y)$. Then we have that $x+y=3m, m\in\ZZ$ and 
+
+$$
+    x^3+y^3=(x+y)(x^2-xy+y^2)=3m(x^2-xy+y^2)
+$$
+
+This is divisible by $3$ so this direction is done. For the reverse direction, assume $x^3+y^3=3m, m\in\ZZ$. Expanding we get that the following is divisible by 3 also: 
+
+$$
+    x^3+y^3=(x+y)(x^2-xy+y^2)=(x+y)((x+y)^2-3xy)
+$$
+
+This means that either $x+y$ is divisible by three or $(x+y)^2-3xy$ is divisible case (or both, in which the argument for either case works). In the former case the result is shown automatically, and in the latter this implies that $\exists n\in\ZZ$ s.t. $(x+y)^2-3xy=3n\Rightarrow (x+y)^2=3(n+xy)$. Since $(x+y)^2$ is divisible by 3 and 3 is prime this means that $x+y$ must also be divisible by 3, and we're done in both cases. $\square$
+
+
+\end{document}

@@ -1,0 +1,69 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx, float}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\st}{\text{ s.t.}\ }
+\newcommand{\tn}[1]{\textnormal{#1}}
+\newcommand{\m}{\textnormal{ m}}
+\newcommand{\s}{\textnormal{ s}}
+\newcommand{\K}{\textnormal{ K}}
+\newcommand{\h}{\textnormal{ h}}
+\newcommand{\W}{\textnormal{ W}}
+\newcommand{\J}{\textnormal{ J}}
+\newcommand{\Pa}{\textnormal{ Pa}}
+\newcommand{\mol}{\textnormal{ mol}}
+\newcommand{\Hz}{\textnormal{ Hz}}
+\newcommand{\kg}{\textnormal{ kg}}
+\newcommand{\cm}{\textnormal{ cm}}
+\newcommand{\mm}{\textnormal{ mm}}
+\newcommand{\N}{\textnormal{ N}}
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 220 Homework 3 Question 8}
+\date{October 08, 2021}
+\maketitle
+
+{\noindent\bf Question 8.} Show that: 
+
+{\noindent\bf Question 8a.} $f(x)=x^3+3x+4$ is increasing. 
+
+\medskip
+
+Let $a, b\in\RR$ with $a<b$. This assumption also gives us that $3a<3b$ and $a^3<b^3$ (the power of three doesn't change sign so the inequality is preserved). Putting this together and comparing terms elementwise we have 
+
+$$
+    f(a)=a^3+3a+4 < b^3+3b+4 = f(b)
+$$
+
+Since this is true regardless of the choice of $a$ and $b$ it is $f$ is increasing. $\square$
+
+{\noindent\bf Question 8b.} $g(x)=\sin x$ is not increasing. 
+
+\medskip
+
+Let $a=\frac\pi2$ and $b=\frac{3\pi}2$. Then $a<b$ but 
+
+$$
+    f(a)=\sin\frac\pi2=1>-1=\sin\frac{3\pi}2=f(b)
+$$
+
+Since there is an $a, b$ that fulfill the requirements but do not fulfill the result, the original statement must be false. $\square$
+
+
+\end{document}

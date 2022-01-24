@@ -1,0 +1,51 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx, float}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\st}{\text{ s.t.}\ }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 220 Homework 8 Question 8}
+\date{November 08, 2021}
+\maketitle
+
+{\noindent\bf Question 8a.} To show it is an equivalence relation we must show it is reflexive, symmetric and transitive. For reflexive, let $u=1$. Then $[u]_n$ is obviously invertible since $1\cdot 1=1\mod n$, and $\forall x\in\ZZ$, $xu=x\cdot 1=x\implies xRx$, i.e. $R$ is reflexive. 
+
+For symmetric, assume $xRy$. Then $\exists u$ s.t. $[u]_n$ is invertible and $xu=y$. Let $u^{-1}$ be this inverse. The $xuu^{-1}=x=yu^{-1}$. Since $u^{-1}$ is invertible (it's inverse is simply $u$ itself) then $yRx$ as symmetry requires. Thus $R$ is symmetric as well. 
+
+Finally for transitivity, assume $xRy$ and $yRz$. Then $\exists u_1, u_2\st xu_1=y$ and $yu_2=z$ and $[u_1]_n, [u_2]_n$ are invertible. If follows that $\exists u_1^{-1}, u_2^{-1}\st u_1u_1^{-1}\equiv 1\mod n$ and $u_2u_2^{-1}\equiv 1\mod n$. Then we get that 
+
+\[
+    x\cdot u_1\cdot u_2=y\cdot u_2=z    
+\]
+
+Note that $[u_1u_2]_n$ is invertible with inverse $u_1^{-1}u_2^{-1}$. Thus $xRy$ and $yRz$ implies that $xRz$, so $R$ is transitive. Since we have shown that $R$ is reflexive, symmetric and transitive it is an equivalence relation. $\square$
+
+{\noindent\bf Question 8b.} The invertible elements of $\ZZ_6$ are 
+
+\begin{itemize}
+    \item $[1]_6$ with inverse $[1]_6$
+    \item $[5]_6$ with inverse $[5]_6$
+\end{itemize}
+
+Using these we find that $[2]_6R[4]_6$, since $[2]_6[5]_6=[4]_6$. Also $[1]_6R[5]_6$ since $[1]_6[5]_6=[5]_6$. Also note that $[3]_6[5]_6=[3]_6$ and $[3]_6[1]_6=[3]_6$ so it is only related to itself. Thus the equivalence classes of $R$ are $\{[1]_6, [5]_6\}, \{[2]_6, [4]_6\}$ and $\{[3]_6\}$. $\square$
+
+ 
+
+\end{document}

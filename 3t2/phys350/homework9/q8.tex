@@ -1,0 +1,34 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx, float}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\st}{\text{ s.t.}\ }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 220 Quesion 9 Question 8}
+\date{November 21, 2021}
+\maketitle
+
+{\noindent\bf Question 8.} There is only one such function: $f(n)=n$. To show this we will us proof by strong induction on $n$. 
+
+{\bf Base Case (n=1):} Since $f(n)\leq n\forall n\in\NN$, the only value of $f(1)$ such that $f(1)\leq n=1$ is $f(1)=n=1$. 
+
+{\bf Inductive Step:} Suppose that $f(m)=m\forall m\leq n$. Then since $f(n)$ is injective it must be the case that $\forall m\in \{1, 2, \ldots n-1, n\}$, $f(n+1)\neq f(m)$. Thus it must be the case that $f(n+1)>n$. However we also have that $f(n+1)\leq n+1$ by the original hypothesis, so these two inequalities together mean that the only possible case is that $f(n+1)=n+1$. 
+
+\end{document}

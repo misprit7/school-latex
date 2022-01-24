@@ -1,0 +1,53 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx, float}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\st}{\text{ s.t.}\ }
+\newcommand{\tn}[1]{\textnormal{#1}}
+\newcommand{\m}{\textnormal{ m}}
+\newcommand{\s}{\textnormal{ s}}
+\newcommand{\K}{\textnormal{ K}}
+\newcommand{\h}{\textnormal{ h}}
+\newcommand{\W}{\textnormal{ W}}
+\newcommand{\J}{\textnormal{ J}}
+\newcommand{\Pa}{\textnormal{ Pa}}
+\newcommand{\mol}{\textnormal{ mol}}
+\newcommand{\Hz}{\textnormal{ Hz}}
+\newcommand{\kg}{\textnormal{ kg}}
+\newcommand{\cm}{\textnormal{ cm}}
+\newcommand{\mm}{\textnormal{ mm}}
+\newcommand{\N}{\textnormal{ N}}
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 220 Question 8}
+\date{November 01, 2021}
+\maketitle
+
+{\noindent\bf Question 8.} First we will show the forward definition. Assume $R$ is reflexive and circular, we must show it is symmetric and transitive for it to be a equivalence relation. For symmetric, let $b=a$. Then $(aRb\wedge bRc)\Leftrightarrow (aRa\wedge aRc)\Leftrightarrow aRc\implies cRa$, which gives us symmetry.  Combining the fact that $R$ is symmetric and circular, we get that $aRb\wedge bRc\implies cRa\implies aRc$, which is the definition of transistivity. 
+
+For the backwards direction, assume that $R$ is an equivalence relation and we will show that $R$ is reflexive and circular. Reflexive is given automatically by the definition of an equivalence relation. To show circular, similarly to before we combine the transitive and symmetric property of $R$: 
+
+$$
+    aRb\wedge bRc\implies aRc\implies cRa\implies R\text{ is circular}
+$$
+
+Thus any relation $R$ is an equivalence relation if and only if it is reflexive and circular. $\square$
+ 
+
+\end{document}

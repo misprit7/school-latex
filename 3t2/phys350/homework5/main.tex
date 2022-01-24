@@ -1,0 +1,158 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx, float}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\st}{\text{ s.t.}\ }
+\newcommand{\tn}[1]{\textnormal{#1}}
+\newcommand{\m}{\textnormal{ m}}
+\newcommand{\s}{\textnormal{ s}}
+\newcommand{\K}{\textnormal{ K}}
+\newcommand{\h}{\textnormal{ h}}
+\newcommand{\W}{\textnormal{ W}}
+\newcommand{\J}{\textnormal{ J}}
+\newcommand{\Pa}{\textnormal{ Pa}}
+\newcommand{\mol}{\textnormal{ mol}}
+\newcommand{\Hz}{\textnormal{ Hz}}
+\newcommand{\kg}{\textnormal{ kg}}
+\newcommand{\cm}{\textnormal{ cm}}
+\newcommand{\mm}{\textnormal{ mm}}
+\newcommand{\N}{\textnormal{ N}}
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 220 Homework 5}
+\date{October 18, 2021}
+\author{Xander Naumenko}
+\maketitle
+
+{\noindent\bf Question 1.} We will use induction on $n$. 
+
+{\bf Base Case (n=1):} Computing the sum we get 
+
+$$
+    \sum_{k=1}^1(2k-1)2^k=(2-1)2=2=6+2(4-6)=6+2^n(4n-6)
+$$
+
+{\bf Induction Step:} Assume that $\sum_{n=1}^n(2k-1)2^k=6+2^n(4n-6)$. Then we have 
+
+$$
+    \sum_{k=1}^{n+1}(2k-1)2^{k}=6+2^n(4n-6)+(2n+1)2^{n+1}=6+2^n(4n-6)+(4n+2)2^n
+$$
+$$
+    =6+2^n(4n-6)+(4(n+1)-6)2^n=6+(4(n+1)-6)2^{n+1}
+$$
+
+This matches the result so we're done. $\square$
+
+{\noindent\bf Question 2.} We will use strong induction on $n$ for $n\geq 3$. 
+
+{\bf Base Case (n=3):} Using our definition for $a_n$ we have 
+
+$$
+    a_3=5a_{2}-6a_1=25-6=19=27-8=3^3-2^3
+$$
+
+{\bf Induction Step:} Suppose that the result holds for all natural numbers less than $n+1$. Then we have 
+
+$$
+    a_{n+1}=5a_n-6a_{n-1}=5(3^n-2^n)-6(3^{n-1}-2^{n-1})=(3^{n+1})-(-2^{n+1})=3^{n+1}+2^{n+1}
+$$
+
+This is what we are trying to prove so we're done. $\square$
+
+{\noindent\bf Question 3.} We will use strong induction on $n$. 
+
+{\bf Base Case (n=3):} Using our definition we have 
+
+$$
+    a_3=a_2+a_1+a_0=1+3+9=14\leq 27=3^n
+$$
+
+{\bf Inductive Step:} Assume that $a_m\leq 3^m$ for all $m\leq n$. Then We have 
+
+$$
+    a_{n+1}=a_n+a_{n-1}+a_{n-2}\leq 3^n+3^{n-1}+3^{n-2}\leq 3^n+3^n+3^n=3^{n+1}
+$$
+
+Thus the result holds for all $n\geq 3$. $\square$
+
+{\noindent\bf Question 4.} We will use strong induction on $n$. 
+
+{\bf Base Case (n=1):} By explicit definition we have that 
+
+$$
+    f_{n+1}f_{n-1}-f_n^2=(1+0)0-1=-1=(-1)^1=(-1)^n
+$$
+
+{\bf Inductive Step:} Assume that the result holds for all values less than or equal to $n$, which gives $f_{n+1}f_{n-1}-f_{n}^2=(-1)^{n}$. Then we get 
+
+$$
+    f_{n+2}f_{n}-f_{n+1}^2=(f_{n+1}+f_n)f_n-f_{n+1}(f_{n}+f_{n-1})=f_{n+1}f_n+f_n^2-f_{n+1}f_n-f_{n+1}f_{n-1}
+$$ 
+    
+$$
+    =-(f_{n+1}f_{n-1}-f_n^2)=-(-1)^n=(-1)^{n+1}
+$$
+
+Thus by induction the result holds for all $n\geq 1$. $\square$
+
+{\noindent\bf Question 5.} We will prove the result by induction on $n$. 
+
+{\bf Base Case ($n=0$):} Plugging in we get $7^{0+3}+2=343+2=345=0\mod 5$. 
+
+{\bf Induction Step:} Assume that the result holds for $n$. Then we have that $\exists m\in\ZZ\st 7^{4n+3}+2=5m$ and so
+
+$$
+    7^{4(n+1)+3}+2=7^3 7^{4n+3}+2=7^4(5m-2)+2=7^4\cdot 5m-4802+2=5(7^4m-960)=0\mod 5
+$$
+
+Thus by induction the result holds for all nonnegative integers $n$. 
+
+{\noindent\bf Question 6.} We will use induction to prove that $a_n$ is increasing and greater than 2 for all $n$. 
+
+{\bf Base Case (n=1):} $a_1=3< 6=9-3=a_1^2-a_1=a_2$, and $a_1=3>2$. 
+
+{\bf Induction Step:} Assume that $a_n>a_{n-1}$ and $a_n>2$. Then because $a_n>2$ then $a_n-1>1$, so 
+
+$$
+    a_{n+1}=a_n^2-a_n=a_n(a_n-1)> a_n
+$$
+
+Thus the result holds for all $n$. $\square$
+
+{\noindent\bf Question 7.} We will use strong induction on $n$. 
+
+{\bf Base Cases ($n=0$ and $n=1$):} For $n=0$ then we have $u_0=1=\cos(0)=\cos(nx)$. For $n=1$ we get $u_1=\cos x=\cos(nx)$ so the base case is fulfilled. 
+
+{\bf Inductive Step:} Assume that the result holds for all numbers less than $n+1>1$. Then 
+
+$$
+    u_{n+1}=2u_1u_{n}-u_{n-1}=2\cos(x)\cos(nx)-\cos((n-1)x)
+$$
+
+$$
+    =2\cos(x)\cos(nx)-\cos(nx)\cos(x)-\sin(nx)\sin(x)=
+$$
+
+$$
+    \cos(x)\cos(nx)-\sin(nx)\sin(x)=\cos((n+1)x)
+$$
+
+Thus the result holds for all $n$. $\square$
+
+\end{document}

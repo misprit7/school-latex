@@ -1,0 +1,74 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx, float}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\st}{\text{ s.t.}\ }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 220 Homework 8}
+\date{November 08, 2021}
+\author{Xander Naumenko}
+\maketitle
+
+{\noindent\bf Question 1.} This does not need to be the case. For example let $R$ be the equivalence class modulo $2$ and $S$ be the equivalence class modulo $3$. Then if $Q=R\cup S$, then we have $0Q2$ since $0R2$ and $2Q4$ since $2S4$ but $0\not Q4$, since neither $0R4$ nor $0S4$ is true. Thus $Q$ is not a equivalence relation since it is not transitive. $\square$
+
+{\noindent\bf Question 2.} The statement is false. To show this simply let $A=\RR$ and $\mathcal{R}=\emptyset$. Then $\mathcal{R}$ is symmetric and transitive, but since no element is related to itself it is not reflexive. 
+
+{\noindent\bf Question 3.} The relationship is an equivalence relation. For reflexivity, if $a=b$, then $5a-8b=5a-8a=a(5-8)=-3a\equiv 0\mod0$. For symmetry, suppose $aRb$, i.e. $5a-8b\equiv0\mod3$. It follows that 
+
+\[
+    5b-8a\equiv 5b-8a+5a-8b\equiv-3b-3a\equiv 0\mod3
+\]
+
+Finally for transitivity, assume that $5a-8b\equiv 0\mod3$ and $5b-8c\equiv 0\mod3$. Then we have 
+
+\[
+    5a-8c\equiv 5a-8c-5b+8c-5a+8b\equiv3b\equiv0\mod3   
+\]
+
+Thus the relationship is an equivalence relation since it is transitive, reflexive and symmetric. $\square$
+
+{\noindent\bf Question 4-1.} $\mathcal{R}$ is reflexive and symmetric but not transitive. To show symmetric, note that if $f\mathcal{R}g\implies\exists x\in\RR\st f(x)=g(x)$ then $g(x)=f(x)$ as well, so $f\mathcal{R}g\implies g\mathcal{R}f$. For reflexive, assume that $f\mathcal{R}g$. Then let $x=0$ and $f(0)=f(0)$ so $f\mathcal{R}f$. 
+
+To show it is not transitive, let $f(x)=x^2$, $g(x)=x$ and $h(x)=-x^2-2$. Then $f\mathcal{R}g$ by choosing $x=0$ and $g\mathcal{R}h$ by choosing $x=-1$. However $f\not\mathcal{R}h$ since $f$ is positive for all $x$ and $h$ is negative for all $x$. $\square$
+
+{\noindent\bf Question 4-2.} $R$ is symmetric but not symmetric or transitive. To show symmetry, if $xRy$, then $xy\equiv yx\equiv 0\mod4$, so $yRx$. To show $R$ isn't symmetric, note that $1\not R1$ since $1\cdot 1\equiv 1\mod4$. 
+
+To show $R$ isn't transitive, let $x=1, y=4$ and $z=3$. Then $xRy$ and $yRz$ since $1\cdot 4\equiv 0\mod4$ and $3\cdot 4\equiv 0\mod4$, but $x\not Rz$ since $1\cdot 3=3\mod4$. Therefore $R$ isn't transitive or reflexive, but is symmetric. $\square$
+
+{\noindent\bf Question 5.} Let $x\in A$. To show $R$ is a partition we must show that it is contained in exactly one element of $R$. Since $P$ and $Q$ are partitions, $\exists S, T$ s.t. $x\in S$ and $x\in T$. Also since each are partitions these are the only $S, T$ that contain $x$. Then $x\in S\cap T\implies x\in R$ and for all other elements of $P, Q$, $x$ is not contained in at least one of them. Therefore all elements of $x$ are contained in exactly one element of $R$, which is the definition of a partition. $\square$
+
+{\noindent\bf Question 6.} First we will show reflexive. If $x\in A\cap B$ or $x\in\bar A\cap\bar B$, then either $x\in B\cap A$ or $x\in\bar B\cap \bar A$ since both operators work the same both ways. For symmetric, if $A\mathcal{R}B$, then either $x\in A\cap B$ or $x\in\hat A\cap\hat B$. Again since the intersect operator is symmetric, in either case it also works for $A$ and $B$ in reverse order. Thus $A\mathcal{R}B\implies B\mathcal{R}$ which is symmetry as required. 
+
+To show transitive, assume $A\mathcal{R}B$ and $B\mathcal{R}C$. Either $x\in B$ or $x\notin B$. In the first case then since $A\mathcal{R}B$, then $x\in A$ (since $A\mathcal{R}B$ implies either $x$ is in both or neither of them, and $x$ being in $B$ implies it must be the former case), and since $B\mathcal{R}C$, $x\in C$ using the exact same logic. Then $A\mathcal{R}C$ if $x\in B$ since $x\in A$ and $x\in C$. In the second case where $x\notin B$, this means that $x\notin A$ since $A\mathcal{R}B$ (again since if $x$ were contained in $A$ then $A$ wouldn't be related to $B$) and similarly $x\notin C$ because $B\mathcal{R}C$. Then it follows that $A\mathcal{R}C$ since $x\notin A$ and $x\notin C$. In either case $A\mathcal{R}C$, so the relation must be transitive. $\square$
+
+{\noindent\bf Question 7-1.} We will use proof by contradiction, so suppose not. Then $\exists x\in\ZZ$ s.t. either $x\notin S$ or $x\in X_a$ and $x\in X_b$, $a\neq b$. The first case is not possible, since by euclidean division by $n$, there exists $p\in\ZZ,r\in\ZZ$ with $0\leq r<n$ such that $x=pn+r$, which implies $x\in X_r$. The second case would imply that $x=nk+a=nk^\prime+b$ with $a\neq b$ and $a, b<n$. Clearly $k\neq k^\prime$ since this would imply $a=b$, but if $k\neq k^\prime$ then means that $n(k-k^\prime)=a-b$. However $|n(k-k^\prime)|\geq n > a > |a-b|$. Since it is a strict inequality this contradicts our assumption that $x=nk+a$ and $x=nk^\prime+b$, so our original assumption must have been wrong and $S$ forms a partition of $\ZZ$. $\square$
+
+{\noindent\bf Question 7-2.} $R$ is clearly reflexive, since as we just showed in the previous part $\forall x\in\ZZ, \exists i\st x\in X_i$. Then $aRa\forall a\in\ZZ$. For symmetric, assume that $aRb$. Then $\exists X_i\st a,b\in X_i \implies bRa$. Finally for transitive, assume that $aRb$ and $bRc$ and $b\in X_i$ for some $j$. Then $a\in X_i$ and $c\in X_i$, which means $aRc$ as required. Then since $R$ is reflexive, symmetric and transitive it is an equivalence relation as required. $\square$
+
+{\noindent\bf Question 7-3.} First we will show that the elements of $S$ are equivalence classes. For every pair of elements $a, b\in X_i$, $aRb$ by the definition of $R$. Next we will show that $S$ is the set of all equivalence classes of $R$. We proved in the first part that $S$ forms a partition of $\ZZ$, so for every $x\in\ZZ\exists X\in S\st x\in X$. Also since $R$ is an equivalence relation every $x$ can only belong to a single equivalence class. Combining these two facts we see that every integer $x$ belongs to exactly one $X\in S$, which means that $S$ is the set of all equivalence classes of $R$. $\square$
+
+Because the series $ a_1+a_2+\ldots a_\infty$ converges $a^{x}$  $ a_1+a_2^2+a_3^3+\ldots+a_{\infty} $ 
+
+
+
+
+\end{document}
+
+

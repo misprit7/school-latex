@@ -1,0 +1,51 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx, float}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\st}{\text{ s.t.}\ }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 220 Homework 9}
+\date{November 20, 2021}
+\author{Xander Naumenko}
+\maketitle
+
+{\noindent\bf Question 1.} $f$ must be bijective. To show this we will use two facts we proved in class: $g\circ h$ injective implies $g$ injective and $g\circ h$ surjective implies $h$ surjective. Since $f\circ f$ is bijective it is both injective and surjective, so applying the first statement gives that $f$ is injective and the second gives $f$ is surjective. Thus $f$ is bijective. $\square$
+
+{\noindent\bf Question 2.} First we will show that $f(f^{-1}(Y))\subseteq Y$. Let $y\in f(f^{-1}(Y))$. Then $\exists x\in f^{-1}(Y)\st f(x)=y\implies y\in Y$. Next we will show that $Y\subseteq f(f^{-1}(Y))$. Let $y\in Y$. Then since $f$ is a surjection $\exists x\in A\st f(x)=y\implies x\in f^{-1}(Y)\implies y\in f(f^{-1}(Y))$. Since each set is contained in the other they must be equal. $\square$
+
+{\noindent\bf Question 3.} For the first direction, suppose that $f$ is surjective and we will show that $\forall A\in\mathcal P(E), F\setminus f(A)\subseteq f(E\setminus A)$. Let $A\in\mathcal P(E)$ and $y\in F\setminus f(A)$. Since $y\in F$ and $f$ is surjective, $\exists x\in E\st f(x)=y$. Note that $x\notin A$ since otherwise we would have $f(x)\in f(A)\not\subseteq F\setminus f(A)$. Since $x\notin A$ then we must have that $f(x)=y\in f(E\setminus A)$ and this direction is done. 
+
+For the other direction, assume that $\forall A\in\mathcal P(E), F\setminus f(A)\subseteq f(E\setminus A)$ and we will show $f$ is surjective. Let $y\in F$ and $A=\{x\in E: f(x)\neq y\}\in\mathcal P(E)$. Then $F\setminus f(A)=\{y\}\cup G$ for some arbitrary set $G$ by construction (in fact $G=\emptyset$ since $f$ is surjective, but since we're in the middle of proving that we can leave it as an arbitrary set). Since by hypothesis $F\setminus f(A)=\{y\}\cup G\subseteq f(E\setminus A)\implies y\in f(E\setminus A)$, $\exists x\in E\setminus A$ such that $f(x)=y$. Since $y$ was arbitrary this means $f$ is injective and we're done with the second direction. $\square$
+
+{\noindent\bf Question 4a.} Let $z\in\RR$. if $z\geq0$ then let $x=\sqrt z$, otherwise let $y=\sqrt z$. Then $g(x, y)=x^2-y^2=\sqrt{z}^2=z$ if $z\geq0$ and $g(x, y)=x^2-y^2=-\sqrt{-z}^2=z$ if $z<0$. In either case $\exists x, y\in\RR\st g(x, y)=z$, so $g$ is surjective. $\square$
+
+{\noindent\bf Question 4b.} $g^{-1}(\{0\})$ is the set of all $x, y\st g(x, y)=0$, i.e. the solutions to the equation $x^2-y^2=0$. This is equivalent to the following set: 
+
+\[
+    g^{-1}(\{0\})=\{(x, y)\in\RR^2:x^2=y^2\}
+\]
+
+{\noindent\bf Question 4c.} In a similar vein to the previous part, $h^{-1}(\{c\})$ is the set of $x$ that are a solution to the equation $f(x)=x^4+3=c$. This is the following set: 
+
+\[
+    h^{-1}(\{c\})=\{x\in\RR:x^4=c-3\}=\begin{cases}\emptyset &\text{ if }c<3\\\{\sqrt[4]{3-c}\}&\text{ if }c\geq 3\end{cases}
+\]
+
+\end{document}
