@@ -1,0 +1,51 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx, float}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\st}{\text{ s.t.}\ }
+\newcommand{\tn}[1]{\textnormal{#1}}
+\newcommand{\m}{\textnormal{ m}}
+\newcommand{\s}{\textnormal{ s}}
+\newcommand{\K}{\textnormal{ K}}
+\newcommand{\h}{\textnormal{ h}}
+\newcommand{\W}{\textnormal{ W}}
+\newcommand{\J}{\textnormal{ J}}
+\newcommand{\Pa}{\textnormal{ Pa}}
+\newcommand{\mol}{\textnormal{ mol}}
+\newcommand{\Hz}{\textnormal{ Hz}}
+\newcommand{\kg}{\textnormal{ kg}}
+\newcommand{\cm}{\textnormal{ cm}}
+\newcommand{\mm}{\textnormal{ mm}}
+\newcommand{\N}{\textnormal{ N}}
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 220 Homework 4 Question 8}
+\date{October 15, 2021}
+\author{Xander Naumenko}
+\maketitle
+
+{\noindent\bf Question 8.} Let $L\in\RR$ and choose $\epsilon=\frac12$. Next let $N\in\NN$. If $L\geq0$ then select $n=2N+1>N$. Otherwise if $L<0$ then select $n=2N>N$. Note that in either case $n\geq2$ and $L$ has the opposite sign as $(-1)^n$. Then we get 
+
+$$
+    |x_n-L|=|(-1)^n+\frac1n-L|\geq \bigg||(-1)^n-L|-|\frac1n|\bigg|\geq |1-\frac1n|\geq|1-\frac12|=\frac12=\epsilon
+$$
+
+The middle step is an application of the triangle inequality. Thus the $(x_n)$ doesn't converge. $\square$
+
+\end{document}
