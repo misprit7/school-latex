@@ -221,10 +221,15 @@ Using the fact that $x^2+y^2=r_0^2$, we get that
 1=r_0^{-2}\left( 4\left( 1+\frac{1}{r_0^2} \right)^{-2}u^2+4\left( 1-\frac{1}{r_0^2} \right)^{-2}v^2  \right)
 \]
 \[
-\implies 1=\frac{4u^2}{r_0^{4}+r_0^2}+\frac{4v^2}{r_0^{4}-r_0^2}
+\implies 1=\frac{4u^2}{(r_0+r_0^{-1})^2}+\frac{4v^2}{(r_0-r_0^{-1})^2}
 .\]
+Thus the output is an ellipse of the form $1=\frac{u^2}{ a^2}+\frac{v^2}{b^2}$, with $a=\frac{r_0^2+r_0}{2r_0}$ and $b=\frac{r_0^2-r_0}{ 2r_0}$. 
 
-
+For the unit circle, we can no longer divide out by $r_0$ as we did in the previous part. Since it's on the unit circle $z=e^{i\theta}$, which means that 
+\[
+w=\frac{1}{2}\left(z+\frac{1}{z}\right)=\frac{1}{2}\left( e^{i\theta}+e^{-i\theta} \right) =\frac{1}{2}(2\cos\theta)=\cos\theta
+.\]
+As $\theta$ ranges over $\mathbb{R}$, $\cos\theta$ goes over the interval $[-1, 1]$ as required. 
 
 \medskip
 
@@ -233,15 +238,69 @@ Using the fact that $x^2+y^2=r_0^2$, we get that
 
 \medskip
 
+Let $z=re^{i\theta}$ with $Arg(z)=\theta$ between $-\frac{\pi}{8}$ and $\frac{\pi}{8}$. Then we have that 
+\[
+\left|e^{-z^{4}}\right|=\left|e^{-r\cos(4\theta)-ir \sin(4\theta)}\right|=\left| e^{-r\cos(4\theta)} \right| 
+.\]
+From the way we defined it we know that $-\frac{\pi}{8}\leq\theta\leq\frac{\pi}{8}\implies -\frac{\pi}{2}\leq\theta\leq\frac{\pi}{2}$. Since $\cos\theta>0$ for all such $\theta$, we have that 
+\[
+\left| e^{-z^{4}} \right| =\left| e^{-r\cos(4\theta)} \right| \leq \left| e^{-r} \right|\leq 1
+.\]
+
+\medskip
+
 \noindent
 8. Show that the function $ f(z)= \bar{z}$ is continuous everywhere but not differentiable anywhere.
+
+\medskip
+
+Let $\epsilon>0$, and select $\delta=\epsilon$. Then $\forall z\in\mathbb{C}$ with $|z-w|<\delta$, we have that
+\[
+|f(z)-f(w)|=|\overline{z}-\overline{w}|=|\overline{z-w}|=|z-w|<\delta=\epsilon
+.\]
+By the definition of the limit this implies that  implies that  
+\[
+\lim_{z\to w}z=w
+\]
+for all $w$, i.e. $\overline{z}$ is continuous everywhere. 
+
+To show it is not differentiable anywhere, consider the the two paths approaching any point $w$ from both the real direction and the imaginary direction. Then we get that 
+\[
+    \lim_{h \to 0} \frac{\overline{z+h}-\overline{z}}{h}=\lim_{h \to 0}\frac{\overline{h}}{h}=\lim_{h \to 0}\frac{h}{h}=1
+.\]
+On the other hand if you approach from the imaginary axis, you get
+\[
+\lim_{h \to 0} \frac{\overline{z+ih}-\overline{z}}{ih}=\lim_{h \to 0}\frac{\overline{ih}}{ih}=\lim_{h \to 0}-\frac{ih}{ih}=-1
+.\]
+Since the derivative doesn't agree depending on the different paths, it must be that the function is differentiable nowhere. 
 
 \medskip
 
 \noindent
 9. Discuss the differentiability and analyticity of the following functions
 
-(a) $(x+\frac{x}{x^2+y^2})+ i (y-\frac{y}{x^2+y^2})$; \ (b) $ |z|^2+ 2z$
+(a) $(x+\frac{x}{x^2+y^2})+ i (y-\frac{y}{x^2+y^2})$
+
+To be differentiable the function must satisfy the Cauchy-Riemann equations: 
+\[
+u_x=1+\frac{x^2+y^2-2x^2}{(x^2+y^2)^2}=1+\frac{1}{x^2+y^2}-\frac{2x^2}{(x^2+y^2)^2}
+\]
+\[
+v_y=1+\frac{1}{x^2+y^2}-\frac{2y^2}{(x^2+y^2)^2}
+\]
+\[
+u_y=\frac{-2xy}{(x^2+y^2)^2}=-v_x
+.\]
+As can be seen $u_y=-v_x$ for all $x, y$, and $u_x=v_y$ when $x^2=y^2\implies |x|=|y|$. Thus the function is differentiable on the lines $x=y$ and $x=-y$. However since these are only lines, there are no neighborhoods over which the function is  analytic so it is nowhere analytic. 
+
+(b) $ |z|^2+ 2z$
+
+Rewritting we get that $|z|^2+2z=z\overline{z}+2z$. The Cauch-Riemann equations are equivalent to having no derivative with respect to $\overline{z}$, in this case we have 
+\[
+    \frac{\partial }{\partial \overline{z}} \left( z\overline{z}+2z \right) =z
+.\]
+
+This is only equal to 0 when $z=0$, so the function is only differentiable at $z=0$. Similarly to before, since there is only one point at which it is differentiable it is nowhere analytic. 
 
 
 \noindent
@@ -255,6 +314,35 @@ $$ f(z) = \left\{\begin{array}{l}
  Show that the Cauchy-Riemann equations hold at $z=0$ but $ f$ is not differentiable at $z=0$.
 
 Hint: consider the limit with $\Delta z= (1+i) h, h \to 0$.
+
+\medskip
+
+First we show the Cauchy Riemann equations (I assume we don't have show differentiability of $u$ and $v$): 
+\[
+u_x=\frac {\frac{4}{3}x^{1 /3}y^{5 /3}}{ (x^2+y^2)}+\frac{2x^{7 /3}y^{5 /3}}{(x^2+y^2)^2}
+.\]
+\[
+v_y=\frac {\frac{4}{3}y^{1 /3}x^{5 /3}}{ (x^2+y^2)}+\frac{2y^{7 /3}x^{5 /3}}{(x^2+y^2)^2}
+.\]
+\[
+u_y=\frac{\frac{5}{3}x^{4 /3}y^{2 /3}}{x^2+y^2}+\frac{2y^{8 /3}x^{4 /3}}{x^2+y^2}
+.\]
+\[
+v_x=\frac{\frac{5}{3}y^{4 /3}x^{2 /3}}{x^2+y^2}+\frac{2x^{8 /3}y^{4 /3}}{x^2+y^2}
+.\]
+Note that at $z=0$, $u_x=u_y=0$ and $u_y=-u_x=0$, so the Cauchy Riemann equations are obeyed. However, as the hint suggested consider the limit of the derivative with $\Delta z=(1+i)h$ as $h$ goes to zero. 
+
+\[
+\lim_{h \to 0}\frac{f(z+(1+i)h)-f(z)}{(1+i)h}=\lim_{h \to 0}\frac{h^{4 /3}h^{5 /3}+ih^{5 /3}y^{4 /3}}{(h^2+h^2)(1+i)h}=\lim_{h \to 0}\frac{h^3+ih^3}{(h^3+h^3)(1+i)}=\frac{1}{2}
+.\]
+
+Now consider the limit as $h$ approaches from the real axis. Then we have that 
+
+\[
+\lim_{h \to 0}\frac{f(z+h)-f(z)}{h}=\lim_{h \to 0}\frac{0}{h^3}=0
+.\]
+
+The two limits disagree, so it must be the case that the function is not differentiable at $z=0$. 
 
 
 \end{document}
