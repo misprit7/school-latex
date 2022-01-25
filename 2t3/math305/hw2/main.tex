@@ -1,0 +1,262 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx, float}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 305 Homework 2}
+\date{24/01/22}
+\author{Xander Naumenko}
+\maketitle
+
+\vskip 0.5cm
+
+10pts each
+
+\noindent
+1. Find all values of the following equation
+
+(a)$ z^3= i-1$
+
+\[
+i-1=\sqrt{2}e^{i\frac{3\pi}{4}}=(2^{\frac{1}{6}}e^{ni\frac{\pi}{4}}+i\frac{2k\pi}{3})^3, k\in \{0,1,2\} 
+.\]
+
+(b) $ z^5= \frac{ 2i}{ 1-\sqrt{3} i}$
+
+\[
+\frac{2i}{1-\sqrt{3} }=\frac{-2\sqrt{3} +2i}{4}=-\frac{1}{2}\sqrt{3} +\frac{1}{2}i=e^{i\frac{5\pi}{6}}=e^{i\left( \frac{\pi}{6}+2k\frac{\pi}{5} \right) }, k\in \{0, \ldots, 5\} 
+.\]
+
+(c) $ (z-i)^2= i$
+
+\[
+    (z-i)^2=i=e^{i\frac{\pi}{2}}\implies z-i = e^{i\frac{\pi}{4}+i \pi k}\implies z=e^{i\frac{\pi}{4}+i \pi k}+e^{i\frac{\pi}{2}}, k\in \{0, 1\} 
+.\]
+
+(d) $z^2 +2i z+1=0 $
+
+\[
+z^2+2iz-1=(z+i)^2=-2=2e^{i\pi}\implies z+i=\sqrt{2} e^{i\left( \frac{\pi}{2}+\pi k \right) }\implies z=\sqrt{2} e^{i\left( \frac{\pi}{2}+\pi k \right) }-i, k\in \{0, 1\} 
+.\]
+
+
+\medskip
+
+\noindent
+*2. Let $m$ and $n$ be positive integers that have no common factor and $z_0$ be a complex number. Let $ z_0^{\frac{1}{n}}$ denote the set of all complex numbers such that $ z^n=z_0$, i.e., $ z_0^{\frac{1}{n}}=\{ z \ | z^n=z_0\}$. Prove that the set of numbers $(z_0^{1/n})^m$ is the same as the set of numbers $ (z_0^m)^{1/n}$.  Use this result to find all values of $ (1-i)^{3/2}$. Here $ (z_0^{1/n})^m=\{ z^m \ | z^n= z_0 \}$.
+
+\medskip
+
+Hint: since $ m$ and $n$ have no common factor, for any integer $k$, we can write it as $ k= m k_1+ n k_2$ where $k_1, k_2$ are two integers.
+
+
+*: An extra 10points will be awarded to Problem 2 if your answer is correct. 
+
+\medskip
+
+Assume that $z_0=re^{i\phi}$. Then we have that $z_0^{1 /n}=e^{i\left( \frac{\phi}{n}+\frac{2\pi k}{n} \right) }, k\in\mathbb{Z}$ and $A=\left( z_0^m \right)^{1 /n}=e^{i\left( \frac{\phi m}{n}+\frac{2\pi k_1}{n} \right) }, k_1\in\mathbb{Z}$. Taking the first term to the power of $m$ gives $B=\left( z_0^{1 /n}\right)^{m}=e^{i\left( \frac{\phi m}{n}+\frac{2\pi k_2 m}{n} \right) }, k_2\in\mathbb{Z}$. To prove that these are equivalent sets, we will show that $\forall a\in A, a\in B$ and that $\forall b\in B, b\in A$, which is enough to show set equality. 
+
+Let $b\in B$. It can thus be written as  $b=e^{i\left( \frac{\phi}{n}+\frac{2\pi k_2 m}{n} \right) }$ for some $k_2\in\mathbb{Z}$. Let $ k_1=k_2m$. Then we have that 
+\[
+b=e^{i\left( \frac{\phi}{n}+\frac{2\pi k_2 m}{n} \right) }=e^{i\left( \frac{\phi}{n}+\frac{2\pi k_1}{n} \right) }\in A
+,\]
+meaning $B\subseteq A$. 
+
+For the other direction, let $a\in A$. Then it can be written as $e^{i\left( \frac{\phi m}{n}+\frac{2\pi k_1}{n} \right) }$ for some $k_1\in\mathbb{Z}$. Using the hint (sorry for the awkward choice of variable names), there exist $x, y\in\mathbb{Z}$ such that $k_1=mx+ny$. Plugging this in, we get 
+\[
+a=e^{i\left( \frac{\phi}{n}+\frac{2\pi k_1}{n} \right) }=e^{i\left( \frac{\phi}{n}+\frac{2\pi (mx+ny)}{n} \right) }=e^{i\left( \frac{\phi}{n}+\frac{2\pi mx}{n}+2\pi y \right) }=e^{i\left( \frac{\phi}{n}+\frac{2\pi mx}{n} \right) }
+.\]
+Letting $k_2=x$ it is clear that $a\in B\implies A\subseteq B$. 
+
+Since we have shown that $A\subseteq B$ and $B\subseteq A$, it must be the case that $A=B$ as required. $\square$
+
+To find the values of $(1-i)^{3 /2}$ we can expand, which is justified since the we just found that the order doesn't matter: 
+
+\[
+    (1-i)^{3 /2)}\left( (1-i)^{1 /2} \right)^3=\left(\sqrt[4]{2} e^{i\left( \frac{7}{8}\pi+\pi k \right) }\right)^3, k\in \{0, 1\} =2^{\frac{3}{4}}e^{i\left( \frac{7}{8}\pi+\pi k \right) }, k\in \{0, 1\} 
+.\]
+
+\medskip
+
+\noindent
+3. Write the following functions in the form $w= u(x, y)+ i v(x, y)$.
+
+(a) $ f(z)= \frac{z+i}{z+1}$
+
+\[
+f(z)=\frac{z+i}{z+1}=\frac{x+i(y+1)}{(x+1)+iy}=\frac{(x+i(y+1))(x+1-iy)}{(x+1)^2+y^2}
+.\]
+
+\[
+=\frac{x^2+x+y^2+y+i((y+1)(x+1)-xy)}{(x+1)^2-y^2}=\frac{x^2+x+y^2+y}{(x+1)^2+y^2}+i \frac{x+y+1}{(x+1)^2+y^2}
+.\]
+
+(b) $ f(z)= \frac{ e^z}{ z}$
+
+\[
+f(z)=\frac{e^z}{z}=\frac{e^{x+iy}}{x+iy}=\frac{e^{x}}{x^2+y^2}\left( x\cos y+y\sin y \right)+i\frac{e^{x}}{x^2+y^2} \left( x\sin y-y\cos y \right) 
+.\]
+
+(c) $ f(z)= \frac{ z^2+3}{|z-1|^2} $
+
+\[
+f(z)=\frac{x^2-y^2+2ixy+3}{(x-1)^2+y^2}=\frac{x^2-y^2+3}{(x-1)^2+y^2}+i \frac{2xy}{(x-1)^2+y^2}
+.\]
+
+\medskip
+
+
+\noindent
+4. Describe the image of the following sets under the following maps
+
+(a) $ f(z)= (1-i) z+5$ for $ S=\{ Re (z)>0\}$
+
+The multiplication by $1-i$ rotates the original set by $-\frac{\pi}{2}$ and scales by a factor of $ \sqrt{2} $, then adding 5 shifts the set 5 unites in the real axis. Thus the final set is
+\[
+f(S)=\{w\mid Re(w)>5+Im(w)\} 
+.\]
+
+(b) $ f(z)= \frac{z-i}{z+i}$ for $ S= \{ |z|<3 \}$
+
+Expanding $f$ out we get 
+% \[
+% f(z)=\frac{z-i}{z+i}=\frac{x+(y-1)i}{x+i(y+1)}=\frac{x^2+y^2-1+2iyx}{x^2-(y+1)^2}
+% .\]
+
+\[
+w=f(z)=\frac{z-i}{z+i}\implies z(1-w)-i=iw\implies z=\frac{i(w+1)}{1-w}%=i \frac{(u+1)+iv}{(1-u)-iv}
+\]
+% \[
+% z=\frac{-u^2+1-v^2+2iv}{(1-u)^2-v^2}
+% .\]
+\[
+|z|=\frac{|w+1|}{|w-1|}=\sqrt{\frac{(u+1)^2+v^2}{(u-1)^2+v^2}} < 3
+\]
+\[
+\implies (u+1)^2+v^2<9(u-1)^2+9v^2\implies 1<8u^2-20u+9+8v^2=8\left(u-\frac{5}{4}\right)^2-\frac{7}{2}+8v^2
+\]
+\[
+\implies \frac{9}{2}<8\left(u-\frac{5}{4}\right)^2+8v^2
+.\]
+
+This is the equation of a circle of radius $\frac{9}{2}$, with an offset of $\frac{5}{4}$ in the real direction: 
+\[
+f(S)=\{w\mid \left|w-\frac{5}{4}\right|>\frac{9}{2}\} 
+.\]
+
+(c) $ f(z)= -2 z^5$ for $ S= \{ |z|<1, 0<Arg z<\frac{\pi}{2} \}$
+
+The image is contained in the circle around the origin of radius $2$ because $|z|<1$ and $f$ only scales it by $2$. For the argument, consider that $arg(w)=5arg(z)$ spans the interval $[0, 2\pi]$ since $0<arg(z)< \frac{\pi}{2}$. Thus the image is all the points contained in the circle of radius 2 centered at the origin: 
+\[
+f(S)=\{w\mid |w|<2\} 
+.\]
+
+\medskip
+
+\noindent
+5. Describe the image of the following sets under the given map
+
+(a) $S= \{ Re (z)=1\}$, $w=e^z$
+
+Since $Re(z)=1$, it must be in the form $z=1+iy, y\in\mathbb{R}$. Thus we have that 
+ \[
+w=e^{1+iy}=e\cdot e^{iy}
+\]
+which is just the equation for a circle of radius $e$: 
+ \[
+f(S)=\{w\mid |w|=e\} 
+.\]
+
+(b) $ S= \{ 0 \leq Im (z) \leq \frac{\pi}{4} \}$, $w=e^z$
+
+Since $0\leq Im(z)\leq \frac{\pi}{4}$, the output $w=e^{z}=e^{x+iy}=e^xe^{iy}$ is constrained to the outputs with argument $0\leq Arg(w)\leq \frac{\pi}{4}$. Since there is no restriction on $Re(z)$ it encompasses the entire quadrant, so
+\[
+f(S)=\{w\mid 0\leq Arg(w)\leq \frac{\pi}{4}\} 
+.\]
+
+(c) $S= \{ 0\leq Re(z) \leq 1, Im (z)=1 \}$, $ w=z^2$
+
+Based on the restrictions to $z$ it must be in the form $z=x+i, 0\leq x\leq 1$. Thus we have that 
+\[
+w=z^2=(x+i)^2=x^2+2xi-1=(x^2-1)+2xi=u+iv
+.\]
+Using these definitions for $u,v$, we know that $u=x^2-1=\frac{v^2}{4}-1$. This is the equation for a parabola oriented along the real axis offset by along the real axis, with only the line segment corresponding to $0\leq x\leq 1\implies 0\leq v\leq 2$ included. 
+\[
+f(S)=\{w\mid Re(w)=\frac{Im(w)^2}{4}-1, 0\leq Im(w)\leq 2\} 
+.\]
+
+\medskip
+
+\noindent
+6. The Joukowski map is defined by
+$$ w=f(z)= \frac{1}{2} (z+\frac{1}{z} )$$
+
+
+Show that $J$ maps the circle $ S=\{ |z|=r_0\}$ $(r_0>0, r_0\not =1$) onto an ellipse  $\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$ and the unit circle $ S=\{ |z|=1\}$ onto the real interval $ [-1,1]$.
+
+Hint: use polar form of $z$.
+
+\medskip
+
+For the first part let $z=r_0e^{i\theta}$. Then we get that 
+\[
+f(z)=\frac{1}{2}\left( r_0e^{i\theta}+r_0^{-1}e^{-i\theta} \right) =\frac{r_0}{2}\left( (1+\frac{1}{r_0^2})\cos\theta+i(1-\frac{1}{r_0^2})\sin\theta \right)
+\]
+\[
+ =\frac{1}{2}\left( (1+\frac{1}{r_0^2})x+i(1-\frac{1}{r_0^2})y\right)=u+iv
+.\]
+Using the fact that $x^2+y^2=r_0^2$, we get that 
+\[
+1=r_0^{-2}\left( 4\left( 1+\frac{1}{r_0^2} \right)^{-2}u^2+4\left( 1-\frac{1}{r_0^2} \right)^{-2}v^2  \right)
+\]
+\[
+\implies 1=\frac{4u^2}{r_0^{4}+r_0^2}+\frac{4v^2}{r_0^{4}-r_0^2}
+.\]
+
+
+
+\medskip
+
+\noindent
+7. Prove that $ |e^{-z^4}|\leq 1$ for all $z$ with $ -\frac{\pi}{8} \leq Arg (z) \leq \frac{\pi}{8}$.
+
+\medskip
+
+\noindent
+8. Show that the function $ f(z)= \bar{z}$ is continuous everywhere but not differentiable anywhere.
+
+\medskip
+
+\noindent
+9. Discuss the differentiability and analyticity of the following functions
+
+(a) $(x+\frac{x}{x^2+y^2})+ i (y-\frac{y}{x^2+y^2})$; \ (b) $ |z|^2+ 2z$
+
+
+\noindent
+10. Let
+$$ f(z) = \left\{\begin{array}{l}
+ ( x^{4/3} y^{5/3} + i x^{5/3} y^{4/3})/(x^2+y^2),  \mbox{if} \ z \not =0 ;\\
+ 0 \ \mbox{if} \ z=0
+ \end{array}
+ \right.
+ $$
+ Show that the Cauchy-Riemann equations hold at $z=0$ but $ f$ is not differentiable at $z=0$.
+
+Hint: consider the limit with $\Delta z= (1+i) h, h \to 0$.
+
+
+\end{document}
+
+
