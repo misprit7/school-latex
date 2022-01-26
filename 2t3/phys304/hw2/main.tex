@@ -1,0 +1,54 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx, float}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{PHYS 304 Homework 2}
+\date{26/01/22}
+\author{Xander Naumenko}
+\maketitle
+
+{\noindent\bf Question 1a.} To normalize, integrate: 
+
+\[
+1=\int_{-\infty}^{\infty}\psi^*\psi dx=\int_{-a}^{a}A^2(a^2-x^2)^2dx=\int_{-a}^aA^2(x^{4}-2a^2x^2+a^{4})dx=A^2\left( \frac{2}{5}a^{5}-\frac{4}{3}a^{5}+2a^{5} \right) =A^2 \frac{16}{15}
+\]
+\[
+\implies A=\frac{\sqrt{15}}{4}
+.\]
+
+{\noindent\bf Question 1b.} To find the average value, apply the $ \left<x \right>$ operator: 
+
+\[
+\int_{-\infty}^{\infty}\psi^* x\psi dx=\int_{-a}^{a}A^2(a^2-x^2)^2 xdx=\int_{-a}^aA^2(x^{5}-2a^2x^3+a^{4}x)dx
+.\]
+Because all the $x$ terms are odd and we're integrating around $0$, the integral goes to zero and the expectation value is $ \left<x \right>=0$. 
+
+{\noindent\bf Question 1c.} To calculate the momentum we use the momentum operator: 
+\[
+\left<p \right>=-i\overline{h}\int_{-\infty}^{\infty}\psi^*\frac{\partial\psi}{\partial x}dx=-i\overline{h}\int_{-a}^a A^2(a^2-x^2)2xdx
+.\]
+Because all the terms in the integral are once again odd, the integral goes to zero so $ \left<p \right>=0$. 
+
+{\noindent\bf Question 1d.} Taking the integral: 
+\[
+\int_{-\infty}^{\infty}\psi^* x^2\psi dx=\int_{-a}^{a}A^2(x^{6}-2a^2x^{4}+a^{4}x^2)dx=A^2a^{7}\left( \frac{2}{7}-\frac{4}{5}+\frac{2}{3}\right)=A^2a^{7}\frac{16}{105}=\frac{1}{7}a^{7}
+.\]
+
+{\noindent\bf Question 1e.} Again taking the integral: 
+\[
+\left<p \right>=-\overline{h}\int_{-\infty}^{\infty}\psi^* \frac{\partial^2}{\partial x^2}\psi dx=\overline{h}\int_{-a}^{a}2A^2(a^2-x^2)dx=2\overline{h}A^2a^{3}\left( 2-\frac{2}{3} \right) =\frac{8}{3}A^2a^{3}\overline{h}
+.\]
+
+\end{document}
