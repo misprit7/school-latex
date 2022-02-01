@@ -1,0 +1,316 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx, float}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 305 Homework 3}
+\date{31/01/22}
+\author{Xander Naumenko}
+\maketitle
+
+ 
+\noindent
+1. For the following statements, state if it is true or false. If it is false give a counterexample
+
+(1) If $f$ is differentiable at $z=z_0$, then $f$ is analytic at $z=z_0$.
+
+This statement is false. As a counterexample, consider $f(z)=\overline{z}^2$. Then $\frac{\partial f}{\partial \overline{z}}=2\overline{z}$, which means $f$ is only differentiable at $z_0=0$. Thus it is not differentiable in a small region around $z_0=0$ so it is not analytic. 
+
+ (2) If $f$ is differentiable at $z=z_0$, then $f$ is continuous at $z=z_0$.
+
+ The statement is true. A prerequisite for differentiablity was continuity, so if a function has differentiability then it must be continuous. 
+
+(3) If $f$ is analytic in an open and connected domain $D$ and $ Re(f(z))=Constant$, then $ f$ is constant.
+
+The statement is true. By Cauchy Riemann, $u_x=v_y=0\implies v_y=0$ and  $u_x=-v_y=0\implies v_x=0$, so $v=Im(f(z))$ must also be constant. 
+
+(4) If $f$ is analytic in an open and connected domain $D$ and $ |f(z)| =Constant$, then $ f$ is constant.
+
+The statement is true. From Cauchy Riemann, we have that $|f(z)|=u^2+v^2=c\implies 2uu_x+2vv_x=0\text{ and }2uu_y+2vv_y=0\implies u_x=u_y=v_x=v_y=0$. 
+
+\medskip
+
+\noindent
+2. Use Cauchy-Riemann equation to find out the harmonic conjugate of the following functions
+
+(a) $ xy-x+y$
+
+\[
+u=xy-x+y\implies v_y=u_x=y-1\implies  v=\frac{y^2}{2}-y+F(x)
+\]
+\[
+v_x=-u_y=-x-1\implies v=\frac{y^2}{2}-y-x-\frac{x^2}{2}+C
+.\]
+
+(b) $ u= \log (x^2+y^2)$  for $ Re (z)>0$
+
+\[
+u=\log(x^2+y^2)\implies u_x=\frac{2x}{x^2+y^2}=v_y\implies v=2\arctan\left( \frac{y}{x} \right) +F(x)
+\]
+\[
+v_x=-u_y=-\frac{2y}{x^2+y^2}\implies v=2\arctan\left( \frac{y}{x} \right) +C
+.\]
+
+(c)  $ u=\sin x \cosh (y)$
+
+\[
+u=\sin x\cosh y\implies v_y=u_x=\cos x\cosh y\implies v=\cos x\sinh y+F(x)
+\]
+\[
+v_x=-u_y=-\sin x\sinh y\implies F(x)=0\implies v=\cos x \sinh y+C
+.\]
+
+\medskip
+
+
+\noindent
+3.    Let $f(z)$ be an analytic function in $D$ and $ Im (f(z)) \not =0$. Show that $ \log |f (z)|$ and $ Arg (f(z))$ is harmonic.
+
+First of all note that since $Im(f(z))\neq 0$, both $u=\log|f(z)|$ and $v=Arg(f(z))$ are differentiable. Assume that $f(z)=a(x, y)+ib(x, y)$ which satisfy Cauchy-Riemann. Checking Cauchy-Riemann for $u,v$: 
+
+\[
+u_x=\frac{d}{dx}\log(\sqrt{ a^2+b^2})=\frac{aa_x+bb_x}{a^2+b^2}
+\]
+\[
+v_y=\frac{d}{dy}\arctan\left(\frac{b}{a}\right)=\frac{1}{1+\left( \frac{b}{a} \right) ^2}\left( \frac{b_y}{a}-\frac{ba_y}{a^2} \right) =\frac{ab_y-ba_y}{a^2+b^2}=\frac{aa_x+bb_x}{a^2+b^2}
+\]
+\[
+u_y=\frac{d}{dy}\log(\sqrt{ a^2+b^2})=\frac{aa_y+bb_y}{a^2+b^2}
+\]
+\[
+v_x=\frac{d}{dx}\arctan\left(\frac{b}{a}\right)=\frac{1}{1+\left( \frac{b}{a} \right) ^2}\left( \frac{b_x}{a}-\frac{ba_x}{a^2} \right) =\frac{ab_x-ba_x}{a^2+b^2}=\frac{-aa_y-bb_y}{a^2+b^2}
+.\]
+
+Since the Cauchy Riemann equations are fulfilled $u$ and $v$ are harmonic. 
+
+\medskip
+
+\noindent
+4. (a) Let $ u$ be a harmonic function in $D$. Show that if $v$ is a harmonic conjugate of $u$ in a domain $D$, then both $u^2-v^2$ and $ u^3 -3 u v^2$  are harmonic in $D$.
+
+Computing the derivatives: 
+
+\[
+\left(\frac{d^2}{dx^2}+\frac{d^2}{dy^2}\right)\left( u^2-v^2 \right)=\frac{d}{dx}(2uu_x-2vv_x )+\frac{d}{dy}(2uu_y-2vv_y )
+\]
+\[
+=2u_{x}^2+2uu_{x x}-2v_x^2-2vv_{x x}+2u_{y}^2+2uu_{y y}-2v_y^2-2vv_{y y}
+\]
+\[
+=2u_{x}^2+2uy_{x y}-2v_x^2+2vu_{x y}+2v_{x}^2-2uv_{x y}-2u_x^2-2vu_{x y}=0
+.\]
+
+Similarly for the other given function: 
+
+\[
+\left(\frac{d^2}{dx^2}+\frac{d^2}{dy^2}\right)\left( u^3-3uv^2 \right) =\frac{d}{dx}(3u^2u_x-3u_xv^2-6uvv_x)+\frac{d}{dy}(3u^2u_y-3u_yv^2-6uvv_y)
+\]
+\[
+=\frac{d}{dx}(3u^2u_x-3u_xv^2-6uvv_x)+\frac{d}{dy}(-3u^2v_x+3v_xv^2-6uvu_y)=0
+.\]
+
+Since the laplacian of both functions is zero they are harmonic in $D$. 
+
+(b)Suppose that functions $u$ and $v$ are harmonic in $D$.  Are the following functions harmonic?
+
+(1) $ u^2-v^2$
+
+Expanding:
+\[
+\Delta(u^2-v^2)=2u_{x}^2+2uu_{x x}-2v_x^2-2vv_{x x}+2u_{y}^2+2uu_{y y}-2v_y^2-2vv_{y y}
+\]
+\[
+=2u_x^2-2v_x^2+2u_y^2-2v_y^2\neq 0
+.\]
+Since the laplacian does not necessarily equal zero, $u^2-v^2$ is not harmonic. 
+
+(2) $ uv $
+
+Expanding: 
+\[
+\Delta(uv)=u_{x x}v + 2u_xv_x+uv_{x x}+u_{yy}v+2u_yv_y+uv_{yy}=2u_xv_x+2u_yv_y\neq 0
+.\]
+Since the laplacian does not necessarily equal zero, $uv$ is not harmonic. 
+
+(3) $ u-100 v$
+
+Expanding: 
+\[
+\Delta(u-100v)=\Delta u-100\Delta v=0-0=0
+.\]
+Since the laplacian is zero $u-100v$ is harmonic. 
+
+(4) $ u_{xy}+ \Delta v$
+
+Expanding: 
+\[
+\Delta(u_{xy}+\Delta v)=\Delta(u_{xy}+0)=u_{xyyy}+v_{x x xy}=(u_{x x}+v_{y y})_{xy}=0
+.\]
+Since the laplacian is zero $u_{xy}+\Delta v$ is harmonic. 
+
+\medskip
+
+\noindent
+5. Find a harmonic function $\phi (x,y)$ in the infinite strip
+$$ \{ z: -2 \leq 2Re (z) -3 Im (z)  \leq 3\}$$
+such that $ \phi =0$ on the left edge  $\{ 2 Re (z)- 3 Im (z)=-2\}$ and $\phi= 4$ on the right edge $ \{ 2Re (z)- 3 Im (z)=3\}$.  Hint: consider linear functions.
+
+Consider the linear functions of the form $\phi=A(2x-3y)+B$. Such functions are always harmonic so that requirement is already satisfied. To make the boundary conditions true, we must solve the system of 2 equations. Note that for the right line $y=\frac{2}{3}x-1$ and for the left one $y=\frac{2}{3}x+\frac{2}{3}$. 
+\[
+\phi_l=A(2x-3y)+B=B-2A=0
+\]
+\[
+\phi_r=A(2x-3y)+B=B+3A=4\implies A=\frac{4}{5}\implies B=\frac{8}{5}
+.\]
+Therefore a harmonic function that satisfies the requirements is $\phi=\frac{4}{5}(2x-3y)+\frac{8}{5}$. 
+
+\medskip
+
+\noindent
+6. Find a harmonic function $\phi (x, y)$ satisfying
+$$ \Delta \phi=0, y>0, -\infty <x<+\infty $$
+$$ \phi (x,0)=-1, x<-5; \phi (x, 0)=0, -5<x<-1; \phi (x,0)=2, -1<x<2; \phi (x,0)=0, x>2 $$
+Write your solution in terms of $ \tan^{-1}$ or $Arg$.
+
+In class we found that forms to such boundary conditions take, so assume that $\phi$ is in the form 
+
+\[
+\phi(z)=A Arg(z+5)+B Arg(z+1)+ C Arg(z-2)+D
+.\]
+From the bondary conditions, we can generate a system of equations to solve for the constants: 
+\[
+-1=\pi A+\pi B+\pi C+D
+\]
+\[
+0=\pi B+\pi C+D
+\]
+\[
+2=\pi C+D
+\]
+\[
+0=D
+\]
+\[
+\implies D=0\implies C=\frac{2}{\pi}\implies B=-\frac{2}{\pi}\implies A=-\frac{1}{\pi}
+.\]
+Thus the final function that satisfies the requirements is
+\[
+\phi(z)=-\frac{1}{\pi} Arg(z+5)-\frac{2}{\pi} Arg(z+1)+ \frac{2}{\pi} Arg(z-2)
+.\]
+
+\medskip
+
+\noindent
+7. Find a harmonic function $\phi (x, y)$ in the annulus $ \{ z: 1\leq |z| \leq 2 \}$ such that $\phi=1$ on $ \{ |z|=1\}$ and $\phi=2$ on $ \{|z|=2\}$.
+
+Let $\phi=A\log r+B$. We proved $\phi$ is harmonic in class, all that is left is to determine the constants. The boundary conditions give us two equations: 
+\[
+1=A\log 1+B=B, 2=A\log 2+B\implies A=\frac{1}{\log 2}
+.\]
+Thus the function that satisfies the requirements is 
+\[
+\phi=A \frac{\log r}{\log 2}+1
+.\]
+
+
+\medskip
+
+
+\noindent
+8. Find a harmonic function $\phi (x,y)$ such that
+$$ \Delta \phi=0, \ \mbox{in} \ D= \{ (x,y) | y>0, x^2+y^2>9 \} $$
+$$ \phi (x,0)=-1, x<-3; \phi (x,y)=0 \ \mbox{for}, x^2+y^2=9, -3<x<3; \phi (x,0)=2, x>3 $$
+
+\medskip
+
+Consider the map $w=\frac{1}{2}\left( \frac{z}{3}+\frac{3}{z} \right) =u+iv$. This transforms the given domain into the much simpler upper half plane, where we know the solution is in the form: 
+\[
+\phi=A Arg(u+iv+1)+B Arg(u+iv-1)+ C
+.\]
+With the given initial conditions this results in the following constant: 
+\[
+-1=\pi A+\pi B+C
+\]
+\[
+0=\pi B+C
+\]
+\[
+2=C\implies B=-\frac{2}{\pi}\implies A=-\frac{5}{\pi}
+.\]
+The final form of the solution is then 
+\[
+\phi=-\frac{5}{\pi} Arg(u+iv+1)-\frac{2}{\pi} Arg(u+iv-1)+ 2
+\]
+where we define
+\[
+u=\frac{1}{2}\left( \frac{x}{3}+\frac{3x}{x^2+y^2} \right), v=\frac{1}{2}\left( \frac{y}{3}+\frac{3y}{x^2+y^2} \right) 
+.\]
+
+\noindent
+9. Find the image of the $S= \{ z: -1\leq Re (z) \leq 1, -\frac{\pi}{2} \leq Im (z) \leq \pi \}$ under the map $ f(z)= e^z$
+
+Let $z=x+iy$. Plugging this into the map we get $f(z)=e^{x+iy}=e^{x}e^{iy}$. Then since $-\frac{\pi}{2}\leq y\leq\pi$, the argument of $f(z)$ is in the same range. Similarly since $-1\leq x\leq 1$, the magnitude of $f(z)$ is constrained between $e^{-1}\leq |f(z)|\leq e$. Putting this together, we get that the image is 
+\[
+f(S)=\{w\mid e^{-1}\leq |w|\leq e, -\frac{\pi}{2}\leq Arg(w)\leq \pi\} 
+.\]
+Graphically this forms an annulus with a segment cut out of it in the bottom left quadrant. 
+
+\medskip
+
+
+\noindent
+10. Find all numbers $z$ such that
+
+(a) $(z+1)^3=(1+i)z^3$
+
+Taking the $\log$ of both sides:
+
+\[
+3\log(z+1)=\log(\sqrt{2} e^{\frac{i\pi}{4}})+3\log z+2\pi ki\implies 3\log(1+\frac{1}{z})=\frac{1}{2}\log 2+\frac{\pi}{4}i+2\pi ki
+\]
+\[
+\implies 1+\frac{1}{z}=2^{\frac{1}{6}}e^{i\left(\frac{\pi}{12}+\frac{2}{3}\pi k\right)}\implies z=\left(2^{\frac{1}{6}}e^{i\left(\frac{\pi}{12}+\frac{2}{3}\pi k\right)}-1\right)^{-1}, k\in\mathbb{Z}
+.\]
+
+(b) $ e^z= -1-\sqrt{3} i$
+
+\[
+z=\log\left( 2 e^{-i \frac{2\pi}{3}} \right)=\log 2-i \frac{2\pi}{3}+2\pi ki, k\in\mathbb{Z}
+.\]
+
+
+(c) $ \sin (z)= 4i$
+
+\[
+\sin z=\cosh y\sin x+i \sinh y\cos x\implies \sin x=0\implies \pm\sinh y=4
+\]
+\[
+\implies z=2\pi k+i\sinh^{-1}(4)\text{ or }z=2\pi k-i\sinh^{-1}(4), k\in\mathbb{Z}
+.\]
+
+(d) $ \sin ( z^6)=0$
+
+Let $w=z^{6}=u+iv$. 
+\[
+\sin(z^{6})=\sin w=\cosh v\sin u+i\sinh v\cos u=0\implies \sin u=0\implies \sinh v=0
+\]
+\[
+\implies w=2\pi k, k\in\mathbb{Z}
+.\]
+Now solving for $z$, we get 
+\[
+z=\sqrt[6]{2\pi k}e^{2n\frac{\pi}{6}}, k\in\mathbb{Z}, n=0, 1, \ldots, 5
+.\]
+
+\end{document}
