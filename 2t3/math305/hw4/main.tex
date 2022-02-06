@@ -1,0 +1,211 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx, float}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{MATH 305 Homework 4}
+\date{05/02/22}
+\author{Xander Naumenko}
+\maketitle
+
+\noindent
+1. Find a conformal mapping from the following set onto the upper half plane $ S^{'}=\{(u,v) \ | \ v>0\}$:
+
+(a) $ S= \{  x>0, -\frac{\pi}{2}<y<\frac{\pi}{2} \}$
+
+Let $f(z)=\sin(iz)=\sin(-y+ix)=-\cosh x\sin y+i\sinh x\cos y$. Then for $x>0, -\frac{\pi}{2}<y<\frac{\pi}{2}$, we have that $\sinh x\cos y>0$ and $-\cosh x\sin y$ spans the reals. 
+
+(b) $ S= \{ -1<x<3, y>0\}$
+
+Let $f(z)=\sin\left( \frac{\pi}{4}(z-1) \right) $. Then the real part of the argument of the $\sin$ function goes between $-\frac{\pi}{4}$ and $\frac{\pi}{4}$ and the imaginary part varies over all the positive reals, which we already saw in class maps to the upper half plane as required. 
+
+\noindent
+2. Evaluate the following
+
+(a) $log (i)$
+
+\[
+\log(i)=\ln 1+iArg(i)+2\pi ki=i\frac{\pi}{2}+2\pi ki, k\in\mathbb{Z}
+.\]
+
+(b) $Log (\sqrt{3}-i)$
+
+\[
+\text{Log}(\sqrt{3} -i)=\ln 2+iArg(z)=\ln 2-\frac{\pi}{6}i
+.\]
+
+(c)  $ log ( e^{1+i})$
+
+\[
+\log(e^{1+i})=\ln e+iArg(1+i)+i 2\pi k=1+i\frac{\pi}{4}+2\pi ki, k\in\mathbb{Z}
+.\]
+
+(d) $e^{log (1+i)}$
+
+\[
+e^{\log(1+i)}=e^{\ln\sqrt{2} +i\left( \frac{\pi}{4}+2\pi k \right) }=\sqrt{2} e^{\frac{\pi}{4}}=1+i
+.\]
+
+
+\medskip
+
+\noindent
+3. Find all values of
+
+(a) $ e^z= -1-i$
+
+\[
+\log e^{z}=z+2\pi ki=\log(-1-i)=\ln\sqrt{2} -i \frac{3\pi}{4}+2\pi ki\implies z=\ln\sqrt{2} -i \frac{3\pi}{4}+2\pi ki, k\in\mathbb{Z}
+.\]
+
+(b) Principal Values of $ (1+i)^{i}$
+
+\[
+    (1+i)^{i}=e^{i\text{Log}(1+i)}=e^{-\frac{\pi}{4}+i\ln \sqrt{2} }
+.\]
+
+(c) $i^{\frac{1}{3}}$
+
+\[
+i^{\frac{1}{3}}=e^{\frac{1}{3}\log i}=e^{\frac{1}{3}i\left( \frac{\pi}{2}+2\pi k \right) }, k\in\mathbb{Z}
+.\]
+
+\medskip
+
+\noindent
+4. Solve the following equations
+
+(a) $ Log (z^2-1)= \frac{i\pi}{2}$
+
+\[
+z^2-1=e^{i\frac{\pi}{2}}=i\implies z^2=\sqrt{2} e^{i\frac{\pi}{4}}\implies z=\sqrt[4]{2}e^{i\left( \frac{\pi}{8}\right) } \text{ or }\sqrt[4]{2}e^{i\left( \frac{9\pi}{8}\right) }
+.\]
+
+(b) $ e^{2z}+ e^z+1=0$
+
+\[
+(e^z)^2+e^z+1=0\implies e^z=-\frac{1}{2}\pm \frac{1}{2}\sqrt{1-4}=e^{\pm i\frac{2\pi}{3}}\implies z=e^{\frac{2\pi}{3}+2i \pi k}\text{ or }z=e^{\frac{2\pi}{3}+2i \pi k}, k\in\mathbb{Z}
+.\]
+
+(c) $ z^{\frac{1}{2}} +1-i=0$ (here $z^{\frac{1}{2}}$ denotes the principal branch)
+
+There are not solutions. The equation requires that $Re(z^{\frac{1}{2}}=-1<0$ but this is not possible in the principal branch, so there are no solutions. 
+
+
+\medskip
+
+\noindent
+5. Determine the domain of analyticity (branch cut) of
+
+(a) $ Log (1+z^2)$
+
+The roots of $1+z^2$ are $\pm i$. From those points, the argument of the Log function is negative when $Re(z)=0, |Im(z)|>1$. Therefore we have that the domain of analyticity is  $D=\mathbb{C}\setminus\{z\mid Re(z)=0, |Im(z)| >1\} $. 
+
+(b) $ Log (\frac{1-z}{1+z})$
+
+Simplifying the argument of the log assuming $z\neq -1$, this is equivalent to $\text{Log}\left( \frac{(1-z)^2}{1-z^2} \right) $. This is not a negative real if $Im(z)\neq 0$, and if it is then the argument is negative only when $|z|\geq 0$. Thus the domain of analyticity is $D=\mathbb{C}\setminus\{z\mid Im(z)=0, |Re(z)| >=0\} $
+
+
+\medskip
+
+\noindent
+6. Which of the followings are true statements? For the ones that are false find a counterexample
+
+(a) $ e^{ log (z)} = z $
+
+This is true. 
+
+(b) $ e^{ Log (z)}=z$
+
+This is true. 
+
+(c) $ Log (e^z)=z$
+
+This is not true. For example $\text{Log}(e^{3\pi i})\neq 3\pi i$
+
+(d) $ log (e^z)=z$
+
+This is not true. For example $ \log\left( e^{i\frac{\pi}{2}} \right)=i\frac{\pi}{2}+2\pi ki \neq i\frac{\pi}{2}$. Is suppose one could argue that the right hand side is contained in the left, although it's a bit like comparing apples to oranges since one is a set and the other is a number so they're not equal. 
+
+(e) $ log (z_1 z_2)=log z_1+ log z_2 $
+
+This is true. 
+
+(f) $ log (z)=- log (\frac{1}{z})$
+
+This is true. 
+
+(g) $ log (z^{\frac{1}{2}})=\frac{1}{2} log (z)$
+
+This is not true. For example consider $z=i$: $\log(i^{\frac{1}{2}})=i \frac{\pi}{4}+2\pi k i\text{ or }i \frac{5\pi}{4}+2\pi k i\neq i \frac{\pi}{4}+\pi k i=\frac{1}{2}\log(z)$
+
+\medskip
+
+
+\noindent
+7. Find a branch cut of $ log (z-1)$ that is analytic at all points in the plane except those on the following rays.
+
+(a) $ \{ x\leq 1, y=0 \}$
+
+Consider the branch cut $(-\infty, 1]$ with $-\pi<\phi<\pi$. Then $ \log(z-1)$ is analytic on $D=\mathbb{C}\setminus\{ x\leq 1, y=0 \}$
+
+(b) $ \{ x \geq 1, y=0 \}$
+
+Consider the branch cut $[1, -\infty)$ with $0<\phi<2\pi$. Then $ \log(z-1)$ is analytic on $D=\mathbb{C}\setminus\{ x\geq 1, y=0 \}$
+
+(c) $\{ x=1, y \geq 0 \}$
+
+Consider the branch cut $\{z\mid Re(z)=1, Im(z)\geq 0\} $ with $\frac{\pi}{2}<\phi <\frac{5\pi}{2}$. Then $ \log(z-1)$ is analytic on $D=\mathbb{C}\setminus\{ x= 1, y\geq 0 \}$
+
+
+\medskip
+
+
+
+
+\medskip
+
+
+\noindent
+8. Find a branch cut for $\sqrt{z (z-1)}$ that is analytic in $ C \backslash [0, 1]$ and takes value $ \sqrt{2} $ at $z=2$.
+
+Consider the principle branch as it was defined in class. Then we have that 
+
+\[
+\sqrt{z(z-1)} =|z(z-1)|^{\frac{1}{2}}e^{i \frac{1}{2}Arg(z(z-1))}
+.\]
+$z(z-1)$ is only negative for $z\in[0, 1]$, so this branch satisfies the analyticity requirement. It also satisfies the requirement that $\sqrt{2(2-1)} =|2(2-1)|^{\frac{1}{2}}e^{i \frac{1}{2}Arg(2(2-1))}=\sqrt{2} $, so we're done. 
+
+\medskip
+
+\noindent
+9. Determine a branch of $ log (z^2+2z+2)$ that is analytic at $z=-1$ and takes value $ 0$ at $z=-1$, and find its derivative there.
+
+Factoring we get that the given expression is $ \log(z^2+2z+2)=\log(z+1+i)(z+1-i)$. Consider simply the principal branch of $\log$, $f(z)=\text{Log}(z^2+2z+2)$. Then since $z^2+2z+2>0\forall z\in\mathbb{R}$, $f$ is analytic at  $z=-1$ (in this case $f$ is analytic over $D=\mathbb{C}\setminus\{z\mid Re(z)=-1, |Im(z)|>=0\} $). In addition we have that $f(-1)=0$. Finally we can compute the derivative using the chaing rule to be
+
+\[
+f^\prime(-1)=\frac{2z+2}{z^2+2z+2}=0
+.\]
+
+
+\medskip
+
+\noindent
+10. Determine a branch of $log (1+z^2)$ that is analytic at $z=0$ and takes the value $2 \pi i$ there.
+
+Consider the same branch cut as the principal branch except with angles measured from $\pi<\phi<3\pi$. In equation this is $f(z)=\text{Log}(1+z^2)+2\pi i$. Thus clearly $f$ is analytic at $z=0$, and by computing we get $f(0)=\text{Log}(1)+2\pi i=2\pi i$ as required. 
+
+
+
+\end{document}
