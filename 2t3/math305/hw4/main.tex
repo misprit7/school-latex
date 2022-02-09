@@ -48,7 +48,7 @@ Let $f(z)=\sin\left( \frac{\pi}{4}(z-1) \right) $. Then the real part of the arg
 (c)  $ log ( e^{1+i})$
 
 \[
-\log(e^{1+i})=\ln e+iArg(1+i)+i 2\pi k=1+i\frac{\pi}{4}+2\pi ki, k\in\mathbb{Z}
+\log(e^{1+i})=\ln e+iArg(1+i)+i 2\pi k=1+i\frac{\pi}{2}+2\pi ki, k\in\mathbb{Z}
 .\]
 
 (d) $e^{log (1+i)}$
@@ -95,12 +95,12 @@ z^2-1=e^{i\frac{\pi}{2}}=i\implies z^2=\sqrt{2} e^{i\frac{\pi}{4}}\implies z=\sq
 (b) $ e^{2z}+ e^z+1=0$
 
 \[
-(e^z)^2+e^z+1=0\implies e^z=-\frac{1}{2}\pm \frac{1}{2}\sqrt{1-4}=e^{\pm i\frac{2\pi}{3}}\implies z=e^{\frac{2\pi}{3}+2i \pi k}\text{ or }z=e^{\frac{2\pi}{3}+2i \pi k}, k\in\mathbb{Z}
+(e^z)^2+e^z+1=0\implies e^z=-\frac{1}{2}\pm \frac{1}{2}\sqrt{1-4}=e^{\pm i\frac{2\pi}{3}}\implies z=\frac{2\pi}{3}i+2i \pi k \text{ or }z=-\frac{2\pi}{3}i+2i \pi k, k\in\mathbb{Z}
 .\]
 
 (c) $ z^{\frac{1}{2}} +1-i=0$ (here $z^{\frac{1}{2}}$ denotes the principal branch)
 
-There are not solutions. The equation requires that $Re(z^{\frac{1}{2}}=-1<0$ but this is not possible in the principal branch, so there are no solutions. 
+There are not solutions. The equation requires that $Re(z^{\frac{1}{2}})=-1<0$ but this is not possible in the principal branch, so there are no solutions. 
 
 
 \medskip
@@ -114,7 +114,7 @@ The roots of $1+z^2$ are $\pm i$. From those points, the argument of the Log fun
 
 (b) $ Log (\frac{1-z}{1+z})$
 
-Simplifying the argument of the log assuming $z\neq -1$, this is equivalent to $\text{Log}\left( \frac{(1-z)^2}{1-z^2} \right) $. This is not a negative real if $Im(z)\neq 0$, and if it is then the argument is negative only when $|z|\geq 0$. Thus the domain of analyticity is $D=\mathbb{C}\setminus\{z\mid Im(z)=0, |Re(z)| >=0\} $
+Simplifying the argument of the log assuming $z\neq 1$, this is equivalent to $\text{Log}\left( \frac{(1-z)^2}{1-z^2} \right) $. This is not a negative real if $Im(z)\neq 0$, and if it is then the argument is negative only when $|z|\geq 0$. Thus the domain of analyticity is $D=\mathbb{C}\setminus\{z\mid Im(z)=0, |Re(z)| >=0\} $
 
 
 \medskip
@@ -148,7 +148,8 @@ This is true.
 
 (g) $ log (z^{\frac{1}{2}})=\frac{1}{2} log (z)$
 
-This is not true. For example consider $z=i$: $\log(i^{\frac{1}{2}})=i \frac{\pi}{4}+2\pi k i\text{ or }i \frac{5\pi}{4}+2\pi k i\neq i \frac{\pi}{4}+\pi k i=\frac{1}{2}\log(z)$
+This is true. 
+% This is not true. For example consider $z=i$: $\log(i^{\frac{1}{2}})=i \frac{\pi}{4}+2\pi k i\text{ or }i \frac{5\pi}{4}+2\pi k i\neq i \frac{\pi}{4}+\pi k i=\frac{1}{2}\log(z)$
 
 \medskip
 
@@ -162,7 +163,7 @@ Consider the branch cut $(-\infty, 1]$ with $-\pi<\phi<\pi$. Then $ \log(z-1)$ i
 
 (b) $ \{ x \geq 1, y=0 \}$
 
-Consider the branch cut $[1, -\infty)$ with $0<\phi<2\pi$. Then $ \log(z-1)$ is analytic on $D=\mathbb{C}\setminus\{ x\geq 1, y=0 \}$
+Consider the branch cut $[1, \infty)$ with $0<\phi<2\pi$. Then $ \log(z-1)$ is analytic on $D=\mathbb{C}\setminus\{ x\geq 1, y=0 \}$
 
 (c) $\{ x=1, y \geq 0 \}$
 
@@ -185,14 +186,14 @@ Consider the principle branch as it was defined in class. Then we have that
 \[
 \sqrt{z(z-1)} =|z(z-1)|^{\frac{1}{2}}e^{i \frac{1}{2}Arg(z(z-1))}
 .\]
-$z(z-1)$ is only negative for $z\in[0, 1]$, so this branch satisfies the analyticity requirement. It also satisfies the requirement that $\sqrt{2(2-1)} =|2(2-1)|^{\frac{1}{2}}e^{i \frac{1}{2}Arg(2(2-1))}=\sqrt{2} $, so we're done. 
+$z(z-1)$ is only non-positive for $z\in[0, 1]$, so this branch satisfies the analyticity requirement. It also satisfies the requirement that $\sqrt{2(2-1)} =|2(2-1)|^{\frac{1}{2}}e^{i \frac{1}{2}Arg(2(2-1))}=\sqrt{2} $, so we're done. 
 
 \medskip
 
 \noindent
 9. Determine a branch of $ log (z^2+2z+2)$ that is analytic at $z=-1$ and takes value $ 0$ at $z=-1$, and find its derivative there.
 
-Factoring we get that the given expression is $ \log(z^2+2z+2)=\log(z+1+i)(z+1-i)$. Consider simply the principal branch of $\log$, $f(z)=\text{Log}(z^2+2z+2)$. Then since $z^2+2z+2>0\forall z\in\mathbb{R}$, $f$ is analytic at  $z=-1$ (in this case $f$ is analytic over $D=\mathbb{C}\setminus\{z\mid Re(z)=-1, |Im(z)|>=0\} $). In addition we have that $f(-1)=0$. Finally we can compute the derivative using the chaing rule to be
+Factoring we get that the given expression is $ \log(z^2+2z+2)=\log(z+1+i)(z+1-i)$. Consider simply the principal branch of $\log$, $f(z)=\text{Log}(z^2+2z+2)$. Then since $z^2+2z+2>0\forall z\in\mathbb{R}$, $f$ is analytic at  $z=-1$ (in this case $f$ is analytic over $D=\mathbb{C}\setminus\{z\mid Re(z)=-1, |Im(z)|>=1\} $). Choose $\frac{\pi}{2}<\phi_1<\frac{5\pi}{2}$ and $\frac{3\pi}{2}<\phi_1<\frac{7\pi}{2}$. In addition we have that $f(-1)=0$. Finally we can compute the derivative using the chaing rule to be
 
 \[
 f^\prime(-1)=\frac{2z+2}{z^2+2z+2}=0
@@ -204,8 +205,7 @@ f^\prime(-1)=\frac{2z+2}{z^2+2z+2}=0
 \noindent
 10. Determine a branch of $log (1+z^2)$ that is analytic at $z=0$ and takes the value $2 \pi i$ there.
 
-Consider the same branch cut as the principal branch except with angles measured from $\pi<\phi<3\pi$. In equation this is $f(z)=\text{Log}(1+z^2)+2\pi i$. Thus clearly $f$ is analytic at $z=0$, and by computing we get $f(0)=\text{Log}(1)+2\pi i=2\pi i$ as required. 
-
+Clearly the branch points or $\pm i$, and let $\log|z-i||z+i|$, with $\phi_1, \phi_2$ being the arguments of the two factors. . Choose $ \frac{\pi}{2}<\phi_1<\frac{5\pi}{2}$ and $-\frac{\pi}{2}<\phi_2<\frac{3\pi}{2}$ to be the allowable angles, so the function is analytic on $\mathbb{C}\setminus \{z\mid Re(z)=0, |Im(z)|\geq 1\} $. Thus it is analytic at $z=0$ and $\text{Log}(1+0^2)=2\pi i+0$ are required. 
 
 
 \end{document}

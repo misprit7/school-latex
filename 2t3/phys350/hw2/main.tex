@@ -1,0 +1,147 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx, float}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{PHYS 350 Homework 2}
+\date{08/02/22}
+\author{Xander Naumenko}
+\maketitle
+
+{\noindent\bf Question 1.} Let $\mathcal L(q_1, q_2, \ldots, q_s, \dot q_1, \dot q_2, \ldots, \dot q_s, t)$ be the Lagrangian for a system with $s>1$ degrees of freedom. Consider the action as it is minimized (or maximized). Because it as at an extremum any incremental change to $q_i, \delta q_i$ doesn't change the action for any degree of freedom $i$, we get that
+
+\[
+0=S[q_i+\delta q_i]-S[q_i]=\int_{t_1}^{t_2}\mathcal{L}(q_1,\ldots,q_i+\delta q_i,\ldots,q_s, \dot q_1, \ldots, \dot q_i+\frac{d}{dt}\delta q_i,\ldots \dot q_s, t) dt
+.\]
+Note that this is true for any $i$, so if we can derive the Euler Lagrange equation for one $i$ then based on this it holds for all $i$. Next taylor expand: 
+
+\[
+\int_{t_1}^{t_2} \left( \mathcal L+\delta q_i \frac{\partial \mathcal{L}}{\partial q_i} +\frac{d}{dt}\delta q_i\cdot \frac{\partial \mathcal L}{\partial \dot q} \right)dt -\int_{t_1}^{t_2}\mathcal L dt=-\delta q_i\cdot \frac{\partial \mathcal L}{\partial \dot q} \bigg|_{t_1}^{t_2}+\int_{t_1}^{t_2}\left( \frac{\partial \mathcal L}{\partial q} -\frac{d}{dt}\left( \frac{\partial \mathcal L}{\partial \dot q}  \right)  \right) dt
+.\]
+
+The first term goes to zero since the boundary conditions are fixed (so $\delta q_i(t_1)=\delta q_i(t_2)=0$). Thus this reduces to
+\[
+0=\int_{t_1}^{t_2}\left( \frac{\partial \mathcal L}{\partial q_i}-\frac{d}{dt}\left( \frac{\partial\mathcal L}{\partial \dot q_i} \right)  \right) \delta q_i dt
+.\]
+Clearly the only way in which this integral is zero for all possible values of $\delta q_i$ is if the integrand inside is zero, so we have that 
+\[
+ \frac{d}{dt}\left( \frac{\partial \mathcal L}{\partial \dot q_i} \right) =\frac{\partial \mathcal L}{\partial q_i}
+.\]
+As stated previously since this whole derivation was for an arbitrary $i$, it holds true for all $i\in \{0, 1, \ldots, s\} $ as required. 
+
+{\noindent\bf Question 2.} As told, take $s=2$ and consider the degrees of freedom given by  $x$ and $l$. Next, we can write the Lagrangian for the system using the potential and kinetic enrgies for the system. The only potential term is for the small block and can be written as $U(x, l, \dot x, \dot l, t)=mgl\sin\theta$. For the kinetic terms it is slightly more complicated, but we can find the contributions of both blocks: 
+ \[
+E_{kinetic}=\frac{1}{2}M\dot x^2+\frac{1}{2}m\left( (\dot x+\dot l\cos\theta)^2+\dot l^2\sin^2\theta \right) 
+.\]
+Thus the total Lagrangian is: 
+\[
+\mathcal L=\frac{1}{2}M\dot x^2+\frac{1}{2}m\left( (\dot x+\dot l\cos\theta)^2+\dot l^2\sin^2\theta \right) -mgl\sin\theta=\frac{M+m}{2}\dot x^2+m\dot x\dot l\cos\theta+\frac{1}{2}m\dot l^2-mgl\sin\theta
+.\]
+Applying the Euler-Lagrange equations: 
+\[
+\frac{d}{dt}\left( \frac{\partial \mathcal L}{\partial \dot x} \right)=M\ddot x+m\ddot x+m\ddot l\cos\theta=(M+m)\ddot x+m\ddot l\cos\theta=0\implies\ddot x=\frac{-m\ddot l\cos\theta}{M+m}
+.\]
+\[
+\frac{d}{dt}\left( \frac{\partial \mathcal L}{\partial \dot l} \right)=m\ddot x\cos\theta+m\ddot l=\frac{\partial\mathcal L}{\partial l}=-mg\sin\theta\implies \ddot x=\frac{-g\sin\theta-\ddot l}{\cos\theta}
+.\]
+Putting these together gives
+\[
+(-g\sin\theta-\ddot l)(M+m)=-m\ddot l\cos^2\theta\implies-(M+m)g\sin\theta=\ddot l(M+m-m\cos^2\theta)
+\]
+\[
+\implies\ddot l=-\frac{(M+m)g\sin\theta}{M+m\sin^2\theta}
+\]
+\[
+\implies \ddot x=\frac{mg\sin\theta\cos\theta}{M+m\sin^2\theta}
+.\]
+As expected these match the values we got last week. 
+
+{\noindent\bf Question 3i.} This is a system with 2 degrees of freedom. Choose $x$ to be the length of the spring and $y$ to be the distance between the bottom of the spring and the bottom pulley. The spring term is then $\frac{1}{2}k(x-l_0)^2$. The potential energy is $ -m_1 gx-m_2g(x+y)+m_3g(x+2y)\sin\alpha$. Finally the kinetic term is $\frac{1}{2}m_1 \dot x^2+\frac{1}{2}m_2(\dot x+\dot y)^2+\frac{1}{2}m_3 (\dot x+2\dot y)^2$. Thus the total Lagrangian is: 
+\[
+\mathcal L=-\frac{1}{2}k(x-l_0)^2+m_1 gx+m_2g(x+y)-m_3g(x+2y)\sin\alpha+\frac{1}{2}m_1 \dot x^2+\frac{1}{2}m_2(\dot x+\dot y)^2+\frac{1}{2}m_3 (\dot x+2\dot y)^2
+.\]
+{\noindent\bf Question 3ii.} Writing out Euler Lagrange: 
+\[
+\frac{d}{dt}\left( \frac{\partial\mathcal L}{\partial \dot x} \right)=m_1\ddot x+m_2\ddot x+m_2\ddot y+m_3\ddot x+4m_3\ddot y=\frac{\partial\mathcal L}{\partial x}=-kx+kl_0+m_1g+m_2g-m_3g\sin\alpha
+\]
+\[
+\frac{d}{dt}\left( \frac{\partial L}{\partial \dot y} \right) =m_2\ddot x+m_2\ddot y+m_3\ddot x+4m_3\ddot y=\frac{\partial\mathcal L}{\partial y}=m_2g-2m_3g\sin\alpha
+.\]
+
+{\noindent\bf Question 4i.} Choose an inertial reference frame oriented with the elevator. There are two degrees of freedom: choose $x$ to be the distance between the left edge of the elevator and $ m_1$, while $\theta$ be the angle around $m_1$ (with 0 being along the $x$ axis). Then the potential for the problem is $U=-m_2gl\sin\theta$. The kinetic energy is $T=\frac{1}{2}m_1\dot x^2+\frac{1}{2}m_2((\dot x-l\dot\theta\sin\theta)^2+l^2\dot\theta^2\cos^2\theta)=\frac{1}{2}(m_1+m_2)\dot x^2-m_2\dot x l\dot\theta\sin\theta+\frac{1}{2}m_2l^2\dot\theta^2$. Thus the Lagrangian is: 
+\[
+\mathcal L=\frac{m_1+m_2}{2}\dot x^2-m_2\dot x l\dot\theta\sin\theta+\frac{1}{2}m_2l^2\dot\theta^2+m_2gl\sin\theta
+.\]
+
+{\noindent\bf Question 4ii.} The partial time derivate of the lagrangian is zero, so energy is conserved. The energy is then: 
+\[
+E=\dot x\frac{\partial\mathcal L}{\partial \dot x}+\dot \theta\frac{\partial\mathcal L}{\partial \dot \theta}-\mathcal L=(m_1+m_2)\dot x^2-m_2\dot xl\dot \theta\sin\theta+m_2l^2\dot\theta^2-m_2\dot xl\dot\theta\sin\theta-\mathcal L
+\]
+\[
+E=\frac{m_1+m_2}{2}\dot x^2-m_2\dot x l\dot\theta\sin\theta+\frac{1}{2}m_2l^2\dot\theta^2-m_2gl\sin\theta
+.\]
+There is conserved momentum since the Lagrangian is independent of $x$: 
+\[
+P=\frac{\partial\mathcal L}{\partial \dot x}=(m_1+m_2)\dot x-m_2l\dot\theta\sin\theta
+.\]
+
+{\noindent\bf Question 4iii.} The second momentum equation turns into: 
+\[
+\dot x=\frac{P+m_2l\dot\theta\sin\theta}{m_1+m_2}
+.\]
+Substituting this into the energy equation: 
+\[
+0=\left( \frac{(P+m_2l\dot\theta\sin\theta)^2}{2(m_1+m_2)}-E \right)-m_2\frac{P+m_2l\dot\theta\sin\theta}{m_1+m_2} l\dot\theta\sin\theta+\frac{1}{2}m_2l^2\dot\theta^2-m_2gl\sin\theta
+\]
+\[
+0=\frac{P^2}{2(m_1+m_2)}-E-m_2gl\sin\theta-\frac{m_2^2l^2\dot\theta^2\sin^2\theta}{2(m_1+m_2)}+\frac{1}{2}m_2l^2\dot\theta^2
+\]
+\[
+\implies \dot\theta=\sqrt{\left( \frac{P^2}{2(m_1+m_2)} -E-m_2gl\sin\theta \right)\left( \frac{1}{2}m_2l^2-\frac{(m_2l\sin\theta)^2}{2(m_1+m_2)} \right)^{-1}  } 
+\]
+\[
+\int_0^t\theta = t=\int_{\theta_0}^{\theta_f}\sqrt{\left( \frac{P^2}{2(m_1+m_2)} -E-m_2gl\sin\theta \right)\left( \frac{1}{2}m_2l^2-\frac{(m_2l\sin\theta)^2}{2(m_1+m_2)} \right)^{-1}  }d\theta
+.\]
+
+This gives the formula for $\theta$. Finally once we have that we can plug this into the momentum equation to get $x$ by integrating our formula from before: 
+\[
+\dot x=\frac{P+m_2l\dot\theta\sin\theta}{m_1+m_2}
+.\]
+This gives both $x$ and $\theta$ as a function of $t$ as required. 
+
+{\noindent\bf Question 5i.} The Lagrangian will have a potential and a kinetic term. The system has two degrees of freedom, so consider the angle from the horizontal to be $\theta$ and distance between $ m_2$ and $ m_3$ to be $l$. To get the velocity of the mass $m_2$, we can add the velocity of $ m_3$ with the relative velocity of $ m_2$. Then we get the Lagrangian to be (the first parts being kinetic and the second parts being potential): 
+\[
+\mathcal L=\frac{1}{2}m_1L^2\dot\theta^2\cos^2\theta+\frac{1}{2}m_2((\dot l\cos\theta-L\dot\theta\sin\theta-l\dot\theta\sin\theta)^2+(\dot l\sin\theta+l\dot\theta\cos\theta)^2)+\frac{1}{2}m_3L^2\dot\theta^2\sin^2\theta
+\]
+\[
+-m_1gL\sin\theta-m_2gl\sin\theta
+.\]
+
+{\noindent\bf Question 5ii.} To test things we can consider limiting cases. If $ m_1=m_2=0$ then the Lagrangian becomes $\mathcal L=\frac{1}{2}m_3L^2\dot\theta^2\cos^2\theta$. $L^2\dot\theta^2\cos^2\theta$ is the horizontal velocity, so this is just the equation for a free particle as expected. 
+
+Another limiting case to consider is when $ m_2=m_3=0$. In this case we have that the Lagrangian becomes $\mathcal L=\frac{1}{2}m_1L^2\dot\theta^2\sin^2\theta-m_1gL\sin\theta$. $L^2\dot\theta^2\cos^2\theta$ is the vertical velocity so this Lagrangian is equivalent to one for a free particle in a gravitional field, which is as expected. 
+
+{\noindent\bf Question 5iii.} The Lagrangian is time independent, so energy is conserved. Momentum is not conserved since the derivative with respect to the rest of the rest of the coordinates is not zero. Thus the only conserved quantity is the energy: 
+\[
+E=\dot \theta\frac{\partial\mathcal L}{\partial \dot \theta}+\dot l\frac{\partial\mathcal L}{\partial \dot l}-\mathcal L=T+U
+\]
+\[
+=\frac{1}{2}m_1L^2\dot\theta^2\cos^2\theta+\frac{1}{2}m_2((\dot l\cos\theta-L\dot\theta\sin\theta-l\dot\theta\sin\theta)^2+(\dot l\sin\theta+l\dot\theta\cos\theta)^2)
+\]
+\[
++\frac{1}{2}m_3L^2\dot\theta^2\sin^2\theta+m_1gL\sin\theta+m_2gl\sin\theta
+.\]
+
+
+\end{document}
