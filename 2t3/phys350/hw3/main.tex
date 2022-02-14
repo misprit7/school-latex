@@ -1,0 +1,51 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx, float}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{PHYS 350 Homework 3}
+\date{13/02/22}
+\author{Xander Naumenko}
+\maketitle
+
+{\noindent\bf Question 1a.} Taking the Euler Lagrange equation: 
+\[
+\frac{d}{dt}\left( \frac{\partial\mathcal L}{\partial \dot q} \right)=\frac{d}{dt}\left( \alpha q^2\dot q\right)=2\alpha q\dot q^2+\alpha q^2\ddot q=\frac{\partial\mathcal L}{\partial q}=\alpha q\dot q^2-2\beta q
+\]
+\[
+\implies\ddot q=-\frac{\dot q^2}{q}-\frac{2\beta}{q}
+.\]
+
+{\noindent\bf Question 1b.} There is no time dependence, so energy is conserved. There is $q$ dependence in the lagrangian, so there is no momentum conserved. Computing the energy: 
+\[
+E=\frac{\partial\mathcal L}{\partial \dot q}\dot q-\mathcal L=\alpha q^2\dot q^2-\frac{\alpha}{2}q^2\dot q^2+\beta q^2=\alpha q^2\dot q^2+\beta q^2
+.\]
+
+{\noindent\bf Question 1c.} From the initial conditions we have the energy is $E=\beta q_0^2$. Rearranging the energy equation we then have that: 
+\[
+\beta q_0^2=\alpha q^2\dot q^2+\beta q^2\implies \dot q=\sqrt{\frac{\beta\left( q_0^2-q^2 \right) }{\alpha q^2}}=\frac{dq}{dt}
+\]
+\[
+\implies \int_0^T dt=T=\int_{q_0}^0 \sqrt{\frac{\alpha q^2}{\beta\left( q_0^2-q^2 \right) }} dq
+.\]
+Let $p=q_0^2-q^2\implies dp=-2qdq$. Also note that the sign could be either positive or negative when we took the square root, so to get a positive time we choose it appropriately. Then the integral becomes: 
+\[
+T=\sqrt{\frac{\alpha}{\beta}} \int_{0}^{q_0^2} \frac{1}{2\sqrt{p} }dp=\sqrt{\frac{\alpha}{\beta}}\sqrt{p} \bigg|_0^{q_0^2}=\sqrt{\frac{\alpha}{\beta}} q_0^2
+.\]
+
+{\noindent\bf Question 2a.} Based on the constraints of the system $s=2$. Let $\phi$ be the angle of $ m_2$ around the $z$ axis, while $\theta$ is the angle between the $z$ axis and $m_2$. Then the kinetic terms of the lagrangian for $m_2$ are simple $ \frac{m_2}{2}a^2\dot\theta ^2\sin^2\phi+\frac{m_2}{2}a^2\dot\phi^2 $, while the kinetic term for $m_1$ is $\frac{m_1}{2}\left( 4a^2\dot\phi^2\sin^2\phi \right) $. The potential terms combined are then $$
+
+
+
+\end{document}
