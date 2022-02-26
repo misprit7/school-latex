@@ -1,0 +1,242 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx, float}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{MATH 305 Homework 5}
+\date{22/02/22}
+\author{Xander Naumenko}
+\maketitle
+
+ 
+\noindent
+1.  Find the region where $ f(z) =Log (1-z^3)$ is analytic.
+
+\medskip
+
+$f$ is not analytic when $1-z^3$ has only a negative real part, i.e.
+\[
+Im(1-z^3)=Im(1-(x+iy)^3)=-x^2y+y^3=0
+.\]
+\[
+Re(1-z^3)=Re(1-(x+iy)^3)=1-x^3+xy^2<0
+.\]
+The first requirement tells us that either $y=0$ or $y^2=x^2$. However if $x^2=y^2$ then the second requirement would need $1<0$ which is never true, so it must be that $y=0$. If $y=0$ the second requirement gives $1-x^3<0\implies x^3>1\implies x>1$. Thus the domain of analycity is $D=\mathbb{C}\setminus \{x\in\mathbb{R} \mid x>1\} $. 
+
+
+\medskip
+
+\noindent
+2. Find a branch of each of the following multivalued functions that is analytic in the given domain
+
+(a) $ (9+z^2)^{\frac{1}{2}}$ in $C \backslash \{ x=0,  -3\leq y \leq 3 \}$
+
+Factoring we get $(9+z^2)^{\frac{1}{2}}=(z+3i)^{\frac{1}{2}}(z-3i)^{\frac{1}{2}}=|z+3i||z-3i|e^{\frac{1}{2}\left( \phi_1+\phi_2 \right) }$. Let $\phi_1$ be the angle around $z=3i$ with $\frac{\pi}{2}<\phi_1<\frac{5\pi}{2}$ and $\phi_2$ be the angle around $z=-3i$ with $\frac{\pi}{2}<\frac{5\pi}{2}$. Then for $Re(z)=0, Im(z)>3$ the difference between the angles on both sides are separated by $2\pi$ in the exponent, so the function is analytic on the required domain. 
+
+(b) $ (z^4-1)^{\frac{1}{2}}$ in $ \{ |z|>1 \}$.
+
+Factoring: 
+
+\[
+    (z^{4}-1)^{\frac{1}{2}}=(z^2-1)^{\frac{1}{2}}(z^2+1)^{\frac{1}{2}}=(z-1)^{\frac{1}{2}}(z+1)^{\frac{1}{2}}(z-i)^{\frac{1}{2}}(z+i)^{\frac{1}{2}}
+.\]
+\[
+=|z-1| |z+1| |z-i||z+i|e^{\frac{1}{2}\left( \phi_1+\phi_2+\phi_3+\phi_4 \right) }
+.\]
+
+Consider $\phi_1, \phi_2$ to be the angles around $-1$ and $1$ respectively, both going between $0<\phi_{1/2}<2\pi$. Similarly let $\phi_3, \phi_4$ to be the angles around $-i$ and $i$ respectively, both going between $\frac{\pi}{2}<\phi_{1/2}<\frac{5\pi}{2}$. Then above (the line $x=0,y>1$) and below (the line $y=0, x<-1$), the angles are separated by multiples of $2\pi$ (after being divided by 2), so the domain of analycity is $\{z\mid |z|>1\} $. 
+
+\medskip
+
+
+\noindent
+3. Find all solutions to
+
+(a)  $ \sin (z)= -i$
+
+\[
+\arcsin \sin z=z=\arcsin(-i)=-i\log\left( 1+\left( 2^{\frac{1}{2}} \right)  \right) =-i\log\left( 1\pm \sqrt{2}   \right)
+.\]
+\[
+\implies z=-i\ln(\sqrt{2} +1)+2\pi k\text{ or }-i\ln(\sqrt{2} -1)+2\pi k+\pi, k\in\mathbb{Z}
+.\]
+
+(b) $ \sin^{-1} (i)$
+
+\[
+\sin ^{-1}(i)=-iLog\left( -1+\left( 2^{\frac{1}{2}} \right)  \right) =-iLog\left( -1+ \sqrt{2}   \right)
+.\]
+\[
+    =-i\ln\left( \sqrt{2} -1 \right) 
+.\]
+
+(c) $ \cos (z) = 2i $
+
+\[
+\arccos\cos z=z=\arccos(2i)=\frac{1}{2}\pi+i\log\left(-2\pm\sqrt{5} \right)
+.\]
+\[
+=\frac{1}{2}\pi+2\pi k+i\ln(\sqrt{5} -2)\text{ or }\frac{3}{2}\pi+2\pi k+i\ln\left( \sqrt{5} +2 \right) 
+.\]
+
+(d) $ \cos^{-1} (2i)$
+
+\[
+\cos^{-1}(2i)=\frac{1}{2}\pi+iLog\left( iz+\sqrt{1-z^2}  \right) =\frac{1}{2\pi}+iLog\left( -2+\sqrt{5}  \right)=\frac{1}{2\pi}+i\ln\left( -2+\sqrt{5}  \right)
+.\]
+
+\medskip
+
+
+\noindent
+4. Find a solution to the boundary value problem 
+$$ \phi_{xx}+ \phi_{yy}=0, y>0, -1 <x<1, y>0$$
+$$ \phi(x, y)= 0, \mbox{on} \ x=-1, y>0 ; 0, \mbox{on}\  y=0,-1<x<1;  2, \mbox{on}\  x=1, y>0.
+$$
+
+Let $f(z)=\sin(\pi z)=u+iv$ and $\Phi(u, v)=\phi(x, y)$. Then this maps the given domain to the upper half plane with the same boundary conditions. Thus we can write the solution as: 
+
+\[
+\Phi(w)=A Arg(w+1)+B Arg(w-1)=2 Arg(w-1)
+.\]
+Since $w=\sin(\pi z)$, the final solution would be $\phi(z)=2 Arg(\sin(\pi z))$. 
+
+
+\medskip
+
+\noindent
+5. Find a solution to the boundary value problem
+$$ \phi_{xx}+\phi_{yy}=0,  \ \  x>0, y>0 $$
+$$ \phi= 1 \ \mbox{on} \ x=0, y>0; \phi_y=0   \ \mbox{on} \  0<x<1, y=0; \phi=2 \ \mbox{on} \ x>1, y=0 $$
+
+Let $f(z)=\sin ^{-1}(z)=u+iv$ and $\Phi(u, v)=\phi(x, y)$. Then under this map the given region becomes a rectangle above the $y=0$ line between $0$ and $\frac{\pi}{2}$. The solution to this new boundary problem is just linear, which using the initial conditions comes to $\Phi(u, v)=\frac{2}{\pi}\left( u+1 \right) $ Switching variables to the original $x, y$, we get that $\phi=\frac{2}{\pi}\sin ^{-1}\left( \frac{1}{2}\left( \left( x+1 \right) ^2+y^2 \right) ^{\frac{1}{2}}-\left( \left( x-1 \right) ^2+y^2 \right) ^{\frac{1}{2}} \right) $ (the derivation for the $u, v$ parts of $\sin ^{-1}$ was done in lecture). 
+
+\medskip
+
+\noindent
+6. Find an inverse function for $ sinh (z)=\frac{e^z-e^{-z}}{2}$ such that its value at $0$ equals $0$.
+
+Starting from the given expression for $\sinh$: 
+
+\[
+2z=e^{w}-e^{-w}\implies 0=e^{2w}-2ze^{w}-1\implies e^{w}=z\pm \frac{1}{2}(4z^2+4)^{\frac{1}{2}}
+.\]
+\[
+\implies w=\log\left( z\pm \left( z^2+1 \right)^{\frac{1}{2}} \right) 
+.\]
+
+Since we want the inverse to have value 0 at 0, we can take the principle branches of both $\log$ and $z^{\frac{1}{2}}$. Thus we end up with: 
+\[
+w=Log\left( z+\sqrt{ z^2+1 } \right)
+.\]
+
+
+\medskip
+
+\noindent
+7. Show that $|\sin z| < 3$ when $|z|<1$.
+
+\medskip
+
+From the definition of $\sin$ with the triangle identity, we have
+\[
+|\sin z|=|\sin x\cosh y+i\cos x\sinh y|\leq  |\sin x| |\cosh y|+|\cos x||\sinh y|
+.\]
+\[
+\leq |\cosh y|+|\sinh y|<1.176+1.544<3
+.\]
+Note the last step uses the fact that $x<1, y<1$ to get direct bounds on the hyperbolic trig functions. 
+
+
+\noindent
+8. Compute the integral $ \int_{C} f dz$  using the contour (always counter-clockwise) given
+
+(a) $ f= x-2xy i$; $ C=\{ y=x^2, 0\leq x \leq 1 \} \cup  \{ y=1, -1\leq x \leq 1 \} $
+
+\[
+\int_Cfdz=\int_0^1 (t-2it^3)(1+2it)dt+\int_0^2 \left( 1-t-2(1-t)i \right) (-1)dt
+.\]
+
+\[
+=\int_0^1 \left( t+4t ^{4}+i(2t^2-2t^3) \right) dt+\int_0^2 \left(t-1+2(1-t)i \right) dt
+.\]
+\[
+=\frac{1}{2}+\frac{4}{5}+i\left( \frac{2}{3}-\frac{1}{2} \right) +2-2+i(4-4)=\frac{13}{5}+\frac{i}{6}
+.\]
+
+(b) $f=\bar{z}^2 $; $C$: square with vertices $ z=0, z=1, z=1+i$ and $ z=i$
+
+\[
+\int_C fdz=\int_0^{1}t^2dt+\int_0^{1}\left( 1-it \right) ^2idt+\int_0^{1}\left( t-i \right) ^2(-1)dt+\int_0^{1}\left( it \right) ^2(-i)dt
+.\]
+\[
+=\frac{1}{3}+i+1-\frac{1}{3}+i-1=2i
+.\]
+
+(c) $ f=Log (z)$; $C=\{ |z|=1, Re(z) \geq 0 \}$
+
+Let $z(t)=e^{it}$. 
+\[
+\int_C fdz=\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}Log(e^{it})ie^{it}dt=\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}-te^{it}dt=-e^{it}(1-it)\bigg|_{-\frac{\pi}{2}}^{\frac{\pi}{2}}=-2i
+.\]
+
+
+
+\noindent
+9. Evaluate $ \int_{C} (z^2 +1) dz$, where $C$ is the following contour from $z=-i$ to $z=1$:
+
+(a) the simple line segment
+
+Let $z=t+i(t-1)$. 
+\[
+\int_C fdz=\int_0^1 \left( \left( t+i(t-1) \right) ^2+1 \right) \left( 1+i \right) dt=(1+i)+\left( 1+i \right) \left( \frac{1}{3}-\frac{1}{3}+1-1+i\left( \frac{2}{3}-2 \right)  \right) 
+.\]
+\[
+=1+i+2-\frac{2}{3}+i\left( \frac{2}{3}-2 \right) -1+i=\frac{4}{3}+\frac{2i}{3}
+.\]
+
+(b) two simple line segments, the first from $z=-i$ to $z=0$ and the second from $z=0$ to $z=1$
+
+\[
+\int_C fdz=\int_{-1}^{0}\left( 1-t^2 \right)idt+\int_0^{1}\left( t^2+1 \right)dt=1-\frac{1}{3}+\frac{1}{3}+1=\frac{4}{3}+\frac{2i}{3}  
+.\]
+
+(c) the circular arc $ z= e^{it}, -\frac{\pi}{2} \leq t \leq 0 $
+
+ \[
+\int_C fdz=\int_{-\frac{\pi}{2}}^{0}\left( e^{2it}+1 \right)ie^{it}dt=i\left( \frac{1}{3}-\frac{1}{3}e^{i \frac{3\pi}{2}}+1-e^{i\frac{\pi}{2}} \right)=\frac{4}{3}+\frac{2i}{3}
+.\]
+
+
+\medskip
+
+\noindent
+10. Evaluate  $ \int_{C} \bar{z} dz $, where
+
+(a) $C$ is the circle   $ |z|=2$ traversed once counterclockwise
+
+Let $z=e^{it}$. 
+\[
+\int_C fdz=4\int_0^{2\pi}e^{-it}ie^{it}dt=8\pi i
+.\]
+
+(b) $C$ is the circle   $ |z|=2$ traversed twice counterclockwise
+
+Going around twice counterclockwise is just two times the previous answer, so the integral would be $16\pi i$
+
+(c) $C$ is the circle   $ |z|=2$ traversed three times clockwise.
+Three times clockwise would be negative 3 times the answer for part a, so the integral would be $-24\pi i$
+
+
+\end{document}
