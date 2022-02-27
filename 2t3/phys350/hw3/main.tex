@@ -29,23 +29,44 @@ urlcolor=cyan,
 
 {\noindent\bf Question 1b.} There is no time dependence, so energy is conserved. There is $q$ dependence in the lagrangian, so there is no momentum conserved. Computing the energy: 
 \[
-E=\frac{\partial\mathcal L}{\partial \dot q}\dot q-\mathcal L=\alpha q^2\dot q^2-\frac{\alpha}{2}q^2\dot q^2+\beta q^2=\alpha q^2\dot q^2+\beta q^2
+E=\frac{\partial\mathcal L}{\partial \dot q}\dot q-\mathcal L=\alpha q^2\dot q^2-\frac{\alpha}{2}q^2\dot q^2+\beta q^2=\frac{\alpha}{2} q^2\dot q^2+\beta q^2
 .\]
 
 {\noindent\bf Question 1c.} From the initial conditions we have the energy is $E=\beta q_0^2$. Rearranging the energy equation we then have that: 
 \[
-\beta q_0^2=\alpha q^2\dot q^2+\beta q^2\implies \dot q=\sqrt{\frac{\beta\left( q_0^2-q^2 \right) }{\alpha q^2}}=\frac{dq}{dt}
+\beta q_0^2=\frac{\alpha}{2} q^2\dot q^2+\beta q^2\implies \dot q=\sqrt{\frac{2\beta\left( q_0^2-q^2 \right) }{\alpha q^2}}=\frac{dq}{dt}
 \]
 \[
-\implies \int_0^T dt=T=\int_{q_0}^0 \sqrt{\frac{\alpha q^2}{\beta\left( q_0^2-q^2 \right) }} dq
+\implies \int_0^{T_c} dt=T_c=\int_{q_0}^0 \sqrt{\frac{\alpha q^2}{2\beta\left( q_0^2-q^2 \right) }} dq
 .\]
 Let $p=q_0^2-q^2\implies dp=-2qdq$. Also note that the sign could be either positive or negative when we took the square root, so to get a positive time we choose it appropriately. Then the integral becomes: 
 \[
-T=\sqrt{\frac{\alpha}{\beta}} \int_{0}^{q_0^2} \frac{1}{2\sqrt{p} }dp=\sqrt{\frac{\alpha}{\beta}}\sqrt{p} \bigg|_0^{q_0^2}=\sqrt{\frac{\alpha}{\beta}} q_0^2
+T_c=\sqrt{\frac{\alpha}{2\beta}} \int_{0}^{q_0^2} \frac{1}{2\sqrt{p} }dp=\sqrt{\frac{\alpha}{2\beta}}\sqrt{p} \bigg|_0^{q_0^2}=\sqrt{\frac{\alpha}{2\beta}} q_0
+.\]
+Note that we could have taken the negative sign from the square root to get $-T_c$ as a time when $q=0$. Since the effective potential energy of this Lagrangian behaves like $q^2$, this time then represents a fourth of the period of oscillation. Thus we have that the period of oscillation is $ \sqrt{\frac{8\alpha}{\beta}} q_0$. 
+
+{\noindent\bf Question 2a.} Based on the constraints of the system $s=1$. Let $\phi$ be the angle of $ m_2$ around the $z$ axis be the degree of freedom, while $\theta$ is the angle between the $z$ axis and $m_2$. Then the kinetic terms of the lagrangian for $m_2$ are simple $ \frac{m_2}{2}a^2\dot\theta ^2\sin^2\phi+\frac{m_2}{2}a^2\dot\phi^2 $, while the kinetic term for $m_1$ is $\frac{m_1}{2}\left( 4a^2\dot\phi^2\sin^2\phi \right) $. The potential terms combined are then $U=-m_2ga\cos\phi-m_1ga\cos\phi$. Also note that $\dot\theta=\Omega$. This gives us the Lagrangian: 
+\[
+\mathcal L=\frac{m_2}{2}a^2\Omega^2\sin^2\phi+\frac{m_2}{2}a^2\dot\phi^2+2m_1\left( a^2\dot\phi^2\sin^2\phi \right)+m_2ga\cos\phi+m_1ga\cos\phi
 .\]
 
-{\noindent\bf Question 2a.} Based on the constraints of the system $s=2$. Let $\phi$ be the angle of $ m_2$ around the $z$ axis, while $\theta$ is the angle between the $z$ axis and $m_2$. Then the kinetic terms of the lagrangian for $m_2$ are simple $ \frac{m_2}{2}a^2\dot\theta ^2\sin^2\phi+\frac{m_2}{2}a^2\dot\phi^2 $, while the kinetic term for $m_1$ is $\frac{m_1}{2}\left( 4a^2\dot\phi^2\sin^2\phi \right) $. The potential terms combined are then $$
+{\noindent\bf Question 2b.} $\frac{\partial\mathcal L}{\partial \phi}\neq 0$ so there is no momentum conservation. However the time derivative is zero so energy is conserved, and is equal to: 
+\[
+E=\frac{\partial\mathcal L}{\partial \dot \phi}\dot\phi-\mathcal L=m_2a^2\dot\phi^2+4m_1a^2\dot\phi^2\sin^2\phi-\mathcal L
+\]
+\[
+\implies E=\frac{m_2}{2}a^2\dot\phi^2+2m_1\left( a^2\dot\phi^2\sin^2\phi \right)-m_2ga\cos\phi-m_1ga\cos\phi-\frac{m_2}{2}a^2\Omega^2\sin^2\phi
+.\]
+Note that in this case $E\neq T+U$, which need not always be the case. This makes sense, as does the fact that there is no conserved momentum (since there's an external source driving the system). 
 
+{\noindent\bf Question 2c.} If the motion is a circle then the angle $\phi$ does not change, i.e. $\dot\phi=0$. Next compute the Euler Lagrange equations: 
+\[
+\frac{d}{dt}\left( \frac{\partial \mathcal L}{\partial \dot\phi} \right)=\frac{d}{dt}F(\phi, \dot\phi)=\frac{\partial\mathcal L}{\partial \phi}=m_2a^2\Omega^2\sin\phi\cos\phi-m_2ga\sin\phi-m_1ga\sin\phi
+.\]
+Note that every term of $F$ has a $\dot q$ factor which goes to zero, so we get
+ \[
+m_2a^2\Omega^2\sin\phi\cos\phi=m_2ga\sin\phi+m_1ga\sin\phi
+.\]
 
 
 \end{document}
