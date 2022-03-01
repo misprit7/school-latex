@@ -47,7 +47,7 @@ Note that we could have taken the negative sign from the square root to get $-T_
 
 {\noindent\bf Question 2a.} Based on the constraints of the system $s=1$. Let $\phi$ be the angle of $ m_2$ around the $z$ axis be the degree of freedom, while $\theta$ is the angle between the $z$ axis and $m_2$. Then the kinetic terms of the Lagrangian for $m_2$ are simple $ \frac{m_2}{2}a^2\dot\theta ^2\sin^2\phi+\frac{m_2}{2}a^2\dot\phi^2 $, while the kinetic term for $m_1$ is $\frac{m_1}{2}\left( 4a^2\dot\phi^2\sin^2\phi \right) $. The potential terms combined are then $U=-m_2ga\cos\phi-m_1ga\cos\phi$. Also note that $\dot\theta=\Omega$. This gives us the Lagrangian: 
 \[
-\mathcal L=\frac{m_2}{2}a^2\Omega^2\sin^2\phi+\frac{m_2}{2}a^2\dot\phi^2+2m_1\left( a^2\dot\phi^2\sin^2\phi \right)+m_2ga\cos\phi+m_1ga\cos\phi
+\mathcal L=\frac{m_2}{2}a^2\Omega^2\sin^2\phi+\frac{m_2}{2}a^2\dot\phi^2+2m_1\left( a^2\dot\phi^2\sin^2\phi \right)+m_2ga\cos\phi+2m_1ga\cos\phi
 .\]
 
 {\noindent\bf Question 2b.} $\frac{\partial\mathcal L}{\partial \phi}\neq 0$ so there is no momentum conservation. However the time derivative is zero so energy is conserved, and is equal to: 
@@ -55,7 +55,7 @@ Note that we could have taken the negative sign from the square root to get $-T_
 E=\frac{\partial\mathcal L}{\partial \dot \phi}\dot\phi-\mathcal L=m_2a^2\dot\phi^2+4m_1a^2\dot\phi^2\sin^2\phi-\mathcal L
 \]
 \[
-\implies E=\frac{m_2}{2}a^2\dot\phi^2+2m_1\left( a^2\dot\phi^2\sin^2\phi \right)-m_2ga\cos\phi-m_1ga\cos\phi-\frac{m_2}{2}a^2\Omega^2\sin^2\phi
+\implies E=\frac{m_2}{2}a^2\dot\phi^2+2m_1\left( a^2\dot\phi^2\sin^2\phi \right)-m_2ga\cos\phi-2m_1ga\cos\phi-\frac{m_2}{2}a^2\Omega^2\sin^2\phi
 .\]
 Note that in this case $E\neq T+U$, which need not always be the case. This makes sense, as does the fact that there is no conserved momentum (since there's an external source driving the system). 
 
@@ -65,7 +65,15 @@ Note that in this case $E\neq T+U$, which need not always be the case. This make
 .\]
 Note that every term of $F$ has a $\dot q$ factor which goes to zero, so we get
  \[
-m_2a^2\Omega^2\sin\phi\cos\phi=m_2ga\sin\phi+m_1ga\sin\phi
+m_2a^2\Omega^2\sin\phi\cos\phi=m_2ga\sin\phi+2m_1ga\sin\phi
+.\]
+
+\[
+\Omega=\pm\sqrt{\frac{m_2g+2m_1g}{m_2a\cos\phi}} 
+.\]
+This is $\Omega$ as a function of $\phi$. Because $0\leq\phi\leq\frac{\pi}{2}$, the minimum value of $\Omega$ to make any circle at all work is 
+\[
+|\Omega|\geq\sqrt{\frac{m_2g+2m_1g}{m_2a}}
 .\]
 
 {\noindent\bf Question 3.} There are $s=2$ degrees of freedom in this problem, so as the question indicates let $x_1$ and $x_2$ be these two variables. The only potential terms come from the spring, so the Lagrangian is: 
@@ -79,9 +87,9 @@ The Euler Lagrange equations are as follows:
  \[
 \frac{d}{dt}\left(\frac{\partial \mathcal L}{\partial \dot x_2}\right)=\frac{d}{dt}\left(m_2\dot x_2\right)=m_2\ddot x_2=\frac{\partial \mathcal L}{\partial x_2}=-k(x_2-x_1-l_0)
 .\]
-Note that these are exactly what you'd expect using Newtonian mechanics ($F=ma$). Consider now the change of variables to $x_{cm}=\frac{m_1x_1+m_2x_2}{2}$ and $x_{rel}=x_2-x_1$. Thus using the above Euler Lagrange equations we have that 
+Note that these are exactly what you'd expect using Newtonian mechanics ($F=ma$). Consider now the change of variables to $x_{cm}=\frac{m_1x_1+m_2x_2}{m_1+m_2}$ and $x_{rel}=x_2-x_1$. Thus using the above Euler Lagrange equations we have that 
 \[
-\ddot x_{cm}=\frac{1}{2}\left( k(x_2-x_1-l_0)-k(x_2-x_1-l_0) \right) =0
+\ddot x_{cm}=\frac{1}{m_1+m_2}\left( k(x_2-x_1-l_0)-k(x_2-x_1-l_0) \right) =0
 .\]
 \[
 \ddot x_{rel}=\left( \frac{k}{m_2}+\frac{k}{m_1} \right) \left( x_{rel}-l_0 \right)
@@ -90,48 +98,77 @@ Let $\omega =\sqrt{\frac{k}{m_2}+\frac{k}{m_1}} $. Then this second equation is 
 \[
 x_{rel}=l_0+A\cos(\omega t)+B\sin(\omega t)
 .\]
-Using the initial conditions, we have that $A=l_0, B=\frac{v_2-v_1}{\omega}$. The differential equation for $x_{cm}$ gives that $x_{cm}=\frac{m_1v_1+m_2v_2}{2}t+\frac{m_2l_0}{2}$. Then the equations for $x_{rel}$ and $x_{cm}$ can be represented as matrices as: 
+Using the initial conditions, we have that $A=l_0, B=-\frac{2v_0}{\omega}$. The differential equation for $x_{cm}$ gives that $x_{cm}=\frac{m_1v_1+m_2v_2}{m_1+m_2}t+\frac{2m_2l_0}{m_1+m_2}$. Then the equations for $x_{rel}$ and $x_{cm}$ can be represented as matrices as: 
 \[
-    \begin{pmatrix} -1&1\\m_1&m_2 \end{pmatrix} \begin{pmatrix} x_1\\x_2 \end{pmatrix}=\begin{pmatrix} l_0+A\cos(\omega t)+B\sin(\omega t)\\(m_1v_1+m_2v_2)t+m_2l_0 \end{pmatrix}  
+    \begin{pmatrix} -1&1\\m_1&m_2 \end{pmatrix} \begin{pmatrix} x_1\\x_2 \end{pmatrix}=\begin{pmatrix} l_0+A\cos(\omega t)+B\sin(\omega t)\\(m_1-m_2)v_0t+2m_2l_0\end{pmatrix}  
 .\]
 Solving this system of equations gives: 
 \[
-x_1=\frac{-m_2\left( l_0+A\cos(\omega t)+B\sin(\omega t) \right) +(m_1v_1+m_2v_2)t+m_2l_0}{m_1+m_2}
+x_1=\frac{-m_2\left( l_0+A\cos(\omega t)+B\sin(\omega t) \right)}{m_1+m_2} +\frac{m_1-m_2}{m_1+m_2}v_0t+\frac{2m_2l_0}{m_1+m_2}
 \]
 \[
-x_2=\frac{m_1\left( l_0+A\cos(\omega t)+B\sin(\omega t) \right) +(m_1v_1+m_2v_2)t+m_2l_0}{m_1+m_2}
+x_2=\frac{m_1\left( l_0+A\cos(\omega t)+B\sin(\omega t) \right)}{m_1+m_2} +\frac{m_1-m_2}{m_1+m_2}v_0t+\frac{2m_2l_0}{m_1+m_2}
 \]
 where $\omega, A$ and $B$ are defined above. 
 
 {\noindent\bf Question 4.} First note that $l=R\mu v$ and $R=\frac{l^2}{\mu\alpha}\implies \frac{\alpha}{R\mu}=v^{2}\implies v=\sqrt{\frac{\alpha}{R\mu}} $, with $\alpha=GmM$ and $\mu=\frac{mM}{m+M}$. For the original circle, the energy of the system is $E_{rel}=-\frac{\alpha}{2R}$. After the change of trajectory, the relative energy is $E_{rel}=-\frac{\alpha}{2a}=-\frac{2\alpha}{3R}$ (since $a=\frac{3}{4}R$ from the geometry). Note that both of these expressions for the relative energy were derived in class. Thus to get into the smaller orbit the satellite must lost an amount of energy equal to $\frac{\alpha}{6R}$. Since kinetic energy is equal to $\frac{1}{2}m v^2$, we can use this to get the change of speed: 
 \[
-\frac{1}{2}m (v_i^2-v_f^2)=\frac{1}{2}m(\frac{\alpha^2}{R^2\mu^2}-\left( \frac{\alpha}{R\mu}-\Delta v \right) ^2)=\frac{\alpha}{6R}\implies \Delta v=\frac{\alpha}{R\mu}-\sqrt{\frac{\alpha^2}{R^2\mu^2}-\frac{\alpha}{3mR}} 
+\frac{1}{2}m (v_i^2-v_f^2)=\frac{1}{2}m(\frac{\alpha}{R\mu}-\left( \frac{\alpha}{R\mu}-\Delta v \right) ^2)=\frac{\alpha}{6R}\implies \Delta v=\sqrt{\frac{\alpha}{R\mu}}-\sqrt{\frac{\alpha}{R\mu}-\frac{\alpha}{3mR}} 
+.\]
+\[
+=\sqrt{\frac{\alpha}{R\mu}}\left( 1-\sqrt{\frac{2}{3}}  \right)
 .\]
 Since the velocity must be directly reduced directly without any radial component, the direction of the velocity change is directly opposite to the original circular motion (i.e. tangentially). 
 
-{\noindent\bf Question 5.} We already know that for any two body problem, the velocity of the center of mass will be $\frac{m_1v_1+m_2v_2}{ 2}$. In this case we already know that originally this is zero, so by doubling the mass this becomes $\frac{m_1v_1+m_2v_2+m_1v_1}{2}=\frac{m_1v_1}{2}$. Thus if we can find the speed of the first mass when the miracle occurs and the period, we can integrate this constant function to find the total displacement. 
+% {\noindent\bf Question 5.} We already know that for any two body problem, the velocity of the center of mass will be $\frac{m_1v_1+m_2v_2}{ m_1+m_2}$. In this case we already know that originally this is zero, so by doubling the mass this becomes $\frac{m_1v_1+m_2v_2+m_1v_1}{2m_1+m_2}=\frac{m_1v_1}{2}$. Thus if we can find the speed of the first mass when the miracle occurs and the period, we can integrate this constant function to find the total displacement. 
 
-When the two planets are closest together, there is no $\dot r$ component since $r$ is at an extreme value. Thus the velocity is completely tangential. Then relative energy of the elliptical orbit is $E_{rel}=-\frac{\alpha}{2a}=-\frac{(1-e^2)\alpha}{2p}$. The gravitational potential at that point is simply $U=-\frac{\alpha}{r_{min}}=\frac{\alpha(1-e^2)}{p(1-e)}=-\frac{m_1m_2G(1+e)}{p}$. The difference between these must be the kinetic energy contributed from the velocity, giving: 
-\[
-v_{rel}=\sqrt{(m_1+m_2)G\left( \frac{2(1+e)-(1-e^2)}{p} \right) } 
-.\]
+% When the two planets are closest together, there is no $\dot r$ component since $r$ is at an extreme value. Thus the velocity is completely tangential. Then relative energy of the elliptical orbit is $E_{rel}=-\frac{\alpha}{2a}=-\frac{(1-e^2)\alpha}{2p}$. The gravitational potential at that point is simply $U=-\frac{\alpha}{r_{min}}=\frac{\alpha(1-e^2)}{p(1-e)}=-\frac{m_1m_2G(1+e)}{p}$. The difference between these must be the kinetic energy contributed from the velocity, giving: 
+% \[
+% v_{rel}=\sqrt{(m_1+m_2)G\left( \frac{2(1+e)-(1-e^2)}{p} \right) } 
+% .\]
+
+{\noindent\bf Question 5.} We know that $l=\sqrt{p\mu\alpha}=r_{min}\mu v_{rel}$. Solving this gives $v_{rel}=\frac{\sqrt{p\mu\alpha} }{r_{min}\mu}=\frac{\sqrt{\alpha}(1+e)}{\sqrt{\mu p}}$. 
+
 This gives us two equations with two unknowns for each mass, giving a set of linear equations:
 \[
     \begin{pmatrix} -1&1\\m_1&m_2 \end{pmatrix} \begin{pmatrix} v_1\\v_2 \end{pmatrix}=\begin{pmatrix} v_{rel}\\0 \end{pmatrix}\implies v_1=\frac{-m_2v_{rel}}{m_1+m_2}\text{ and }v_2=\frac{m_1v_{rel}}{m_1+m_2}
 .\]
 
 
-Since the center of mass will then move at a constant velocity, we can multiply the value we found by the period ($T=2\pi\sqrt{\frac{\mu a^3}{\alpha}} $) to get total displacement over a period. To find this new period, we luckily just computed the velocities anyways so we can get the new $E_{rel}^\prime$: 
- \[
-E_{rel}^{\prime}=\frac{1}{2}(2)m_1v_1^2+\frac{1}{2}m_2v_2^2=\frac{2m_1m_2^2+m_2m_1^2}{2(m_1+m_2)}\frac{G\left( 2(1+e)-(1-e^2) \right) }{p}
+Since the center of mass will then move at a constant velocity, we can multiply the value we found by the period ($T=2\pi\sqrt{\frac{\mu a^3}{\alpha}} $) to get total displacement over a period.  
+
+\[
+E_{rel}'=\frac{l'^2}{2\mu' r^2}-\frac{\alpha'}{r}=-\frac{\alpha'}{2a'}=\frac{\mu'v_{rel}^2}{2}-\frac{\alpha'(1+e)}{p}
+.\]
+
+\[
+\implies a'=\frac{2}{\alpha'}\left( \frac{\mu'v_{rel}^2}{2}-\frac{\alpha'(1+e)}{p} \right)^{-1}
 .\]
 \[
-\implies a^\prime=-\frac{\alpha^\prime}{2E_{rel}^\prime}=-\frac{4p(m_1+m_2)}{\left( 2m_1+m_2 \right)\left( 2(1+e)-(1-e^2) \right)  }
+\implies T=2\pi \sqrt{\frac{\mu' a'^3}{\alpha'}} 
 .\]
-Putting this all together with the formula for the period, we get:
+We also know the velocity of the center of mass: 
 \[
-\Delta x=2\pi\sqrt{\frac{ a^{\prime 3}}{G(m_1+m_2)}}v_1
+v_{cm}=\frac{2v_1+v_2}{2m_1+m_2}
+.\]
+Putting this together the final distance traveled is 
+\[
+D=2\pi \sqrt{\frac{\mu' a'^3}{\alpha'}}v_{cm}
 \]
-where $v_1$ and $a'$ are defined above. 
+Where $a', v_{cm}$ are defined above. 
+
+
+
+ % \[
+% E_{rel}^{\prime}=\frac{1}{2}(2)m_1v_1^2+\frac{1}{2}m_2v_2^2=\frac{2m_1m_2^2+m_2m_1^2}{2(m_1+m_2)}\frac{G\left( 2(1+e)-(1-e^2) \right) }{p}
+% .\]
+% \[
+% \implies a^\prime=-\frac{\alpha^\prime}{2E_{rel}^\prime}=-\frac{4p(m_1+m_2)}{\left( 2m_1+m_2 \right)\left( 2(1+e)-(1-e^2) \right)  }
+% .\]
+% Putting this all together with the formula for the period, we get:
+% \[
+% \Delta x=2\pi\sqrt{\frac{ a^{\prime 3}}{G(m_1+m_2)}}v_1
+% \]
+% where $v_1$ and $a'$ are defined above. 
 
 \end{document}
