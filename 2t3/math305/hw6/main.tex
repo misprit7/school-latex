@@ -164,7 +164,7 @@ Applying Cauchy's integral formula with $f=1$, this gives:
 (d) $ \int_{C} \frac{1}{ 2z^2+1} dz $
 
 \[
-\int_{C} \frac{1}{ 2z^2+1} dz=\frac{1}{\left(\sqrt{2} z+i  \right) }\bigg|_{i/\sqrt{2} }+\frac{1}{\left(\sqrt{2} z-i  \right) }\bigg|_{-i /\sqrt{2} }=\frac{1}{2i}-\frac{1}{2i}=0
+\int_{C} \frac{1}{ 2z^2+1} dz=\frac{2\pi i}{\left(\sqrt{2} z+i  \right) }\bigg|_{i/\sqrt{2} }+\frac{2\pi i}{\left(\sqrt{2} z-i  \right) }\bigg|_{-i /\sqrt{2} }=\frac{2\pi i}{2i}-\frac{2 \pi i}{2i}=0
 .\]
 
 
@@ -206,12 +206,20 @@ This function is analytic when $\cos(z)\neq 0$, i.e. $ \mathbb{C}\setminus\{z\in
 (a) $C: | z-i|=1$, counter-clockwise
 
 \[
-\int_{C} \frac{z}{ (z^2+1)(z-1)} dz
+\int_{C} \frac{z}{ (z^2+1)(z-1)} dz=2\pi i\frac{z}{(z+i)(z-1)}\bigg|_{z=i}=\frac{\pi i}{(i-1)}
 .\]
 
 (b) $C= C_1 \cup C_2$, $C_1: |z-i|=1$,counter-clockwise; $C_2= |z+i|=1$,clockwise
 
+\[
+\int_{C} \frac{z}{ (z^2+1)(z-1)} dz=2\pi i\frac{z}{(z+i)(z-1)}\bigg|_{z=i}-2\pi i\frac{z}{(z-i)(z-1)}\bigg|_{z=-i}=\frac{\pi i}{(i-1)}-\frac{\pi i}{-i-1}
+.\]
+
 (c) $C= C_1 \cup C_2 $, $C_1: |z-1|=1$, counter-clockwise; $C_2:  |z+1|=1$, clockwise.
+
+\[
+\int_{C} \frac{z}{ (z^2+1)(z-1)} dz=-2\pi i\frac{z}{(z-i)(z+i)}\bigg|_{z=1}=-\frac{2 \pi i}{(i+1)(i-1)}=\pi i
+.\]
 
 
 
@@ -225,10 +233,37 @@ This function is analytic when $\cos(z)\neq 0$, i.e. $ \mathbb{C}\setminus\{z\in
 Hint: you can do partial fractions first.
 \medskip
 
+First note that
+\[
+\frac{2z^2-z+1}{(z-1)(z+1)^2}=\frac{A}{z-1}+\frac{Bz+C}{(z+1)^2}=\frac{1 /2}{z-1}+\frac{3z /2-1 /2}{(z+1)^2}
+.\]
+Applying the Cauchy integral formula this gives us: 
+\[
+\int_{C}\frac{2z^2-z+1}{(z-1)(z+1)^2}dz=\int_C\frac{1 /2}{z-1}+\frac{3z /2-1 /2}{(z+1)^2}dz
+.\]
+\[
+=\frac{1}{2} 2\pi i-\frac{3}{2}2\pi i=-2\pi i
+.\]
+
 
 \noindent
 9. Evaluate
 
-(a) $\int_{|z|=2} \frac{1}{ z^2 +2z +2} dz$; (b) $ \int_{|z|=2} \frac{ 1}{ z^2 -2z-3} dz $
+(a) $\int_{|z|=2} \frac{1}{ z^2 +2z +2} dz$
+
+The roots of the polynomial are $z=-1\pm i$, so the integral is: 
+\[
+\int_{|z|=2} \frac{1}{ z^2 +2z +2} dz=\frac{2\pi i}{z+1+i}\bigg|_{z=-1+i}+\frac{2\pi i}{z+1-i}\bigg|_{z=-1-i}
+.\]
+\[
+=\pi-\pi=0
+.\]
+
+(b) $ \int_{|z|=2} \frac{ 1}{ z^2 -2z-3} dz $
+
+The roots are $z=3, z=-1$, so: 
+ \[
+\int_{|z|=2} \frac{ 1}{ z^2 -2z-3} dz=\frac{2\pi i}{z-3}\bigg|_{z=-1}=-\pi \frac{i}{2}
+.\]
 
 \end{document}
