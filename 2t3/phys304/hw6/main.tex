@@ -1,0 +1,55 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx, float}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{PHYS 304 Homework 6}
+\date{09/03/22}
+\author{Xander Naumenko}
+\maketitle
+
+{\noindent\bf Question 1a.} From the definition of operators: 
+\[
+\int \psi^* x\psi dx=\int(x\psi)^*\psi dx\implies x^\dagger=x
+.\]
+\[
+\int \psi^* i\psi dx=\int(-i\psi)^*\psi dx\implies i^\dagger=-i
+.\]
+\[
+\int \psi^* \frac{d}{dx}\psi dx=\psi\psi^*\bigg|_{-\infty}^{\infty}-\int(\frac{d}{dx}\psi)^*\psi dx=\int(-\frac{d}{dx}\psi)^*\psi dx\implies \left( \frac{d}{dx} \right) ^\dagger=-\frac{d}{dx}
+.\]
+
+{\noindent\bf Question 1b.} Expanding: 
+
+\[
+\left<f\mid \left( \hat{Q}\hat{R} \right)^{\dagger}g  \right>=\left<\hat{Q}\hat{R}f\mid g \right>=\left<\hat{R} f\mid \hat{Q}^{\dagger}g \right>=\left<f\mid \hat{R}^{\dagger}\hat{Q}^{\dagger}g \right>\implies\left( \hat{Q}\hat{R} \right) ^{\dagger}=\hat{R}^{\dagger}\hat{Q}^{\dagger}
+.\]
+\[
+\left<f\mid \left( \hat{Q}+\hat{R} \right) ^{\dagger}g \right>=\left<\hat{Q}f\mid g \right>+\left<\hat{R}f\mid g \right>=\left<f\mid \left( \hat{Q}^{\dagger} +\hat{R}^{\dagger}\right) g \right>\implies \left( \hat{Q} +\hat{R}\right)^{\dagger}=\hat{Q}^{\dagger}+\hat{R}^{\dagger}
+.\]
+\[
+\left<f\mid \left( c\hat{Q} \right) ^{\dagger}g \right>=\left<c\hat{Q} f\mid g \right>=\left<f\mid c^*\hat{Q}g \right>\implies \left( c\hat{Q} \right) ^{\dagger}=c^*\hat{Q}^{\dagger}
+.\]
+
+{\noindent\bf Question 2.} Note that from what we derived in the textbook, the space dependent wave function for the ground state of the harmonic oscillator is 
+\[
+\psi(x)=\left( \frac{m\omega}{\pi \hbar} \right)^{1 /4}e^{\frac{m\omega}{2\hbar}x^2}e^{-i\omega t /2}
+.\]
+Plugging this into equation 3.54: 
+\[
+\Psi(p)=\frac{1}{\sqrt{2\pi\hbar} }e^{-i\omega t /2}\int_{-\infty}^{\infty}e^{-ipx /\hbar}\left( \frac{m\omega}{\pi \hbar} \right)^{1 /4}e^{\frac{m\omega}{2\hbar}x^2}
+.\]
+
+
+\end{document}
