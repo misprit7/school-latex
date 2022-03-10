@@ -1,6 +1,6 @@
 \documentclass[letterpaper, reqno,11pt]{article}
 \usepackage[margin=1.0in]{geometry}
-\usepackage{color,latexsym,amsmath,amssymb,graphicx, float}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx, float, braket}
 \usepackage{hyperref}
 
 \hypersetup{
@@ -48,8 +48,49 @@ urlcolor=cyan,
 .\]
 Plugging this into equation 3.54: 
 \[
-\Psi(p)=\frac{1}{\sqrt{2\pi\hbar} }e^{-i\omega t /2}\int_{-\infty}^{\infty}e^{-ipx /\hbar}\left( \frac{m\omega}{\pi \hbar} \right)^{1 /4}e^{\frac{m\omega}{2\hbar}x^2}
+\Psi(p, t)=\frac{1}{\sqrt{2\pi\hbar} }e^{-i\omega t /2}\int_{-\infty}^{\infty}e^{-ipx /\hbar}\left( \frac{m\omega}{\pi \hbar} \right)^{1 /4}e^{\frac{m\omega}{2\hbar}x^2}
 .\]
+Using an integral calculator we find the final equation to be (we could also have completed the square then integrated): 
+\[
+\Phi(p, t)=\frac{\exp\left( -\frac{p^2}{2m\omega\hbar}- \frac{i\omega t}{2} \right) }{\left( \pi \omega m \hbar \right)^{1 /4} }
+.\]
+
+{\noindent\bf Question 3.} Expanding out the definition of the momentum space wave function: 
+\[
+\int \Phi^* \left( i\hbar \frac{\partial}{\partial p} \right) \Phi dp=\frac{1}{\sqrt{2\pi \hbar} }\int \left(\int e^{ipx /\hbar}\Psi^*(x, t)dx\right)\left( \int -i \hbar \frac{ix}{\hbar} e^{-ipx \hbar}\Psi(x, t)dx \right) dp
+.\]
+\[
+=\frac{1}{\sqrt{2\pi \hbar} }\int \left(\int e^{ipx /\hbar}\Psi^*(x, t)dx\right)\left( \int x e^{-ipx \hbar}\Psi(x, t)dx \right) dp
+.\]
+This can be simplified as the hint suggests by combining the integrals and using the definition of delta functions, giving us: 
+\[
+=\int \Psi^*(x, t) x \Psi(x, t)dx=\left<x \right>
+.\]
+
+{\noindent\bf Question 4.} Because there are two basis elements, there are two eigenstates/eigenvalues. To find them we must solve: 
+\[
+\hat{H}\ket{h}=h\ket{h}, \ket h=a\ket 1+b\ket 2
+.\]
+This is equivalent to the following set of linear equations: 
+\[
+    \epsilon\begin{pmatrix} 1&1\\1&-1 \end{pmatrix}\begin{pmatrix} a\\b \end{pmatrix} =h\begin{pmatrix} a\\b \end{pmatrix} 
+.\]
+\[
+\implies \begin{cases}
+    h=-\sqrt{2}\epsilon \implies \ket h=\left( 1-\sqrt{2}  \right) \ket 1+\ket 2\\
+    h=\sqrt{2}\epsilon \implies \ket h=\left( 1+\sqrt{2}  \right) \ket 1+\ket 2
+\end{cases}
+.\]
+As already indicated the matrix representing this set of equations is: 
+\[
+\epsilon \begin{pmatrix} 1&1\\1&-1 \end{pmatrix}
+.\]
+
+{\noindent\bf Question 5a.} The measurement collapses the state of the system, so the state of the system is then $\psi_1$. 
+
+ {\noindent\bf Question 5b.} The two possible results are $\psi_1$ or $\psi_2$ with eigenvalues $b_1$ and $b_2$ respectively. The state is currently $\psi_1=\left( 3\psi_1+4\psi_2 \right) /5 $, so the probability of $\psi_1$ is $0.6^2=0.36$ and the probability of $\psi_2$ is $0.8^2=0.64$. 
+
+ {\noindent\bf Question 5c.} The chances of measuring $\phi_1$ and then $\psi_1$ again are $0.36\cdot 0.36=0.1296$ while the probability of measuring $\phi_2$ and then $\psi_2$ are $0.64\cdot 0.64=0.4096$, so the total probability is $0.5392$. 
 
 
 \end{document}
