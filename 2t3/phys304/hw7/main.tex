@@ -1,0 +1,67 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx, float, braket}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{PHYS 304 Homework 7}
+\date{14/03/22}
+\author{Xander Naumenko}
+\maketitle
+
+{\noindent\bf Question 1.} Expanding in terms of energy eigenstates: 
+\[
+c_n(t)=\braket {n|S(t)}=\bra n\left(\int \ket x \bra x\right)dx\ket{S(t)}=\int \braket{n|x}\braket{x|S(t)}dx=\int\braket {x|n}^*\Psi(x, t)dx
+.\]
+
+Since the potential is time independent, we can calculate the energy eigenfunctions: 
+\[
+\hat{H} f_n(x)=E_n f_n(x)\implies \left(-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}+V\right)  f_n=E_n f_n\implies f_n(x)=Ae^{i\frac{\sqrt{2m(E_n-V)} }{\hbar}}+Be^{-i\frac{\sqrt{2m(E_n-V)} }{\hbar}}
+.\]
+Putting the energy eigenstates into the equation above: 
+\[
+c_n(t)=\int f_n(x)^*\Psi(x, t)dx
+.\]
+
+{\noindent\bf Question 2.} Expanding: 
+
+\[
+\braket{n|\hat{x}|S(t)}=\sum_{n'}\sum_{n''} \bra n \ket {n'}\bra {n'} \hat{x}\ket {n''}\bra {n''}\ket{S(t)} 
+.\]
+Applying equation 3.114: 
+\[
+=\sum_{n'}\sum_{n''}\delta_{n, n'}\sqrt{\frac{\hbar}{2m\omega}}\left( \sqrt{n''}\delta_{n', n''-1}+\sqrt{n'} \delta_{n'', n'-1}  \right) c_{n''}(t) 
+.\]
+\[
+=\sum_{n''}\sqrt{\frac{\hbar}{2m\omega}}\left( \sqrt{n''}\delta_{n, n''-1}+\sqrt{n} \delta_{n'', n-1}  \right) c_{n''}(t)
+.\]
+\[
+=\sqrt{\frac{\hbar}{2m\omega}}\left( \sqrt{n+1}c_{n+1}(t)+\sqrt{n} c_{n-1}(t)  \right)
+.\]
+
+{\noindent\bf Question 3.} Expanding: 
+
+\[
+\braket{S(t)|x|S(t)}=\iint \braket{S(t)|p'}\bra {p'} \hat{x} \ket {p''}\braket{p''|S(t)}dp'dp''
+.\]
+\[
+=\iint \Phi(p', t)i\hbar \frac{d}{dp'}\delta(p'-p'')\Phi(p'', t) dp'dp''=\int\Phi(p', t)i\hbar \frac{d}{dp'}\Phi(p', t)dp'
+.\]
+
+{\noindent\bf Question 4.} Potential: $\Psi(x,0)=A\left( \psi_1(x)+\psi_2(x) \right) $. Calculating: 
+\[
+\left<H \right>=\int \Psi(x, t)-\frac{\hbar^2}{2m}
+.\]
+
+
+\end{document}

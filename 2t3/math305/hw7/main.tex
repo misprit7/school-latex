@@ -1,0 +1,119 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx, float}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{MATH 305 Homework 7}
+\date{11/03/22}
+\author{Xander Naumenko}
+\maketitle
+
+1. Let $ f$ be analytic inside and on the simple closed loop $C$ and let $z_0$ lie outside $C$. What is the value of $ \int_{C} \frac{f(z)}{ z-z_0 } dz $?
+
+By Cauchy's integral theorem, the integral is $0$. 
+
+\medskip
+
+
+2. Evaluate
+
+(a) $\int_{|z|=3} \frac{e^{iz}}{ (z^2+1)^2} dz$.   
+
+There are singularities at $\pm i$: 
+\[
+\int_{|z|=3}\frac{e^{iz}}{(z-i)^2(z+i)^2}dz=2\pi i \frac{d}{dx}\left(\frac{e^{iz}}{(z+i)^2}\right)\bigg|_{z=i}+2\pi i \frac{d}{dx}\left(\frac{e^{iz}}{(z-i)^2}\right)\bigg|_{z=-i}
+.\]
+\[
+=2\pi i \frac{ie^{iz}(z+i)^2-2e^{iz}(z+i)}{(z+i)^{4}}\bigg|_{z=i}+2\pi i  \frac{ie^{iz}(z-i)^2-2e^{iz}(z-i)}{(z-i)^{4}}\bigg|_{z=-i}
+.\]
+\[
+=2\pi \left( \frac{4e^{-1}+2e^{-1}}{16}+\frac{4e-2e}{16} \right) 
+.\]
+
+(b) $ \int_{|z|=2} \frac{ \cos z}{ z^2 (z-1)} dz$
+
+Singularities at $0, 1$: 
+ \[
+\int_{|z|=2} \frac{\cos z}{z^2(z-1)}dz=2\pi i\frac{\cos z}{z^2}\bigg|_{z=1}+2\pi i \frac{-\sin z (z-1)-\cos z}{(z-1)^2}\bigg|_{z=0}
+.\]
+\[
+=2\pi i\left( \cos 1-1 \right) 
+.\]
+
+\medskip
+
+
+3. Evaluate
+
+(a) $\int_{|z|=2} \frac{z^2+1}{ (z-1)^3} dz$. 
+
+\[
+\int_{|z|=2} \frac{z^2+1}{ (z-1)^3} dz=2\pi i\frac{d^2}{dx^2}\left( z^2+1) \right) \bigg|_{z=1}=2\pi i
+.\]
+
+(b) $ \int_{|z|=2} \frac{\sin z}{z^2 (z-3)} dz $
+
+\[
+\int_{|z|=2} \frac{\sin z}{z^2 (z-3)} dz =2 \pi i\frac{\cos z(z-3)-\sin z}{(z-3)^2}\bigg|_{z=0}=-\frac{2}{3}\pi i
+.\]
+
+\medskip
+
+4. Evaluate
+
+(a) $\int_{|z|=5} \frac{ z^2+1}{ z^4+ z+1} dz$. 
+
+Note that for $|z|\geq 5$, we have $\left|z^{4}+z+1\right|\geq|z^{4}|-|z|-1  \geq 5^{4}$
+
+(b) $ \int_{|z|=2} \frac{z}{ (z-3) (z^4+z+1)} dz $
+
+Hint: show that $ \int_{|z|=R} (...) dz  \to 0$ as $R\to +\infty$.
+
+\medskip
+
+5. Evaluate
+
+(a) $ \int_0^{2\pi} \frac{1}{2+\sin\varphi} d \varphi $.  (b) $ \int_0^\pi \frac{ 1}{ 2-\cos \varphi} d \varphi$. (c) $\int_0^{2\pi} \sin^{10} \varphi d \varphi $.
+
+\medskip
+
+6. Suppose that $ f(z)$ is entire and $ |f(z)| \leq 2 (1+|z|)^3$. Show that $ f(z)$ is a polynomial of degree at most three.
+
+\medskip
+
+
+7. Let $f$ be entire and suppose that $ Re (f(z)) \leq 2 Im (f(z))$. Show that $ f(z) $ must be a constant function.
+
+
+Hint: consider $ g=e^{ \alpha  f}$ for some complex number $ \alpha $.
+
+\medskip
+
+
+8. Let $ f$ be analytic in $D= \{ |z|\leq 1\}$. Assume that $ |f(z)|\leq M$ for $|z|=1$. Show that
+
+(a) $ |f^{''} (0)|\leq 2M$, (b) $ |f^{('')} (\frac{1}{2})| \leq 16 M$
+
+
+\medskip
+
+9. Find the maximum value of $ |z^2+3z-1|$ in the disk $ |z|\leq 1$.
+
+\medskip
+
+10. Show that $ \max_{|z|\leq 1} |4 z^{100}-5z| = 9$.
+
+ 
+
+\end{document}
