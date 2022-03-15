@@ -58,10 +58,53 @@ Applying equation 3.114:
 =\iint \Phi(p', t)i\hbar \frac{d}{dp'}\delta(p'-p'')\Phi(p'', t) dp'dp''=\int\Phi(p', t)i\hbar \frac{d}{dp'}\Phi(p', t)dp'
 .\]
 
-{\noindent\bf Question 4.} Potential: $\Psi(x,0)=A\left( \psi_1(x)+\psi_2(x) \right) $. Calculating: 
+{\noindent\bf Question 4.} Wavefunction: $\Psi(x,0)=\frac{1}{\sqrt{2} }\left( \psi_1(x)+\psi_2(x) \right) $. Calculating: 
 \[
-\left<H \right>=\int \Psi(x, t)-\frac{\hbar^2}{2m}
+\left<H \right>=\frac{1}{2}\left( E_1+E_2 \right)=\frac{5\pi^2\hbar^2}{4ma^2}
 .\]
+\[
+\left<H^2 \right>=\frac{1}{2}\left( E_1^2+E_2^2 \right) 
+.\]
+\[
+\sigma_H=\sqrt{\left<H^2 \right>-\left<H \right>}=\frac{1}{2}\sqrt{E_1^2+E_2^2-2E_1E_2}=\frac{1}{2}(E_2-E_1)   
+.\]
+
+For position: 
+\[
+\left<x \right>=\int\Psi(x, t)^*x\Psi(x, t)dx
+.\]
+From previous homework/tutorials: 
+\[
+\left<x \right>=\frac{a}{2}\left( 1-\frac{32}{9\pi^2}\cos(3\omega t) \right) 
+.\]
+Calculating: 
+\[
+\left<x^2 \right>=\int\psi(x)^*x^2\psi(x)dx
+.\]
+\[
+=\frac{1}{a}\int\left( \sin\left( \frac{\pi}{a}x \right)\psi_1(t) +\sin\left( \frac{2\pi}{a}x \right)\psi_2(t) \right) x^2 \left( \sin\left( \frac{\pi}{a}x \right)\psi_1(t)+\sin\left( \frac{2\pi}{a}x \right)\psi_2(t)\right)dx
+.\]
+\[
+=-\frac{16a^2}{9\pi^2}\cos\left( \frac{E_2-E_1}{\hbar}t \right)+\frac{a^2}{3}-\frac{a^2}{2\pi^2}+\frac{a^2}{3}-\frac{a^2}{8\pi^2}
+.\]
+\[
+=a^2\left( \frac{1}{3}-\frac{5}{16\pi^2}-\frac{16}{9\pi^2}\cos(3\omega t) \right) 
+.\]
+\[
+\sigma_x=\sqrt{\left<x^2 \right>-\left<x \right>^2}=\frac{a}{2}\sqrt{\frac{1}{3}-\frac{5}{4\pi^2}-\left( \frac{32}{9\pi^2}^2 \right) \cos^2(3\omega t)}  
+.\]
+By Ehrenfest's theorem: 
+\[
+\frac{d\left<x \right>}{dx}=\frac{8\hbar}{3ma}\sin(3\omega t)
+.\]
+Plugging this into the time energy uncertainty principle: 
+\[
+\sigma_H^2\sigma_x^2\geq \frac{\hbar^2}{4}\left( \frac{d\left<x \right>}{dt} \right)^2 
+.\]
+\[
+\frac{1}{4}\left( E_2-E_1 \right)^2 \frac{a^2}{4}\left( \frac{1}{3}-\frac{5}{4\pi^2}-\left( \frac{32}{9\pi^2}^2 \right) \cos^2(3\omega t) \right\geq \frac{\hbar^2}{4}\left( \frac{64\hbar^2}{9m^2a^2} \right) \sin^2(3\omega t)
+.\]
+Evaluating both sides numerically we see that the equality holds, as expected. 
 
 
 \end{document}
