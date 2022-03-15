@@ -38,7 +38,10 @@ There are singularities at $\pm i$:
 =2\pi i \frac{ie^{iz}(z+i)^2-2e^{iz}(z+i)}{(z+i)^{4}}\bigg|_{z=i}+2\pi i  \frac{ie^{iz}(z-i)^2-2e^{iz}(z-i)}{(z-i)^{4}}\bigg|_{z=-i}
 .\]
 \[
-=2\pi \left( \frac{4e^{-1}+2e^{-1}}{16}+\frac{4e-2e}{16} \right) 
+=2\pi \left( \frac{4e^{-1}+4e^{-1}}{16}+\frac{4e-4e}{16} \right)
+.\]
+\[
+=\frac{\pi}{e}
 .\]
 
 (b) $ \int_{|z|=2} \frac{ \cos z}{ z^2 (z-1)} dz$
@@ -74,21 +77,76 @@ Singularities at $0, 1$:
 
 (a) $\int_{|z|=5} \frac{ z^2+1}{ z^4+ z+1} dz$. 
 
-Note that for $|z|\geq 5$, we have $\left|z^{4}+z+1\right|\geq|z^{4}|-|z|-1  \geq 5^{4}$
+Note that for $|z|\geq 5$, we have $\left|z^{4}+z+1\right|\geq|z^{4}|-|z|-1  \geq 5^{4}-5-1=619>0$. Then the integral around the contour is the same as the integral around $|z|=5$ to $|z|=R$. 
+ \[
+\left|\int_{|z|=5}\frac{z^2+1}{z^{4}+z+1}dz\right|=\left|\int_{|z|=R}\frac{z^2+1}{z^{4}+z+1}dz\right|\leq \lim_{R\to \infty}\left| \frac{R^2+1}{R^{4}+R+1} \right|2\pi R=0
+.\]
+Thus the integral is zero. 
 
 (b) $ \int_{|z|=2} \frac{z}{ (z-3) (z^4+z+1)} dz $
 
-Hint: show that $ \int_{|z|=R} (...) dz  \to 0$ as $R\to +\infty$.
+\[
+\int_{|z|=2} \frac{z}{ (z-3) (z^4+z+1)} dz=\int_{|z|=R} \frac{z}{ (z-3) (z^4+z+1)} dz-2\pi i\frac{z}{z^{4}+z+1}\bigg|_{z=3}
+.\]
+Taking the limit: 
+\[
+\left| \int_{|z|=R} \frac{z}{ (z-3) (z^4+z+1)} dz \right| \leq \lim_{R\to \infty}\left|\frac{z}{ (z-3) (z^4+z+1)}\right|2\pi R=0
+.\]
+\[
+\implies \int_{|z|=2} \frac{z}{ (z-3) (z^4+z+1)} dz=-\frac{2\pi i3}{3^{4}+3+1}=-2\pi i\frac{3}{85}
+.\]
+
 
 \medskip
 
 5. Evaluate
 
-(a) $ \int_0^{2\pi} \frac{1}{2+\sin\varphi} d \varphi $.  (b) $ \int_0^\pi \frac{ 1}{ 2-\cos \varphi} d \varphi$. (c) $\int_0^{2\pi} \sin^{10} \varphi d \varphi $.
+(a) $ \int_0^{2\pi} \frac{1}{2+\sin\varphi} d \varphi $.  
+
+Let $z=e^{i\varphi}$. Then the integral becomes: 
+\[
+\int_C \frac{2iz}{4iz+z^2-1}dz=\int_C \frac{2iz}{(z+2i+i\sqrt{3})(z+2i-i\sqrt{3})}\frac{1}{iz}dz=2\pi i \frac{2}{z+2i+i\sqrt{3}}\bigg|_{z=-2i+i\sqrt{3}}
+.\]
+\[
+=\frac{4\pi }{2\sqrt{3} }=\frac{2\pi}{\sqrt{3} }
+.\]
+
+(b) $ \int_0^\pi \frac{ 1}{ 2-\cos \varphi} d \varphi$. 
+
+Let $z=e^{2i\varphi}\implies d\varphi=\frac{1}{2iz}$
+\[
+\int_0^\pi \frac{ 1}{ 2-\cos \varphi} d\varphi=\int_C \frac{1}{(4z-z^{3 /2}-z^{1 /2})i}dz=\int_C \frac{1}{i\left( z^{1 /2}-2+\sqrt{3}  \right)\left( z^{1 /2}-2-\sqrt{3}  \right)  }dz
+.\]
+\[
+=\frac{2\pi i}{i(z-2-\sqrt{3} }\bigg|_{z=2-\sqrt{3}}=\frac{\pi}{\sqrt{3} }
+.\]
+
+(c) $\int_0^{2\pi} \sin^{10} \varphi d \varphi $.
+
+Let $z=e^{i\varphi}$: 
+\[
+\int_0^{2\pi} \sin^{10} \varphi d \varphi=\int_C -\frac{1}{1024}\left( z+z^{-1} \right)^{10}\frac{1}{iz}dz
+.\]
+\[
+\int_C -\frac{1}{1024}\left( z^{-10}+\frac{10}{z^{8}}+\frac{45}{z^{6}}+\frac{120}{z^{4}}+\frac{210}{z^2}+252 \right)\frac{1}{iz}dz=\frac{\pi}{128}\left( 63 \right) 
+.\]
 
 \medskip
 
 6. Suppose that $ f(z)$ is entire and $ |f(z)| \leq 2 (1+|z|)^3$. Show that $ f(z)$ is a polynomial of degree at most three.
+
+By Cauchy's integral formula, with $C$ being a ring of arbitrary radius around $z_0$: 
+\[
+|f^{(4)}(z_0)|=\left|\frac{2}{\pi i}\int_C \frac{f(z)}{(z-z_0)^{5}}dz\right|= |\frac{f(z_0)}{(z-z_0)^{5}}|2\pi R\leq  |\frac{2(1+|z|)^3}{R^{5}}|2\pi R\to 0
+.\]
+Since the fourth derivative is zero and $f$ is analytic, the only possibility is that $f$ is a polynomial of degree at most four. 
+
+% Note that the inequality provided tells us that 
+
+% \[
+% \left| f(z)-(1+z)^{3} \right|\leq |f(z)|-(1+|z|)^3\leq  (1+|z|)^3=\left|(1+|z|)^3\right|
+% .\]
+% Thus the number of zeros of $f$ is the same as the number of zeros of $(1+z)^3$
 
 \medskip
 
@@ -98,21 +156,70 @@ Hint: show that $ \int_{|z|=R} (...) dz  \to 0$ as $R\to +\infty$.
 
 Hint: consider $ g=e^{ \alpha  f}$ for some complex number $ \alpha $.
 
+Consider $g=e^{(1+2i)f(z)}$. Then if $f(z)=u+iv$, we have that $Re((1+2i)f(z))=u-2v\leq 2v-2v=0$. Then we get that
+\[
+|g|=|e^{(1+2i)f(z)}|=e^{Re(1+2i)f(z))}\leq e^{0}=1
+.\]
+Since this function is bounded is must be analytic by Liouville's theorem, so $f$ must also be constant. 
+
+% Then $f$ is entire, and consider $g$ restricted to the domain $ \{z\in\mathbb{C}\mid Im(z)\leq c\} $. Then on this restricted domain, we have that: 
+% \[
+% |g(z)|= |e^{f(z)}|=e^{Re(f(z)}\leq e^{2Im(f(z))}\leq e^{2c}<\infty
+% .\]
+% By Liouville's theorem this implies that $g$ is constant and thus $f$ is constant, and because this works for any $c$ we conclude that $f$ is constant on all of $\mathbb{C}$. 
+
 \medskip
 
 
 8. Let $ f$ be analytic in $D= \{ |z|\leq 1\}$. Assume that $ |f(z)|\leq M$ for $|z|=1$. Show that
 
-(a) $ |f^{''} (0)|\leq 2M$, (b) $ |f^{('')} (\frac{1}{2})| \leq 16 M$
+(a) $ |f^{''} (0)|\leq 2M$. 
+
+Applying Cauchy's integral formula and the maximum principle: 
+\[
+\pi i f''(0)=\int \frac{f(z)}{z^3}dz\leq 2\pi M
+.\]
+\[
+\implies |f''(0)|\leq 2M
+.\]
+
+(b) $ |f^{('')} (\frac{1}{2})| \leq 16 M$
+
+Again applying Cauchy's integral formula: 
+\[
+\pi i f''(\frac{1}{2})=\int \frac{f(z)}{(z-\frac{1}{2})^3}dz\leq 2\pi M \left( \frac{1}{2} \right) ^{-3}
+.\]
+\[
+\implies f''(\frac{1}{2})\leq 16M
+.\]
 
 
 \medskip
 
 9. Find the maximum value of $ |z^2+3z-1|$ in the disk $ |z|\leq 1$.
 
+Let $p(z)=z^2+3z-1$. Because $p$ is analytic it's maximum must lie on the boundary, i.e. with $|z|=1$. Then we have: 
+\[
+\left| z^2+3z-1 \right|=\left| z-z^{-1}+3 \right|=\left| 2i\sin\theta+3 \right|=\sqrt{13} 
+.\]
+
+%Note that for $z=\pm i$, $|p(z)|=|-1+3i-1|$
+% Let $z=e^{i\theta}$. Then the maximum occurs when $\frac{d}{d\theta}|p(e^{i\theta})|=0$, i.e. when
+% \[
+% \frac{d}{d\theta}\left( (\cos^2\theta-\sin^2\theta+3\cos\theta-1)^2+(2\cos\theta\sin\theta+3\sin\theta)^2 \right) =0
+% .\]
+% \[
+%     (-2\cos\theta\sin\theta-2\sin\theta\cos\theta-3\sin\theta)(\cos^2\theta-\sin^2\theta+3\cos\theta-1)+(2\cos^2\theta-2\sin^2\theta+3\cos\theta)(2\cos\theta\sin\theta+3\sin\theta)
+% .\]
+
 \medskip
 
 10. Show that $ \max_{|z|\leq 1} |4 z^{100}-5z| = 9$.
+
+Let $z=-1$. Then we have $|z|\leq 1$ and 
+\[
+|4(-1)^{100}-5(-1)|=|4+5|=9
+.\]
 
  
 
