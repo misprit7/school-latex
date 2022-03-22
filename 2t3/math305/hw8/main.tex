@@ -1,0 +1,126 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx, float}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{MATH 305 Homework 8}
+\date{21/03/22}
+\author{Xander Naumenko}
+\maketitle
+
+\noindent
+1. Use Rouche's theorem to count the number of zeroes for $ p(z)= 4z^5+z^2+2z-1 $ in $|z|\leq 1$.
+
+Let $g(z)=4z^{5}$. Then for $\left| z \right| =1$, we have 
+\[
+\left| p(z)-g(z) \right| =\left| z^2+2z-1 \right|=\left| z+2-z^{-1} \right|=\left| 2+2i\sin\theta \right|   \leq 2\sqrt{2} <4\leq |4z^{5}|
+.\]
+Thus by Rouch\'e's theorem there are 5 zeros inside $|z|\leq 1$. 
+
+\medskip
+
+
+
+\noindent
+2. Use Rouche's theorem to count the number of zeroes for $ p(z)= z^5 + 7 z^2+2 $ in $ 1\leq |z| \leq 2 $.
+
+Let $g(z)=z^{5}$. Then for $|z|=2$, we have 
+\[
+\left| p(z)-g(z) \right| =|7z^2+2|\leq 26<32=|z^{5}|
+.\]
+Let $h(z)=7z^2$. Then for $|z|=1$, we have 
+ \[
+\left| p(z)-h(z) \right| =|z^{5}+2|\leq 3 <7=|7z^{2}|
+.\]
+Thus by Rouch\'e's theorem, there are $5$ zeros within $|z|\leq 2$ and $2$ in $|z|\leq 1$, which means that there are 3 zeros with $1\leq|z|\leq 2$. 
+
+
+\medskip
+
+\noindent
+3. Use Rouche's theorem to count the number of zeroes for $ f(z)= z^2-4 + 3 e^{-z}$ on the right half plane $ \{ Re (z)>0\}$.
+
+Let $g(z)=z^2-4$, and consider the right half circle with radius $R$ and origin $z=0$ as $R\to\infty$. Then we have for $Re(z)\geq 0$ and $z=R$: 
+\[
+\left| f(z)-g(z) \right| =\left| 3e^{-z} \right| =3 e^{-Re(z)}\leq 3<\left| z^2-4 \right|<R^2\text{ as }R\to\infty
+.\]
+Instead for $0\leq |z|\leq R, Re(z)=0$, we have: 
+ \[
+\left| f(z)-g(z) \right| =\left| 3e^{-z} \right| =3<4\leq \left| z^2-4 \right|
+.\]
+Since the equality holds true on the contour as $R\to\infty$, we have that the number of zeros of $g$ is the same as the number of zeros of $f$. In this case $g$ has 1 zero on the right half plane, so $f$ has one zero on the right half plane. 
+
+\medskip
+
+\noindent
+4. Use Nyquist criterion to find the number of zeroes of $ p(z)= z^3+2z^2 +4$ in the right half plane $ \{ Re(z)>0\}$.
+
+Using the Nyquist criterion: 
+\[
+N=\frac{1}{2\pi}\left( 3\pi+2[arg p]_{\Gamma_{I_+}} \right) 
+.\]
+Note that at $p(iy)=-iy^3-2y^2+4=(4-2y^2)-iy^3=p_r(y)+ip_i(y)$
+
+\begin{table}[htpb]
+    \centering
+    \label{tab:q4}
+    \begin{tabular}{c|c|c}
+        $\Gamma$&$p_r$&$p_i$\\
+        \hline
+        $\infty$&$<0$&$<0$\\
+        $2$ &$0$& $<0$\\
+        $0$&$4$& $0$
+    \end{tabular}
+\end{table}
+Therefore 
+\[
+2[arg p]_{\Gamma_{I_+}}=\frac{\pi}{2}
+.\]
+Therefore by the Nyquist criteria listed above we have $N=2$
+
+
+\medskip
+
+\noindent
+5. Use Nyquist criterion to find the number of zeroes of $ p(z)= z^3+2z^2+4z +2$ in the right half plane $ \{ Re(z)>0\}$.
+
+Expanding: 
+
+
+\medskip
+
+\noindent
+6. (20pts)  (a) Use Nyquist criterion to show that there are no zeroes of $ p(z)= z^3+z^2+4z+1$ in  $\{ Re(z) \geq 0\}$.
+
+(b). Show that all  the solutions $ y= y(t)$ to
+$$ y^{'''}+ y^{''} + 4 y^{'} +y=0$$
+must approach to zero as $ t\to +\infty$.
+
+
+
+\medskip
+
+\noindent
+7. (20pts) Find the Laurent series for the function $ \frac{z}{ (z+1)(z-2)}$ in each of the following domains
+
+(a) $ |z|<1$,  (b) $ |z|>2$
+
+\medskip
+
+\noindent
+8. Find the first three terms of Laurent series for $\frac{z}{ \mbox{Log} (z)}$   in $|z-1| <1$, where $ Log (z)$ is the principal branch.
+
+ 
+
+\end{document}
