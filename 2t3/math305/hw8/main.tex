@@ -95,31 +95,115 @@ Therefore by the Nyquist criteria listed above we have $N=2$
 \noindent
 5. Use Nyquist criterion to find the number of zeroes of $ p(z)= z^3+2z^2+4z +2$ in the right half plane $ \{ Re(z)>0\}$.
 
-Expanding: 
+Expanding for $z=iy$: $p(iy)=-iy^3-2y^2+4iy+2=2-2y^2+i(-y^3+4y)=p_r(y)+p_i(y)$. To calculate the argument for the imaginary line construct a table: 
 
+\begin{table}[htpb]
+    \centering
+    \label{tab:q4}
+    \begin{tabular}{c|c|c}
+        $\Gamma$&$p_r$&$p_i$\\
+        \hline
+        $\infty$&$<0$&$<0$\\
+        $2$ &$<0$& $0$\\
+        $1$ &$0$& $>0$\\
+        $0$&$2$& $0$
+    \end{tabular}
+\end{table}
+
+Thus we have: 
+\[
+2[arg p]_{\Gamma_{I_+}}=\frac{-3\pi}{2}
+.\]
+And by Nyquist's criterion: 
+\[
+N=\frac{1}{2\pi}\left( 3\pi+2[arg p]_{\Gamma_{I_+}} \right)=0
+.\]
 
 \medskip
 
 \noindent
 6. (20pts)  (a) Use Nyquist criterion to show that there are no zeroes of $ p(z)= z^3+z^2+4z+1$ in  $\{ Re(z) \geq 0\}$.
 
+
+Expanding for $z=iy$: $p(iy)=-iy^3-y^2+4iy+1=1-y^2+i(-y^3+4y)=p_r(y)+p_i(y)$. To calculate the argument for the imaginary line construct a table: 
+
+\begin{table}[htpb]
+    \centering
+    \label{tab:q4}
+    \begin{tabular}{c|c|c}
+        $\Gamma$&$p_r$&$p_i$\\
+        \hline
+        $\infty$&$<0$&$<0$\\
+        $2$ &$<0$& $0$\\
+        $1$ &$0$& $>0$\\
+        $0$&$2$& $0$
+    \end{tabular}
+\end{table}
+
+Thus we have: 
+\[
+2[arg p]_{\Gamma_{I_+}}=\frac{-3\pi}{2}
+.\]
+And by Nyquist's criterion: 
+\[
+N=\frac{1}{2\pi}\left( 3\pi+2[arg p]_{\Gamma_{I_+}} \right)=0
+.\]
+
+\medskip
+
+\noindent
 (b). Show that all  the solutions $ y= y(t)$ to
 $$ y^{'''}+ y^{''} + 4 y^{'} +y=0$$
 must approach to zero as $ t\to +\infty$.
 
+Taking the laplace transform of the differential equation: 
+\[
+\mathcal L(y'''+ y''+ 4 y' +y)=Y(s)\left( s^3+s^2+4s+1 \right)=Q(s)\implies Y(s)=\frac{Q(s)}{s^3+s^2+4s+1}
+.\]
 
+We just proved in part a that all zeros of the denominator lie in the right half plane, which means all solutions trend to $0$ as $t\to 0$. 
 
 \medskip
 
 \noindent
 7. (20pts) Find the Laurent series for the function $ \frac{z}{ (z+1)(z-2)}$ in each of the following domains
 
-(a) $ |z|<1$,  (b) $ |z|>2$
+(a) $ |z|<1$
+
+Partial fraction decomposition: 
+\[
+\frac{z}{(z+1)(z-2)}=\frac{1}{3(z+1)}+\frac{2}{3(z-2)}=\frac{1}{3}\left( \frac{1}{1+z}-\frac{1}{1-\frac{z}{2}} \right) =\frac{1}{3}\sum_{n=0}^\infty \left( z^{n}(-1)^{n}-\frac{z^{n}}{2^{n}} \right) 
+.\]
+
+(b) $ |z|>2$
+
+Expanding: 
+\[
+\frac{z}{(z+1)(z-2)}=\frac{1}{3(z+1)}+\frac{2}{3(z-2)}=\frac{1}{3z}\left( \frac{1}{1+\frac{1}{z}}+\frac{2}{1-\frac{2}{z}} \right) =\frac{1}{3z}\sum_{n=0}^\infty \left(\frac{(-1)^{n}}{z^{n}}+\frac{2^{n+1}}{z^{n}}\right)
+.\]
+\[
+=\frac{1}{3}\sum_{n=1}^\infty \left(-\frac{(-1)^{n}}{z^{n}}+\frac{2^{n}}{z^{n}}\right)
+.\]
 
 \medskip
 
 \noindent
 8. Find the first three terms of Laurent series for $\frac{z}{ \mbox{Log} (z)}$   in $|z-1| <1$, where $ Log (z)$ is the principal branch.
+
+First note that we have that the Taylor series of $\log(z)$ is: 
+\[
+\log(1-z+1)=\sum_{n=1}^{\infty}\frac{(z-1)^{n}(-1)^{n}}{n}
+.\]
+Thus we have:
+\[
+\frac{z}{\log(z)}=\frac{(z-1)+1}{z-1}\frac{1}{1-((z-1) /2-(z-1)^2 /3-\ldots)}
+.\]
+\[
+=\left( 1+\frac{1}{z-1} \right) \left( 1+((z-1) /2-(z-1)^2 /3-\ldots)+((z-1) /2-(z-1)^2 /3-\ldots)^2+\ldots \right) 
+.\]
+\[
+=\frac{1}{z-1}+\frac{3}{2}+\frac{5(z-1)}{12}
+.\]
 
  
 
