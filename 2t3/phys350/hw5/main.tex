@@ -1,0 +1,59 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx, float}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{PHYS 350 Homework 5}
+\date{28/03/22}
+\author{Xander Naumenko}
+\maketitle
+
+{\noindent\bf Question 1.} For this problem $s=1$, and choose $q=\theta$. We tie the IRF to the bottom left corner of the wall. Then for the center of mass of the rod, we have: 
+\[
+x_{CM}=\frac{1}{2}\cos\theta, \dot x_{CM}=-\frac{1}{2}\dot\theta\sin\theta
+.\]
+\[
+y_{CM}=\frac{1}{2}\sin\theta, \dot y_{CM}=\frac{1}{2}\dot\theta\cos\theta
+.\]
+For the rod's kinetic energy, note that the moment of inertia of the rod is $I=\frac{ML^2}{12}$. Then we have: 
+\[
+\mathcal L=T-U=\frac{1}{2}mv_{CM}^2+\frac{1}{2}\vec\Omega \hat{I}\vec\Omega-\frac{L}{2}mg\sin\theta=\frac{1}{6}mL^2\dot\theta^2-\frac{L}{2}mg\sin\theta
+.\]
+Because there's no time dependence we can find the energy in the system: 
+\[
+E=\frac{d\mathcal L}{d\dot\theta}\dot \theta-\mathcal L=\frac{1}{6}mL^2\dot\theta^2+\frac{L}{2}mg\sin\theta=\frac{L}{2}mg\sin\theta_0
+.\]
+\[
+\implies \dot\theta^2=\frac{3g(\sin\theta_0-\sin\theta)}{L}
+.\]
+\[
+\implies T=\int_0^T dt=\int_{\theta_0}^0 \sqrt{\frac{L}{3g(\sin\theta_0-\sin\theta)}}d\theta
+.\]
+
+{\noindent\bf Question 2.} For this problem $s=1$, and choose $ q=\theta$ where $\theta$ is the angle between the vertical and the line marked $d$ on the diagram. First we calculate the moment of inertia by noting that with the parallel axis theorem, two times the moment of inertia displaced by distance $d$ to the center should be equal to the moment of inertia of the semicircle, i.e.
+\[
+2(I_{CM}+Md^2)=\frac{1}{2}MR^2\implies I_{CM}=\frac{1}{4}MR^2-Md^2
+.\]
+Next we consider the kinetic energy at the point $O$ at the circle touches the ground, with $r'$ being the distance from the CM to $O$. 
+\[
+r'^2=d^2+R^2-2dR\cos\theta
+.\]
+\[
+I_O=I_{CM}+r'^2M=\frac{5}{4}MR^2-2dRM\cos\theta
+.\]
+\[
+\mathcal L=T-U=\left( \frac{5}{8}R-dM\cos\theta \right) R\dot\theta^2-Mgd\cos\theta
+.\]
+
+\end{document}
