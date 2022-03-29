@@ -1,0 +1,136 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx, float}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{PHYS 304 Homework 8}
+\date{29/03/22}
+\author{Xander Naumenko}
+\maketitle
+
+{\noindent\bf Question 1a.} Let $\vec r=\begin{pmatrix} r_1\\r_2\\r_3 \end{pmatrix} $. Then we have: 
+\[
+[r_i,r_j]=r_ir_jf-r_jr_if=0
+.\]
+\[
+[p_i,p_j]=p_ip_jf-p_jp_if=0
+.\]
+\[
+[r_i, p_j]=-[p_i, r_j]=-i\hbar r_i \frac{d}{dr_j}f+i\hbar \frac{d}{dr_j}\left( r_i f \right) = i\hbar\delta_{ij}
+.\]
+
+{\noindent\bf Question 1b.} The derivation for the generalized Ehrenfest theorem is the exact same as for three dimensions, so we can use it in the three dimensional case. Then we have that 
+\[
+[\hat H, x]=\frac{1}{2m}[p_x^2, x]=-i \frac{\hbar}{m}p_x
+.\]
+Then by the generalized Ehrenfest theorem and applying it in all three Cartesian coordinates: 
+\[
+\frac{d}{dt}\left<\vec r \right>=\frac{1}{m}\left<\vec p \right>
+.\]
+Next for momentum: 
+\[
+[\hat H, p]=\frac{1}{2m}[p^2+V(x), p]=\frac{1}{2m}[V(x), p_x]=i\hbar \frac{\partial V}{\partial x}
+.\]
+\[
+\implies \frac{d}{dt}\left<\vec p \right>=\left<-\nabla V \right>
+.\]
+
+{\noindent\bf Question 1c.} Using the result of part a we know that $[r_i,p_j]=i\hbar\delta_{ij}$. Thus using the generalized uncertainty principle: 
+\[
+\sigma_{r_i}\sigma_{p_j}\geq i\hbar\delta_{ij}
+.\]
+
+{\noindent\bf Question 2.} Assume that we can write the solution to $\psi(x, y, z)=X(x)Y(y)Z(z)$. Then the time independent schr\"odinger equation for inside the box is
+\[
+-\frac{\hbar^2}{2m} \frac{d^2}{dx^2} (XYZ)=EXYZ
+.\]
+\[
+\implies \hat H X=E_xX, \text{ etc.}
+.\]
+This is exactly the same as the one dimensional case, which we solved to get: 
+\[
+X(x)=\sqrt{\frac{2}{a}}\sin(kx), k=\frac{\sqrt{2mE_x} }{\hbar}
+.\]
+The boundary conditions imposed require that the energy levels are discrete: 
+\[
+E_{xn}=\frac{\pi^2 \hbar^2}{2ma^2}n^2
+.\]
+Once all the equations are put together the final solution is: 
+\[
+\psi(x, y, z)=\left( \frac{2}{a} \right) ^\frac{3}{2}\sin(\frac{n_x\pi}{a}x)\sin(\frac{n_y\pi}{a}y)\sin(\frac{n_z\pi}{a}z)
+\]
+\[
+E_{n_x, n_y, n_z}=\frac{\pi^2 \hbar^2}{2ma^2}\left( n_x^2+n_y^2+n_z^2 \right) 
+.\]
+
+{\noindent\bf Question 2b.} This is a combinatorics problem, since there are three possible variables providing the degeneracy. 
+
+\begin{table}[htpb]
+    \centering
+    \label{tab:2b}
+    \begin{tabular}{c|c|c}
+        $n$&$E_{n}$&Degeneracy\\
+        \hline
+        1&$3 \frac{\pi^2 \hbar^2}{2ma^2}$&1\\
+        2&$6 \frac{\pi^2 \hbar^2}{2ma^2}$&3\\
+        3&$9 \frac{\pi^2 \hbar^2}{2ma^2}$&3\\
+        4&$11 \frac{\pi^2 \hbar^2}{2ma^2}$&3\\
+        5&$12 \frac{\pi^2 \hbar^2}{2ma^2}$&1\\
+        6&$14 \frac{\pi^2 \hbar^2}{2ma^2}$&6
+        
+    \end{tabular}
+\end{table}
+
+{\noindent\bf Question 2c.} $E_{14}$ has both the $n_x=n_y=n_z=3$ state and the $n_x=n_y=1, n_z=5$ states, which gives a total degeneracy of $4$. 
+
+{\noindent\bf Question 3a.} Time independent radial equation: 
+\[
+\frac{d}{dr}\left( r^2 \frac{d\psi}{dr} \right)-\frac{2mr^2}{\hbar^2}\left( V(r)-E \right) \psi=0
+.\]
+\[
+\frac{d}{dr}\left( \frac{-r^2}{a}Ae^{-r /a} \right)-\frac{2mr^2}{\hbar^2}(V(r)-E)Ae^{-r /a}=0
+.\]
+\[
+\implies \frac{r^2}{a^2}-\frac{2r}{a}=\frac{2mr^2}{\hbar^2}(V(r)-E)
+.\]
+\[
+\implies V(r)=-\frac{\hbar^2}{mra}
+.\]
+\[
+\implies E=-\frac{\hbar^2}{2ma^2}
+.\]
+{\noindent\bf Question 3b.} Using the exact same approach: 
+\[
+\frac{d}{dr}\left( r^2 \frac{d\psi}{dr} \right)-\frac{2mr^2}{\hbar^2}\left( V(r)-E \right) \psi=0
+.\]
+\[
+\frac{d}{dr}\left( \frac{-2r^3}{a^2}Ae^{-r^2 /a^2} \right)-\frac{2mr^2}{\hbar^2}(V(r)-E)Ae^{-r^2 /a^2}=0
+.\]
+\[
+\implies \frac{4r^4}{a^4}-\frac{6r^2}{a^2}=\frac{2mr^2}{\hbar^2}(V(r)-E)
+.\]
+\[
+\implies V(r)=\frac{2\hbar^2r^2}{mr^2a^4}
+.\]
+\[
+\implies E=\frac{3\hbar^2}{ma^2}
+.\]
+
+{\noindent\bf Question 4a.} One situation that resulted in degenerate eigenstates was the free particle. The energy is the same for both the left and right travelling free particles. 
+
+{\noindent\bf Question 4b.} Because the potential is completely symmetric and the energy eigenstates is a identical in the different directions, switching a direction under consideration yields an identical energy which is the same as degeneracy. 
+
+{\noindent\bf Question 4c.} The symmetry you could consider is the symmetry of the real axis, and how the schr\"odinger equation is symmetric under the transformation $x'=-x$. Thus left and right travelling waves are effectively identical from the perspective of their energies. 
+
+\end{document}
