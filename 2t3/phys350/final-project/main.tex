@@ -51,8 +51,15 @@ where $l=\left| r_0\times \mu\vec v_0 \right| $. The obvious next step is to fin
 \]
 which matches $p=\frac{l^2}{\mu\alpha}$ for $n=1$. However, if $n=2$ then this isn't valid since we're dividing by zero, so the $n=2$ case just reduces to
 \[
-U_{eff}=\left( \frac{l^2}{2\mu}-\alpha \right)\frac{1}{r^2}
+U_{eff}=\left( \frac{l^2}{2\mu}-\alpha \right)\frac{1}{r^2}\equiv \frac{C}{r^2}
 .\]
-This is missing the characteristic well that the effective potential normally exhibits, which means that depending on the initial conditions, the relative distance will either 
+This is missing the characteristic well that the effective potential normally exhibits, which means that depending on the initial conditions, the relative distance will either got to infinity or $0$ depending on whether $C\geq 0$. To get an intuitive feel for how these different potentials behave, they are graphed in figure \ref{fig:U-plots}. 
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.8\textwidth]{U-plots}
+    \caption{Plots of the shapes of potentials resulting from different values of n. The middle two are both the $n=2$ case, with the left one being with $C>0$ and the other with $C<0$. }
+    \label{fig:U-plots}
+\end{figure}
 
 \end{document}
