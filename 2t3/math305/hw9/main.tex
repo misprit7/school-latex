@@ -1,0 +1,174 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx, float}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{MATH 305 Homework 9}
+\date{04/04/22}
+\author{Xander Naumenko}
+\maketitle
+
+\noindent
+1. (20) Compute the Laurent series for
+
+(a) $ \frac{1}{ z(z+2)}, 1<|z-1|<3$
+
+Partial fractions: 
+\[
+\frac{1}{z(z+2)}=\frac{1}{2z}-\frac{1}{2(z+2)}=\frac{1}{2}\left( \frac{1}{(z-1)}\frac{1}{1+1 /(z-1)}-\frac{1}{3}\frac{1}{1+(z-1) /3} \right) 
+.\]
+\[
+=\frac{1}{2(z-1)}\sum_{n=0}^\infty \frac{(-1)^{n}}{(z-1)^{n}}-\frac{1}{3}\sum_{n=0}^{\infty}\left( (-1)\frac{z-1}{3} \right) ^{n}=-\frac{1}{6}+\sum_{n=1}^{\infty}\frac{(-1)^{n+1}}{2(z-1)^{n}}-\frac{(z-1)^{n}}{2(-3)^{n+1}}
+.\]
+
+(b) $\frac{1}{z^2+4}, |z-2i|>4$
+
+\[
+\frac{1}{z^2+4}=\frac{1}{4i}\left(\frac{1}{z-2i}-\frac{1}{z+2i}\right)=\frac{1}{4i}\left( \frac{1}{z-2i}-\frac{1}{(z-2i)\left( 1+4i /(z-2i) \right) } \right) 
+.\]
+\[
+=\frac{1}{4i(z-2i)}+\frac{1}{4i}\sum_{n=0}^{\infty}\frac{(-4i)^{n}}{(z-2i)^{n+1}}=(\frac{1}{4i}-1) \frac{1}{z-2i}+\sum_{n=1}^{\infty}\frac{(-1)^{n}(4i)^{n-1}}{(z-2i)^{n+1}}
+.\]
+
+
+\medskip
+
+
+
+\noindent
+2. (20) Determine the types of all the isolated singularities of the following  functions and compute the residue at each isolated singularity
+
+(a) $\frac{z}{\tan z}$
+
+
+\[
+\frac{z}{\tan z}=\frac{z\cos z}{\sin z}
+.\]
+This function has singularities for $z=n\pi$. For $z=0$, this is a removable singularity since $\lim_{z\to 0}\frac{z\cos z}{\sin z}=1$, so $Res[\frac{z}{\tan z}; 0]=0$. For $z=n\pi, n\neq 0$ the function has simple poles, which gives:
+\[
+Res[\frac{z}{\tan z}; n\pi]=\frac{n\pi}{\sec^2 nz}=n\pi
+.\]
+
+(b) $ \frac{\cos z}{z^3}$
+
+The only singularity is $z=0$, which is a pole of order 3 (since $\cos(z)\neq 0$, which gives that
+\[
+Res[\frac{\cos z}{z^3};0]=\frac{1}{2}\frac{d^2}{dz^2}\cos z=-\frac{1}{2}
+.\]
+
+(c) $ \frac{\mbox{Log} (z) }{ (z^2+1)^2 }$
+
+The two isolated singularities are at $z=\pm i$, which are simple poles of order 2. Since $\mbox{Log}(\pm i)\neq 0$, we get that the residue is
+ \[
+Res[\frac{\mbox{Log}(z)}{(z^2+1)^2};\pm i]=\frac{d}{dz}\left( \frac{\mbox{Log}(z)}{(z\pm i)^2} \right)=\frac{\frac{1}{z}(z\pm i)^2-2(z\pm i)\mbox{Log}(z)}{(z\pm i)^4}\bigg|_{z=\pm i}
+.\]
+\[
+=\frac{\mp i (-2i)^2\pm 4i(\mp \frac{\pi}{2}i)}{16}=\pm \frac{1}{4}i+\frac{\pi}{8}
+.\]
+
+(d)  $ \frac{e^z}{ 1- \sqrt{z}} $
+
+Since we're using the principle branch the only pole is that $z=1$. Consider the function as follows: 
+\[
+\frac{e^{z}}{1-\sqrt{z} }=\frac{e^{z}(1+\sqrt{z} )}{1-z}
+.\]
+Then $z=1$ is clearly a simple pole, so the residue is 
+\[
+Res[\frac{e^{z}(1+\sqrt{z} )}{1-z}; 1]=-2e
+.\]
+
+\medskip
+
+
+\noindent
+3. (20)  Evaluate the following integrals by Cauchy residue Theorem
+
+(a) $ \int_{|z|=3} \frac{ e^z}{ (z-1)^2 z^3} $
+
+Calculating residue: 
+\[
+Res[f(z);1]=\frac{d}{dx}\left( \frac{e^{z}}{z^3} \right)=\frac{z^3e^{z}-3z^2e^{z}}{z^{6}}\bigg|_{z=1}=-2e
+.\]
+\[
+Res[f(z);0]=2\frac{d^2}{dx^2}\left( \frac{e^{z}}{(z-1)^2} \right)=\frac{1}{2} \frac{d}{dz}\left( \frac{(z-1)^2e^{z}-2(z-1)e^{z}}{(z-1)^{4}} \right)
+.\]
+\[
+=\frac{1}{2}\left( \frac{\left( 2(z-1)e^{z}+(z-1)^2e^{z}-2e^{z}-2(z-1)e^{z} \right)(z-1)^{4}-\left( (z-1)^2e^{z}-2(z-1)e^{z} \right)4(z-1)^{3} }{(z-1)^{8}} \right) \bigg|_{z=0}
+.\]
+\[
+=\frac{1}{2}\left( \left( -2+1-2+2 \right)+4\left( 1+2 \right)  \right) =\frac{11}{2}
+.\]
+\[
+\implies \int_{|z|=3} \frac{ e^z}{ (z-1)^2 z^3}=(\frac{11}{2}-2e)2\pi i
+.\]
+
+(b) $\int_{|z|=1} \frac{1}{z^2 \sin z} dz$
+
+The one singularity is $z=0$. 
+\[
+\frac{1}{z^2\sin z}=\frac{1}{z^3}\frac{1}{1-z^2 /6+O(z^{4})}=\frac{1}{z^3}\left( 1+\left(\frac{z^2}{6}-O(z^{4} )\right)+\ldots\right)\implies Res[\frac{1}{z^2\sin z};0]=\frac{1}{6}
+.\]
+\[
+\implies \int_{|z|=1} \frac{1}{z^2 \sin z} dz=\frac{\pi i}{3}
+.\]
+
+(c) $ \int_{|z|=1} e^{\frac{1}{z}} \cos (z) dz $
+
+Calculating residue: 
+\[
+e^{\frac{1}{z}}\cos(z)=\left( 1+\frac{1}{z}+\frac{1}{2z^2}+\ldots \right) \left( 1-\frac{z^2}{2}+\frac{z^{4}}{24} -\ldots\right) \implies Res[e^{\frac{1}{z}}\cos(z);0]=\sum_{n=1} \frac{1}{n ((n-1)!)^2}
+.\]
+\[
+\implies \int_{|z|=1} e^{\frac{1}{z}} \cos (z) dz=2\pi i \sum_{n=1} \frac{(-1)^{n+1}}{n ((n-1)!)^2}
+.\]
+
+(d) $\int_{|z|=1} \frac{e^z}{\sin^3 z} dz $
+
+Computing residue: 
+\[
+\frac{e^{z}}{\sin^3z}=\frac{1+z+z /2}{\left( z-z^3 /6+\ldots \right)^3 }=\frac{1}{z^3}\left( 1+z+z^2 /2 \right)\left( 1-3\left( 1-z^2 /6+\ldots \right) +\ldots \right)
+.\]
+\[
+\implies Res[\frac{e^{z}}{\sin^3 z};0]=\frac{1}{2}+\frac{3}{3!}=1\implies\int_{|z|=1} \frac{e^z}{\sin^3 z} dz=2\pi i
+.\]
+
+\medskip
+
+\noindent
+4. Computing the following integrals
+
+(a) $\int_0^{\pi} \frac{1}{ 1+\sin^2 \theta} d \theta $
+
+Let $z=e^{i\theta}\implies dz=ie^{i\theta}d\theta$. 
+\[
+\int_{|z|=1}\frac{iz}{1+\left( z-z^{-1} \right)^2 /4}dz=\int_{|z|=1}\frac{4iz}{2+z^2+z^{-2}}dz
+.\]
+
+(b) $ \int_0^{2\pi} \frac{ \sin^2 \theta}{ 3+\cos \theta} d \theta $
+
+
+\medskip
+
+
+\noindent
+5. (30) Using contour integrals to  compute the following integrals
+
+(a) $\int_0^\infty \frac{ x^2}{ (x^2+4)^2} dx$, (b) $ \int_0^\infty \frac{1}{ x^4+x^2+1} dx $,  (c) $\int_0^\infty \frac{1}{ x^3+1} dx $.
+
+
+(d) $ \int_0^\infty \frac{\cos x}{ x^4 +1} dx $, (e) $\int_{-\infty}^\infty \frac{ \sin x}{ x^2+2x+2} dx $
+
+
+
+\end{document}
