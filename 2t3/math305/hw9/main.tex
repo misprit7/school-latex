@@ -152,10 +152,21 @@ Computing residue:
 
 Let $z=e^{i\theta}\implies dz=ie^{i\theta}d\theta$. 
 \[
-\int_{|z|=1}\frac{iz}{1+\left( z-z^{-1} \right)^2 /4}dz=\int_{|z|=1}\frac{4iz}{2+z^2+z^{-2}}dz
+\int_0^\pi \frac{1}{1+\sin^2\theta}d\theta=\frac{1}{2}\int_{|z|=1}\frac{-iz^{-1}}{1-\left( z-z^{-1} \right)^2 /4}dz=\int_{|z|=1}\frac{-2iz^{-1}}{6-z^2-z^{-2}}dz
+.\]
+\[
+=-8\pi Res\left[\frac{z}{z^{4}-6z^2+1};\sqrt{2}-1 \right]=\frac{\pi}{\sqrt{2} }
 .\]
 
 (b) $ \int_0^{2\pi} \frac{ \sin^2 \theta}{ 3+\cos \theta} d \theta $
+
+Let $z=e^{i\theta}\implies dz=ie^{i\theta}d\theta$. 
+\[
+\int_0^{2\pi}\frac{\sin^2\theta}{3+\cos\theta}d\theta=\int_{|z|=1}\frac{z^2-2+z^{-2}}{-4iz(3+(z+z^{-1}) /2)}dz=\frac{i}{2}\int_{|z|=1}\frac{z^4-2z^2+1}{z^2(z^2+6z+1)}dz
+.\]
+\[
+=-\pi Res\left[ \frac{z^4-2z^2+1}{z^2(z^2+6z+1)};0\right]-\pi Res\left[ \frac{z^4-2z^2+1}{z^2(z^2+6z+1)};2\sqrt{2} -3\right]=\left( 6-4\sqrt{2}  \right) \pi
+.\]
 
 
 \medskip
@@ -164,11 +175,61 @@ Let $z=e^{i\theta}\implies dz=ie^{i\theta}d\theta$.
 \noindent
 5. (30) Using contour integrals to  compute the following integrals
 
-(a) $\int_0^\infty \frac{ x^2}{ (x^2+4)^2} dx$, (b) $ \int_0^\infty \frac{1}{ x^4+x^2+1} dx $,  (c) $\int_0^\infty \frac{1}{ x^3+1} dx $.
+(a) $\int_0^\infty \frac{ x^2}{ (x^2+4)^2} dx$
 
+Taking the contour to be a disk of radius $R$ in the upper half plane as $R\to \infty$ and noting that the function is even: 
 
-(d) $ \int_0^\infty \frac{\cos x}{ x^4 +1} dx $, (e) $\int_{-\infty}^\infty \frac{ \sin x}{ x^2+2x+2} dx $
+\[
+2\int_{0}^\infty \frac{x^2}{(x^2+4)^2}dx=2\pi iRes[\frac{z^2}{(z-2i)^2(z+2i)^2};2i]=2\pi i \frac{d}{dz} \frac{z^2}{(z+2i)^2}\bigg|_{z=2i}
+.\]
+\[
+=2\pi i \frac{2z(z+2i)^2-2z^2(z+2i)}{(z+2i)^{4}}=-2\pi i\frac{i}{8}
+.\]
+\[
+\implies \int_{0}^\infty \frac{x^2}{(x^2+4)^2}dx=\frac{\pi}{8}
+.\]
 
+(b) $ \int_0^\infty \frac{1}{ x^4+x^2+1} dx $
+
+Same integration contour as last time with the outside going to zero, and the function is again even: 
+\[
+2\int_0^\infty \frac{1}{ x^4+x^2+1} dx=2\pi i Res[\frac{1}{ z^4+z^2+1};e^{\frac{\pi}{3}i}]+2\pi i Res[\frac{1}{ z^4+z^2+1};e^{\frac{2\pi}{3}i}]
+.\]
+\[
+=\frac{2\pi i}{2\left( e^{i\frac{\pi}{3}}-2 \right) }-\frac{2\pi i}{2\left(2+e^{i \frac{2\pi}{3}}\right)}=\frac{\pi}{3\sqrt{3} }
+.\]
+
+(c) $\int_0^\infty \frac{1}{ x^3+1} dx $.
+
+Let the contour be the wedge with angle $\frac{2\pi}{3}$. Then the boundary term goes to zero and the integral is 
+\[
+\int_0^{\infty}\frac{1}{x^3+1}dx-\int_0^\infty \frac{e^{\frac{2\pi}{3}i}}{\left( r e^{\frac{2\pi}{3}i} \right)^3+1 }dr=\left( 1-e^{\frac{2\pi i}{3}} \right) \int_0^{\infty}\frac{1}{x^3+1}dx=2\pi iRes[\frac{1}{z^3+1};e^{i\frac{\pi}{3}}]=2\pi i \frac{1}{3\left( e^{i \frac{2\pi}{3}} \right) }
+.\]
+\[
+\implies \int_0^{\frac{1}{x^3}+1}dx=\frac{2\pi}{3\sqrt{3} }
+.\]
+
+(d) $ \int_0^\infty \frac{\cos x}{ x^4 +1} dx $
+
+Expand the given integral into the $z$ plane on the upper half disk of radius $R$ as $R\to \infty$. 
+
+\[
+2\int_0^\infty \frac{\cos x}{x^{4}+1}dx=Re\left( 2\pi iRes\left[\frac{e^{iz}}{z^{4}+1};e^{i\frac{\pi}{4}}\right]+2\pi iRes\left[\frac{e^{iz}}{z^{4}+1};e^{i\frac{3\pi}{4}}\right]\right)
+.\]
+\[
+=\frac{\pi}{2} Re\left( ie^{i\frac{\pi}{4}-(-1)^{3 /4}}+ie^{i\frac{3\pi}{4}-(-1)^{1 /4}} \right) 
+.\]
+Computing this numerically, since it doesn't simplify nicely algebraically: 
+\[
+ \int_0^\infty \frac{\cos x}{x^{4}+1}dx\approx 0.772138 
+.\]
+
+(e) $\int_{-\infty}^\infty \frac{ \sin x}{ x^2+2x+2} dx $
+
+Taking the same contour as the previous part: 
+\[
+\int_{-\infty}^\infty \frac{ \sin x}{ x^2+2x+2} dx=Im\left( 2\pi i Res\left[\frac{e^{z}}{z^2+2z+2};-1+i\right] \right) =Im\left( \pi e^{-1-i} \right) =\frac{-\pi\sin(1)}{e}\approx -0.972551
+.\]
 
 
 \end{document}
