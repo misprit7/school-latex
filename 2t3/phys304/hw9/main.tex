@@ -1,0 +1,85 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx, float}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{PHYS 304 Homework 9}
+\date{06/04/22}
+\author{Xander Naumenko}
+\maketitle
+
+{\noindent\bf Question 1a.} There isn't any difference between the angular solutions between the two problems, as the angular part of the spherical schr\"odinger equation has no potential part. 
+
+{\noindent\bf Question 1b.} The key difference is that in the Hydrogen atom case the solution results in the spherical harmonics, whereas in the infinite potential well case it instead results in spherical Bessel functions and Neumeann functions. 
+
+{\noindent\bf Question 1c.} One major difference is that there is no coincidental degeneracy in the infinite well case, but there is in the Hydrogen atom case. Another difference is that there is no "maximum" energy of bound states for the potential well since the barrier is infinite, but there is for the Hydrogen atom since if $E>0$ then they aren't bound states any more. 
+
+{\noindent\bf Question 2.} For $R_{30}$ ($n=3,l=0$), we get 
+\[
+c_1=\frac{2\left( 1-3 \right) }{1\left( 2 \right) }c_0=-2c_0
+.\]
+\[
+c_2=\frac{2\left( 1+1-3 \right) }{2\left( 1+2 \right) }c_1=-\frac{1}{3}c_1=\frac{2}{3}c_0
+.\]
+\[
+c_3=\frac{2(2+1-3)}{3\left( 2+2 \right) }c_2=0
+.\]
+\[
+\implies R_{30}=\frac{1}{r}\rho e^{-\rho}c_0\left( 1-2\rho+\frac{2}{3}\rho^2 \right), \rho=\frac{r}{3a}
+.\]
+For $R_{31}$ ($n=3, l=1$):
+\[
+c_1=\frac{2\left( 1+1-3 \right) }{\left( 2+2 \right) }c_0=-\frac{1}{2}c_0
+.\]
+\[
+c_2=\frac{2\left( 1+1+1-3 \right) }{2\left( 1+2+2 \right) }=0
+.\]
+\[
+\implies R_{31}=\frac{1}{r}\rho^{2} e^{-\rho}c_0\left( 1-\frac{1}{2}\rho\right), \rho=\frac{r}{3a}
+.\]
+For $R_{32}$ ($n=3, l=2$):
+\[
+c_1=\frac{2\left( 2+2-3 \right) }{\left( 4+2 \right) }c_0=0
+.\]
+\[
+\implies R_{32}=\frac{1}{r}\rho^{3} e^{-\rho}c_0, \rho=\frac{r}{3a}
+.\]
+
+{\noindent\bf Question 3a.} Taking expectation value: 
+\[
+\left<r \right>=\frac{4\pi}{\pi a^3 }\int r^{3} e^{-\frac{2r}{a}}dr=\frac{12}{2 a^2}\int r^2e^{-\frac{2r}{a}}dr=\frac{24}{16 a}e^{-\frac{2r}{a}}=\frac{3}{2}a
+.\]
+\[
+\left<r^2 \right>=\frac{4\pi}{\pi a^3}\int r^{4}e^{-\frac{2r}{a}}dr=3a^2
+.\]
+
+{\noindent\bf Question 3b.} There is symmetry in all directions for the ground state, so the expectation value should be the same as in the generalized $r$ case. Therefore: 
+\[
+\left<x \right>=\frac{3}{2}a
+.\]
+\[
+\left<x^2 \right>=3a^2
+.\]
+
+{\noindent\bf Question 3c.} Using an integral calculator: 
+\[
+\left<x^2 \right>=\int \frac{1}{64\pi a^{5}}\left( r^2e^{-\frac{r}{a}}\sin\theta e^{i\phi} \right)\left( r^2\sin\theta \right)  \left( r^2\sin^2\theta\cos^2\theta \right) =12a^2
+.\]
+
+{\noindent\bf Question 4.} As the hint suggests note that $[z, [H,z]]=2zHz-Hz^2-z^2H$
+
+
+
+
+\end{document}
