@@ -27,13 +27,15 @@ The goal of this paper is to explore the consequences of alternate physical laws
 
 Also note that, as the project rubric suggests, all analysis was done independently without research into existing work. 
 
-\section{Problem Statement}
+\section{Problem Statement \& Motivation}
 
 One fundamental law that yields surprisingly beautiful results is the fact that the gravitational potential goes with $\frac{1}{r}$. But it is interesting to explore how exactly physical systems evolve when this isn't the case. Here we will explore gravitational potentials of the form: 
 \[
 U_n(r)=-\frac{G_nm_1m_2}{r^{n}}=-\frac{\alpha_n}{r^{n}}
 ,\]
 where $G_n$ is an arbitrary constant with SI units $\text{N}\cdot \text{m}^{n+1}\cdot \text{kg}^{-2}$. Specifically we will focus on the case of the two body problem and the resultant orbits with these other reciprocal laws. 
+
+The motivation for this problem is mostly just curiosity. Obviously in the physical universe we live in pretty much every force follows a $\frac{1}{r}$ potential (e.g. gravity, electrostatics, etc.). However there doesn't really seem to be a fundamental reason for this, so it's interesting to see if there is some math that arises from the physics that gives a satisfying reason for this. It turns out that there doesn't really, and that some of these other potentials can yield some pretty results as well. 
 
 \section{Background}
 
@@ -70,7 +72,7 @@ This is missing the characteristic well that the effective potential normally ex
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\textwidth]{U-plots}
+    \includegraphics[width=1\textwidth]{U-plots}
     \caption{Plots of the shapes of potentials resulting from different values of n. The middle two are both the $n=2$ case, with the left one being with $C<0$ and the other with $C>0$. Note that for $n=1$, there is the characteristic potential well that symbolizes $r=p$. This is not present for $n=2$, but is for $n=3$ except concave down. }
     \label{fig:U-plots}
 \end{figure}
@@ -145,14 +147,14 @@ This is even harder to physically interpret than equation \ref{eq:C>0}, but a nu
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\textwidth]{trajectories}
+    \includegraphics[width=1\textwidth]{trajectories}
     \caption{Plots of the trajectories for the $n=2$ case with $C>0$, $C<0$, $C=E=0$ and $C=0,E>0$. The initial conditions were all chosen arbitrarily and scaled to appear better when graphed, so the relative magnitude of each isn't comparable. }
     \label{fig:trajectories}
 \end{figure}
 
 \subsection{Case $C=0$}
 
-For the $C=0$ case, equation \ref{eq:energy} reduces to $E=\frac{\mu \dot r^2}{2}+U_{\text{eff}}(r)=\frac{\mu\dot r^2}{2}$. Thus we have that $E\geq0$, but because equation \ref{eq:traj} requires $E\neq 0$ we have two cases to consider. 
+For the $C=0$ case, equation \ref{eq:energy} reduces to $E=\frac{\mu \dot r^2}{2}+U_{\text{eff}}(r)=\frac{\mu\dot r^2}{2}$. Thus we have that $E\geq0$, but because equation \ref{eq:traj} requires $E\neq 0$ since otherwise we get a divide by zero, we have two cases to consider. 
 
 \subsubsection{Case $E=0$}
 
