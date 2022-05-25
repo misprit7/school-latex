@@ -30,7 +30,7 @@ urlcolor=cyan,
 .\]
 For this to be equal: 
 \[
-A=3956.1\left( \frac{1.04}{1.04^{5}-1.04} \right) =\$895.79
+A=3956.1\left( \frac{1.04}{1.04^{5}-1.04} \right) =\$896
 .\]
 
 {\noindent\bf Question 3a.} 
@@ -43,7 +43,7 @@ m=1.055\cdot 12=\left( 1+\frac{r}{m} \right)^{12}-1=6.8\%
 .\]
 {\noindent\bf Question 3c.} 
 \[
-A=F\left( \frac{i}{(1+i)^{n}-1} \right) =42000\cdot \left( \frac{0.0055}{1.0055^{12}-1} \right)=\$3395.38
+A=F\left( \frac{i(1+i)^n}{(1+i)^{n}-1} \right) =42000\cdot \left( \frac{0.0055\cdot 1.0055^{48}}{1.0055^{48}-1} \right)=\$998
 .\]
 {\noindent\bf Question 4.} Compare the total cost in today's dollars: 
 \[
@@ -52,17 +52,62 @@ C_{1}=440+\frac{440}{1.06^{2}}=\$831.60
 \[
 C_{2}=\$750
 .\]
-Thus buying the more expensive muffler would be better and would save him $\$81.60$
+Thus buying the more expensive muffler would be better and would save him $\$81.60$. 
 
-{\noindent\bf Question 5.} Net benefit: 
+{\noindent\bf Question 5a.} Net benefit: 
+% \[
+% EUAB_1-EUAC_1=135-500\cdot \left( \frac{0.08\left( 1.08^{5} \right) }{1.08^{5}-1} \right)=\$9.77
+% .\]
+% \[
+% EUAB_2-EUAC_2=100-600\cdot \left( \frac{0.08\left( 1.08^{5} \right) }{1.08^{5}-1} \right)+250\cdot  \frac{0.08 }{1.08^{10}-1} \right)=-\$33.02
+% .\]
+% \[
+% EUAB_3-EUAC_3=100-700\cdot \left( \frac{0.08\left( 1.08^{5} \right) }{1.08^{5}-1} \right)+180\cdot  \frac{0.08 }{1.08^{10}-1} \right)=\$12.94
+% .\]
+% \[
+% EUAB_4-EUAC_4=\$0
+% .\]
+% Therefore option 3 has the highest net benefit. 
 \[
-B_1=135\cdot \left( \frac{1.08^{10}-1}{0.08} \right) -500-\frac{500}{1.08^{5}}=
+B_1=135\left( \frac{1.08^{10}-1}{0.08\cdot 1.08^{10}} \right) -500-\frac{500}{1.08^{5}}=\$65.57
 .\]
 \[
-EUAB_1-EUAC_1=135-500\cdot \left( \frac{0.08\left( 1.08^{5} \right) }{1.08^{5}-1} \right)=\$9.77
+B_2=100\left( \frac{1.08^{10}-1}{0.08\cdot 1.08^{10}} \right) -600-\frac{600}{1.08^{5}}+\frac{250}{1.08^{5}}+\frac{250}{1.08^{10}}=-\$51.4
 .\]
 \[
-EUAB_2-EUAC_2=100-600\cdot \left( \frac{0.08\left( 1.08^{5} \right) }{1.08^{5}-1} \right)+250\cdot  \frac{0.08 }{1.08^{10}-1} \right)=-\$33
+B_3=100\left( \frac{1.08^{10}-1}{0.08\cdot 1.08^{10}} \right) -700+\frac{180}{1.08^{10}}=\$54.38
 .\]
+\[
+B_4=\$0
+.\]
+Therefore option 3 has the highest net benefit. 
+
+{\noindent\bf Question 5b.} Net benefit:
+\[
+B_1=135\left( \frac{1.12^{10}-1}{0.12\cdot 1.12^{10}} \right) -500-\frac{500}{1.12^{5}}=-\$20.93
+.\]
+\[
+B_2=100\left( \frac{1.12^{10}-1}{0.12\cdot 1.12^{10}} \right) -600-\frac{600}{1.12^{5}}+\frac{250}{1.12^{5}}+\frac{250}{1.12^{10}}=-\$153.08
+.\]
+\[
+B_3=100\left( \frac{1.12^{10}-1}{0.12\cdot 1.12^{10}} \right) -700+\frac{180}{1.12^{10}}=-\$77.02
+.\]
+\[
+B_4=\$0
+.\]
+Therefore option 4 has the highest net benefit. 
+
+{\noindent\bf Question 6.} Net relative cost (ignoring cost constant for all of them): 
+
+\[
+C_{ng}=40000+5500\left( \frac{1.06^{20}-1}{0.06\cdot 1.06^{20}} \right) =\$103085
+.\]
+\[
+C_{coal}=240000-15000\left( \frac{1.06^{20}-1}{0.06\cdot 1.06^{20}} \right) =\$67951
+.\]
+\[
+C_{oil}=\$75000
+.\]
+Therefore coal is the most economical
 
 \end{document}
