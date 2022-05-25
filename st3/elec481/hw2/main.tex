@@ -1,0 +1,68 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx, float}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{ELEC 481 Homework 2}
+\date{24/05/22}
+\author{Xander Naumenko}
+\maketitle
+
+{\noindent\bf Question 1.}  
+\[
+800\cdot 1.032^{15}+800\cdot 1.032^{14}+\ldots+800\cdot 1.032=800\cdot 1.032\cdot \frac{1-1.032^{15}}{1-1.032}=\$15,582
+.\]
+
+{\noindent\bf Question 2.} I assume the money comes at the end of the period. Value of the second option in today's dollars: 
+\[
+250\cdot 1.04^{4}+500\cdot 1.04^{3}+750\cdot 1.04^{2}+1000\cdot 1.04+1250=\$3956.10
+.\]
+For this to be equal: 
+\[
+A=3956.1\left( \frac{1.04}{1.04^{5}-1.04} \right) =\$895.79
+.\]
+
+{\noindent\bf Question 3a.} 
+\[
+r=0.55\cdot 12=6.6\%
+.\]
+{\noindent\bf Question 3b.} 
+\[
+m=1.055\cdot 12=\left( 1+\frac{r}{m} \right)^{12}-1=6.8\%
+.\]
+{\noindent\bf Question 3c.} 
+\[
+A=F\left( \frac{i}{(1+i)^{n}-1} \right) =42000\cdot \left( \frac{0.0055}{1.0055^{12}-1} \right)=\$3395.38
+.\]
+{\noindent\bf Question 4.} Compare the total cost in today's dollars: 
+\[
+C_{1}=440+\frac{440}{1.06^{2}}=\$831.60
+.\]
+\[
+C_{2}=\$750
+.\]
+Thus buying the more expensive muffler would be better and would save him $\$81.60$
+
+{\noindent\bf Question 5.} Net benefit: 
+\[
+B_1=135\cdot \left( \frac{1.08^{10}-1}{0.08} \right) -500-\frac{500}{1.08^{5}}=
+.\]
+\[
+EUAB_1-EUAC_1=135-500\cdot \left( \frac{0.08\left( 1.08^{5} \right) }{1.08^{5}-1} \right)=\$9.77
+.\]
+\[
+EUAB_2-EUAC_2=100-600\cdot \left( \frac{0.08\left( 1.08^{5} \right) }{1.08^{5}-1} \right)+250\cdot  \frac{0.08 }{1.08^{10}-1} \right)=-\$33
+.\]
+
+\end{document}
