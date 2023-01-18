@@ -1,10 +1,9 @@
 import numpy as np
+import math
 letters = "abracadabra"
 
 def arrangements(s):
-    counts = [s.count(c) for c in set(s)]
-    return np.math.factorial(len(s)) / np.prod([np.math.factorial(c) for c in counts])
+    return math.factorial(len(s))/np.prod([math.factorial(s.count(c))\
+                                           for c in set(s)])
 
 print(arrangements(letters))
-
-

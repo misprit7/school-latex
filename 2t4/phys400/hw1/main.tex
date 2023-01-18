@@ -1,0 +1,78 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx, float}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{Arabic}
+\title{PHYS 400 Homework 1}
+\date{12/01/23}
+\author{Xander Naumenko}
+\maketitle
+
+{\noindent\bf Question a.} Let $z=x+iy$, $z_1=x_1+iy_1$ and $z_2=x_2+iy_2$ for all the below. Then we have: 
+\[
+    \frac{1}{2}\left( z+z* \right)=\frac{1}{2}\left( x+iy+x-iy \right)=x=\text{Re } z
+.\]
+
+\[
+    \frac{1}{2i}\left( z-z* \right)=\frac{1}{2}\left( x+iy-x+iy \right)=y=\text{Im } z
+.\]
+
+\[
+    \left( \text{Re }z_1 \right) \left( \text{Re } z_2 \right) -\left( \text{Im }z_1 \right) \left( \text{Im }z_2 \right) =x_1x_2-y_1y_2=\text{Re }\left( x_1x_2-y_1y_2+x_1y_2i+x_2y_1i \right) =\text{Re }\left( z_1z_2 \right) 
+.\]
+
+{\noindent\bf Question b.} Again using $z=x+iy$:
+
+ \[
+\text{Im }\left| z^2 \right| =\text{Im }\left( x^2+ixy-ixy+y^2 \right)=0
+.\]
+\[
+\text{Im }z^2=\text{Im }\left( x^2+2ixy-y^2 \right)=2xy
+.\]
+
+{\noindent\bf Question c.} Expanding using the Taylor series for the exponential and recalling those for the trigonometric functions: 
+
+\[
+e^{ix}= \sum_{n=0}^{\infty} \left( -1 \right)^{n} \frac{x^{n}}{n!}=\sum_{n\text{ odd}}^{\infty} \left( -1 \right)^{n} \frac{x^{n}}{n!}+\sum_{n\text{ even}}^{\infty} \left( -1 \right)^{n} \frac{x^{n}}{n!}=\cos x + i\sin x
+.\]
+
+{\noindent\bf Question d.} 
+\[
+    \text{Re }z=\text{Re }\left( A\cos \theta + iA\sin \theta \right) =A\cos \theta
+.\]
+\[
+\text{Im }z=\text{Im }\left( A\cos \theta + iA\sin \theta \right) = A\sin \theta
+.\]
+\[
+z*=A\cos\theta-A\sin\theta=Ae^{-i\theta}
+.\]
+\[
+    |z|=\sqrt{ zz*}=\sqrt{A^2e^{-i\theta}e^{i\theta}} =A
+.\]
+
+{\noindent\bf Question e.} Expanding: 
+\[
+e^{i\alpha}e^{i\beta}=\cos\alpha\cos\beta+i\cos\beta\sin\alpha+i\cos\alpha\sin\beta-\sin\alpha\sin\beta=e^{i(\alpha+\beta)}=\cos\left( \alpha+\beta \right) +i\sin\left( \alpha+\beta \right) 
+.\]
+
+Taking the real and imaginary parts of the two sides gives us the standard trig identities: 
+
+\[
+\cos(\alpha+\beta)=\cos\alpha\cos\beta-\sin\alpha\sin\beta
+.\]
+\[
+\sin(\alpha+\beta)=\sin\alpha\cos\beta+\cos\alpha\sin\beta
+.\]
+
+\end{document}
