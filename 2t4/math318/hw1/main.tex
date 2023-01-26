@@ -1,0 +1,148 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 318 Homework 1}
+\date{18/01/23}
+\author{Xander Naumenko}
+\maketitle
+
+{\noindent\bf Question 1a.} That sample space is listed in table \ref{tab:q1}. The probabilities can be calculated by calculating the number of permutations of that length. 
+
+\begin{table}[htpb]
+    \centering
+    \caption{Sample space for question 1}
+    \label{tab:q1}
+    \begin{tabular}{c|c}
+    Sequence&Probability\\
+    \hline
+    TT&$\frac{1}{4}$\\
+    HTT&$\frac{1}{8}$\\
+    HHTT&$\frac{1}{16}$\\
+    THTT\\
+    HHHHH&$\frac{1}{32}$\\
+    HHHHT\\
+    HHHTH\\
+    HHHTT\\
+    HTHTT\\
+    THHTT\\
+    HHTHH\\
+    HHTHT\\
+    HTHHH\\
+    HTHHT\\
+    HTHTH\\
+    THHHH\\
+    THHHT\\
+    THHTH\\
+    THTHH\\
+    THTHT\\
+    \end{tabular}
+\end{table}
+
+{\noindent\bf Question 1b.} Since they are independent events we can sum the probabilities from the previous questions, so we get: 
+\[
+i=2: \frac{1}{4}
+.\]
+\[
+i=3: \frac{1}{8}
+.\]
+\[
+i=4: \frac{1}{8}
+.\]
+\[
+i=5: \frac{1}{2}
+.\]
+As expected the probabilities sum to 1. 
+
+{\noindent\bf Question 2.} There are 40 marked frogs, so the odds of getting exactly 14 frogs are 
+
+\[
+    L(n)=\frac{{40\choose 14}{n-40\choose 36}}{{n\choose 50}}=\frac{40!(n-40)!50!(n-50)!}{14!26!36!(n-76)!n!}
+.\]
+
+As the hint suggests, we can solve $\frac{l(n)}{L(n-1)}= 1$ to find where $L(n)$ is at its maximum. 
+\[
+\frac{L(n)}{L(n-1)}=\frac{(n-40)(n-50)}{n(n-76)}=1
+\]
+\[
+\implies (n-40)(n-50)=n^2-76n\implies n=\frac{1000}{7}
+.\]
+Thus $L(n)$ is increasing for $n<\frac{1000}{7}$ and decreasing for $n>\frac{1000}{7}$. Thus either $n=142$ or $n=143$ maximizes $L(n)$, computing them shows that $n_*=143$ is the most likely. 
+
+{\noindent\bf Question 3a.} Plugging in values: 
+\[
+P_1=\frac{3}{51}\cdot \frac{48}{50}\cdot \frac{44}{49}\cdot \frac{40}{48}=0.42
+.\]
+\[
+    P_2=\frac{{13\choose 2}{4\choose 2}{4\choose 2}\cdot 11\cdot 4}{{52\choose 5}}=0.047
+.\]
+{\noindent\bf Question 3b.} Same as before: 
+\[
+    P_1=\frac{6\cdot 5\cdot 4\cdot 3\cdot {5\choose 2}}{6^5}=0.46
+.\]
+\[
+    P_2=\frac{6\cdot 5\cdot 4\cdot {5\choose 2}\cdot {3\choose 2}}{6^5}=0.23
+.\]
+
+{\noindent\bf Question 4a.} Using number of possibilities: 
+\[
+    p_n=\frac{{2n\choose n}}{2^{2n}}=\frac{(2n)!}{n!^22^{2n}}
+.\]
+
+{\noindent\bf Question 4b.} 
+\[
+    p_{n+1}/p_n=\frac{(2n+2)(2n+1)}{(n+1)^22^2}= \frac{(n+1)(n+\frac{1}{2})}{(n+1)^2}\leq 1
+.\]
+
+The ratio of successive elements being less than one means that the next term is smaller than the previous, so the sequence is decreasing. 
+
+{\noindent\bf Question 4c.} Using sterling's approximation: 
+\[
+p_n=\frac{\sqrt{4\pi n} \left( 2n /e \right)^{2n} }{2\pi n \left( n /e \right)^{2n}2^{2n}}=\frac{1}{\sqrt{\pi n}}\implies\alpha = \frac{1}{\sqrt{\pi} }
+.\]
+
+{\noindent\bf Question 5a.} There are $n$ balls and $m-1$ lines to place so the number of configurations is just the number of ways to arrange this which is ${n+m-1\choose m-1}$. 
+
+{\noindent\bf Question 5b.} Here we are just choosing which of the m urns to put our n balls in which is the definition of the choice function, which is just ${m\choose n}$. 
+
+{\noindent\bf Question 6.} See the code below. 
+
+\begin{lstlisting}[language=Python]
+import random
+import math
+import matplotlib.pyplot as plt
+
+for days in {365, 669}:
+    def birthday(n):
+        return len({random.randint(1, days) for i in range(n)}) != n
+
+    N = list(range(2, 61))
+    X = []
+    for n in N:
+        matches = 0
+        runs = 0
+        for i in range(1000):
+            matches += birthday(n)
+            runs += 1
+        X.append(matches / runs)
+
+    Y = [1 - math.factorial(days) / math.factorial(days - n) / days**n for n in N]
+
+    plt.plot(N, X)
+    plt.plot(N, Y)
+    plt.show()
+\end{lstlisting}
+
+\end{document}
