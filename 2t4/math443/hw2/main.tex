@@ -1,0 +1,41 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{Arabic}
+\title{Math 443 Homework 2}
+\date{31/01/23}
+\author{Xander Naumenko}
+\maketitle
+
+{\medskip\noindent\bf Question 1.} For the forward direction, we will use proof by induction on the number of edges $n$ with the number of vertices $m$ fixed. For the base case, let $G$ be a graph with $m$ vertices and no edges. Then $\sum_{i=1}^{n}d_i=0$ which is even. For the inductive step assume that every graph with $m$ vertices and $n$ edges has an even sum of degree sequences, and let $G$ be a graph with $m$ vertices and $n+1$ edges. Let $\{x,y\}\in E(G), x,y\in V$. Then $|E(G)-\{x,y\}|=n$, so the sum of degree sequence for $G-\{x,y\}$ is even. However the sum of degree sequence of $G$ is just the sum of degree sequence for $G-\{x,y\} $ plus two since $\{x,y\} $ is adjacent to two vertices, so it's also even and we're done. 
+
+For the backwards direction, we will construct a multigraph with the required properties. Let $d_1,\ldots,d_n$ be a sequence of nonnegative integers with $\sum_{i=1}^{n}d_i$ even. Then note that an even number of elements of $\{d_1,\ldots,d_n\}$ are even. To see why this is suppose otherwise, suppose that there were an odd number $k$ of odd elements in the sequence. Then there are $\frac{k-1}{2}$ pairs of odd numbers in the sum that add to even numbers with one left over, and since all other elements are even by assumption, the sum would be odd which is impossible. Therefore there are an even number of odd elements in the sequence. 
+
+Since there are an even number of odd elements, consider pairing each of them together arbitrarily. Now consider creating a multigraph $G$. First create $n$ vertices labelled $1$ to $n$, then add an edge to between each vertex paired together with the above process. Then for each $i\in[n]$, add a number of edges of the form $\{v_i,v_i\} $ equal to either $d_i$ if $d_i$ is even, or $d_i-1$ if $d_i$ is odd. Then each vertex labeled $i$ has degree $d_i$, so $d_1,\ldots,d_n$ is a degree sequence. 
+
+{\medskip\noindent\bf Question 2.} First note that there exists at least one vertex with degree $d_1$. Since some entry in $s_1$ is negative, $\exists i\in [n]$ such that $d_i=0$. Also since only the first $d_i+1$ elements of $s_1$ are changed from $s$ it must be that $i\leq d_1+1$. Since $s_1$ is non-increasing this implies that $\forall j\in \{i, i+1,\ldots, n\}, d_j=0$. But then the number of non-zero entries in $s$ is smaller than $n-(n-i)=i\leq d_1+1$. This means that if $s$ were to be a degree sequence then there are strictly less than $i\leq d_1+1$ non-singleton vertices, which is clearly incompatible with there being a vertex with degree $d_1$ (since there aren't enough other non-singleton vertices to connect to). Therefore $s$ isn't graphical. 
+
+{\medskip\noindent\bf Question 3.} This will be proven in two parts, one for $k$ in the some and one for $d_i$ in the sum. Let $s: d_1,\ldots,d_n$ be a degree sequence of the graph $G$ and $k\in[n]$. First we will prove that 
+
+\[
+    \sum_{i=1}^{k}d_i\leq k(k-1)+\sum_{i=k+1}^{n}k
+.\]
+
+Computing the algebra we get that $\sum_{i=k+1}^{n}+k(k-1)=k(k-1)+\left( n-k \right) k=(n-1)k$. Next note that $d_i\leq n-1\forall i$ since there are only $n-1$ vertices to connect to for each vertex. Thus $\sum_{i=1}^{k}d_i\leq \sum_{i=1}^{k}n-1=k(n-1)=k(k-1)+\sum_{k=k+1}^{n}k$ as required. 
+
+
+
+
+\end{document}
