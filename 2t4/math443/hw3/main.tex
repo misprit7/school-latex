@@ -1,0 +1,133 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 443 Homework 3}
+\date{08/02/23}
+\author{Xander Naumenko}
+\maketitle
+
+{\medskip\noindent\bf Question 1.} Let $x,y$ be arbitrary vertices and $v$ be a maximum degree vertex of $G$. First it will be show that the distance between $x,y$ and $v$ is at most $2$. Since $x,y$ are arbitrary consider $x$, but the same argument holds for $y$. If $x=v$ or $v\in N(x)$ then we are done, so assume neither is true. $x$ has $\deg x\geq \delta(G)$ neighbors and $v$ has $\deg v=\Delta(G)$ neighbors. There are $|G|-2$ vertices other than $x$ and $v$ but $\deg x+\deg v\geq \delta(G)+\Delta(G)\geq |G|-1$ vertices that are neighbors to either $x$ or $v$, so by the pigeonhole principle there must be a vertex that is adjacent to both $x$ and $y$, so there exists a path $P_x$ between $x$ and $v$ with length less than or equal to $2$. As mentioned previously by symmetry this argument also works for $y$ so there exists a path $P_y$ between $y$ and $v$ with length less than or equal to $2$. Thus the walk $xP_xP_y y$ has length at most 4, and there exists a subpath of smaller or equal length, so the distance between $x$ and $y$ is less than or equal to $4$. This holds for all $x,y$ so $diam(G)\leq 4$. $\square$
+
+{\medskip\noindent\bf Question 2.} Let $T$ be a nontrivial tree with $\Delta(T)=k$ and $v$ be a vertex with degree $k$ in $T$. Next consider removing each edge incident to $v$, and let the resulting forest be $F$. Since each edge removed from a tree results in two separate tree and we removed $k$ edges, the result is $k+1$ disjoint trees. Let $T_1, \ldots, T_k$ be the trees created this way other than the trivial tree created out of $v$ since we've removed all of it's vertices. We will show that each $T_i$ contributed at least one leaf to $T$. 
+
+Let $i\in[k]$. If $|T_i|=1$ then let $V(T_i)=\{u\}$, and so $uv$ was the only edge incident to $u$ in $T$, so $u$ was a leaf in $T$. If $|T_i|\geq 2$, then we proved in class that it has at least two leaves. However we only deleted one vertex incident to $T_i$ to separate it from $T$, so only one of these two leaves could have been created by doing deleting the edges incident to $v$. Thus $T_i$ has at least one vertex that is a leaf and was also a leaf in $T$. Since this is true for all $i$ and each $T_i$ is disjoint, there are at least $k$ leaves in $T$. 
+
+{\medskip\noindent\bf Question 3.} Recall in class that we found that all trees $T$ have $| |T| |=|T|-1$. Also note that the number of edges in a forest is less than or equal to that of a tree, since it is possible to convert a forest into a tree strictly by adding edges. For any $G$ with $G, \overline{G}$ both forests then, $| |G| |+| |\overline{G}| |\geq 2|G|-2$. Note also that $\{V(G), E(G)\cup E(\overline{G})\}=K_{|G|}$ and $E(G)\cap E(\overline{G})=\emptyset$ by definition, so $| |G| |+| |\overline{G}| |=| |K_{|G|}| |=\frac{1}{2}|G|(|G|-1)$. Putting these two facts together: 
+\[
+4|G|-4\leq |G|^2-|G|\implies |G|\leq 4
+.\]
+4 is reasonably small, so we can brute force check each graph with degree less that $4$. 
+
+\tikzstyle{vertex}=[shape=circle, minimum size=2mm, fill, draw, inner sep=0]
+
+One vertex:
+
+\begin{center}
+\begin{tikzpicture}
+\draw (0,0)node[vertex]{};
+\end{tikzpicture}
+\end{center}
+
+Two vertices:
+
+\begin{center}
+\begin{tikzpicture}
+\draw (0,0)node[vertex]{};
+\draw (1,0)node[vertex]{};
+\draw (3,0)node[vertex]{};
+\draw (4,0)node[vertex]{};
+\draw (0,0)node[vertex]{};
+\draw (0,0)--(1,0);
+\end{tikzpicture}
+\end{center}
+
+Three vertices:
+
+\begin{center}
+\begin{tikzpicture}
+\draw (3,1)node[vertex]{};
+\draw (4,1)node[vertex]{};
+\draw (4,0)node[vertex]{};
+
+\draw (6,1)node[vertex]{};
+\draw (7,1)node[vertex]{};
+\draw (7,0)node[vertex]{};
+
+\draw (3,1)--(4,1);
+\draw (4,1)--(4,0);
+
+\draw (6,1)--(7,1);
+
+\end{tikzpicture}
+\end{center}
+
+Four vertices:
+
+\begin{center}
+\begin{tikzpicture}
+\draw (0,0)node[vertex]{};
+\draw (0,1)node[vertex]{};
+\draw (1,0)node[vertex]{};
+\draw (1,1)node[vertex]{};
+\draw (0,0)--(0,1);
+\draw (0,0)--(0,1);
+\draw (0,1)--(1,1);
+\draw (1,0)--(1,1);
+\end{tikzpicture}
+\end{center}
+
+{\medskip\noindent\bf Question 4.} Let $n\in \mathbb{N}$. Let $T$ be a tree created by starting with a central vertex $r$ and adding a new vertex connected only to $r$, $n-1$ times. The graph created this way is a tree because it is connected (everything is connected to $r$) and there are no cycles by construction. Let $G$ be any graph with $\delta(G)=n-2$ and $\Delta(G)=n-2$, i.e. a regular graph. Then since $\deg r=n-1$ but each vertex in $G$ has degree $n-2$, clearly $T$ can't be a subgraph of $G$. 
+
+{\medskip\noindent\bf Question 5.} The statement is true. Consider constructing a subgraph of $G$ that is isomorphic to $H$. Choose the first vertex arbitrarily, call the trivial resultant graph $F$. Then repeatedly add a new vertex to $F$ by 
+
+{\medskip\noindent\bf Question 6a.} Consider the following graph:
+
+\begin{center}
+\begin{tikzpicture}
+\draw (1,0)node[vertex]{};
+\draw (1,2)node[vertex]{};
+\draw (2,1)node[vertex]{};
+\draw (3,1)node[vertex]{};
+\draw (1,0)--(1,2) node[midway, left]{1};
+\draw (1,2)--(2,1) node[midway, right]{1};
+\draw (1,0)--(2,1) node[midway, right]{1};
+\draw (2,1)--(3,1) node[midway, above]{5};
+\end{tikzpicture}
+\end{center}
+
+Any graph formed by Kruskal's algorithm will include some permutation of 2 edges of weight 1 but not all three, and will include the edge of weight 5 because the tree must be spanning. 
+
+{\medskip\noindent\bf Question 6b.} Consider the following graph G, and set $H=G$: 
+
+\begin{center}
+\begin{tikzpicture}
+\draw (1,0)node[vertex]{};
+\draw (1,2)node[vertex]{};
+\draw (2,1)node[vertex]{};
+\draw (1,0)--(1,2) node[midway, left]{-1};
+\draw (1,2)--(2,1) node[midway, right]{-1};
+\draw (1,0)--(2,1) node[midway, right]{-1};
+\end{tikzpicture}
+\end{center}
+
+In class we showed that for a tree $T$, $| |T| |=|T|-1$, so any spanning tree $T$ of $G$ must have weight $w(T)\geq w(H)=-3$. 
+
+{\medskip\noindent\bf Question 6c.} No such graph exists. By way of contradiction suppose that such a graph $H$ did exist. Let $T$ be a minimum spanning tree of $G$. If $H$ is a tree, clearly $w(T)\leq w(H)$ by minimality of $T$. Thus $H$ isn't a tree, so it must have an edge that isn't a bridge. Note that removing this edge decreases the weight of $H$, as $w(e)\geq 0\forall e\in E(G)$. Repeat this process until this process results in a tree $T'$. Since each step decreased the total weight we definitely have $w(T')\leq w(H)$. But this contradicts our assumption that $H$ is lighter than all spanning trees, so no such $H$ exists. $\square$
+
+{\medskip\noindent\bf Question 7.} Let $G, T$ be as in the question and assume by way of contradiction that $\exists x\in V(G), e\in E(G)$ s.t. $w(e)<w(f)\forall f\in E(T)$ with $x\in f, x\in e$ but $e \not\in E(T)$. Let $y$ be the other endpoint of $e$. Since $T$ is connected there exists a unique path from $x$ to $y$, call it $P$. Since the path starts at $x$ the second vertex in the path, $z$, must be in $N(x)$ (it is possible that $y=z$). Then consider the graph $T'=T-xz+e$. $w(T')\leq w(T)$ since by assumption $e$ had smaller weight then all other edges incident to $x$. $T'$ is still connected, since any path that used to take $xz$ can now take the walk
+
+
+\end{document}
