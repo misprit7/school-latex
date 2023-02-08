@@ -22,18 +22,21 @@ urlcolor=cyan,
 {\medskip\noindent\bf Question 1a.} Clearly $P(X=x)=0\forall x<4$ since it takes at least 4 games for the game to end. For the remaining games, fix the number of games x and consider the games as repeated Bernoulli trials. There are two possible cases: A won or B won (where the event $A$ is A winning and the event $B$ is B winning). Regardless of which one, the winner must have won the last game (otherwise the game would have ended earlier). The remaining games are distributed in a binomial distribution. Therefore:
 
 \[
-    P(X=x\cap A)={x-1\choose 3}p^{3}(1-p)^{x-3}
+    P(X=x\cap A)={x-1\choose 3}p^{4}(1-p)^{x-4}
 .\]
 \[
-    P(X=x\cap B)={x-1\choose 3}p^{x-3}(1-p)^{3}
+    P(X=x\cap B)={x-1\choose 3}p^{x-4}(1-p)^{4}
 .\]
 
 Since these are independent events their probability can be summed, so
 \[
-P(X=x)={x-1\choose 3}p^{3}(1-p)^{x-3}+{x-1\choose 3}p^{x-3}(1-p)^{3}
+P(X=x)={x-1\choose 3}p^{4}(1-p)^{x-4}+{x-1\choose 3}p^{x-4}(1-p)^{4}
 .\]
 
-{\medskip\noindent\bf Question 1b.} If $X=4$ and A won then clearly A won all four games which occurs with probability $P=p^{4}$. 
+{\medskip\noindent\bf Question 1b.} If $X=4$ then clearly A or B won all four games, A winning occurs with probability 
+\[
+P=\frac{p^{4}}{p^{4}+(1-p)^{4}}
+.\]
 
 % {\medskip\noindent\bf Question c.} This is equivalent to finding the probability that after 6 games the two teams are exactly tied, and then A winning the game after that. To find the probability that it's tied after the first 6 games we can use the binomial distribution: 
 % \[
@@ -99,7 +102,127 @@ P(Y>m)=\int_m^{\infty}P(Y=y)dy\implies \frac{d}{dt}(1-e^{-\lambda t})=P(Y=y)\imp
 P=P(N(0,0.04)<0.5)=0.9938
 .\]
 
-{\medskip\noindent\bf Question 5a.} 
+{\medskip\noindent\bf Question 5a.} The probability mass function of the poisson distribution is $\frac{\lambda e^{-\lambda}}{k!}$. Plugging in $k=2$ and maximizing:
+\[
+    \frac{d}{d\lambda}\left( \frac{\lambda ^2e^{-\lambda}}{2} \right) =\lambda e^{-\lambda}-\frac{1}{2}\lambda^2e^{-\lambda}=0\implies \lambda=2 
+.\]
+
+{\medskip\noindent\bf Question 5b.} $\lambda$ is the mean time between murders, and the average over each week in this case was $1.5$. Thus the $\lambda$ that maximizes the probability of this sequence occurring is $\lambda=1.5$. 
+
+{\medskip\noindent\bf Question 5c.} Again, $\lambda$ is the mean time between murders. This time if we calculate the average time between murders we have to average over the sum of the sequence, so we get: 
+\[
+\lambda = \frac{1}{k}\sum_{i=1}^{k}a_k
+.\]
+
+{\medskip\noindent\bf Question 6a.} 
+
+\begin{lstlisting}[language=Python]
+from math import comb
+
+p = 1/50
+seats = 420
+sold = 430
+
+Prob = 0
+for i in range(seats+1,sold+1):
+    Prob += p**(sold-i)*(1-p)**i*comb(sold,i)
+\end{lstlisting}
+
+\[
+\implies P=0.6405
+.\]
+
+{\medskip\noindent\bf Question 6b.} 
+
+\begin{lstlisting}[language=Python]
+from math import exp,factorial
+
+p = 1/50
+seats = 420
+sold = 430
+
+lam = p*sold
+Prob = 0
+for i in range(sold-seats):
+    Prob += lam**i*exp(-lam)/factorial(i)
+
+print(Prob)
+\end{lstlisting}
+
+\[
+\implies P=0.63995
+.\]
+
+{\medskip\noindent\bf Question 6c.} 
+
+\begin{lstlisting}[language=Python]
+import matplotlib.pyplot as plt 
+import numpy as np
+from random import randint
+from scipy.stats import poisson
+
+p = 1/50
+seats = 420
+sold = 430
+n = 50000
+
+no_shows = []
+
+X = np.arange(1, 30, 1)
+Y = poisson.pmf(X, mu=sold*p)
+
+for _ in range(n):
+    no_shows.append(sum(randint(1,50)==1 for _ in range(sold)))
+
+plt.hist(no_shows, density=True, bins=24)
+plt.plot(X,Y)
+plt.show()
+\end{lstlisting}
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.8\textwidth]{c}
+    \caption{Graph for question c}
+    \label{fig:c}
+\end{figure}
+
+{\medskip\noindent\bf Question 6d.} As can be seen by figure \ref{fig:d}, the series eventually stabalizes to approximately 0.65. This means that the airline in the long run expect around 65\% of flights to be overbooked. 
+
+\begin{lstlisting}[language=Python]
+import matplotlib.pyplot as plt 
+import numpy as np
+from random import randint
+from scipy.stats import poisson
+
+p = 1/50
+seats = 420
+sold = 430
+n = 50000
+
+no_shows = []
+
+for _ in range(n):
+    no_shows.append(sum(randint(1,50)==1 for _ in range(sold)))
+
+N = np.arange(1,n+1,1)
+Xn = []
+tot = 0
+for i in range(len(no_shows)):
+    tot += no_shows[i] < sold-seats
+    Xn.append(tot / (i+1))
+
+print(Xn[-1])
+plt.plot(N,Xn)
+plt.show()
+\end{lstlisting}
+
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.8\textwidth]{d}
+    \caption{Graph for part d}
+    \label{fig:d}
+\end{figure}
 
 % We'll do it last minute, like we always do. It'll be super successful, just like it never is -Nader Kamali
 
