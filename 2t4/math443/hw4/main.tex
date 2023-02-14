@@ -1,0 +1,58 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{MATH 443 Homework 4}
+\date{13/02/23}
+\author{Xander Naumenko}
+\maketitle
+
+{\medskip\noindent\bf Question 1.} Suppose by way of contradiction that the root of a DRT $T$ had in-degree nonzero. Let $r$ be the root of $T$ and $v$ be a vertex such that $vr\in E(G)$. Then $vr$ is a path from $v$ to $r$ in the underlying tree of $T$. Since $T$ is a tree it is the only path between $r$ and $v$, so there doesn't exist a directed path from $r$ to $v$, which is a contradiction of our assumption that $T$ is a DRT. Therefore $r$ has in-degree zero since no vertices can lead into it. 
+
+To see why each other vertex $v\neq r$ must have in-degree 1, first note that they clearly can't have in-degree 0 since there exists a directed path from $r$ to $v$, and the last edge in this path will contribute 1 to the in-degree of that vertex. To see why the number of in vertices can't be more than one, supposed by contradiction that it was, i.e. suppose there exist $u_1,u_2\in V(T)$ s.t. $u_1v\in E(T), u_2v\in E(T)$. Since $u_1,u_2\in V(T)$ there exists ordered paths $P_1,P_2$ such that the first vertex of both is $r$ and the last is $u_1$ and $u_2$ respectively. Let $w$ be the last vertex of $P_1$ that is also in $P_2$. Let $Q_1$, $Q_2$ be the sub paths of $P_1,P_2$ that go from $w$ to $v$. $Q_1\cap Q_2=\emptyset$ since $w$ was chosen to be the last shared vertex. However then $wQ_1vQ_2w$ is a cycle which is impossible in a tree. Therefore the in-degree number can't be 0 and can't be 2 or greater, so it must be $1$. $\square$
+
+{\medskip\noindent\bf Question 2.} Let $T_1,T_2$ be disjoint DRTs and let $e$ be a directed edge with one endpoint in $T_1$ and the other in $T_2$. 
+
+$(\Rightarrow)$ Assume $(T_1\cup T_2)+e$ is a DRT, we will prove that the second vertex of $e$ is the root of $T_1$ or $T_2$, call them $r_1,r_2$. To see why suppose by contradiction that that the second vertex of $e=uv$ is not $r_1,r_2$, and WLOG assume $u\in E(T_1),v\in E(T_2), v\neq r_2$. Let $P_1$ be a directed path from $r_1$ to $u$ and let $P_2$ be a directed path from $r_2$ to $v$. Then $P_1+e$ is a directed path from $r_1$ to $v$ in the new graph. However this implies that in the new graph $v$ has an in-degree of at least 2 (since the second last vertex of $P_1$ is in $T_1$ and the second last vertex of $P_2$ is in $T_2$). However problem 1 in this homework proved that no vertex on a DRT has in-degree 2 or greater, so it must be that $e$ was the root of $T_1$ or $T_2$. 
+
+$(\Leftarrow)$ Assume the endpoint of $e$ is the root of $T_1$ or $T_2$. WLOG assume $e=ur_2$ where $r_2$ is the root of $T_2$, and let $r_1$ be the root of $T_1$. Let $T=(T_1\cup T_2)+e$ and let $x\in V(T)$. If $x\in T_1$ then since $T_1$ is a DRT there exists a directed path from $r_1$ to $x$. If $x\in T_2$ then let $P_1$ be a directed path from $r_1$ to $u$ and $P_2$ be a directed path from $r_2$ to $x$. Then $r_1P_1eP_2x$ is a directed path from $r_1$ to $x$, so $r_1$ fulfills all the root requirements for $T$. Also note that since $T_1,T_2$ were disconnected before adding $e$, $e$ is a bridge. $T_1$, $T_2$ were both trees and we added a bridge to connect them so $T$ is a tree. Finally since $T_1,T_2$ were both DRTs and we added an edge $e=ur_2$ such that $r_2u\notin E(T)$, the second requirement for a DRT is also satisfied. We've shown that $T$ fulfills all the requirements for a DRT, so it is one and we're done. $\square$
+
+%$P_1+e$ and $P_2$ don't share any vertices (other than $v$) since $E(P_1+e)\subset E(T_1)\cup e$ and $E(P_2)\subset E(T_2)$. 
+
+{\medskip\noindent\bf Question 3.} The statement is true. Let $P$ be a longest path of a connected graph $G$, and let $u,v$ be its two endpoints. The statement will be shown for $u$, although since $u,v$ were arbitrary it also holds for $v$. By way of contradiction let $x,y\in G-u$ such that $x,y$ are disconnected in $G-u$. $G$ is connected so there exists a path $Q\subset G$ from $x$ to $y$. Given that $x,y$ became disconnected after removing $u$ it must be that $u\in V(Q)$. $x\neq u,y\neq u$, so there exist paths $Q_1$ between $x$ and $u_1$ and $Q_2$ between $u_2$ and $y$, where $u_1,u_2\in N(u)$. We proved in class that $N(u)\in V(P)$, since otherwise you could extend $P$ by including a vertex of $N(u)$ not already in $P$. Let $P_1\subset P$ be the portion of $P$ between $u_1,u_2$. Note that $u\notin P_1$ since $u$ is an endpoint of $P$, so it's not a midpoint of any subpath. But then $xQ_1u_1P_1u_2Q_2y$ is a path of $G-u$ between $x$ and $y$ which contradicts our assumption that $x,y$ disconnected. Therefore $u$ couldn't have been a cut vertex, and by the symmetry of the argument $v$ couldn't have been either. $\square$
+
+{\medskip\noindent\bf Question 4.} The flaw is that the distance between the endpoints of a longest path of a graph $G$ are not necessarily the farthest from each other. To see why consider $C_4$. Then the longest path includes all 4 vertices, but the distance between two endpoints of such a path is just 1 whereas the actual farthest vertices are distance 2. Therefore it's not valid to assume that the endpoints of a longest path are the vertices that are the farthest from one another. 
+
+{\medskip\noindent\bf Question 5.} The statement is true. Let $C$ be a component of $G$. Clearly $C$ is connected, since otherwise it wouldn't be a component. Let $V$ be a set of vertices of size smaller than $1$. The only possibility is that $|V|=0\implies V=\emptyset$. However $C-V=C-\emptyset=C$ is connected, so $C$ is $1$-connected. $\square$
+
+{\medskip\noindent\bf Question 6.} Let $v$ be the vertex added to $G$ and $V$ be a minimal separating set of $G'$. We will consider two cases: $v\in V$ and $v\not\in V$. 
+
+{\noindent\bf Case 1 ($v\in V$):} Note that $V-v$ must be a separating set for $G$ (since $V-v\subset G$ and $V$ separates $G'$). Therefore $|V-v|\geq k\implies |G|\geq k+1>k$ as required. 
+
+{\noindent\bf Case 2 ($v\not\in  V$):} If $v$ is a trivial component in $G'-V$, $N(v)\subset V$ (in fact $N(v)=V$ by $V$'s minimality but this isn't required) and $|V|\geq |N(v)|\geq k$ which is what we're trying to show. If $v$ isn't its own component, it is part of a component $C\subset G',|C|\geq 2$ and $G'-V$ is disconnected. Then $C-v\neq \emptyset$ so $G-V=G'-V-v$ separates $G$, so $|V|\geq k$. Either way we've shown that $|V|\geq k$, which is the definition of being $k$-connected. $\square$
+
+% o-o-o
+%  \|/
+%   o
+
+{\medskip\noindent\bf Question 7.} Consider the number of edges that must be removed to generate three components. Let $x$ be the number of vertices of the first component $G_1$, and $y$ be the number of vertices of the second component $G_2$. Then the last vertex has $3n-x-y$ vertices, call it $G_3$. The number of edges to disconnect $G_1$ is $x(3n-x)$, since each of the $x$ vertices is attached to $3n-x$ vertices. $G_2$ has $y$ vertices attached to $3n-y$ vertices, but $x$ of the edges attached to the second of those vertices was already removed in the first step. Therefore you must remove $y(3n-x-y)$ vertices to separate the second component. After removing both of these the last will be disconnected, since neither of the $G_1,G_2$ are connected to it by design. Thus the total number of edges required to disconnect is: 
+\[
+f(x,y)=x(3n-x)+y(3n-x-y)=3n(x+y)-(x^2+xy+y^2)
+.\]
+Fix $x$ and consider optimizing $y$. The optimum occurs either on the edges ($y=1,y=3n-2$) or where the derivative is zero. Note however that this is a inverted parabola with its vertex at $y=\frac{-b}{2a}=\frac{3n-x}{2}$ which is its maximum point, so if we were to take the derivative and set it to zero we would find a maximum, not am minimum. Thus $y=1$ or $y=3n-2$. 
+
+If $y=3n-2$, then the only option for $x$ would be $x=1$ and the total number of edges is $f(1,3n-2)=6n-3$. If instead $y=1$, then using the same logic as we used to optimize $y$, $x=3n-2$ or $x=1$. Since the remaining component will be the opposite of whatever choice of $x$ we use (and switching them doesn't change $f$), WLOG assume $x=1$ as well. Then the total number of removed edges is still $f(1,1)=6n-3$. We've covered all possible cases, so the minimum number of edges required is $|X|=6n-3$. 
+
+\end{document}
