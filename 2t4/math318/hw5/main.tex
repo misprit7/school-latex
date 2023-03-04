@@ -27,13 +27,17 @@ urlcolor=cyan,
 
 {\medskip\noindent\bf Question 1a.} The meaning of $1-F_M(x)$ is the probability that the minimum is above a given value $x$. This occurs when each of the $X_i$ are above $x$, which happens with probability each $1-x$. Thus we have 
 \[
-1-F_M(x)=(1-x)^{n}\implies F_M(x)=1-(1-x)^{n}
+1-F_M(x)=(1-x)^{n}\implies F_M(x)=\begin{cases}
+    1&\text{if }x\leq 0\\
+    1-(1-x)^{n} &\text{if } 0\leq x\leq 1\\
+    0&\text{if }x\geq 1
+\end{cases} 
 .\]
 
 {\medskip\noindent\bf Question 1b.} The PDF is just the derivative of the CDF: 
 
 \[
-f_M(x)=\frac{d}{dx}F_M(x)=n(1-x)^{n-1}
+f_M(x)=\frac{d}{dx}F_M(x)=n(1-x)^{n-1}1_{0\leq x\leq 1}
 .\]
 
 {\medskip\noindent\bf Question 1c.} To find the mean we can integrate: 
@@ -42,7 +46,7 @@ f_M(x)=\frac{d}{dx}F_M(x)=n(1-x)^{n-1}
 .\]
 Similarly for the variance, omitting the boundary terms since as in the previous calculation they obviously go to zero: 
 \[
-    \text{Var}(M)=\int_0^{1}nx^2(1-x)^{n-1}dx -\frac{1}{(n+1)^2}=\int_0^{1}2x(1-x)^{n}dx-\frac{1}{(n+1)^2}=\int_0^{1}=\int_0^{1}\frac{2}{n+1}(1-x)^{n+1}dx
+    \text{Var}(M)=\int_0^{1}nx^2(1-x)^{n-1}dx -\frac{1}{(n+1)^2}=\int_0^{1}2x(1-x)^{n}dx-\frac{1}{(n+1)^2}=\int_0^{1}\frac{2}{n+1}(1-x)^{n+1}dx-\frac{1}{(n+1)^2}
 \]
 \[
 =\frac{2}{(n+1)(n+2)}-\frac{1}{(n+1)^2}
@@ -53,7 +57,7 @@ Similarly for the variance, omitting the boundary terms since as in the previous
 F_Y(y)=F_M(\frac{y}{n})=1-(1-\frac{y}{n})^{n}
 .\]
 \[
-    f_Y(y)=\frac{d}{dy}F_Y(y)=(1-\frac{y}{n})^{n-1}
+    f_Y(y)=\frac{d}{dy}F_Y(y)=(1-\frac{y}{n})^{n-1}1_{0\leq y\leq n}
 .\]
 
 {\medskip\noindent\bf Question 1e.} Taking the limit and using a definition of $e$ stated in class:
