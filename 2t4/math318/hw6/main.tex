@@ -19,19 +19,31 @@ urlcolor=cyan,
 \author{Xander Naumenko}
 \maketitle
 
-{\medskip\noindent\bf Question 1a.} Define $Y_i=\frac{X-\mu}{\sigma}$. Then the distribution of $Y_i$ is $Y_i=N(0,1)$. Let $Y=\frac{1}{9}\sum_{i=1}^{9}Y_i$, so $\text{Var}[Y]=\frac{1}{9}\sum_{i=1}^{9}1^2=\frac{1}{9}$, i.e. the standard deviation is $\frac{1}{3}$. We have that: 
+{\medskip\noindent\bf Question 1a.} Since $X$ is the sum of normal variables, we have that $\mu_X=200$ and $(9\sigma_X)^2=9\mu ^2\implies\sigma_X=\frac{1}{3}\sigma$ and $X$ is normal. Let $Y=\frac{X-\mu_X}{\sigma_X}=3 \frac{X-200}{\sigma}=N(0, 1)$. Then we have that: 
+
+% Define $Y_i=\frac{X-\mu}{\sigma}$. Then the distribution of $Y_i$ is $Y_i=N(0,1)$. Let $Y=\frac{1}{9}\sum_{i=1}^{9}Y_i$, so $\text{Var}[Y]=\frac{1}{9}\sum_{i=1}^{9}1^2=\frac{1}{9}$, i.e. the standard deviation is $\frac{1}{3}$. We have that: 
 \[
-P(|X-200| >5|\sigma=5)=2\Phi(-3)=0.0027
+P(|X-200| >5|\sigma=5)=2P(N(0, 1)<-3 \frac{5}{5})=2\Phi(-3)=0.0027
 .\]
 \[
-P(|X-200| >5|\sigma=10)=2\Phi(-1.5)=0.1336
+P(|X-200| >5|\sigma=5)=2P(N(0, 1)<-3 \frac{10}{5})=2\Phi(-1.5)=0.1336
 .\]
 \[
-P(|X-200| >5|\sigma=15)=2\Phi(-\frac{1}{3})=0.3173
+P(|X-200| >5|\sigma=5)=2P(N(0, 1)<-3 \frac{15}{5})=2\Phi(-1)=0.3173
 .\]
 
-{\medskip\noindent\bf Question 1b.} From the probabilities above, case $i$ would be rejected at 5\% level of confidence. 
+{\medskip\noindent\bf Question 1b.} From the probabilities above, case $i$ would be rejected at 5\% level of confidence since it is the only one with $p<0.05$. 
 
-{\medskip\noindent\bf Question 1c.} Again from the probabilities above, only case $i$ would be rejected at 1\% level of confidence. 
+{\medskip\noindent\bf Question 1c.} Again from the probabilities above, only case $i$ would be rejected at 1\% level of confidence since it is the only one with $p<0.01$. 
+
+{\medskip\noindent\bf Question 2a.} This is equivalent to a series of Bernoulli trials, each with mean $\frac{1}{5}$ and variance $pq=\frac{4}{25}\implies\sigma = \frac{2}{5}$. Then the sum $S$ approximates a normal distribution with mean $\frac{n}{5}$ and variance $\frac{4n}{25}$. As such we have that 
+\[
+\frac{S-\mu}{\sqrt{n} \sigma^2}=\frac{S-\frac{n}{5}}{\frac{2}{5}n^{3 /2}}\approx N(0, 1)
+.\]
+
+Using tables we know that $\Phi(-3.09)=0.001$ which is what we want to achieve, so to find the required $n$ we must solve the equation: 
+\[
+3.09=\frac{\frac{n}{3}-\frac{n}{5}}{\frac{2}{5}n^{3 /2}}\implies
+.\]
 
 \end{document}
