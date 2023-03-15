@@ -1,0 +1,54 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 443 Homework 6}
+\date{15/03/23}
+\author{Xander Naumenko}
+\maketitle
+
+{\medskip\noindent\bf Question 1.}  
+
+{\medskip\noindent\bf Question 2.} 
+
+{\medskip\noindent\bf Question 3.} Consider a new graph $G'$ that is a copy of $G$ with an additional vertex $v$ that is adjacent to each of the $v_i$. I claim that $G'$ is $k$-connected. Let $x,y\in V(G')$. If $x$ and $y$ are both in $G$ then a vertex set of size less than $k$ clearly can't separate them due to the $k$-connectivity of $G$, so assume $y=v$. Let $S\subset V(G)$ be a set of vertices on $G'-x-v$ with $|S|<k$. $G$ is $k$-connected so there still exists a path from $x$ to $v_i$ in $G-S$ for all $v_i$ that are in $G-S$. $|S|<k$ so at least on such $v_i$ is still in $G'-S$, so there exists a path from $x$ to $v_i$ and an edge from $v_i$ to $v$, so $v$ and $x$ are connected in $G'-S$. Thus $G'$ is $k$-connected. 
+
+Now apply Menger's Theorem to $u$ and $v$ on $G'$. $G'$ is $k$-connected as justified above, so $\lambda(u,v)\geq k\implies \kappa(u,v)\geq k$ (although by our construction we know equality holds, it's not important). Let $P_1', \ldots, P_k'$ be $k$ disjoint paths from $u$ to $v$ which are guaranteed to exist by our bound of $\kappa$. The only neighbors of $v$ for the $k$ paths to go through are each of the $v_i$ of which there are $k$, so each path must go through exactly one. Letting $P_i=P_i'-v$, these now fill the requirements of the $P_i$ asked for in the question and we're done. $\square$
+
+{\medskip\noindent\bf Question 4.} We will establish bounds on both sides of $\kappa$ and show that they are equal. Let $u\in V(G_r)$. Note that 
+
+{\medskip\noindent\bf Question 5.} Both directions will be proven separately. 
+
+($\Rightarrow$) Assume $G$ is $k$-edge-connected, and let $u,v\in V(G)$. By hypothesis a minimum $uv$ separating edge set is of size at least $k$, so the maximum number of pairwise edge-disjoint $uv$ paths is at least $k$ by Theorem 5.21 which is what we needed to prove. 
+
+($\Leftarrow$) Assume that $G$ contains $k$ pairwise edge-disjoint $uv$-paths for each $u,v\in V(G)$. Let $u,v\in V(G)$. The maximum number of pairwise edge-disjoint $uv$ paths in $G$ is always at least $k$, so the maximum number of such paths is greater than or equal to $k$. Thus by Theorem 5.21, a minimum $uv$ separating edge set is of size at least $k$. Since this is true of each $u,v\in V(G)$, $G$ is $k$-edge-connected. $\square$
+
+{\medskip\noindent\bf Question 6.} As the hint suggests we will use strong induction on $k$. 
+
+{\noindent\bf Base case (k=2):} Let $G$ be $2$-connected and let $e_1,e_2\in E(G)$. $G$ contains no cut vertices so by definition it's a block. From homework 5, question 4, all edges in a block share a cycle. Thus $e_1$ and $e_2$ share a cycle in $G$ as required. 
+
+{\noindent\bf Inductive step:} Let $G$ be a $(k+1)$-connected graph, and assume the theorem holds for all graphs of connectivity $k$ or less. Let $e_1,e_2\in E(G)$ and $v_1,\ldots v_{k-1}\in V(G)$. By the inductive hypothesis there exists a cycle $C$ containing $e_1,e_2$ and $v_i\forall i\in [k_2]$. Let $k'=\min(|C|, k+1)$. Since there are $k-2$ $v_i$s, $k'>=k-2$. Let $V\subset V(C)$ be a set of $k'$ vertices in $C$. By question 3 of this homework, there exist $k'$ disjoint paths from $v_{k-1}$ to $C$ with separate endpoints (if $k'<k+1$ we can just choose arbitrary vertices outside of $C$ and ignore that paths resulting to them). For each of these paths, consider the shortened version, starting from its first intersection of $C$, to $v_{k-1}$, call these paths $P_i,i\in [k']$. Since the paths are disjoint their endpoints in $C$ are also still distinct. 
+
+There are at most $k'-1$ gaps between $e_1,e_2,v_1,\ldots, v_{k-2}$
+
+%Assign $C$ an direction. Let $u_1$ be the endpoint of $e_1$ later in $C$ according to its direction, while let $u_2$ be the endpoint of $e_2$ earlier in $C$. 
+
+{\medskip\noindent\bf Question 7.} $\square$ (pretty concise proof, huh)
+
+%Let $G=\{v_i: i\in [n]\} $ be a $k$-connected, $r$-regular graph such that $\forall i\in V(G),\exists m\in [n]$ s.t. $v_i,v_{i+1},\ldots,v_{i+m}\subset K_{r,2}$. I don't actually have to prove anything about $G$ since there's no question, so we're done. $\square$
+
+{\medskip\noindent\bf Question 8.} Let $c$ be a circuit in a graph $G$ with ordered vertices $v_1,v_2,\ldots,v_n$ (potentially some repeats). Let $v_j$ be the first repeated vertex (i.e. minimal $j$), and let $i$ be the index of the vertex that $v_j$ first occurred in. Then $v_i, v_{i+1}, \ldots, v_j$ is a closed walk with no repeated vertices by the minimally of $j$ which is exactly the definition of a cycle so we're done. $\square$
+
+\end{document}
