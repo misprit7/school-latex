@@ -55,7 +55,7 @@ urlcolor=cyan,
 \end{tikzpicture}
 \end{center}
 
-{\medskip\noindent\bf Question 1c.} The following graph works. Here I have listed a particular $x,y$, but once you choose one member of the separating set the only other option forces the other vertex adjacent to either $u$ or $v$. 
+{\medskip\noindent\bf Question 1c.} The following graph works. Here I have listed a particular $x,y$, but once you choose one member of the separating set to be adjacent to $u$ or $v$ the only other option forces the other vertex adjacent to the same choice of $u,v$. 
 
 \begin{center}
 \begin{tikzpicture}
@@ -76,13 +76,27 @@ urlcolor=cyan,
 \end{tikzpicture}
 \end{center}
 
-{\medskip\noindent\bf Question 2.} 
+{\medskip\noindent\bf Question 2.} By Menger's Theorem it suffices to provide an upper bound on $\kappa(u,v)$ and a lower bound on $\lambda(u,v)$, as long as they're the same then the two graphs must be equal. In figure \ref{fig:2a} I give an example of a degree $5$ $u-v$ separating set and in figure \ref{fig:2b} I give an example of 5 disjoint paths between $u$ and $v$, so by Menger's Theorem $5\geq \kappa(u,v)=\lambda(u,v)\geq 5\implies \lambda(u,v)=5$. $\square$
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.8\textwidth]{2a}
+    \caption{Graph for 2 with a $u-v$ separating set.}
+    \label{fig:2a}
+\end{figure}
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.8\textwidth]{2b}
+    \caption{Graph for 2 with disjoint $u-v$ paths.}
+    \label{fig:2b}
+\end{figure}
 
 {\medskip\noindent\bf Question 3.} Consider a new graph $G'$ that is a copy of $G$ with an additional vertex $v$ that is adjacent to each of the $v_i$. I claim that $G'$ is $k$-connected. Let $x,y\in V(G')$. If $x$ and $y$ are both in $G$ then a vertex set of size less than $k$ clearly can't separate them due to the $k$-connectivity of $G$, so assume $y=v$. Let $S\subset V(G)$ be a set of vertices on $G'-x-v$ with $|S|<k$. $G$ is $k$-connected so there still exists a path from $x$ to $v_i$ in $G-S$ for all $v_i$ that are in $G-S$. $|S|<k$ so at least on such $v_i$ is still in $G'-S$, so there exists a path from $x$ to $v_i$ and an edge from $v_i$ to $v$, so $v$ and $x$ are connected in $G'-S$. Thus $G'$ is $k$-connected. 
 
 Now apply Menger's Theorem to $u$ and $v$ on $G'$. $G'$ is $k$-connected as justified above, so $\kappa(u,v)\geq k\implies \lambda(u,v)\geq k$ (although by our construction we know equality holds, it's not important). Let $P_1', \ldots, P_k'$ be $k$ disjoint paths from $u$ to $v$ which are guaranteed to exist by our bound of $\lambda$. The only neighbors of $v$ for the $k$ paths to go through are each of the $v_i$ of which there are $k$, so each path must go through exactly one. Letting $P_i=P_i'-v$, these now fill the requirements of the $P_i$ asked for in the question and we're done. $\square$
 
-{\medskip\noindent\bf Question 4.} Clearly $\kappa(G_r)\leq \kappa(G)+r$, since you can take a separating set of $G$ and remove all $r$ new vertices to separate $G_r$. To show that this is also an upper bound, let $S$ be a vertex set with $|S|<\kappa(G)+r$. Let $u,v\in G_r$. If any of the $r$ new vertices are in $G_r-S$, then $u$ and $v$ are both connected to that vertex (or are that vertex), so they are connected. Therefore $G-S\subset G$. 
+{\medskip\noindent\bf Question 4.} Clearly $\kappa(G_r)\leq \kappa(G)+r$, since you can take a separating set of $G$ and remove all $r$ new vertices to separate $G_r$. To show that this is also an lower bound, let $S$ be a vertex set with $|S|<\kappa(G)+r$. Let $u,v\in G_r$. If any of the $r$ new vertices are in $G_r-S$, then $u$ and $v$ are both connected to that vertex (or are that vertex), so they are connected. Therefore $G_r-S\subset G$. 
 
 It takes $r$ vertices of $S$ to remove all the $r$ new vertices, so $S$ contains less than $\kappa(G)$ vertices of $G$, so by $\kappa$'s definition $S$ isn't a separating set. Therefore $\kappa(G_r)\geq \kappa(G)+r$, so equality must hold and $\kappa(G_r)=\kappa(G)+r$. $\square$
 
@@ -100,7 +114,7 @@ It takes $r$ vertices of $S$ to remove all the $r$ new vertices, so $S$ contains
 
 By question 3 of this homework (applied to $k+1$ vertices of $C$), there exist $k+1$ disjoint paths from $v_{k-1}$ to $C$ with separate endpoints. For each of these paths, consider the shortened version, starting from its first intersection of $C$, to $v_{k-1}$, call these paths $P_i,i\in [k+1]$. Since the paths are disjoint their endpoints in $C$ are also still distinct. 
 
-Let $S=(v_1,\ldots, e_1, \ldots, e_2,\ldots, v_{k-2})$ be an ordered list of the $v_i$ and $e_1,e_2$ in the order that they occur in $C$ (the indices on the $v_i$s were arbitrary, so we can rename so that they are in order). Since there are $k$ elements of $S$ and $k+1$ paths ending on $C$ on distinct vertices, by the pidgeonhole principle it must be that there are elements of $S$, $s_1$ and $s_2$ that are adjacent such that two paths $P_i$ and $P_j$ have endpoints $u_i$, $u_j$ between them in $C$. The awkwardness of the wording comes from the fact that $s_1$ and $s_2$ could be either edges or vertices, what I mean by between is that the subpath of $C$ between $u_i$ and $u_j$ does not contain $s_1$ or $s_2$ as neither edges nor inner vertices. Thus we can extend $C$ by considering the new cycle $C'=u_iP_iv_{k-1}P_ju_jCu_i$, and by our choice of $u_i,u_j$ this cycle contains both $e_1,e_2$ as well as all the $v$s. $\square$
+Let $S=(v_1,\ldots, e_1, \ldots, e_2,\ldots, v_{k-2})$ be an ordered list of the $v_i$ and $e_1,e_2$ in the order that they occur in $C$ (the indices on the $v_i$s were arbitrary, so we can rename so that they are in order). Since there are $k$ elements of $S$ and $k+1$ paths ending on $C$ on distinct vertices, by the pidgeonhole principle it must be that there are elements of $S$, $s_1$ and $s_2$ that are adjacent such that two paths $P_i$ and $P_j$ have endpoints $u_i$, $u_j$ between them in $C$. The awkwardness of the wording comes from the fact that $s_1$ and $s_2$ could be either edges or vertices, what I mean by between is that the subpath of $C$ between $u_i$ and $u_j$ does not contain $s_1$ or $s_2$ as neither edges nor inner vertices (although if $s_1$ or $s_2$ are a vertex it could be that for example $u_i=s_1$). Thus we can extend $C$ by considering the new cycle $C'=u_iP_iv_{k-1}P_ju_jCu_i$, and by our choice of $u_i,u_j$ this cycle contains both $e_1,e_2$ as well as all the $v$s. $\square$
 
 %Assign $C$ an direction. Let $u_1$ be the endpoint of $e_1$ later in $C$ according to its direction, while let $u_2$ be the endpoint of $e_2$ earlier in $C$. 
 
