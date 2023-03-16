@@ -19,15 +19,72 @@ urlcolor=cyan,
 \author{Xander Naumenko}
 \maketitle
 
-{\medskip\noindent\bf Question 1.}  
+\tikzstyle{vertex}=[shape=circle, minimum size=2mm, fill, draw, inner sep=0]
+
+{\medskip\noindent\bf Question 1a.} See below, $x,y$ are a minimum separating set and clearly $x,y$ are adjacent to both $u$ and $v$. 
+
+\begin{center}
+\begin{tikzpicture}
+\draw (0,1)node[label=u,vertex]{};
+\draw (1,0)node[label=x,vertex]{};
+\draw (1,2)node[label=y,vertex]{};
+\draw (2,1)node[label=v,vertex]{};
+\draw (0,1)--(1,0);
+\draw (0,1)--(1,2);
+\draw (2,1)--(1,2);
+\draw (2,1)--(1,0);
+\end{tikzpicture}
+\end{center}
+
+{\medskip\noindent\bf Question 1b.} $x,y$ is a minimum separating set with the required properties. 
+
+\begin{center}
+\begin{tikzpicture}
+\draw (0,1)node[label=u,vertex]{};
+\draw (1,0)node[label=x,vertex]{};
+\draw (1,2)node[vertex]{};
+\draw (2,0)node[vertex]{};
+\draw (2,2)node[label=y,vertex]{};
+\draw (3,1)node[label=v,vertex]{};
+\draw (0,1)--(1,0);
+\draw (0,1)--(1,2);
+\draw (1,2)--(2,2);
+\draw (1,0)--(2,0);
+\draw (3,1)--(2,2);
+\draw (3,1)--(2,0);
+\end{tikzpicture}
+\end{center}
+
+{\medskip\noindent\bf Question 1c.} The following graph works. Here I have listed a particular $x,y$, but once you choose one member of the separating set the only other option forces the other vertex adjacent to either $u$ or $v$. 
+
+\begin{center}
+\begin{tikzpicture}
+\draw (0,1)node[label=u,vertex]{};
+\draw (1,0)node[label=x,vertex]{};
+\draw (1,2)node[label=y,vertex]{};
+\draw (2,0)node[vertex]{};
+\draw (2,2)node[vertex]{};
+\draw (3,1)node[label=v,vertex]{};
+\draw (0,1)--(1,0);
+\draw (0,1)--(1,2);
+\draw (1,2)--(2,2);
+\draw (1,0)--(2,0);
+\draw (1,2)--(2,0);
+\draw (1,0)--(2,2);
+\draw (3,1)--(2,2);
+\draw (3,1)--(2,0);
+\end{tikzpicture}
+\end{center}
 
 {\medskip\noindent\bf Question 2.} 
 
 {\medskip\noindent\bf Question 3.} Consider a new graph $G'$ that is a copy of $G$ with an additional vertex $v$ that is adjacent to each of the $v_i$. I claim that $G'$ is $k$-connected. Let $x,y\in V(G')$. If $x$ and $y$ are both in $G$ then a vertex set of size less than $k$ clearly can't separate them due to the $k$-connectivity of $G$, so assume $y=v$. Let $S\subset V(G)$ be a set of vertices on $G'-x-v$ with $|S|<k$. $G$ is $k$-connected so there still exists a path from $x$ to $v_i$ in $G-S$ for all $v_i$ that are in $G-S$. $|S|<k$ so at least on such $v_i$ is still in $G'-S$, so there exists a path from $x$ to $v_i$ and an edge from $v_i$ to $v$, so $v$ and $x$ are connected in $G'-S$. Thus $G'$ is $k$-connected. 
 
-Now apply Menger's Theorem to $u$ and $v$ on $G'$. $G'$ is $k$-connected as justified above, so $\lambda(u,v)\geq k\implies \kappa(u,v)\geq k$ (although by our construction we know equality holds, it's not important). Let $P_1', \ldots, P_k'$ be $k$ disjoint paths from $u$ to $v$ which are guaranteed to exist by our bound of $\kappa$. The only neighbors of $v$ for the $k$ paths to go through are each of the $v_i$ of which there are $k$, so each path must go through exactly one. Letting $P_i=P_i'-v$, these now fill the requirements of the $P_i$ asked for in the question and we're done. $\square$
+Now apply Menger's Theorem to $u$ and $v$ on $G'$. $G'$ is $k$-connected as justified above, so $\kappa(u,v)\geq k\implies \lambda(u,v)\geq k$ (although by our construction we know equality holds, it's not important). Let $P_1', \ldots, P_k'$ be $k$ disjoint paths from $u$ to $v$ which are guaranteed to exist by our bound of $\lambda$. The only neighbors of $v$ for the $k$ paths to go through are each of the $v_i$ of which there are $k$, so each path must go through exactly one. Letting $P_i=P_i'-v$, these now fill the requirements of the $P_i$ asked for in the question and we're done. $\square$
 
-{\medskip\noindent\bf Question 4.} We will establish bounds on both sides of $\kappa$ and show that they are equal. Let $u\in V(G_r)$. Note that 
+{\medskip\noindent\bf Question 4.} Clearly $\kappa(G_r)\leq \kappa(G)+r$, since you can take a separating set of $G$ and remove all $r$ new vertices to separate $G_r$. To show that this is also an upper bound, let $S$ be a vertex set with $|S|<\kappa(G)+r$. Let $u,v\in G_r$. If any of the $r$ new vertices are in $G_r-S$, then $u$ and $v$ are both connected to that vertex (or are that vertex), so they are connected. Therefore $G-S\subset G$. 
+
+It takes $r$ vertices of $S$ to remove all the $r$ new vertices, so $S$ contains less than $\kappa(G)$ vertices of $G$, so by $\kappa$'s definition $S$ isn't a separating set. Therefore $\kappa(G_r)\geq \kappa(G)+r$, so equality must hold and $\kappa(G_r)=\kappa(G)+r$. $\square$
 
 {\medskip\noindent\bf Question 5.} Both directions will be proven separately. 
 
@@ -39,9 +96,11 @@ Now apply Menger's Theorem to $u$ and $v$ on $G'$. $G'$ is $k$-connected as just
 
 {\noindent\bf Base case (k=2):} Let $G$ be $2$-connected and let $e_1,e_2\in E(G)$. $G$ contains no cut vertices so by definition it's a block. From homework 5, question 4, all edges in a block share a cycle. Thus $e_1$ and $e_2$ share a cycle in $G$ as required. 
 
-{\noindent\bf Inductive step:} Let $G$ be a $(k+1)$-connected graph, and assume the theorem holds for all graphs of connectivity $k$ or less. Let $e_1,e_2\in E(G)$ and $v_1,\ldots v_{k-1}\in V(G)$. By the inductive hypothesis there exists a cycle $C$ containing $e_1,e_2$ and $v_i\forall i\in [k_2]$. Let $k'=\min(|C|, k+1)$. Since there are $k-2$ $v_i$s, $k'>=k-2$. Let $V\subset V(C)$ be a set of $k'$ vertices in $C$. By question 3 of this homework, there exist $k'$ disjoint paths from $v_{k-1}$ to $C$ with separate endpoints (if $k'<k+1$ we can just choose arbitrary vertices outside of $C$ and ignore that paths resulting to them). For each of these paths, consider the shortened version, starting from its first intersection of $C$, to $v_{k-1}$, call these paths $P_i,i\in [k']$. Since the paths are disjoint their endpoints in $C$ are also still distinct. 
+{\noindent\bf Inductive step:} Let $G$ be a $(k+1)$-connected graph, and assume the theorem holds for all graphs of connectivity $k$ or less. Let $e_1,e_2\in E(G)$ and $v_1,\ldots v_{k-1}\in V(G)$. By the inductive hypothesis there exists a cycle $C$ containing $e_1,e_2$ and $v_i\forall i\in [k-2]$. For the simplicity of the proof, extend $C$ with arbitrary other vertices until is has length at least $k+1$. This is possible since $G$ is $k+1$ connected, so we can take two adjacent vertices $x,y, xy\notin \{e_1,e_2\} $ on $C$, and replace the edge between them in $C$ with a path between them on $G-(C-x-y)-xy$. 
 
-There are at most $k'-1$ gaps between $e_1,e_2,v_1,\ldots, v_{k-2}$
+By question 3 of this homework (applied to $k+1$ vertices of $C$), there exist $k+1$ disjoint paths from $v_{k-1}$ to $C$ with separate endpoints. For each of these paths, consider the shortened version, starting from its first intersection of $C$, to $v_{k-1}$, call these paths $P_i,i\in [k+1]$. Since the paths are disjoint their endpoints in $C$ are also still distinct. 
+
+Let $S=(v_1,\ldots, e_1, \ldots, e_2,\ldots, v_{k-2})$ be an ordered list of the $v_i$ and $e_1,e_2$ in the order that they occur in $C$ (the indices on the $v_i$s were arbitrary, so we can rename so that they are in order). Since there are $k$ elements of $S$ and $k+1$ paths ending on $C$ on distinct vertices, by the pidgeonhole principle it must be that there are elements of $S$, $s_1$ and $s_2$ that are adjacent such that two paths $P_i$ and $P_j$ have endpoints $u_i$, $u_j$ between them in $C$. The awkwardness of the wording comes from the fact that $s_1$ and $s_2$ could be either edges or vertices, what I mean by between is that the subpath of $C$ between $u_i$ and $u_j$ does not contain $s_1$ or $s_2$ as neither edges nor inner vertices. Thus we can extend $C$ by considering the new cycle $C'=u_iP_iv_{k-1}P_ju_jCu_i$, and by our choice of $u_i,u_j$ this cycle contains both $e_1,e_2$ as well as all the $v$s. $\square$
 
 %Assign $C$ an direction. Let $u_1$ be the endpoint of $e_1$ later in $C$ according to its direction, while let $u_2$ be the endpoint of $e_2$ earlier in $C$. 
 
