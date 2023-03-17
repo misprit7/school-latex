@@ -1,0 +1,72 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 318 Homework 7}
+\date{16/03/23}
+\author{Xander Naumenko}
+\maketitle
+
+{\medskip\noindent\bf Question 1a.} The definition of a characteristic function is $\phi_{X}(t)=E[e^{itX}]$. Expanding this, we get: 
+\[
+\phi_{X}(t)=E[e^{itX}]=\int_{-\infty}^{\infty}f_X(x) e^{itx}dx=\sum_{x=-\infty}^{\infty}p_X(x) e^{itx}=\sum_{x=-\infty}^{\infty}p_X(x) \left( \cos(tx)+i\sin(tx) \right) 
+.\]
+The only $t$ dependence is in the $\sin(tx)$ and $\cos(tx)$ terms which are both $2\pi$ periodic (since $x$ is an integer), so the characteristic function of discrete variables is $2\pi$-periodic. 
+
+{\medskip\noindent\bf Question 1b.} Let $Y=$
+
+% \[
+%     E[Y]=\frac{1}{i}\phi_Y'(0)=\int_{-\infty}^{\infty}yf_Y(y)dy=\frac{1}{i}\phi_Y'(2\pi)=\int_{-\infty}^{\infty}yf_Y(y)e^{2\pi iy}dy
+% .\]
+\[
+\phi_X(0)=\int_{-\infty}^{\infty}f_X(x)dx=\phi_X(2\pi)=\int_{-\infty}^{\infty}f_X(x)e^{2\pi ix}dx
+.\]
+
+{\medskip\noindent\bf Question 2.} Expressing as an integral: 
+\[
+    E[X^3]=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}(u+v)^3f_U(u)f_V(v)dudv=\iint (u^3+3u^2v+3uv^2+v^3)f_U(u)f_V(v)dudv
+\]
+\[
+    =E[U^3]+E[V^3]+3E[U^2]E[V]+3E[U]E[V^2]=E[U^3]+E[V^3]
+.\]
+Similarly for $E[X^{4}]$: 
+\[
+    E[X^4]=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}(u+v)^4f_U(u)f_V(v)dudv=\iint (u^4+4u^3v+6u^2v^2+4uv^3+v^3)f_U(u)f_V(v)dudv
+.\]
+\[
+    =E[U^4]+E[V^4]+6E[U^2]E[V^2]+4E[U^3]E[V]+4E[U]E[V^3]=E[U^4]+E[V^4]+6E[U^2]E[V^2]
+.\]
+
+{\medskip\noindent\bf Question 3a.} Let the entries of $A$ be denoted by $A_{ik}$, where $i$ is the row and $k$ is the column. Then by the definition of matrix multiplication,
+\[
+    Y_i=\sum_{k=1}^{n}A_{ik}X_k
+.\]
+The distribution of a sum of normal variables is also a normal variable with the sum of mean and variance added, so $Y_i=N(0,n)$. 
+
+{\medskip\noindent\bf Question 3b.} Computing covariance
+\[
+    \text{Cov}(Y_i,Y_j)=E[Y_iY_j]-E[Y_i]E[Y_j]=E\left[\left(\sum_{k=1}^{n}A_{ik}X_k\right)\left( \sum_{k=1}^{n}A_{jk}X_k \right) \right]
+\]
+\[
+    =E\left[\sum_{k=1}^{n}\sum_{l=1}^{n}A_{ik}A_{jl}X_kX_l\right]=\sum_{k=1}^{n}\sum_{l=1}^{n}A_{ik}A_{jl}E[X_kX_l]=\sum_{k=1}^{n}A_{ik}A_{jk}E[X_k^2]
+\]
+\[
+=A_i\cdot A_j
+\]
+where $A_i$ and $A_j$ are the $i$th and $j$th row vector of $A$ respectively.
+
+{\medskip\noindent\bf Question 3c.} 
+
+\end{document}
