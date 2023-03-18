@@ -36,8 +36,9 @@ The only $t$ dependence is in the $\sin(tx)$ and $\cos(tx)$ terms which are both
 
 {\medskip\noindent\bf Question 1b.} Consider $\phi(2\pi)$. By definition and the periodicity of $X$, this is
 \[
-    \phi(2\pi)=E[e^{2\pi iX}]=\phi(0)
+    \phi(2\pi)=E[e^{2\pi iX}]=\phi(0)=\int_{-\infty}^{\infty}f_X(x)dx=1
 .\]
+However the only way that $e^{2\pi iX}=1$ ever occurs is if $X$ is an integer. If there is a nonzero probability $X$ is ever a non-integer, the real part of the expected value would be $\text{Re}[e^{2\pi iX}]=\cos 2\pi X<1(\text{for } X \not\in \mathbb{Z})$, which would cause the expected value to be less than 1. Thus is must be that $X\in\mathbb{Z}$ with probability 1. 
 
 {\medskip\noindent\bf Question 2.} Expressing as an integral: 
 \[
@@ -72,7 +73,15 @@ The distribution of a sum of normal variables is also a normal variable with the
 \]
 where $A_i$ and $A_j$ are the $i$th and $j$th row vector of $A$ respectively.
 
-{\medskip\noindent\bf Question 3c.} 
+{\medskip\noindent\bf Question 3c.} We will prove the general case of the bonus problem, and $n=2$ is just a special case. Since $Y=AX$ is linear, the Jacobian is just $J=A$. Since each of the $X_i$s are independent, their joint probability distribution function is (using explicit vector notation on lower case $\vec x$/$\vec y$ for clarity)
+\[
+    f_X(\vec x)=\prod_{i=1}^{n}f_{X_i}(x_i)=\prod_{i=1}^{n}\frac{1}{\sqrt{2\pi} }e^{x_i^2 /2}=\frac{1}{(2\pi)^{n/2}}e^{(\vec x\cdot\vec x)/2}=\frac{1}{(2\pi)^{n/2}}e^{(\vec x^{T}\vec x)/2}
+.\]
+Thus using the Jacobian we have
+\[
+f_Y(\vec y)=\frac{1}{|J|}f_X\left( A^{-1}\vec y \right)=\frac{1}{(2\pi)^{n /2}|\det A|}e^{-\left( \vec y^{T}A^{T-1}A^{-1}\vec y \right) /2}
+.\]
+This is what was desired, so we're done. As mentioned, for the non-bonus problem, simply apply this to $n=2$. 
 
 {\medskip\noindent\bf Question 4.} For the following sections this code was used to generate the figures:
 
@@ -122,6 +131,8 @@ for j, p in enumerate(ps):
 
     axc[j].loglog(np.arange(n), F)
     axc[j].set_title(f'p={p}')
+    print(sum(T)/len(T))
+    print(sum(T), len(T))
 
 plt.show()
 \end{lstlisting}
@@ -135,7 +146,7 @@ plt.show()
     \label{fig:4a}
 \end{figure}
 
-{\medskip\noindent\bf Question 4b.} See figure \ref{fig:4b}. 
+{\medskip\noindent\bf Question 4b.} See figure \ref{fig:4b}. Of the walks, 1 didn't return for $p=0.5$, 17 didn't return for $p=0.51$ and 5 didn't return for $p=0.502$
 
 \begin{figure}[htpb]
     \centering
@@ -153,7 +164,7 @@ plt.show()
     \label{fig:4c}
 \end{figure}
 
-{\medskip\noindent\bf Question 4d.} From the plots it seems that $P(T>n)=0$ as $n\to \infty$. 
+{\medskip\noindent\bf Question 4d.} From the plots it seems that $P(T>n)=0$ as $n\to \infty$. It seems from the plots that they settle down to 0. Calculating the means from the data they were 2340, 26066 and 3163 respectively. The unbiased random walk is recurrent, so if there was no termination it would be larger than we see but still finite. Biased walks were proved in class to have infinite mean, so I would expect their mean to grow to infinity with no limit. 
 
 {\medskip\noindent\bf Question 5.} The following code was used for this question: 
 \begin{lstlisting}
@@ -204,8 +215,15 @@ plt.show()
     \label{fig:5a}
 \end{figure}
 
-{\medskip\noindent\bf Question 5b.} The number of walks that failed to return to 0 is . This is consistent with the fact that random walks are recurrent, as we are terminating the walks at a finite threshold, in an infinite walk the probability of reaching 0 again is 1. 
+{\medskip\noindent\bf Question 5b.} The number of walks that failed to return to 0 is 305, which is obviously quite high. This is consistent with the fact that random walks are recurrent though, as we are terminating the walks at a finite threshold, in an infinite random walk it is guaranteed to be recurrent.
 
 {\medskip\noindent\bf Question 5c.} See figure \ref{fig:5b}.
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.8\textwidth]{5b}
+    \caption{Histogram for question 5b.}
+    \label{fig:5b}
+\end{figure}
 
 \end{document}
