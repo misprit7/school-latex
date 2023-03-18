@@ -1,0 +1,18 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import random
+
+n = 1000000
+sims = 1000
+
+# S = np.empty((n, 2))
+# directions = [np.array(d) for d in [(1, 0), (0, 1), (-1, 0), (0, -1)]]
+
+# for i in range(n-1):
+#     S[i+1] = S[i] + random.sample(directions, 1)
+
+# plt.scatter(S.T[0], S.T[1], c=np.arange(0, n), cmap="rainbow", s=0.2)
+
+# plt.show()
+
+

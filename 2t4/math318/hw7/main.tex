@@ -25,13 +25,18 @@ urlcolor=cyan,
 .\]
 The only $t$ dependence is in the $\sin(tx)$ and $\cos(tx)$ terms which are both $2\pi$ periodic (since $x$ is an integer), so the characteristic function of discrete variables is $2\pi$-periodic. 
 
-{\medskip\noindent\bf Question 1b.} Let $Y=$
+% {\medskip\noindent\bf Question 1b.} Let $Y=$
 
 % \[
 %     E[Y]=\frac{1}{i}\phi_Y'(0)=\int_{-\infty}^{\infty}yf_Y(y)dy=\frac{1}{i}\phi_Y'(2\pi)=\int_{-\infty}^{\infty}yf_Y(y)e^{2\pi iy}dy
 % .\]
+% \[
+% \phi_X(0)=\int_{-\infty}^{\infty}f_X(x)dx=\phi_X(2\pi)=\int_{-\infty}^{\infty}f_X(x)e^{2\pi ix}dx
+% .\]
+
+{\medskip\noindent\bf Question 1b.} Consider $\phi(2\pi)$. By definition and the periodicity of $X$, this is
 \[
-\phi_X(0)=\int_{-\infty}^{\infty}f_X(x)dx=\phi_X(2\pi)=\int_{-\infty}^{\infty}f_X(x)e^{2\pi ix}dx
+    \phi(2\pi)=E[e^{2\pi iX}]=\phi(0)
 .\]
 
 {\medskip\noindent\bf Question 2.} Expressing as an integral: 
@@ -68,5 +73,139 @@ The distribution of a sum of normal variables is also a normal variable with the
 where $A_i$ and $A_j$ are the $i$th and $j$th row vector of $A$ respectively.
 
 {\medskip\noindent\bf Question 3c.} 
+
+{\medskip\noindent\bf Question 4.} For the following sections this code was used to generate the figures:
+
+\begin{lstlisting}
+import numpy as np
+import random
+import matplotlib.pyplot as plt
+from tqdm import tqdm
+
+n = 1000000
+sims = 1000
+ps = (0.5, 0.51, 0.502)
+
+figa, axa = plt.subplots(3)
+for j, p in enumerate(ps):
+    X = [0]
+    for i in range(n-1):
+        X.append(X[i] + (-1 if random.random() > p else 1))
+        
+    axa[j].plot(list(range(n)), X)
+    axa[j].set_title(f'p={p}')
+
+plt.show()
+
+figb, axb = plt.subplots(3)
+figc, axc = plt.subplots(3)
+for j, p in enumerate(ps):
+    T = np.array([n]*sims)
+    for sim in tqdm(range(sims)):
+        X = 0
+        for t in range(n):
+            X += -1 if random.random() > p else 1
+            if X == 0:
+                T[sim] = t
+                break
+
+    axb[j].hist(T, bins=np.arange(0, n + 10000, 10000))
+    axb[j].set_title(f'p={p}')
+
+    T.sort()
+    F = []
+    s = 0
+    for t in range(n):
+        while s < len(T) and T[s] <= t:
+            s += 1
+        F.append((sims-s)/sims)
+
+    axc[j].loglog(np.arange(n), F)
+    axc[j].set_title(f'p={p}')
+
+plt.show()
+\end{lstlisting}
+
+{\medskip\noindent\bf Question 4a.} See figure \ref{fig:4a}. 
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.8\textwidth]{4a}
+    \caption{Graph for question 4a.}
+    \label{fig:4a}
+\end{figure}
+
+{\medskip\noindent\bf Question 4b.} See figure \ref{fig:4b}. 
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.8\textwidth]{4b}
+    \caption{Histogram for question 4b.}
+    \label{fig:4b}
+\end{figure}
+
+{\medskip\noindent\bf Question 4c.} See figure \ref{fig:4c}.
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.8\textwidth]{4c}
+    \caption{Graphs for question 4c.}
+    \label{fig:4c}
+\end{figure}
+
+{\medskip\noindent\bf Question 4d.} From the plots it seems that $P(T>n)=0$ as $n\to \infty$. 
+
+{\medskip\noindent\bf Question 5.} The following code was used for this question: 
+\begin{lstlisting}
+import numpy as np
+import matplotlib.pyplot as plt
+import random
+from tqdm import tqdm
+
+n = 1000000
+sims = 1000
+directions = [np.array(d) for d in [(1, 0), (0, 1), (-1, 0), (0, -1)]]
+
+S = np.empty((n, 2))
+
+for i in range(n-1):
+    S[i+1] = S[i] + random.sample(directions, 1)
+
+plt.scatter(S.T[0], S.T[1], c=np.arange(0, n), cmap="rainbow", s=0.2)
+
+plt.show()
+
+
+n_steps = []
+for sim in tqdm(range(sims)):
+    S = np.empty((n, 2))
+
+    n_steps.append(n)
+    for i in range(n-1):
+        S[i+1] = S[i] + random.sample(directions, 1)
+        if S[i+1][0] == 0 and S[i+1][1] == 0:
+            n_steps[-1] = i+1
+            break
+
+plt.hist(n_steps)
+
+print(n_steps)
+print(len([x for x in n_steps if x == n]))
+
+plt.show()
+\end{lstlisting}
+
+{\medskip\noindent\bf Question 5a.} See figure \ref{fig:5a}
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.8\textwidth]{5a}
+    \caption{Scatter plot for 5a.}
+    \label{fig:5a}
+\end{figure}
+
+{\medskip\noindent\bf Question 5b.} The number of walks that failed to return to 0 is . This is consistent with the fact that random walks are recurrent, as we are terminating the walks at a finite threshold, in an infinite walk the probability of reaching 0 again is 1. 
+
+{\medskip\noindent\bf Question 5c.} See figure \ref{fig:5b}.
 
 \end{document}
