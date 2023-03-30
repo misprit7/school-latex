@@ -1,0 +1,37 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 443 Project: Listening}
+\date{28/03/23}
+\author{Xander Naumenko}
+\maketitle
+
+\section{Summary}
+
+For the listening part of this week's assignment, I listened to Siddharth Kunche's presentation. This was my summary of his paper:
+
+\medskip
+
+The paper presented was about providing a new lower bound on the dissociation number of arbitrary graphs, which describes the maximum number of vertices that induces a graph with degree at most 1. They prove that the dissociation number of a graph $G$ is greater than than $|G|-\frac{1}{3}(|G|+||G||+c)$, where $c$ is the number of cycles length $1\mod 3$ (I may have misremembered the specifics of this bound in terms of algebra).
+
+They go about proving this new lower bound by considering a minimal counterexample $G$ and they consider a longest path $P$. Using various other papers they establish several properties of such a minimal counterexample, including the relative location of a cut vertex $v$ along $P$ to a block on the edge of $G$. They also show $v$ is also cycle disjoint, so at most 1 of the blocks connected to $v$ has a cycle. Using various inequalities it is possible to show that no matter what the relative arrangment of this cycle to $v$, the inequality to prove holds or it is possible to derive a smaller counterexample, a contradiction, so the inequality holds. 
+
+\section{My Presentation}
+
+One aspect of the presentation that I would improve for my own is better use of visuals, as I was left rather confused at some points given the lack of diagrams. Especially in the high level overview of where a proof is going, a quick picture giving intuition I think would have been very valuable for my understanding. I did however like the overall structure of his presentation, he made the overall results of the paper quite clear from the beginning which I think is important to keep in the audience's mind.
+
+
+\end{document}

@@ -1,0 +1,26 @@
+Lower bound on dissacossiation number, like independence number 
+
+c induced cycles 1 mod 3
+
+lower bound is n-1/3(n+k+c)
+
+Proof by contradiction, minimal counterexample
+
+Can't have more than one component
+
+Using other bounds, can't be tree or cycle, longest path proof
+
+Break down into blocks and vertices, can assume path has block then cut vertex then block, one block is on edge of graph
+
+Assume graph is cycle disjoint, so either 0 or one blocks that are cycle in blocks attached to v
+
+Bunch of inequality stuff
+
+No matter where cycle is you can derive inequality
+
+Generate new graph by removing v, can bound lower bounds on new graph to derive smaller counterexample
+
+The paper presented was about providing a new lower bound on the dissociation number of arbitrary graphs, which describes the maximum number of vertices that induces a graph with degree at most 1. They prove that the dissociation number of a graph $G$ is less than $|G|-\frac{1}{3}(|G|+||G||+c)$, where $c$ is the number of cycles length $1\mod 3$ (I may have misremembered the specifics of this bound in terms of algebra).
+
+They go about proving this new lower bound by considering a minimal counterexample $G$ and they consider a longest path $P$. Using various other papers they establish several properties of such a minimal counterexample, including the relative location of a cut vertex $v$ along $P$ to a block on the edge of $G$. They also show $v$ is also cycle disjoint, so at most 1 of the blocks connected to $v$ has a cycle. Using various inequalities it is possible to show that no matter what the relative arrangment of this cycle to $v$, the inequality to prove holds or it is possible to derive a smaller counterexample, a contradiction, so the inequality holds. 
+
