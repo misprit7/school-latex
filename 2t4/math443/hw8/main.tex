@@ -1,0 +1,30 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 443 Homework 8}
+\date{29/03/23}
+\author{Xander Naumenko}
+\maketitle
+
+{\medskip\noindent\bf Question 1.} Consider each component of $G$ as its own separate graph $G_i,i\in [k]$, on each of these Euler's identity holds. Since the number of edges and vertices on each of these components is independent, it's only the regions that is shared. The only region shared between each component is the outer region, and this is counted $k$ times. Thus summing each of the individual components' versions of Euler's identity we get: 
+\[
+\sum_{i=1}^{k} |G_i|-| |G_i| |+f=2k
+\]
+\[
+\implies v-e+f+(k-1)=2k\implies v-e+f=k+1
+.\]
+
+\end{document}
