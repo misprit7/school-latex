@@ -21,18 +21,38 @@ urlcolor=cyan,
 
 {\medskip\noindent\bf Question 1.}  
 
-{\medskip\noindent\bf Question 2.}  
+{\medskip\noindent\bf Question 2.} Let $G$ be a graph with the required properties, and let $G'$ be a triangulation of $G$. Applying the theorem we proved in class, there exist vertices $x,y\in V(G')$ s.t. $d(x)=5$ and $d(y)\in \{5,6\} $. $V(G)=V(G')$ and $G'$ was created by adding edges to $G$, so $d_G(x)\leq d_{G'}(x)$ and likewise for $y$. However since $\delta(G)=5$ we have $5\leq d_{G}(x)\leq d_{G'}(x)=5 \implies d_{G}(x)=5$ and $5\leq d_G(y)\leq d_{G'}(y)\leq 6 \implies d_{G}(y)\in \{5,6\} $ as required. $\square$
 
-{\medskip\noindent\bf Question 3.}  
+{\medskip\noindent\bf Question 3.} 
 
-{\medskip\noindent\bf Question 4.}  
+{\medskip\noindent\bf Question 4.} Assign each vertex charge $6-d(v)$, as proved in class the total charge for a triangulation initially charged this way is $12>0$. Have each vertex with degree 4 donate $\frac{1}{2}$ charge to each neighbor and have each degree 5 vertex donate $\frac{1}{5}$ to each neighbor. Since the initial charge was positive and we're just distributing charge the final charge is positive, so let $v$ be a vertex with positive charge. 
+
+It is impossible that $d(v)=5$, since degree 5 vertices donate all their charge away and all their neighbors are degree 8 or greater which don't return charge. If $d(v)=4$ or $d(v)=6$, then it must have received charge from a neighbor $u\in V(G)$ (since it donated all of it's original charge away or started with none). It couldn't have received charge from an adjacent degree 5 neighbor because then a degree 4/6 and degree 5 vertex would be adjacent, so $d(u)=4$ and $uv$ is a path with the required properties.
+
+From the requirements on $G$, $d(v)\neq 7$, so the only remaining case is $d(v)\geq 8$. In this case the starting charge is $-(d(G)-6)$, and each neighbor donates at most $\frac{1}{2}$ charge. If donor neighbors of $G$ are adjacent then we've found our required edge (since degree 5 vertices can't be next to degree 4 vertices, so it would be an edge between two degree 4 vertices), so assume that none are. Because $G$ is a triangulation this means that at most half of $N(v)$ are donor neighbors, so $d(v)-6 < \frac{1}{2}\frac{d(v)}{2}\implies d(v)<8$. We're currently looking at the $d(v)\geq 8$ case though, so this isn't possible so it must have been that some donor neighbors were adjacent which gives us an appropriate edge as required. We've covered all possible cases for the possible values of $v$, so we're done. $\square$
 
 {\medskip\noindent\bf Question 5.}  
 
-{\medskip\noindent\bf Question 6.}  
+{\medskip\noindent\bf Question 6.} Note that it suffices to only consider triangulations. If the theorem is true for triangulations, we can convert any graph into a triangulation, apply the theorem and since we've only added edges then it is also true for the original graph, so from now on assume $G$ is a triangulation. Also, note that if $|G|=3$ then the theorem is trivially satisfied, and otherwise $\delta(G)\geq 3$ since $G$ is a triangulation. Assign each vertex charge $6-d(v)$ and discharge each positively charged vertex's charge evenly to each of its neighbors. As proven in class the original total charge was 12 since $G$ is a triangulation and we're just moving charge, so there must be a vertex $v\in G$ with positive charge. We will consider possible cases for $d(v)$ separately: 
+
+\medskip
+
+{\noindent\bf Case $d(v)\leq 8$:} $v$ must have received charge from a neighbor, since each vertex starts with charge $0$. The only vertices that donate charge have degree less than or equal to $5$, so the edge between $v$ and one such donor neighbor $u$ has total degree $d(u)+d(v)\leq 5+8=13$.
+
+{\noindent\bf Case $d(v)=9$:} $v$ must have a donor neighbor, if any such neighbors have degree less than $5$ we're done, so assume that $v$ receives charge only from degree 5 vertices. If any of $v$'s neighbors are adjacent to one another then the edge between them fulfills the requirement and we're done, so assume that none are. Because $G$ is a triangulation this occurs only when at most $4$ neighbors of $v$ are degree 5, so $v$ receives at most $4*\frac{1}{5}=\frac{4}{5}$ from it's neighbors which isn't enough to offset its initial $-3$ charge, contradicting our assumption of $v$'s positive charge. Thus it must have been that some of $v$'s donor neighbors were adjacent and we've found an edge as required. 
+
+{\noindent\bf Case $d(v)=10$:} This is almost the same as the previous case, just with potential donor neighbors of degree 4 or 5 and at most 5 such donor neighbors. Each donor neighbors gives at most $\frac{1}{2}$ for a total of $5*\frac{1}{2}=2.5$, again not enough to offset the initial charge of $-4$ so some donor neighbors must have been adjacent and we're done.
+
+{\noindent\bf Case $d(v)\geq 11$:} If any donor neighbors of $v$ are adjacent to one another we're done as described previously, so assume none are. Then there are at most $\left\lfloor \frac{d(v)}{2} \right\rfloor$ donor neighbors, each contributing at most 1 (for degree 3 vertices). However this requires that $d(v)-6< \left\lfloor \frac{d(v)}{2} <\right\rfloor\implies d(v)<11$, which is exactly the opposite of the assumed $d(v)\geq 11$ case. Thus two donor neighbors of $v$ must have been adjacent and we're done. 
+
+\medskip
+
+Since the theorem holds for all cases of $d(v)$ the statement is true. $\square$
 
 {\medskip\noindent\bf Question 7.}  
 
-{\medskip\noindent\bf Question 8.}  
+{\medskip\noindent\bf Question 8.} As shown in question 7, the total charge in a balanced charging is $8>0$. Have each vertex with positive charge donate all of its charge evenly to each face it touches. Since the total charge is positive and no vertex ends up with a positive charge, there must be a face $f$ after this process with positive charge. Let $l=l(f)$. Consider each edge in the cycle of $f$ and how much charge each of its endpoints contributes to $f$. If any of these edges fulfill the requirements that we're looking for then we're finished immediately, so assume none do. Thus the endpoints of each contribute at most $1$ charge to $f$ (in the case that there is one degree 2 vertex and the other vertex is degree 4 or greater). We can then sum over all the edges of $f$, of which there are $f$, although by doing this we double count each vertex so the total influx of charge to $f$ is at most $\sum_{e\in E(f)}\frac{1}{2}=\frac{l}{2}$. 
+
+However note that in the case that $l$ is odd we can do even better than this, since this upper bound is achieved when vertices alternate degree 2 and higher than 3, which isn't possible if $l$ is odd, so in this case at least on edge $e$ must contribute less than 1 charge. If $e$ contributes nothing then the bound is reduced to $\left\lfloor \frac{l}{2} \right\rfloor$. If $e$ has any degree 3 vertex as an endpoints then there must be two edges in the bounding cycle of $f$ who's endpoints contribute only a total of $\frac{1}{3}$ (or all vertices are degree 3 but this produces the much worse bound of $\frac{l}{3}$), which would mean the influx of charge is at most $\left\lfloor \frac{l}{2} \right\rfloor-1+\frac{2}{3}\leq \left\lfloor \frac{l}{2} \right\rfloor$. The original charge of $f$ was $4-g(G)\leq -3$, so the new charge is $4-l+\left\lfloor \frac{l}{2} \right\rfloor >0\implies l<7$. However $l\geq g(G)\geq 7$, so this can't be the case and there must have been neighboring vertices with degree $2$ and $2$ or $3$ respectively. $\square$
 
 \end{document}
