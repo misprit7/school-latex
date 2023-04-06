@@ -20,10 +20,15 @@ urlcolor=cyan,
 \maketitle
 
 {\medskip\noindent\bf Question 1.}  
+Suppose that $G$ is a graph with the degree sequence $2,\ldots,2,4,4,4,4$. Now, if $G$ is non-planar, then $G$ contains a subdivision of either $K_5$ or $K_{3,3}$ as a subgraph. Now, $K_5$ has 5 vertices of degree 4; thus, any subdivision of $K_5$ must also have 5 vertices of degree 4. Since $G$ only has four vertices of degree 4, it cannot contain such a graph as a subgraph. Similarly, $K_{3,3}$ has size degree 3 vertices. Thus, any subdivision of $K_{3,3}$ must also have 6 vertices of degree 3 or more, but $G$ only has 4 such vertices; thus, $G$ cannot contain a subdivision of $K_{3,3}$. Therefore, $G$ is not non-planar, so it must be planar.
 
 {\medskip\noindent\bf Question 2.} Let $G$ be a graph with the required properties, and let $G'$ be a triangulation of $G$. Applying the theorem we proved in class, there exist vertices $x,y\in V(G')$ s.t. $d(x)=5$ and $d(y)\in \{5,6\} $. $V(G)=V(G')$ and $G'$ was created by adding edges to $G$, so $d_G(x)\leq d_{G'}(x)$ and likewise for $y$. However since $\delta(G)=5$ we have $5\leq d_{G}(x)\leq d_{G'}(x)=5 \implies d_{G}(x)=5$ and $5\leq d_G(y)\leq d_{G'}(y)\leq 6 \implies d_{G}(y)\in \{5,6\} $ as required. $\square$
 
-{\medskip\noindent\bf Question 3.} 
+{\medskip\noindent\bf Question 3.}  
+
+Ascribe an initial charge of $\mu(v) = 6 - \deg(v)$ to each of the vertices. Then, discharge 1/5 of the charge of the degree 5 vertices to each of its neighbors. Now, the total charge in the graph is greater than 12, since $G$ is a planar graph. However, all of the degree 5 vertices will have 0 charge, since no two degree 5 vertices are adjacent and the only vertices that give charge are other degree 5 vertices. Furthermore, any vertex with positive charge must have either degree 6 or 7: Let the charge of the vertices after discharging be $\mu^{*}$. Then, $\mu^{*}(v) \leq  6 - \deg(v) + \frac{1}{5}N_5(v) \leq 6 - \frac{4}{5}\deg(v)$, where $N_5(v)$ is the number of degree 5 neighbors of $v$. 
+This is maximized when every vertex is degree 5. This can be greater than 0 only when $\deg(v) < 7.5$, so when the vertex has degree 5, 6, or 7. However, if $\deg(v) = 7$, then this requires that we have 6 degree 5 vertices, which forces them to be adjacent to one another, which is impossible. Thus, the only vertices with positive charge are those of degree 6. Furthermore, the charge of each vertex of degree 6 after the discharging is equal to $\mu^{*}(v) = 6 - 6 + \frac{1}{5}N_5(v)$. Therefore, the charge of each degree 6 vertex is $5$ times the number of degree 5 neighbors the vertex has. Then, \[12 \leq \sum_{v\in V(G)} \mu^*(v) \leq \sum_{v \in V(G)|\deg(v) = 6} \mu^* (v) = \sum_{v \in V(G) | \deg(v) = 6} \frac{1}{5}N_5(v) \]
+Thus, $60 \leq \sum_{v \in V(G) | \deg(v) = 6} N_5(v)$. However, this last expression is simply the number of degree 5 neighbors of all of the degree 6 vertices, or in other words, the number of edges between a degree 5 and a degree 6 vertex.
 
 {\medskip\noindent\bf Question 4.} Assign each vertex charge $6-d(v)$, as proved in class the total charge for a triangulation initially charged this way is $12>0$. Have each vertex with degree 4 donate $\frac{1}{2}$ charge to each neighbor and have each degree 5 vertex donate $\frac{1}{5}$ to each neighbor. Since the initial charge was positive and we're just distributing charge the final charge is positive, so let $v$ be a vertex with positive charge. 
 
@@ -31,7 +36,14 @@ It is impossible that $d(v)=5$, since degree 5 vertices donate all their charge 
 
 From the requirements on $G$, $d(v)\neq 7$, so the only remaining case is $d(v)\geq 8$. In this case the starting charge is $-(d(G)-6)$, and each neighbor donates at most $\frac{1}{2}$ charge. If donor neighbors of $G$ are adjacent then we've found our required edge (since degree 5 vertices can't be next to degree 4 vertices, so it would be an edge between two degree 4 vertices), so assume that none are. Because $G$ is a triangulation this means that at most half of $N(v)$ are donor neighbors, so $d(v)-6 < \frac{1}{2}\frac{d(v)}{2}\implies d(v)<8$. We're currently looking at the $d(v)\geq 8$ case though, so this isn't possible so it must have been that some donor neighbors were adjacent which gives us an appropriate edge as required. We've covered all possible cases for the possible values of $v$, so we're done. $\square$
 
-{\medskip\noindent\bf Question 5.}  
+{\medskip\noindent\bf Question 5.} 
+
+Ascribe an initial charge of $\mu(v) = 6 - \deg(v)$ to each vertex. Now, for each vertex of degree 4 or 5, distribute a charge of 1 to each of it's neighbors. Now, consider any vertex with positive charge after the discharging. Such a vertex must exist: $\sum_{v\in V(G)} \mu^{*}(v) = 12$, where $\mu^{*}(v)$ is the charge of vertex $v$ after discharging. 
+Let $N_{4, 5 }(v)$ denote the number of degree 4 or 5 neighbors of $v$. 
+Let $w$ be a vertex with positive charge after the discharging. Suppose $\deg(w) = 4$. Then, $\mu^{*}(v) = 6 - 4 - 4 + N_{4, 5}(w) = -2 + N_{4, 5} > 0$, which implies that $w$ has 3 neighbors of degree 4 or 5. Thus, $w$ and its neighbors form subgraph isomorphic to $K_{1,3}$, with $w$ as the central degree 3 vertex and its neighbors as the leaves.
+Suppose $\deg(w) = 5$. Then, $\mu^{*}(w) = 6 - 5 - 5 + N_{4, 5}(w) = -4 + N_{4, 5} > 0$. However, this implies that $N_{4, 5} > 4$. This is not possible though, since $\deg(w) = 5$.
+
+Now, for vertices of degree 6 or higher, $\mu^{*}(v) = 6- \deg(v) + N_{4, 5}(v)$, where $N_{4, 5}(v)$ are the number of degree 4 and 5 neighors of $v$ in $G$. By assumption, $\deg(w) \geq 8$. Then, $0 < \mu^{*}(w) = 6 - \deg(w) + N_{4, 5}(w) \leq 6 - 8 + N_{4, 5}(w)$. However, this implies that $N_{4,5}(w) > 2$, so that $w$ has at least 3 vertices of degree 4 or 5. Thus, we can form a subgraph with $w$ as a degree 3 vertex with 3 leaves of degree 4 or 5.
 
 {\medskip\noindent\bf Question 6.} Note that it suffices to only consider triangulations. If the theorem is true for triangulations, we can convert any graph into a triangulation, apply the theorem and since we've only added edges then it is also true for the original graph, so from now on assume $G$ is a triangulation. Also, note that if $|G|=3$ then the theorem is trivially satisfied, and otherwise $\delta(G)\geq 3$ since $G$ is a triangulation. Assign each vertex charge $6-d(v)$ and discharge each positively charged vertex's charge evenly to each of its neighbors. As proven in class the original total charge was 12 since $G$ is a triangulation and we're just moving charge, so there must be a vertex $v\in G$ with positive charge. We will consider possible cases for $d(v)$ separately: 
 
@@ -50,6 +62,33 @@ From the requirements on $G$, $d(v)\neq 7$, so the only remaining case is $d(v)\
 Since the theorem holds for all cases of $d(v)$ the statement is true. $\square$
 
 {\medskip\noindent\bf Question 7.}  
+In all cases, we use the fact that $n - m + r = 2$ to reduce the number of variables in the equations.
+\textbf{Vertex Charging}
+
+\begin{align*}
+	\sum_{v \in V(G)}\mu(v) + \sum_{f\in F(G)} \mu(f) &= \sum_{v \in V(G)} (6 - d(v)) + \sum_{f \in F(G)} (6 - \ell(f))\\
+&= 6n - \sum_{v \in V(G)} d(v) + 6r - \sum_{f \in F(G)} \ell (f)\\
+&= 6n - 2m + 6r - 2m\\
+&= 6n - 4m + 6r = 6n - 4m + 6(2 - n + m) = 12 + 2m
+\end{align*}
+
+\textbf{Face Charging}
+
+\begin{align*}
+\sum_{v\in V(G)}\mu(v) + \sum_{f\in F(G)} \mu(f) &= \sum_{v\in V(G)} (6 - 2d(v)) + \sum_{f \in F(G)} (6 - \ell(f))\\
+&= 6n - 4m + 6r - 2m\\
+&= 6n + 6r - 6m\\
+&= 6n - 6m + 6(2 - n + m) = 12 
+\end{align*}
+
+\textbf{Balanced charging}
+
+\begin{align*}
+\sum_{v \in V(G)} \mu(v) + \sum_{f\in F(G)} \mu(f) &= \sum_{v \in V(G)} (4- d(v)) + \sum_{f \in F(G)}(4 - \ell(f))\\
+&=4n - 2m + 4r - 2m\\
+&=4n - 2m + 4(2 - n + m)\\
+&=8
+\end{align*}
 
 {\medskip\noindent\bf Question 8.} As shown in question 7, the total charge in a balanced charging is $8>0$. Have each vertex with positive charge donate all of its charge evenly to each face it touches. Since the total charge is positive and no vertex ends up with a positive charge, there must be a face $f$ after this process with positive charge. Let $l=l(f)$. Consider each edge in the cycle of $f$ and how much charge each of its endpoints contributes to $f$. If any of these edges fulfill the requirements that we're looking for then we're finished immediately, so assume none do. Thus the endpoints of each contribute at most $1$ charge to $f$ (in the case that there is one degree 2 vertex and the other vertex is degree 4 or greater). We can then sum over all the edges of $f$, of which there are $f$, although by doing this we double count each vertex so the total influx of charge to $f$ is at most $\sum_{e\in E(f)}\frac{1}{2}=\frac{l}{2}$. 
 
