@@ -1,0 +1,156 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 318 Homework 10}
+\date{07/04/23}
+\author{Xander Naumenko}
+\maketitle
+
+{\medskip\noindent\bf Question 1a.} In the stationary distribution $\pi$, we have that 
+
+\[
+    \pi_i = \frac{\pi_{i-1}}{i+1}+\frac{i\pi_{i+1}}{i+1}\implies \pi_i-\pi_{i-1}=i(\pi_{i+1}-\pi_i)
+.\]
+
+This implies we should look for solutions of the form $\pi_i=\frac{i+1}{i!}$, except normalized. The sum is: 
+\[
+\sum_{i=0}^{\infty}\frac{i+1}{i!}=\sum_{i=0}^{\infty}\frac{1}{i!}+\sum_{i=0}^{\infty}\frac{1}{i!}=2e
+\]
+\[
+    \implies \pi_i=\frac{1}{2e\cdot i!}
+.\]
+
+{\medskip\noindent\bf Question 1b.} Doing the same manipulations as part a we get 
+\[
+    \pi_i = \frac{\pi_{i+1}}{i+1}+\frac{i\pi_{i-1}}{i+1}\implies \pi_{i+1}-\pi_i=i(\pi_i-\pi_{i-1})
+.\]
+However this implies that $\pi_i>\pi_{i-1}\forall i$ which is means normalization clearly isn't possible, so there can't be a stationary distribution.
+
+{\medskip\noindent\bf Question 1c.} In the stationary distribution $\pi$ outside the edges, we have
+\[
+    \pi_i=\frac{\pi_{i-1}}{2}+\frac{\pi_{i+1}}{2}\implies\pi_i-\pi_{i-1}=\pi_{i+1}-\pi_i
+.\]
+This means that the solution is linear. At the boundary, we have that $\pi_0=\frac{\pi_1}{2}$ and $\pi_N=\frac{\pi_{N-1}}{2}$. Similarly for the second last edge we have that $\pi_1=\pi_0+\frac{1}{2}\pi_2$ and similarly for $\pi_{N-1}$. By symmetry it the distribution can't be linear in either direction, so the middle section must be uniform. Thus we get that $\pi_{0}=\frac{1}{2N}$, $\pi_N=\frac{1}{2N}$ and $\pi_{i}=\frac{1}{N}, i\in \{1, 2, \ldots, N-1\} $.
+
+{\medskip\noindent\bf Question 2a.} We have a $\frac{n}{n+1}$ chance of going forward and $\frac{1}{n+1}$ chance of going backwards, so
+\[
+    q_i=\frac{iq_{i+1}}{i+1}+\frac{q_{i-1}}{i+1}
+.\]
+
+{\medskip\noindent\bf Question 2b.} Plugging the proposed solution into the equation we found:
+\[
+    \frac{n}{n+1}\sum_{i<n+1}\frac{1}{i!}+\frac{1}{n+1}\sum_{i<n-1}\frac{1}{i!}=\frac{n}{n+1}\left(\sum_{i<n}\frac{1}{i!}+\frac{1}{n!}\right)+\frac{1}{n+1}\left(\sum_{i<n}\frac{1}{i!}-\frac{1}{(n-1)!}\right)
+\]
+\[
+    =\sum_{i<n}\frac{1}{i}=q_n
+.\]
+
+{\medskip\noindent\bf Question 2c.} $a_n$ fulfills the required equation above, so all we have to do is normalize it. Given $\lim q_n=1$ this implies that $\sum_i A\frac{1}{i!}=1$ which means that $q_n=\frac{1}{e}\sum_{i<n}\frac{1}{i!}$.
+
+{\medskip\noindent\bf Question 2d.} The equation given is just a random walk and we saw in class that for any $p\neq \frac{1}{2}$ this walk is not recurrent. Since here the probably of going forward is strictly greater than backwards this walk also isn't recurrent, so $\lim q_n=1$.
+
+{\medskip\noindent\bf Question 3.} We can use the fact that reversible markov chain paths are path independent. Let $a$ be the first question mark and $b$ be the second. Then we have:
+\[
+    P_{0,1}P_{1,2}P_{2,0}=P_{0,2}P_{2,1}P_{1,0}\implies \frac{1}{3}\frac{2}{3}a=\frac{1}{6}b \frac{1}{3}\implies b=4a
+.\]
+Since $a+b=1$, we have $b=\frac{4}{5}$ and $a=\frac{1}{5}$.
+
+{\medskip\noindent\bf Question 4a.} We can think of Carol's coin flips independently of those not involving her, let $f(x)$ be the probability that Carol wins given she currently has \$$x$. Clearly $f(0)=0$ and $f(5)=1$. To calculate the intermediate values we can use the probability of her winning each flip: 
+\[
+f(1)=\frac{1}{2}(0)+\frac{1}{2}f(2)=\frac{1}{2}f(2)
+\]
+\[
+f(2)=\frac{1}{2}f(1)+\frac{1}{2}f(3)\implies f(2)=\frac{2}{3}f(3)
+\]
+\[
+f(3)=\frac{1}{2}f(2)+\frac{1}{2}f(4) \implies f(3)=\frac{3}{4}f(4)
+\]
+\[
+f(4)=\frac{1}{2}f(3)+\frac{1}{2}f(5)=\frac{3}{8}f(4)+\frac{1}{2}\implies f(4)=\frac{4}{5}
+\]
+\[
+\implies f(1)=\frac{1}{2}\frac{2}{3}\frac{3}{4}\frac{4}{5}=\frac{1}{5}
+.\]
+
+{\medskip\noindent\bf Question 4b.} Let $f(a,b,c)$ be the probability of carol going out given that Alice, Bob and Carol start with $a,b,c$ dollars respectively. We're trying to find $f(2, 2, 1)$, and note that because $f$ tracks only the probability of Carol going out first, $f(a,b,c)=f(b,a,c)$. Then summing over the conditional probabilities of Carol being chosen:
+\[
+f(2,2,1)=\frac{2}{3}\left( \frac{1}{2}+\frac{1}{2}f(1,2,2) \right) +\frac{1}{3}f(3,1,1)
+.\]
+To calculate $f(3,1,1)$ we can look at the possible matchings and calculate conditional probabilities for each:
+\[
+f(3,1,1)=\frac{1}{3}\left(\frac{1}{2}\right)+\frac{1}{3}\left( \frac{1}{2}+\frac{1}{2}f(1,2,2) \right) +\frac{1}{3}\left( \frac{1}{2}(0)+\frac{1}{2}f(2,2,1) \right) 
+.\]
+To solve this, note that $f(2,2,1)+2f(1,2,2)=1$. This is because $f(1,2,2)$ represents the odds that someone who starts from \$2 goes out first, and the sum of probabilities that Alice, Bob and Carol go out first must be 1. Thus $f(1,2,2)=\frac{1}{2}-\frac{1}{2}f(2,2,1)$ and we get:
+\[
+f(2,2,1)=\frac{1}{3}+\frac{1}{6}-\frac{1}{6}f(2,2,1)+\frac{1}{3}\left( \frac{1}{6}+\frac{1}{6}+\frac{1}{12}-\frac{1}{12}f(2,2,1)+\frac{1}{6}f(2,2,1) \right) 
+.\]
+\[
+\implies \frac{41}{36}f(2,2,1)=\frac{23}{36}\implies f(2,2,1)=\frac{23}{41}
+.\]
+
+Just to make sure this can be simulated in python, this confirms that the probability is around $0.56$ with the following code:
+\begin{lstlisting}
+import random
+
+n = 10000
+
+c_wins = 0
+
+for _ in range(n):
+    coins = [2, 2, 1]
+    while True:
+        i = random.randint(0,2)
+
+        indices = [0,1,2]
+        indices.remove(i)
+        if random.random() > 0.5:
+            coins[indices[0]]+=1
+            coins[indices[1]]-=1
+        else:
+            coins[indices[0]]-=1
+            coins[indices[1]]+=1
+        if coins.count(0) != 0:
+            print(coins)
+            if coins[2] == 0:
+                c_wins += 1
+            break
+
+print(c_wins / n)
+\end{lstlisting}
+
+{\medskip\noindent\bf Question 5.} Simulating this scenario, the average over 10 tries was around 1,000,000 (specifically 983610). The following code was used:
+\begin{lstlisting}
+import random
+
+n = 10
+N = 1000
+times = []
+for _ in range(n):
+    opinions = [i for i in range(N)]
+    t = 0
+    while len(set(opinions)) > 1:
+        t += 1
+        x = random.randint(0,N-1)
+        y = random.randint(0,N-1)
+        while x == y: y = random.randint(0,N-1)
+        opinions[x] = opinions[y]
+    times.append(t)
+et = sum(times) / n
+print(times)
+print(et)
+\end{lstlisting}
+
+\end{document}
