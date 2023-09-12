@@ -1,0 +1,44 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 322 Homework 1}
+\date{12/09/23}
+\author{Xander Naumenko}
+\maketitle
+
+{\medskip\noindent\bf Question 1.} To show that $\sim$ is an equivalence relation, we must show that it is reflexive, symmetric and transitive. It is reflexive, as there always exists a line between an arbitrary point and the origin (the meaning of ``the line'' is a bit ambiguous when $p=q$, so I interpret it to mean there exists a line passing through $p,q$, and the origin). To show symmetry, note that the line between $a$ and $b$ is the same as the line between $b$ and $a$, so $a\sim b\implies b\sim a$. 
+
+For transitivity, let $p,q,r\in X$ with $p\sim q$ and $q\sim r$. Let the origin be denoted by the point $o$, and denote the line on the plane defined by two points $a, b$ as $ab$. Then $o\in pq\implies p\in oq$, and similarly $o\in qr\implies r\in oq$. Thus the line $oq$ is a line passing through $p,r$ that contains the origin which proves transitivity, and thus $\sim$ is an equivalence relation. Qualitatively, $X /\sim$ is a partition of $X$ where every point in radial lines away from the origin are grouped together.
+
+{\medskip\noindent\bf Question 2.} ``Describe'' is a bit vague here, so I'm interpreting this as a qualitative explanation of what $\mathbb{C}^{*} /\sim$ represents. Since it relates numbers on the complex plane together if they're the same when normalized together, $\sim$ relates elements of $\mathbb{C}^{*}$ when their angles match. This is similar, but not identical to the quotient set from problem 1 under the bijection $f:\mathbb{C}^{*}\to X$ defined as $f(c)=\left( \text{Re}\{c\}, \text{Im}\{c\} \right) $. They both relate elements together based on their angular components, but unlike question 1 this relation differentiates between $\pi$ radian rotations. For example, under question 1, $(1, 1)\sim(-1, -1)$, but here $1+i$ does not relate to $-1-i$.
+
+{\medskip\noindent\bf Question 3.} Each element has $n$ other possible pairings and there are $n$ such elements, so the number of total possible pairings is $n^2$. A relation is defined as a particular choice of a subset of these pairings, and consider the number of ways of choosing from these $n^2$ pairings:
+\[
+    {n^2\choose 0}+{n^2\choose 1}+\ldots +{n^2\choose n^2}=(1+1)^{n^2}=2^{n^2}
+.\]
+
+An equivalence relation is effectively a partition of $n$ elements, so the question is equivalent to enumerating all the partitions of an $n$ element set. We will do so recursively, let $B_n$ be the number of ways of partitioning $n$ elements, e.g. $B_0=1$, $B_1=1$ and $B_2=2$ (these are the Bell numbers). For $n$ elements, we can construct each possible partition by removing each possible subset of elements and counting the number of unique partitions remaining. To remove a subset of size $k$ there are ${n\choose k}$ choices to do so, so in formula this is:
+\[
+    B_{n+1}=\sum_{k=0}^{n}{n\choose k}B_k
+.\]
+
+{\medskip\noindent\bf Question 4.} Let $p$ be prime, and $a,b$ be integers with $p|ab$. If $p|a$ then we're done, so assume it doesn't. Then $\gcd(p,a)=1\implies\exists x,y\in \mathbb{Z}$ s.t. $px+ay=1\implies pbx+aby=b$. By hypothesis $p$ divides $ab$ so the left side is divisible by $p$, which means the right side also is, i.e. $p|b$ and we're done.
+
+{\medskip\noindent\bf Question 5.} Proof by contradiction, let $n,k$ be positive integers with $n$ not a perfect $k$-th power but $n^{1/k}\in \mathbb{Q}$. Then $\exists a, b\in \mathbb{N}$ with $a, b$ sharing no common factors such that $n^{1 /k}=\frac{a}{b}\implies nb^{k}=a^{k}$. Since a and b share no common factors, $\exists x\in\mathbb{N}$ s.t. $a^{k}|n\implies n=xa^{k}\implies xb^{k}=1\implies b=1\implies n=a^{k}$, which contradicts our assumption that $n$ wasn't a $k$-th power, so $n^{1 /k}$ is irrational.
+
+{\medskip\noindent\bf Question 6.} Let $s_1\in (\beta\alpha)^{-1}(U_1)$. By definition, $\beta(\alpha(s_1))\in U_1\implies \alpha(s_1)\in \beta^{-1}(U_1)\implies s_1\in \alpha ^{-1}(\beta^{-1}(U_1)$. Similarly, let $s_2\in \alpha ^{-1}(\beta^{-1}(U_1)\implies \alpha(s_2)\in \beta^{-1}(U_1)\implies\beta(\alpha(s_2))\in U_1\implies s_2\in (\beta\alpha)^{-1}(U_1)$. This implies that both sets contain the other, which is only possible if they are equal.
+
+\end{document}
