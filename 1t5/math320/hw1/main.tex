@@ -23,8 +23,48 @@ urlcolor=cyan,
 
 {\medskip\noindent\bf Question 2a.} Let $x\in A\cap(B\cup C)$. Then $x\in A$, and $x\in B$ or $x\in C$ which implies either $x\in (A\cap B)$ or $x\in (A\cap C)$. In either case $x\in (A\cap B)\cup(A\cap C)$. Similarly, let $y\in (A\cap B)\cup(A\cap C)$. $y$ is either in $A\cap B$ or $A\cap C$, in either case $y\in A\cap(B\cup C)$. Since both sets contain the other, they must be equal.
 
-{\medskip\noindent\bf Question 2b.} 
+{\medskip\noindent\bf Question 2b.} Let $x\in C\setminus (A\cup B)$. $x$ is in $C$ but in neither $A$ nor $B$, which means that $x\in C\setminus A$ and $x\in C\setminus B$, implying $x\in (C\setminus A)\cap (C\setminus B)$. Let $y\in (C\setminus A)\cap (C\setminus B)$. If $x$ is in either of $A$ or $B$ it would be excluded by the intersection, so $x\in (A\cup B)$. Since both sets contain the other, they must be equal.
 
-{\medskip\noindent\bf Question 3a.} Clearly 
+{\medskip\noindent\bf Question 2c.} Let $x\in C\setminus (A\cap B)$. By it's definition $x$ is in $C$ but not in both $A$ and $B$. Thus either $x\in C\setminus A$ or $x\in C\setminus B$, which means $x\in (C\setminus A)\cup (C\setminus B)$, so $x\in (C\setminus A)\cup (C\setminus B)$. Let $y\in (C\setminus A)\cup (C\setminus B)$. Either $y\in C\setminus A$ or $y\in C\setminus B$, in either case $y\in C$, and is excluded only if $y\in A\cup B$. Thus $y\in C\setminus (A\cup B)$. Both sets contain the other, so they are equal.
+
+{\medskip\noindent\bf Question 3a.} Let $b_1\in f(C_1\cap C_2)$. Then $\exists a_1\in C_1\cap C_2$ s.t. $f(a_1)=b_1$. Then $a_1\in C_1$ and $a_1\in C_2$, so $b_1\in f(C_1)\cap f(C_2)$. Thus $f(C_1\cap C_2)\subseteq f(C_1)\cap f(C_2)$, and since we didn't use the fact $f$ is one-to-one this is always true.
+
+Let $b_2\in f(C_1)\cap f(C_2)$. Since $f$ is one-to-one there exists exactly on $a_2\in A$ with $f(a_2)=b_2$. Since $b_2\in f(C_1)\cap f(C_2)$ and $a_2$ is unique, $a_2\in C_1\cap C_2\implies b_2\in f(C_1\cap C_2)$. Since both sets contain one another, they are the same.
+
+{\medskip\noindent\bf Question 3b.} Let $a_1\in f^{-1}(f(C))$. Since $f$ is one-to-one, there exists $b_1\in f(C)$ s.t. $a_1$ is the only member of $A$ with $f(a_1)=b_1$, but since $a_1$ the only such element then $a_1\in C$. Since this is true of all $a_1$, then $f^{-1}(f(C))\subseteq C$.
+
+Let $a_2\in C$. Let $b_2=f(a_2)$, so $b_2\in f(C)$. By the definition of preimage $a_2\in f^{-1}(\{b_2\})\subseteq f^{-1}(f(C))$, so $f^{-1}(f(C))\supseteq C$, and since we didn't use the fact that $f$ is one-to-one this is always true. Both sets contain each other so they're the same.
+
+{\medskip\noindent\bf Question 3c.} Let $b_1\in f(f^{-1}(D))$. Then $\exists a_1\in A$ s.t. $f(a_1)=b_1$ and $a_1\in f^{-1}(D)$. Then by the definition of preimage $b_1\in D$. Thus $f(f^{-1}(D))\subseteq D$, and since we didn't use the fact that $f$ is onto this is always true.
+
+Let $b_2\in D$. Since $f$ is onto, $\exists a_2\in A$ s.t. $f(a_2)=b_2\implies a_2\in f^{-1}(D)$. Thus $b_2\in f(f^{-1}(D))$, and $f(f^{-1}(D))\supseteq D$. Both sets contain each other so they're the same.
+
+{\medskip\noindent\bf Question 4.} For all parts of this question, let $A=\{1, 2\}, B=\{1, 2\}$, and $f(x)=1$.
+
+{\medskip\noindent\bf Question 4a.} Let $C_1=\{1\},C_2=\{2\}$. Then $f(C_1\cap C_2)=f(\emptyset)=\emptyset\neq \{1\} =f(C_1)\cap f(C_2)$.
+
+{\medskip\noindent\bf Question 4b.} Let $C=\{1\} $. Then $f^{-1}(f(C))=\{1, 2\} \neq \{1\} =C$.
+
+{\medskip\noindent\bf Question 4c.} Let $D=\{2\} $. Then $f(f^{-1}(D))=f(\emptyset)=\emptyset \neq \{2\} =D$.
+
+{\medskip\noindent\bf Question 5.} $a$ is either even or odd. If it is even, $\exists k\in \mathbb{Z}$ s.t. $a=2k\implies a^2=4k^2$, which can never be in the form $4b+3$ since $4b+3$ is odd while $4k^2$ is even. If $a$ is odd, then $\exists m\in \mathbb{Z}$ s.t. $a=2m+1\implies a^2=4(m^2+m)+1$. However then $a^2=1\mod 4\neq 3\mod 4b+3$. Since both cases are impossible, there exist no $a,b\in \mathbb{R}^2$ s.t. $a^2=4b+3$.
+
+{\medskip\noindent\bf Question 6a.} Suppose not, i.e. suppose $\exists a,b\in A, a\neq b$ s.t. $(g\circ f)(a)=(g\circ f)(b)$. Since $f$ is one-to-one, $f(a)\neq f(b)$, but this implies that $g(f(a))=g(f(b))$ for different inputs of $g$ which should be impossible since $g$ is injective. Thus our original assumption was wrong and $g\circ f$ is injective.
+
+{\medskip\noindent\bf Question 6b.} Again by contradiction assume not, i.e. assume $\exists a, b\in A, a\neq b$ s.t. $f(a)=f(b)$. However then $g(f(a))=g(f(b))$ since $g$ is receiving the same input in both case, which contradicts the fact that $g\circ f$ is one-to-one. Thus our assumption was wrong and $f$ is injective.
+
+{\medskip\noindent\bf Question 6c.} Again contradiction, assume that $\exists x,y\in B, a\neq b$ s.t. $g(x)=g(y)$. Since $f$ is onto and one-to-one (by part b of this question), $\exists a, b\in A, a\neq b$ with $f(a)=x,f(b)=y$. But then $(g\circ f)(a)=(g\circ f)(b)$, which contradicts our assumption that $g\circ f$ is one-to-one. Thus our assumption was wrong and $g$ is one-to-one.
+
+{\medskip\noindent\bf Question 6d.} Let $A=\{x\in \mathbb{N}\}, B= \mathbb{Z}, C=\mathbb{Z}, f(x)=x, g(x)=x^2$. Clearly $g$ isn't one-to-one ($f(-x)=f(x)$), but $g\circ f(x)$ is one-to-one, since for positive inputs $x^2$ is injective.
+
+{\medskip\noindent\bf Question 7.} I'll prove part b straight away, which has part a as an immediate special case. Let $h=f\circ f\circ \cdots\circ f$ composed together $n-1$ times, so $g=f\circ h=h\circ f=x$. Since the identity is bijective and in specific one-to-one, we can apply the result from part 6b to $h\circ f$ to conclude that $f$ is one-to-one. 
+
+To prove that $f$ is onto, let $y\in X$, and let $x=h(y)\in X$. Then $f(x)=f(h(y))=y$. Since this is true of all $y\in X$, $f$ is onto. Thus $f$ is injective and surjective, so is bijective. Apply this result for $n=2$, and part a follows immediately.
+
+{\medskip\noindent\bf Question 8a.} False: let $A=\mathbb{Z},C=\mathbb{N}$. Then $f(A\setminus C)=\{x^2: x<0, x\in \mathbb{Z}\} \neq \{0\} =f(A)\setminus f(B)$.
+
+{\medskip\noindent\bf Question 8b.} True: Let $y\in f(A)\setminus f(C)$. Then $\exists x\in A$ s.t. $f(x)=y$, and by $y$'s definition we know that $x\notin C$. Thus $x\in A\setminus C\implies y\in f(A\setminus C)$. Since this is true of all $y\in f(A)\setminus f(C)$, we have that $f(A\setminus C)\supseteq f(A)\setminus f(C)$.
+
+{\medskip\noindent\bf Question 8c.} $f$ being one-to-one is sufficient. To see this, let $y\in f(A\setminus C)\implies \exists x\in A\setminus C$ s.t. $f(x)=y$. Since $f$ is one-to-one then $x$ is unique, specifically there does not exist a $z\in C$ s.t. $f(z)=y$. Thus $y\notin f(C)$, so $y\in f(A)\setminus f(C)$. Thus we have that if $f$ is one-to-one, $f(A\setminus C)=f(A)\setminus f(C)$.
 
 \end{document}
