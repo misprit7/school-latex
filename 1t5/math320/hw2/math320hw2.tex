@@ -13,7 +13,7 @@ urlcolor=cyan,
 \graphicspath{ {images/} }
 
 \begin{document}
-\pagenumbering{Arabic}
+\pagenumbering{arabic}
 \title{Math 320 Homework 2}
 \date{19/09/23}
 \author{Xander Naumenko}
@@ -70,7 +70,41 @@ s^{(4)}=\left( 7, 12, 18, 25 \right)
 
 \newpage
 
-{\medskip\noindent\bf Question 4.} 
+{\medskip\noindent\bf Question 4.} Since the rationals are countable, there exists a way of listing them in the interval $[0,1]$ as $\{x:x\in\mathbb{Q}, 0\leq x\leq 1\}=\{q_1, q_2, q_3, \ldots\}$. Without loss of generality choose such a listing with $q_1=0$, $q_2=1$. Define a function $f:[0,1]\to(0,1)$ as
+\[
+f(x)=\begin{cases}
+    q_{i+2}&\text{ if } x=q_i\in \mathbb{Q}\\
+    x&\text{ otherwise}
+\end{cases}
+.\]
+
+$f$ is injective, since for irrationals the identity is injective, and for rationals the list $q_1, q_2, q_3, \ldots$ had each element listed only once. By our choice of $q_1=0$ and $q_2=1$, we have that $0,1\notin f([0,1])$. To show $f$ is onto, let $y\in (0,1)$. If $y\notin \mathbb{Q}$, $f(y)=y$ and we're done. Otherwise $y=q_i$ for some $i>2$ ($i$ can't be 0 or 1 since $y\in (0,1)$), and we have that $f(q_{i-2})=q_i=y$. Thus $f$ is bijective as required.
+
+\newpage
+
+{\medskip\noindent\bf Question 5.} As the hint states, note that $\sqrt{2} $ is irrational. Note that $\forall n\in \mathbb{N}$, $n\sqrt{2} $ is also irrational, since if it could be written as $n\sqrt{2} =\frac{a}{b}$ for some $a\in \mathbb{Z}, b\in \mathbb{N}$, then $\sqrt{2} =\frac{a}{bn}$ which contradicts $\sqrt{2} $'s irrationality. Define a function $f:\mathbb{R}\to \mathbb{R}\setminus \mathbb{Q}$ as follows:
+\[
+f(x)=\begin{cases}
+    (2n-1)\sqrt{2} &\text{ if }x=q_n\in \mathbb{Q}, n\in \mathbb{N}\\
+    2m\sqrt{2} &\text{ if }x=m\sqrt{2}, m\in \mathbb{N}\\
+    x&\text{ otherwise}
+\end{cases}
+.\]
+$f$ is well defined, since all $x$ part of the second case are irrational and thus disjoint from the first case. $f$ is claimed to be the desired bijection. For injectivity, let $x,y\in \mathbb{R}$ with $f(x)=f(y)$. If $f(x)\neq n\sqrt{2} $ for any $n\in \mathbb{N}$, then $x=f(x)=f(y)=y\implies x=y$. If $f(x)=n\sqrt{2}, n\in \mathbb{N}$, then $x$ must be in one of the first two cases, and since they're disjoint either $x=y=q_{\frac{n+1}{2}}$ or $x=y=\frac{n}{2}\sqrt{2} $.
+
+To show that $f$ is surjective, let $y\in \mathbb{R}\setminus \mathbb{Q}$. If $y\neq n\sqrt{2}$ for any $n\in \mathbb{N}$, then $f(y)=y$. If there exists an $m$ such that $y=2m\sqrt{2} $, then $f(m\sqrt{2})=2m\sqrt{2} =y$. Finally, if there exists an $n\in \mathbb{N}$ with $y=(2n-1)\sqrt{2} $, then $f(q_n)=(2n-1)\sqrt{2} =y$. Since in all cases there exists an $x\in \mathbb{R}$ with $f(x)=y$, $f$ is injective. Thus $f$ is a bijection from $\mathbb{R}$ to $\mathbb{R}\setminus \mathbb{Q}$ as required. For the values requested:
+\[
+f(\pi)=3.141593
+\]
+\[
+f(\sqrt{3} )=1.732051
+\]
+\[
+f(q_2)=4.242641
+.\]
+\[
+f(q_3)=7.071068
+.\]
 
 \newpage
 
@@ -94,6 +128,60 @@ Let $T$ be the set of transcendental numbers. By definition $\mathbb{R}=Z\cup T$
 
 \newpage
 
-{\medskip\noindent\bf Question 7a.} 
+{\medskip\noindent\bf Question 7a.} Since $|A|=|C|$ and $|B|=|D|$, there exists bijections $f:A\to C,g:B\to D$. Let $h:A\cup B\to C\cup D$ be a function defined as
+\[
+h(x)=\begin{cases}
+    f(x)&\text{ if }x\in A\\
+    g(x)&\text{ if } x\in B
+\end{cases}
+.\]
+Since $A\cap B=\emptyset$ this is well defined. $h$ is onto, since for every $y\in C\cup D$, either $f^{-1}(y)$ or $g^{-1}(y)$ is in $A\cap B$ which fed back into $h$ gives $y$. Similarly $h$ is injective, since if it wasn't it would imply one of $f,g$ wasn't injective. Thus $h$ is a bijection and $|A|+|B|=|C|+|D|$.
+
+{\medskip\noindent\bf Question 7b.} Let $A_t=\{(x, a)\in \mathbb{R}\times A: x=t\}$. For every $t\in \mathbb{R}$, consider the function $f:A_t\to A$ defined as $f((x, a))=a$. This is clearly onto by definition, and since for a given $A_t$, $(x,a)\in A_t\implies x=t$, it is also injective. Thus it is a bijection as required. The sets $A_t$ are all mutually disjoint since they all have different values for the first entry of the pair.
+
+\medskip
+
+For the following parts I've stated the bijection and if it's obvious I don't explicitly justify 1-1/onto, I don't particularly feel like copying the same boilerplate and I'd appreciate not getting docked marks for not stating the obvious a bunch of times.
+
+{\medskip\noindent\bf Question 7c.} Let $S_n=\{s_1, s_2, \ldots, s_n\}$ be a set with $|S_n|=n$. Then define a function $f:\mathbb{N}\to S_n\cup \mathbb{N}$ as:
+\[
+f(k)=\begin{cases}
+    s_k&\text{ if } k\leq n\\
+    k-n&\text{ otherwise}
+\end{cases}
+.\]
+
+$f$ is is clearly a bijection, since every $s_k$ and natural number is covered as outputs and each input results in a distinct element. Thus $n+\aleph_0=\aleph_0$.
+
+{\medskip\noindent\bf Question 7d.} Let $A=\{a_1, a_2, \ldots\}, B=\{b_1, b_2, \ldots\}$ be two countable sets. Define $f:\mathbb{N}\to A\cup B$ be defined as:
+\[
+f(n)=\begin{cases}
+    a_{n /2}&\text{ if } x\text{ even}\\
+    b_{(n+1) /2}&\text{ if }x\text{ odd}
+\end{cases}
+.\]
+Every element is covered in this process uniquely so $f$ is a bijection, so $\aleph_0+\aleph_0=\aleph_0$
+
+{\medskip\noindent\bf Question 7e.} Since the rationals are countable, we can write them as $\mathbb{Q}=\{q_1, q_2, \ldots\}$. Let $A=\{a_1, a_2, \ldots\}$ be a countable set. Define $f:\mathbb{R}\to (\mathbb{R}\setminus \mathbb{Q})\cup A$ to be
+\[
+f(x)=\begin{cases}
+    a_n&\text{ if }x=q_n\in \mathbb{Q}\\
+    x&\text{ otherwise}
+\end{cases}
+.\]
+We proved in question 5 that $|\mathbb{R}|=|\mathbb{R}\setminus \mathbb{Q}|$, so $f$ is a bijection between sets of cardinality $c$ and $c+\aleph_0$, so $\aleph_0+c=c$.
+
+{\medskip\noindent\bf Question 7f.} Let $A=[-1, 0]$, $B=(0, 1]$ and $C=[-1, 1]$. We proved in class that $|A|=|B|=|C|=c$. However the function $f:A\cup B\to C$ defined simply as $f(x)=x$ is clearly bijective and shows that $c+c=c$.
+
+\newpage
+
+{\medskip\noindent\bf Question 8a.} I claim $A_1=\{\frac{1}{2}\}=\bigcap \mathcal A$. $[\frac{1}{2}, \frac{1}{2}]=\{\frac{1}{2}\}\in\mathcal A$, so $A_1\supseteq \bigcap \mathcal A$. For any $n\geq 2$, $[\frac{1}{n}, 1-\frac{1}{n}]\subseteq [\frac{1}{2}, 1-\frac{1}{2}]=\{\frac{1}{2}\}$, so $\frac{1}{2}\in A_1$ and thus $A_1\subseteq \bigcap\mathcal A$.
+
+I claim $A_2=(0, 1)=\bigcup\mathcal A$. Let $x\in (0, 1)$. Let $d=\min\left( x, 1-x \right) $. By the Archimedean property, $\exists n\in \mathbb{N}$ s.t. $n> \frac{1}{d}\implies \frac{1}{n}< d$. Thus $[\frac{1}{n}, 1-\frac{1}{n}]\supset [d, 1-d]\supset \{x\}$, so $x\in A_2$ and thus $A_2\subseteq \bigcup \mathcal A$. For $y\in \mathbb{R}\setminus (0,1)$, let $n\in \mathbb{N}, n\geq 2$. $y\notin[\frac{1}{n}, 1-\frac{1}{n}]$, so $A_2\supseteq \bigcup\mathcal A$.
+
+{\medskip\noindent\bf Question 8b.} I claim $B_1=[-1, 1]=\bigcap\mathcal A$. Let $x\in [-1, 1]$. For any $n\in \mathbb{N}$, $x\in\left(-1-\frac{1}{n}, 1+\frac{1}{n}\right)$, so $B_1\subseteq \bigcap\mathcal A$. For $y\in \mathbb{R}\setminus [-1, 1]$, let $d=\min\left( |y-1|, |-1-y| \right) $. Again by the Archimedean property by the same argument as before there exists $n\in \mathbb{N}$ with $d\geq \frac{1}{n}$, so $x\notin [-1-\frac{1}{n}, 1+\frac{1}{n} ]$. Thus $B_1\supseteq\bigcap\mathcal A$.
+
+I claim $B_2=(-2, 2)=\bigcup\mathcal A$. Let $x\in (-2, 2)$, then $x\in(-1-1, 1+1)\in\mathcal A$, so $B_2\subseteq\bigcup\mathcal A$. Let $y\in \mathbb{R}\setminus (-2, 2)$. Then for any $n\in \mathbb{N}$, $|y|\geq 1+\frac{1}{n}$, so $y\notin(-1-\frac{1}{n}, 1+\frac{1}{n})$ and $B_2\supseteq\bigcup\mathcal A$.
+
 
 \end{document}
