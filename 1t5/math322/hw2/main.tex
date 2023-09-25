@@ -19,8 +19,22 @@ urlcolor=cyan,
 \author{Xander Naumenko}
 \maketitle
 
-{\medskip\noindent\bf Question 1a.} This is not a group, since subtraction isn't associative: $(a-b)-c\neq a-(b-c)$ in general.
+{\medskip\noindent\bf Question 1.} Simply using the definition of the maps and manually carrying through where each number gets mapped:
 
-{\medskip\noindent\bf Question 1b.} This is not a group, since every element doesn't have an inverse. For example, there is no integer $a$ such that $2*a=1$
+\[
+    \alpha\beta=\begin{pmatrix} 1&2&3&4&5\\ 2&1&5&4&3 \end{pmatrix} 
+.\]
+\[
+    \beta\alpha=\begin{pmatrix} 1&2&3&4&5\\ 3&4&1&2&5 \end{pmatrix} 
+.\]
+\[
+    \alpha ^{-1}=\begin{pmatrix} 1&2&3&4&5\\ 3&1&2&5&4 \end{pmatrix} 
+.\]
+
+{\medskip\noindent\bf Question 4.} It is clearly closed, since by definition the operation always produces a tuple of reals, and since the first entry can never be zero the product can't either. For associativity, let $(a,b),(c,d),(e,f)\in G$. Then $((a,b)(c,d))(e,f)=(a,b)((c,d)(e,f))=(ace, ad+b+acf)$. The inverse of $(a,b)\in G$ is just $(\frac{1}{a}, -\frac{b}{a})$, since $(a,b)(\frac{1}{a},-\frac{b}{a})=(1,0)=I$. Finally for any $(a,b)\in G$ we have $(a,b)(1,0)=(1,0)(a,b)=(a,b)$. Thus $G$ is a group.
+
+{\medskip\noindent\bf Question 7.} If we apply $c$ to both sides of $ab=1$, we get $cab=1\cdot b=b=c$, as required. Since $b=c$ is a left and right inverse of $a$, we have $a^{-1}=b$.
+
+For the forward direction of the second part, let $b=a^{-1}$. Then we have $aba=aa^{-1}a=a$ and $ab^2a=a(a^{-1})^2a=1$ as required. For the backward direction, assume that $aba=a$ and $ab^2a=1$. 
 
 \end{document}
