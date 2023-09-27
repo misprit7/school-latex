@@ -35,6 +35,28 @@ urlcolor=cyan,
 
 {\medskip\noindent\bf Question 7.} If we apply $c$ to both sides of $ab=1$, we get $cab=1\cdot b=b=c$, as required. Since $b=c$ is a left and right inverse of $a$, we have $a^{-1}=b$.
 
-For the forward direction of the second part, let $b=a^{-1}$. Then we have $aba=aa^{-1}a=a$ and $ab^2a=a(a^{-1})^2a=1$ as required. For the backward direction, assume that $aba=a$ and $ab^2a=1$. Then we have that $ab^2$ is a left inverse of $a$ and $b^2a$ is a right inverse, so by the first part of the question we have $ab^2=b^2a$
+For the forward direction of the second part, let $b=a^{-1}$. Then we have $aba=aa^{-1}a=a$ and $ab^2a=a(a^{-1})^2a=1$ as required. For the backward direction, assume that $aba=a$ and $ab^2a=1$. Then we have that $ab^2$ is a left inverse of $a$ and $b^2a$ is a right inverse, so by the first part of the question $a$ is invertible and we have we have $ab^2=b^2a=a^{-1}$. Applying the inverse:
+\[
+aba=a\implies ab=1\text{ and }ba=1\implies a^{-1}=b
+.\]
+
+{\medskip\noindent\bf Question 8.} Since transformations of the plane can be written as matrices, from linear algebra we have:
+\[
+    \alpha=\begin{pmatrix} \cos\theta&\sin\theta\\ \sin\theta&-\cos\theta \end{pmatrix}, \rho=\begin{pmatrix} 1&0\\0&-1 \end{pmatrix} 
+.\]
+
+Using these to compute the given values:
+\[
+\rho \alpha\rho^{-1}=\begin{pmatrix} 1&0\\0&-1 \end{pmatrix}\begin{pmatrix} \cos\theta&\sin\theta\\ \sin\theta&-\cos\theta \end{pmatrix}\begin{pmatrix} 1&0\\0&-1 \end{pmatrix}=\begin{pmatrix} \cos\theta&-\sin\theta\\ -\sin\theta&-\cos\theta \end{pmatrix}=\alpha ^{-1}
+.\]
+
+{\medskip\noindent\bf Question 11.} In a group every element has an inverse, we have that $\left( ax=b\implies x=a^{-1}b \right) $ and $\left( ya=b\implies y=ba^{-1} \right) $. By closure both of these solutions are themselves in the group, so both equations always have solutions.
+
+For the second part, assume that $ax=b$ and $ya=b$ have solutions for all $a,b\in G$. Let $a,b\in G$. By hypothesis $ax=a$ has a solution $x\in G$. Also $ya=b$ has a solution $y\in G$, and note that $bx=yax=ya=b$, which is true of all $b\in G$. By symmetry there similarly exists $x'\in G$ such that $\forall b\in G, x'b=b$. However these together give that $x'x=x$ and $xx'=x'$. Let $c\in G$, then $(xx') c=xc=x'c=c\implies xc=c$, together with the fact we found previously $cx=x$ giving us $x=1$. 
+
+Since $G$ has a unit, the equations $ax=1$ and $xa=1$ have solutions for all $a\in G$, and applying question 7 to $x$ and $y$ tells us that $a$ is invertible and $x=y=a^{-1}$. Since $G$ is a semigroup that has a unit and each element has an inverse, it is a group.
+
+{\medskip\noindent\bf Question 13.} Let $G$ be a group for which there is no $a\in G$ with $a^2=1$. Note that $a^2=1\implies a=a^{-1}$, so each element is distinct from its inverse except of course the identity. Enumerating all the elements in $G$, each pair $(a,a^{-1})$ adds two to the total, plus the unit for one additional element. However an even number plus an odd one is odd, so $G$ is of odd order. Thus by contrapositive any group of even order has at least one non-1 element that is its own inverse.
+
 
 \end{document}
