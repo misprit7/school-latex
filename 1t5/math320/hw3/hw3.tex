@@ -1,0 +1,34 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{}
+\date{29/09/23}
+\author{Xander Naumenko}
+\maketitle
+
+{\medskip\noindent\bf Question 1a.} Let $a,b,c,d\in \mathbb{Z}$ with either $a\neq c$ or $b\neq d$. By contradiction suppose that $f(a,b)=f(c,d)\implies a+b\sqrt{2}=c+d\sqrt{2}\implies a-c=\sqrt{2}\left( d-b \right) \implies \sqrt{2}=\frac{a-c}{d-b}$ or $d-b=0$. However $\sqrt{2}$ isn't rational, so in the former case $a-c=0$. However $a-c=0 \implies a-d=0$ and vice versa, but this implies that both $a=c$ and $b=d$ which contradicts the definition of $a,b,c,d$. Thus $f(a,b)\neq f(c,d)$ and $f$ is one-to-one.
+
+{\medskip\noindent\bf Question 1b.} To show this I will prove that for any $M\in \mathbb{Z}$, there exists $m,n\in \mathbb{Z}$ with $m\geq M$ with $m+n\sqrt{2}\in (0,1)$. If $S\cap(0,1)$ was finite then there would be a maximum $M$ for which this is no longer possible, so proving it is sufficient.
+
+Let $M\in\mathbb{Z}$, and consider $m_1=M,n_1=-\left[\frac{M}{\sqrt{2}}\right]$, where $[x]$ represents the integer part (or floor) of $x$. Then $m_1+n_1\sqrt{2}=m_1-\left[\frac{m_1}{\sqrt{2}}\right]\sqrt{2}> 0$. Also note that $m_1-\left[\frac{m_1}{\sqrt{2}}\right]\sqrt{2}\leq m_1-\frac{m_1}{\sqrt{2}}m_1+\sqrt{2}<\sqrt{2}$. If it is less than $1$ then we're done, since $0<m_1+n_1\sqrt{2}<1$. Otherwise, note that the pair $m_2=2m_1,n_2=2n_1+1$ works, since:
+\[
+m_2-n_2\sqrt{2}=2\left( m_1+n_1\sqrt{2} \right) -\sqrt{2}\geq 2\cdot 1-\sqrt{2}>0
+\]
+\[
+m_2-n_2\sqrt{2}=2\left( m_1+n_1\sqrt{2} \right) -\sqrt{2}\geq 2\cdot 1-\sqrt{2}>0
+.\]
+
+\end{document}
