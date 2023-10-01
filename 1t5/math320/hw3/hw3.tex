@@ -21,14 +21,166 @@ urlcolor=cyan,
 
 {\medskip\noindent\bf Question 1a.} Let $a,b,c,d\in \mathbb{Z}$ with either $a\neq c$ or $b\neq d$. By contradiction suppose that $f(a,b)=f(c,d)\implies a+b\sqrt{2}=c+d\sqrt{2}\implies a-c=\sqrt{2}\left( d-b \right) \implies \sqrt{2}=\frac{a-c}{d-b}$ or $d-b=0$. However $\sqrt{2}$ isn't rational, so in the former case $a-c=0$. However $a-c=0 \implies a-d=0$ and vice versa, but this implies that both $a=c$ and $b=d$ which contradicts the definition of $a,b,c,d$. Thus $f(a,b)\neq f(c,d)$ and $f$ is one-to-one.
 
-{\medskip\noindent\bf Question 1b.} To show this I will prove that for any $M\in \mathbb{Z}$, there exists $m,n\in \mathbb{Z}$ with $m\geq M$ with $m+n\sqrt{2}\in (0,1)$. If $S\cap(0,1)$ was finite then there would be a maximum $M$ for which this is no longer possible, so proving it is sufficient.
+{\medskip\noindent\bf Question 1b.} To show this I will prove that for any $M\in \mathbb{N}\setminus \{1\}$, there exists a pair $(m,n)$ with either $m=M$ or $m=M-1$ such that $(m,n)\in S\cap(0,1)$. Since $f$ is one-to-one, if $S\cap(0,1)$ was finite then there would be a maximum $M$ for which this is no longer possible, so proving it is sufficient.
 
-Let $M\in\mathbb{Z}$, and consider $m_1=M,n_1=-\left[\frac{M}{\sqrt{2}}\right]$, where $[x]$ represents the integer part (or floor) of $x$. Then $m_1+n_1\sqrt{2}=m_1-\left[\frac{m_1}{\sqrt{2}}\right]\sqrt{2}> 0$. Also note that $m_1-\left[\frac{m_1}{\sqrt{2}}\right]\sqrt{2}\leq m_1-\frac{m_1}{\sqrt{2}}m_1+\sqrt{2}<\sqrt{2}$. If it is less than $1$ then we're done, since $0<m_1+n_1\sqrt{2}<1$. Otherwise, note that the pair $m_2=2m_1,n_2=2n_1+1$ works, since:
+Let $M\in\mathbb{N}\setminus \{1\}$, and consider $m_1=M,n_1=-\left[\frac{M}{\sqrt{2}}\right]$, where $[x]$ represents the integer part (or floor) of $x$. Then $m_1+n_1\sqrt{2}=m_1-\left[\frac{m_1}{\sqrt{2}}\right]\sqrt{2}> 0$. Also note that $m_1-\left[\frac{m_1}{\sqrt{2}}\right]\sqrt{2}< m_1-\frac{m_1}{\sqrt{2}}\sqrt{2}+\sqrt{2}=\sqrt{2}$. If $m_1+n_1\sqrt{2}$ is less than 1 already then we're done, since $0<m_1+n_1\sqrt{2}<1$. Otherwise, note that the pair $m_2=m_1-1,n_2=n_1$ works, since using the fact that $1<\sqrt{2}<2$, we get:
 \[
-m_2-n_2\sqrt{2}=2\left( m_1+n_1\sqrt{2} \right) -\sqrt{2}\geq 2\cdot 1-\sqrt{2}>0
+m_2+n_2\sqrt{2}=m_1+n_1\sqrt{2}-1 > 1-1=0
 \]
 \[
-m_2-n_2\sqrt{2}=2\left( m_1+n_1\sqrt{2} \right) -\sqrt{2}\geq 2\cdot 1-\sqrt{2}>0
+m_2+n_2\sqrt{2}=m_1+n_1\sqrt{2}-1<\sqrt{2}-1<1
 .\]
+
+{\medskip\noindent\bf Question 1c.} Let $\epsilon>0$, by the Archimedes principle there exists $N\in \mathbb{N}$ with $N> \frac{1}{\epsilon}\implies \frac{1}{N}< \epsilon$. Consider dividing the interval $(0,1)$ into $N$ equally spaced intervals. By the result from part b we know that there are infinite members of $S$ to be split between $N$ intervals, so by the pigeonhole principle there exists an interval containing two members of $S$, without loss of generality call them $m_1,n_1,m_2,n_2$ with $0<m_1+n_1\sqrt{2}-m_2-n_2\sqrt{2}=(m_1-m_2)+(n_1-n_2)\sqrt{2}\leq\frac{1}{N}<\epsilon$. Thus the difference between these elements lies in the interval $(0,\epsilon)$ and is in the required form so we're done.
+
+{\medskip\noindent\bf Question 1d.} Let $(a,b)\subset \mathbb{R}$. Apply the result from part $b$ to obtain an element $m+n\sqrt{2}\in S$ with $0<m+n\sqrt{2}<b-a$. Let $N$ be the smallest integer such that $N>\frac{a}{m+n\sqrt{2}}$. Then clearly by definition $(m+n\sqrt{2})N>a \frac{m+n\sqrt{2}}{m+n\sqrt{2}}=a$. Also, since $N$ is minimal we have
+\[
+    (m+n\sqrt{2})(N-1)< a \implies (m+n\sqrt{2})N<a+b-a=b
+.\]
+Thus $(m+n\sqrt{2})=mN+nN\sqrt{2}$ is in the required form and is contained in $(a,b)$.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 2.} I claim that $f(x)=\delta(x)$, where $\delta(x)$ is $1$ when $x=0$ and 0 otherwise. If $x=0$, then clearly $f(1)=\lim_{n\to\infty}\frac{1}{1}=1$. Let $x\in \mathbb{R}, x\neq 0,\epsilon>0$. By Archimedes' principle, there exists $m>\frac{1}{\epsilon x}\implies \frac{1}{mx}<\epsilon$ Choose $N=m$. Then we have that for $n>m$,
+
+\[
+\left| \frac{1}{1+nx} \right| <\left| \frac{1}{mx} \right| <\epsilon
+.\]
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 3.} Let $(a_n)_n$ be a real sequence that converges to $A$. To show that $a_n^{3}\to A^3$, set $\epsilon>0$. $a_n\to A$, so $\exists N_1\in \mathbb{N}$ s.t. $\forall n>N_1$, $|a_n-A|<1$. Also $\exists N_2\in \mathbb{N}$ s.t. $\forall n>N_2$, $|a_n-A|<\frac{\epsilon}{3|A|^2+3|A|+1}$. Then for $n>\max(N_1,N_2)$, we have
+\[
+\left| a_n^3-A^3 \right| =\left| (a_n-A)\left( a_n^2+a_nA+A^2 \right) \right|< \left| a_n-A \right|\left( |A|^2+2|A|+1+|A|^2+|A|+|A|^2 \right) 
+\]
+\[
+=|a_n-A|\left( 3|A|^2+3|A|+1 \right) <\epsilon
+.\]
+
+\medskip
+
+To show that $a_n^{1/3}\to A^{1 /3}$, let $\epsilon>0$. If $A=0$, then since $a_n\to A$, $\exists N$ s.t. $\forall n>N$, $|a_n-A|=|a_n|<\epsilon^3$. Then for $n>N$, we have
+\[
+|a_n^{1 /3}-A^{1 /3}|=|a_n^{1 /3}|=|a_n|^{\frac{1}{3}}<\epsilon
+.\]
+
+This handles the case where $A=0$, so now let $A\neq 0$. $a_n\to A$, so $\exists N_1\in \mathbb{N}$ s.t. $\forall n>N_1$, $|a_n-A|<\frac{A}{2}$, note that this implies that $a_n$ and $A$ have the same sign for $n>N_1$. Also $\exists N_2\in \mathbb{N}$ s.t. $\forall n>N_2$, $|a_n-A|<\frac{1}{|A|^{2 /3}}$. Let $n>\max(N_1,N_2)$. If $A=0$, then we have:
+\[
+    \left| a_n^{1/3}-A^{1 /3} \right| =\left| (a_n-A)\left( \frac{1}{a_n^{2 /3}+\sqrt[3]{a_nA}+A^{2 /3}} \right) \right|
+\]
+All terms in the denominator are positive, so we get:
+\[
+<|a_n-A| \frac{1}{|A|^{2 /3}}< \epsilon
+.\]
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 4a.} By the Archimedes principle, $\exists R\in \mathbb{N}$ s.t. $N>\frac{b}{M-m}$. Then for all $x>R$, we have:
+
+\[
+x>R>\frac{b}{M-m}\implies Mx>mx+b
+.\]
+
+{\medskip\noindent\bf Question 4b.} Let $y_n, M,m,b$ be defined as in the question. Since $(y_n /n)\to M$, $\exists N_1$ s.t. $\forall n>N_1$, $\left| y_n /n -M \right|< b$. Let $N=\max\left( N_1, \left\lceil 2b /(M-m) \right\rceil  \right) $. Note that the second part of the maximum implies that for $n>N$, $n>\frac{2b}{M-m}\implies Mn-b >mn+b\implies Mn-b>mn+b$The first part of that maximum means that for $n>N$, $y_n>Mn-b$. Putting these together we get that for $n>N$,
+\[
+y_n>Mn-b>mn+b
+\]
+as required.
+
+{\medskip\noindent\bf Question 4c.} False, let $y_n=n+1$. Let $\epsilon>0$, and let $n$ be an integer with $n>\frac{1}{\epsilon}$. Then for $n>N$, we have
+\[
+|y_n /n - 1|= \left| \frac{n+1}{n}-1 \right|=\left| \frac{1}{n} \right| <\epsilon
+.\]
+Thus $y_n/n\to 1$. However $|y_n-n|=|n+1-n|=1\not\to 0$, so the statement isn't true.
+
+\newpage\phantom{blabla}
+\newpage
+
+% {\medskip\noindent\bf Question 5.} Without loss of generality assume that $\alpha>\beta$, so we are trying to prove that $\lim_{n\to\infty}\left( \alpha ^{n}+\beta^{n} \right)^{1 /n} =\alpha$. Let $\epsilon>0$, and choose $N>\log_{\beta /\alpha}\frac{\epsilon}{\alpha}$ (that is $\log$ base $\beta /\alpha$). Then we have that for $n>N$,
+% \[
+% \left| \left( \alpha ^{n}+\beta^{n} \right)^{1 /n}-\alpha \right| =\left| \alpha \right| \left| \left( 1+\left( \frac{\beta}{\alpha} \right) ^{n} \right)^{1/n} -1 \right| \leq |\alpha| \left| \left(\frac{\beta}{\alpha}\right)^{n} \right|<|\alpha \left| \frac{\epsilon}{\alpha} \right| =\epsilon
+% .\]
+
+{\medskip\noindent\bf Question 5.} Without loss of generality assume that $\alpha>\beta$, so we are trying to prove that $\lim_{n\to\infty}\left( \alpha ^{n}+\beta^{n} \right)^{1 /n} =\alpha$. Let $\epsilon>0$, and choose any $N>\frac{1}{\log_2 (1+\epsilon/\alpha)}$. Then for $n>N$, using the fact that $\log$ is monotonic we have
+\[
+\left| \left( \alpha ^{n}+\beta^{n} \right)^{1 /n}-\alpha \right|\leq \left| \left( \alpha ^{n}+\alpha ^{n} \right) ^{1 /n}-\alpha \right| = \left| \alpha 2^{1 /n}-\alpha \right| <\alpha \left| 1+\frac{\epsilon}{\alpha}-1 \right| =\epsilon
+.\]
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 6a.} Let $r'=\lim_{n\to\infty}\frac{x_{n+1}}{x_n}$, by assumption we have $r'<1$. Let $\epsilon=\frac{1-r'}{2}$, then $\exists N$ s.t. $\forall n>N$, $\left| \frac{x_{n+1}}{x_n}-r' \right| <\frac{1-r'}{2}$. Let $r=\frac{1+r'}{2}$ and $C=\max\left( x_1,x_2,\ldots,x_N \right) $. Then we get that for all $n>N$:
+\[
+x_n=x_1\cdot \frac{x_{2}}{x_1}\cdots \frac{x_{n}}{x_{n-1}} < C \left( r'+ \frac{1-r'}{2} \right)^{n} =C \left(\frac{1+r'}{2}\right)^{n}=Cr^{n}
+.\]
+Let $\epsilon>0, r\in(0,1)$ and choose $N=\log_{r}\frac{\epsilon}{C}$. Then we have for $n>N$:
+\[
+|Cr^{n}-0|<\left| C \frac{\epsilon}{C} \right| =\epsilon
+.\]
+Thus $Cr^{n}\to 0$, and since $x_n$ is bounded below by $0$ and above by $Cr^{n}$, by the squeeze theorem it also goes to $0$.
+
+{\medskip\noindent\bf Question 6b.} By contradiction, assume that $\frac{1}{x_n}\to M$ for some $M\in \mathbb{R}$. Choose $\epsilon=M$, and let $N\in \mathbb{N}$. By the convergence of $x_n$, there exists $n>N$ with $|x_n-0|=|x_n|< \frac{1}{2M}$, but this would mean
+\[
+\left| \frac{1}{x_n}-M \right| >|2M-M|=|M|=\epsilon
+.\]
+Thus our assumption that $\frac{1}{x_n}\to M$ was wrong and $\frac{1}{x_n}$ doesn't converge.
+
+{\medskip\noindent\bf Question 6c.} Checking the ratios of the first:
+\[
+    \left( \frac{10^{n+1}}{(n+1)!} \right) \left( \frac{10^{n}}{n!} \right) =\frac{10}{n+1}\to 0
+.\]
+Thus by part a we get that $\left( \frac{10^{n}}{n!} \right) \to 0$. For the second, note that $\left( \frac{n}{2^{n}} \right)\to 0$ (the question states that $\epsilon-N$ arguments aren't required so I won't include one), so by part b its reciprocal $\frac{2^{n}}{n}$ doesn't converge. Finally for the last one, we can take the ratios of the sequence once more:
+\[
+    \left( \frac{2^{3(n+1)}}{3^{2(n+1)}} \right) \left( \frac{3^{2n}}{2^{3n}} \right)=\frac{8}{9}
+.\]
+Thus by part a $\left( \frac{2^{3n}}{3^{2n}} \right) $ converges.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 7.} Proof by contradiction, assume that $x_n\to M$ for $M\neq 0$. Let $L=\lim_{n\to\infty}(x_ny_n)$ Then let $\epsilon=1, N\in \mathbb{N}$. Since $x_n\to M, \exists N_1$ s.t. $\forall n>N_1$, $|x_n-M|<\frac{M}{2}$. Also since $y_n\to\infty$, $\exists N_2$ s.t. $\forall n>N_2,y_n>2\frac{1+L}{M}$. Then for $n>\max(N,N_1,N_2)$, we have:
+\[
+|x_ny_n-L|>\left| \frac{M}{2}2\frac{1+L}{M}-L \right| =|L+1-L|=1=\epsilon
+.\]
+Since this is true of all choices of $N\in \mathbb{N}$, this contradicts our assumption that $\left( x_ny_n \right) $ converges, so the assumption that $M\neq 0$ must have been incorrect and it actually was $M=0$ (technically it's possible that $x_n$ diverges, but clearly since $y_n$ also diverges $x_ny_n$ wouldn't be able to converge).
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 8a.} Let $\epsilon>0$. Since $a_n\to a$ there exists $N_1\in \mathbb{N}$ such that for all $n>N$, $|a_n-a|<\frac{\epsilon}{2}$. Let $M=\max\left( |a_1-a|,|a_2-a|,\ldots,|a_{N_1}-a| \right)$ and choose any $N>\frac{2N_1M}{\max(1,\epsilon)} $. The for $n>N$, we have
+\[
+|s_n-a|<\frac{1}{n}\left( |a_1-a|+\ldots+|a_{N_1}-a|+|a_{N_1+1}-a|+\ldots+|a_{N}-a| \right)
+\]
+\[
+<\frac{1}{N}\left( MN_1+\frac{\epsilon}{2}N \right)<\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon
+.\]
+
+{\medskip\noindent\bf Question 8b.} False. Let $a_n=-(-1)^{n}$. Setting $\epsilon=1$ shows that clearly $a_n$ can't converge, but $s_n=\frac{a_1+a_2+\ldots+a_n}{n}$ is $\frac{1}{n}$ if $n$ is odd and $0$ otherwise. Let $\epsilon>0$, and choose $N=\epsilon$, then $\forall n>N$, $|s_n-0|<|\frac{1}{n}|=\epsilon$, so $s_n\to 0$.
+
+{\medskip\noindent\bf Question c, part a.} Let $R>0$. Since $a_n\to \infty$, $\exists N_1\in \mathbb{N}$ such that $\forall n>N_1$, $a_n>2R$. Let $N=2N_1$. Then for all $n>N$, we have
+\[
+s_n-R=\frac{1}{N}\left( a_1-R+\ldots+a_{N_1}-R+a_{N_1+1}-R+\ldots a_N-R \right)
+\]
+\[
+>\frac{1}{N}\left( (N-N_1)2R \right) >R
+\]
+Thus $s_n\to \infty$.
+
+% {\medskip\noindent\bf Question c, part b.} True. Let $R>0$. Since $s_n\to \infty$, $\exists N_1\in\mathbb{N}$ such that $\forall n>N_1$, $s_n>2R$. Choose $N=2N_1$. 
+{\medskip\noindent\bf Question c, part b.} False. Define
+\[
+a_n=\begin{cases}
+    n /2&\text{ if }n\text{ is even}\\
+    0&\text{ otherwise}
+\end{cases}
+.\]
+Then $s_n=\frac{1+2+\ldots+n /2}{n}=\frac{n(n /2+1)}{4n}=\frac{n}{2}+1$ for $n$ even and $s_n=\frac{1+2+\ldots+\frac{n-1}{2}}{n}=\frac{n-1}{2}+1$ for $n$ odd, which clearly grows linearly and diverges. However $a_n$ alternates between $0$ and $\frac{n}{2}$ and doesn't go to infinity for the same reason as the example in part b. Thus the statement isn't true.
+
+\newpage\phantom{blabla}
+\newpage
+
 
 \end{document}
