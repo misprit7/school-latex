@@ -1,0 +1,44 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 320 Homework 4}
+\date{04/10/23}
+\author{Xander Naumenko}
+\maketitle
+
+{\medskip\noindent\bf Question 1i.} False, let $x_n=n+(-1)^{n}$. Then clearly $x_n\to\infty$ (for any $M$ choose $N=M+1$, then for $n>N$ we have $x_n>n-1=M$). However for any $n$ that is even we have $x_n=n>n-1=x_{n+1}$.
+
+{\medskip\noindent\bf Question 1ii.} The statement is true. By contradiction assume $x_n\to \infty$ with no increasing subsequence. Since no increasing subsequence exists, every increasing subset of $x_n$ is of finite length, and choose $n_1,n_2,\ldots,n_K$ be a longest such increasing subsequence. Let $N=x_{n_K}$, then since $x_n\to\infty$ there exists $N$ such that $(n>N)\implies\left( x_n>x_{n_K} \right) $. Then let $n_{K+1}=\max(n_K,N)+1$. Then $x_{n_{K+1}}>x_{n_K}$ with $n_{K+1}>n_K$, but this contradicts our assumption that the $n_1,\ldots,n_K$ were chosen to be maximal since adding $x_{n_{K+1}}$ would make a longer increasing subsequence. Thus an increasing subsequence of infinite length must exist.
+
+{\medskip\noindent\bf Question 2a.} The sequence converges. Note that we have:
+\[
+a_{n}=n \frac{1+\frac{1}{n}-1}{\sqrt{1+\frac{1}{n}}+1}=\frac{1}{\sqrt{1+\frac{1}{n}}+1}
+.\]
+I claim that $a_n\to \frac{1}{2}$. To see this let $\epsilon>0$, and choose $N=\max\left(10,\frac{1}{\left( \frac{1}{\epsilon+1 /2}-1 \right) ^2-1}\right)$. Then for $n>N$,
+\[
+|a_n-\frac{1}{2}|=\left| \frac{1}{\sqrt{1+\frac{1}{n}}+1} -\frac{1}{2}\right|<\epsilon
+.\]
+
+{\medskip\noindent\bf Question 2b.} The sequence does not converge. Let $L\in \mathbb{R},\epsilon=\frac{1}{2}$, and $N>0$. Choose $n$ to be an arbitrary even integer greater than $N$ if $L<0$ and an odd integer greater than $\max(N, 3)$ otherwise. Then:
+\[
+\left| b_n-L \right| =\left| \frac{(-1)^{n}n}{n+1}-L \right|=\left| \frac{n}{n+1} \right| +|L|> \frac{1}{2}+|L|\geq \frac{1}{2}=\epsilon
+.\]
+
+{\medskip\noindent\bf Question 3a.} 
+
+{\medskip\noindent\bf Question 4a.} 
+
+\end{document}
