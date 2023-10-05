@@ -23,6 +23,9 @@ urlcolor=cyan,
 
 {\medskip\noindent\bf Question 1ii.} The statement is true. By contradiction assume $x_n\to \infty$ with no increasing subsequence. Since no increasing subsequence exists, every increasing subset of $x_n$ is of finite length, and choose $n_1,n_2,\ldots,n_K$ be a longest such increasing subsequence. Let $N=x_{n_K}$, then since $x_n\to\infty$ there exists $N$ such that $(n>N)\implies\left( x_n>x_{n_K} \right) $. Then let $n_{K+1}=\max(n_K,N)+1$. Then $x_{n_{K+1}}>x_{n_K}$ with $n_{K+1}>n_K$, but this contradicts our assumption that the $n_1,\ldots,n_K$ were chosen to be maximal since adding $x_{n_{K+1}}$ would make a longer increasing subsequence. Thus an increasing subsequence of infinite length must exist.
 
+\newpage\phantom{blabla}
+\newpage
+
 {\medskip\noindent\bf Question 2a.} The sequence converges. Note that we have:
 \[
 a_{n}=n \frac{1+\frac{1}{n}-1}{\sqrt{1+\frac{1}{n}}+1}=\frac{1}{\sqrt{1+\frac{1}{n}}+1}
@@ -37,8 +40,69 @@ I claim that $a_n\to \frac{1}{2}$. To see this let $\epsilon>0$, and choose $N=\
 \left| b_n-L \right| =\left| \frac{(-1)^{n}n}{n+1}-L \right|=\left| \frac{n}{n+1} \right| +|L|> \frac{1}{2}+|L|\geq \frac{1}{2}=\epsilon
 .\]
 
-{\medskip\noindent\bf Question 3a.} 
+\newpage\phantom{blabla}
+\newpage
 
-{\medskip\noindent\bf Question 4a.} 
+{\medskip\noindent\bf Question 3a.} I claim that $\Sigma(A)$ being defined and finite implies that there is a maximum element of $A$. To see why suppose not, i.e. suppose that $\forall a\in A, \exists b\in A$ s.t. $b>a$. Then let $F\subset A$ be a subset with $\Sigma(F)\geq \Sigma(A) /2$, by hypothesis there exists $b\in A$ s.t. $b>\max(F)$. However then $\Sigma(F\cup \{b\})> \Sigma(A) /2+x\Sigma(A) /2=\Sigma(A)$, which contradicts the definition of $\Sigma$. Thus $A$ has a maximum element.
+
+However this implies that $A$ is countable. To see why, consider letting $x_1=\max(A)$ and $A'=A\setminus \{x_1\}$. Note that since $\Sigma(A')$ is also well defined since we just removed a single element, so it also has a maximum. Then we can let $x_2=\max(A\setminus x_1)$ and so forth to enumerate all the (potentially infinite) elements of $A$. Since we've just created an onto map from $\mathbb{N}\to A$ either $A$ is countable or finite.
+
+{\medskip\noindent\bf Question 3b.} Let $L=\lim_{n\to\infty}\sum_{n=1}^{N}a_n$. For any $F\subset  A$, clearly we have that
+\[
+L=\lim_{N\to\infty}\sum_{n=1}^{N}a_n\geq \sum_{f\in F}f
+,\]
+implying that $\Sigma(A)\leq L$. Let $R<L$, and let $\epsilon=L-R$. Then there exists $N\in \mathbb{N}$ s.t. $\forall n>N,$
+\[
+\left| \sum_{i=1}^{n}a_i-L \right|<\epsilon
+.\]
+Let $F'=\{a_n: n\leq N+1\}$. Then $\Sigma(F')=\sum_{n=1}^{N+1}a_n>L-\epsilon=R$. Since this is true independent of our choice of $R$, it must be that $\Sigma(A)=L$.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 4a.} Let $(x,y)\in \mathbb{R}^2$. By their definition note that $W_2(y)\leq f(x,y)$ and $M_1(x)\geq f(x,y)$, since $(x,y)$ is contained in both sets that $M_1$ and $W_2$ are taking the supremum and infimum respectively. Putting those two statements together we that $\forall (x,y)\in \mathbb{R}^2, W_2(y)\leq M_1(x)$. Since this holds over all of $R^{2}$ taking the supremum and infimum over the left and right sides respectively does nothing to change this inequality, so arrive as required to
+\[
+\sup \{W_2(y): y\in Y\}\leq \inf \{M_1(x): x\in X\}
+.\]
+
+{\medskip\noindent\bf Question 4b.} Define
+\[
+f(x,y)=\begin{cases}
+    1&\text{ if } x=y\\
+    0&\text{ otherwise}
+\end{cases}
+.\]
+Then we have that
+\[
+\sup \{W_2(y): y\in Y\}=\sup \{0\}= 0\leq 1= \inf \{1\}=\inf \{M_1(x): x\in X\}
+.\]
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 5.} Let $x\in [0,\inf(S))$. Then $\forall s\in S$ we have $x<s$, so $x\in [0,s)$. Thus $x\in \bigcap_{S\in S}[0,s)$. Next let $y\in (\inf(S), \infty)$. Since $y>\inf(S)$, there exists $s\in S$ with $s<y$, so $y\notin [0,s)\implies y\notin \bigcap_{S\in S}[0,s)$. These facts about $x$ and $y$ together imply that $\bigcap_{s\in S}[0,s)=[0,\inf(S)$ or $[0,\inf(S)]$.
+
+There are two cases: $\inf(S)\in S$ or $\inf(S)\notin S$. If it's the former, then $\inf(S)\notin [0,\inf(S))\implies \bigcap_{S\in S}[0,s)=[0,\inf(S))$. If $\inf(S)\notin S$ then $\forall s\in S, \inf(S)\in [0,s)$, so $\bigcap_{S\in S}[0,s)=[0,\inf(S)]$.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 6a.} Let $\epsilon>0$, since $x_n$ and $y_n$ are Cauchy there exists $N_x,N_y$ s.t. $\forall n>N_x, p>0, |x_{n+p}-x_n|< \frac{\epsilon}{2}$ and $\forall n>N_y, p>0, |y_{n+p}-y_n|< \frac{\epsilon}{2}$. Let $N=\max(N_x,N_y)$. Then $\forall n>N, p>0$, we have
+\[
+\left| x_{n+p}+y_{n+p}-x_n-x_p \right|\leq \left| x_{n+p}-x_n \right| +\left| y_{n+p}-y_n \right| <\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon
+.\]
+Thus $x_n+y_n$ is also Cauchy.
+
+{\medskip\noindent\bf Question 6b.} Since $x_n$ and $y_n$ are Cauchy then they are bounded, let $X,Y$ be such that $x_n>X,y_n>Y\forall n$. Define $\epsilon,N_x,N_y$ the same as for the previous part, except for $|x_{n+p}-x_n|<\frac{\epsilon}{2M}$ and $|y_{n+p}-y_n|<\frac{\epsilon}{2N}$. Then for $n>\max(N_x,N_y),p>0$, we have
+\[
+\left| x_{n+p}y_{n+p}-x_ny_n \right| \leq \left| x_{n+p}(y_{n+p}-y_n) \right| +\left| y_n\left( x_{n+p}-x_n \right)  \right| < \frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon
+.\]
+
+{\medskip\noindent\bf Question 6c.} Let $\epsilon>0$, since $x_n$ is Cauchy there exists $N_x$ such that for any $n>N_x, p>0, |x_{n+p}-x_n|<\frac{\epsilon}{2}$. Also since $(y_n-x_n)\to 0$, $\exists N$ s.t. $\forall n>N,p>0,|x_{n+p}-y_{n+p}-x_{n}+y_{n}|<\frac{\epsilon}{2}$. Choose $N_y=$ and let $p>0$. Then we have that
+\[
+\left| y_{n+p}-y_n \right| \leq |x_{n+p}-y_{n+p}-x_{n}+y_{n}| + \left| x_{n+p}-x_{n} \right|<\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon
+.\]
+
+{\medskip\noindent\bf Question 7.} 
 
 \end{document}
