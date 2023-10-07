@@ -19,7 +19,7 @@ urlcolor=cyan,
 \author{Xander Naumenko}
 \maketitle
 
-{\medskip\noindent\bf Question 1i.} False, let $x_n=n+(-1)^{n}$. Then clearly $x_n\to\infty$ (for any $M$ choose $N=M+1$, then for $n>N$ we have $x_n>n-1=M$). However for any $n$ that is even we have $x_n=n>n-1=x_{n+1}$.
+{\medskip\noindent\bf Question 1i.} False, let $x_n=n+(-1)^{n}$. Then clearly $x_n\to\infty$ (for any $M$ choose $N=M+1$, then for $n>N$ we have $x_n>n-1=M$). However for any $n$ that is even we have $x_n=n+1>n=x_{n+1}$.
 
 {\medskip\noindent\bf Question 1ii.} The statement is true. By contradiction assume $x_n\to \infty$ with no increasing subsequence. Since no increasing subsequence exists, every increasing subset of $x_n$ is of finite length, and choose $n_1,n_2,\ldots,n_K$ be a longest such increasing subsequence. Let $N=x_{n_K}$, then since $x_n\to\infty$ there exists $N$ such that $(n>N)\implies\left( x_n>x_{n_K} \right) $. Then let $n_{K+1}=\max(n_K,N)+1$. Then $x_{n_{K+1}}>x_{n_K}$ with $n_{K+1}>n_K$, but this contradicts our assumption that the $n_1,\ldots,n_K$ were chosen to be maximal since adding $x_{n_{K+1}}$ would make a longer increasing subsequence. Thus an increasing subsequence of infinite length must exist.
 
@@ -103,6 +103,52 @@ Thus $x_n+y_n$ is also Cauchy.
 \left| y_{n+p}-y_n \right| \leq |x_{n+p}-y_{n+p}-x_{n}+y_{n}| + \left| x_{n+p}-x_{n} \right|<\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon
 .\]
 
-{\medskip\noindent\bf Question 7.} 
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 7a and b.} I will prove both a and b at once despite the suggestion. We will first solve the recurrence relation. Assume a solution is of the form $a^{n}=x^{n}$ for some $x\in \mathbb{R}$. For this to be true, we'd need
+\[
+x^{n}=(1-\lambda) x^{n-1}+\lambda x^{n-2}\implies x^2-(1-\lambda) x-\lambda=0\implies x=\frac{1}{2}\left( 1-\lambda\pm \sqrt{(1-\lambda)^2+4\lambda} \right)
+\]
+\[
+\implies x=\frac{1}{2}\left( 1-\lambda\pm \lambda+1 \right) =-\lambda\text{ or }1
+.\]
+Since this is a second order recurrence relation, all solutions are a linear combination of these two possibilities, i.e. $a_n=c_1(-\lambda)^{n}+c_2$ for some $c_1,c_2\in \mathbb{R}$ determined by the initial conditions. Plugging in the initial conditions, specifically they are determined by the following two linear equations:
+\[
+\begin{cases}
+&a_0=c_1+c_2\\
+&a_1=-c_1\lambda+c_2
+\end{cases}\implies \begin{cases}
+    c_1= \frac{a_0-a_1}{\lambda+1}\\
+    c_2=\frac{\lambda a_0+a_1}{\lambda+1}
+\end{cases}
+.\]
+I claim that $(-\lambda)^{n}\to 0$. Let $\epsilon>0$, and choose $N=\log_{\lambda}\left( \epsilon\right) $. Since $0<\lambda<N$ note that $(-\lambda)^{n}$ is a strictly decreasing sequence. Then for $n>N$, we have
+\[
+\left| (-\lambda)^{n}-0\right|<\left|\lambda\right|^{\log_{\lambda}\left( \epsilon \right) }=\epsilon
+.\]
+Thus $(-\lambda)^{n}\to 0$. Thus we can conclude that:
+\[
+\alpha=\lim_{n\to\infty}a_n= \lim_{n\to\infty}\frac{a_0-a_1}{\lambda+1}(-\lambda)^{n}+\frac{\lambda a_0+a_1}{\lambda+1}=\frac{\lambda a_0+a_1}{\lambda+1}
+.\]
+Since we've found what $\alpha$ is explicitly, clearly we've also found that the sequence converges.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 8a.} Assume that $\inf(S)=0$, and let $R>0$. Since $\inf(S)=0, \exists x\in S$ with $x<\frac{1}{R}\implies \frac{1}{x}>R$. Since $\frac{1}{x}\in S^{-1}$ and $R$ was arbitrary, we have that $\sup(S)=+\infty$.
+
+{\medskip\noindent\bf Question 8b.} Both directions will be proven:
+
+($\Rightarrow$) Let $N=\frac{2}{\inf(S)}$. If there existed $x\in S^{-1}$ with $x>N$ the that would imply that $\frac{1}{x}<\frac{\inf(S)}{2}<\inf(S)$ which would be a contradiction since $\frac{1}{x}\in S$, so $N<\infty$ is an upper bound of $S^{-1}$.
+
+($\Leftarrow$) Let $\epsilon= \frac{1}{2\sup(S^{-1})}$. If there existed $x\in S$ with $x<\epsilon$ then that would imply that $\frac{1}{x}>\frac{1}{\epsilon}=2\sup(S^{-1})>\sup(S^{-1})$, which would be a contradiction since $\frac{1}{x}\in S^{-1}$, so $\epsilon>0$ is a lower bound of $S^{-1}$.
+
+Since both directions hold, the statement is true. When these are true, it remains to be shown that $\sup(S^{-1})=\left( \inf(S) \right) ^{-1}$. Proof by contradiction, assume that $0<\inf(S)<+\infty$ and $\sup(S^{-1})\neq (\inf(S))^{-1}$. Without loss of generality assume that $\sup(S^{-1})>\left( \inf(S) \right) ^{-1}$ (if it's the other way the whole argument just works in reverse as seen just above, I'm getting tired of rewriting things). Then let $x\in ( (\inf(S))^{-1}, \sup(S^{-1}) ] $ with $x\in S^{-1}$, the existence of such an $x$ is guarantee by the definition of a supremum. Then $\frac{1}{x}<\inf(S)\implies x\notin S$ but by the definition of $S^{-1}$ it should be that $\frac{1}{x}\in S$. This is a contradiction, so equality must hold.
+
+{\medskip\noindent\bf Question 8c.} Let $y_n=\sup(\{x_m^{-1}: m>n\})$. There are three cases: $y_n\to 0, y_n\to L\in \mathbb{R}$ or $y_n\to +\infty\in \mathbb{R}$. Note that by part a and b, $y_n=\left(\inf(\{x_m: m>n\})\right)^{-1}$, which can be used to convert between the $\liminf$ and $\limsup$ as follows. If $y_n\to 0$, then $\limsup\limits_{n\to\infty}(x_n^{-1})=0=\frac{1}{+\infty}=\left( \liminf\limits_{n\to\infty} x_n \right)^{-1}$. If $y_n\to L$, then it is simply $\limsup\limits_{n\to\infty}(x_n^{-1})=L=\frac{1}{1 /L}=\left( \liminf\limits_{n\to\infty} x_n \right)^{-1}$. Finally if $y_n\to +\infty$, we get $\limsup\limits_{n\to\infty}(x_n^{-1})=+\infty=\frac{1}{0^{+}}=\left( \liminf\limits_{n\to\infty} x_n \right)^{-1}$.
+
+\newpage\phantom{blabla}
+\newpage
 
 \end{document}
