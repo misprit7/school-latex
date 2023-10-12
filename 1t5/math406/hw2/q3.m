@@ -1,14 +1,14 @@
 
 f1 = @(x)x^(-0.5)*cos(x);
-f2 = @(x)x^(-0.5)*(cos(x)-1);
-f3 = @(x)x^(-0.5)*(cos(x)-1+x^2/2);
+f2 = @(x)f2_func(x);
+f3 = @(x)f3_func(x);
 
-c1 = (2*pi)^0.5
-c2 = (2*pi)^0.5-pi^(5/2)/20/2^0.5
+c1 = (2*pi)^0.5;
+c2 = (2*pi)^0.5-pi^(5/2)/20/2^0.5+pi^(9/2)/1728/2^0.5;
 
 N1 = 2^(4);
 N2 = 2^(6);
-a = eps^0.5;
+a = 0;
 b = pi/2;
 
 T = zeros(8,2);
@@ -37,6 +37,21 @@ T(7,2) = gauss_legendre(f3,a,b,N2)+c2
 T(8,1) = trapezium_rule(f3,a,b,N1)+c2
 T(8,2) = trapezium_rule(f3,a,b,N2)+c2
 
+function ret = f2_func(x)
+    if x == 0
+        ret = 0;
+    else
+        ret = x^(-0.5)*(cos(x)-1);
+    end
+end
+
+function ret = f3_func(x)
+    if x == 0
+        ret =  0;
+    else
+        ret = x^(-0.5)*(cos(x)-1+x^2/2-x^4/24);
+    end
+end
 
 function result = midpoint_rule(f, a, b, N)
     result = 0;

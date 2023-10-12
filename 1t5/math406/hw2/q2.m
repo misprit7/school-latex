@@ -1,8 +1,11 @@
-
-[Integral, I, X] = Romberg(@(x)1./(4+x.^2),0,1,0.00001,6)
+f = @(x)1./(4+x.^2)
+[Integral, I, X] = Romberg(f,0,1,0.00001,4)
 disp(I)
 disp(X)
 disp(0.5*atan(0.5))
+
+scatter(X, f(X))
+title('Function Evaluation Points for Romberg Integration')
 
 function [Integral,I,X] = Romberg(f,a,b,tol,kmax)
   I = zeros(kmax, kmax+1);
