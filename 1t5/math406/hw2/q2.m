@@ -1,24 +1,32 @@
 
-[Integral, I, X] = Romberg(@(x)1./(4+x.^2),0,1,0.00001,5)
+[Integral, I, X] = Romberg(@(x)1./(4+x.^2),0,1,0.00001,6)
 disp(I)
+disp(X)
 disp(0.5*atan(0.5))
 
 function [Integral,I,X] = Romberg(f,a,b,tol,kmax)
   I = zeros(kmax, kmax+1);
   for s=1:kmax
     I(s,1) = (b-a)/2^(s-1);
-    I(s,2) = trapez(f,a,b,2^(s-1));
+    % I(s,2) = trapez(f,a,b,2^(s-1));
   end
-  err = 2*tol;
-  N = 1;
-  for m=2:kmax
-    N = N*2;
-    for s=1:kmax-m+1
-      I(s,m+1) = I(s+1,m) + (I(s+1,m)-I(s,m))/(4^(m-1)-1);
+
+  k = 1;
+  I(1,2) = trapez(f,a,b,1);
+  I_last = I(2,1)+2*tol;
+  I_cur = I(2,1);
+  while abs(I_cur - I_last) >= tol && k<kmax
+    k = k+1;
+    I(k,2) = trapez(f,a,b,2^(k-1));
+    for m=1:k-1
+      I(k-m,m+2) = I(k-m+1,m+1) + (I(k-m+1,m+1)-I(k-m,m+1))/(4^m-1);
     end
+    I_last = I_cur;
+    I_cur = I(1,k+1);
   end
-  Integral = 0;
-  X = 0;
+
+  Integral = I_last;
+  X = a:(b-a)/2^(k-1):b;
 end
 
 
