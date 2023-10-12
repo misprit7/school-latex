@@ -285,12 +285,160 @@ I(0)-I(h_{s+1})=I(0)-I(\frac{1}{2}h_s)=\sum_{i=1}^{\infty}\frac{1}{2^{2i}}c_ih_s
 \implies 4I(\frac{1}{2}h_s)=4I(0)-\sum_{i=1}^{\infty}\frac{1}{2^{2i}}c_ih_s^{2i}
 \]
 \[
-\implies I(0)=\frac{4I(\frac{h_2}{2})-I(h_2)}{3}+ \sum_{i=2}^{\infty}\frac{2^{2i}-1}{3\cdot 2^{2i}}c_i h_s^{2i}
+\implies I(0)=\frac{4I(\frac{h_2}{2})-I(h_2)}{3}+ \sum_{i=2}^{\infty}\frac{2^{2(i-1)}-1}{3\cdot 2^{2(i-1)}}c_i h_s^{2i}
 .\]
 Define $a_s^{(1)}=I(h_s)$ and $c_i^{(2)}$ as in the question. Then simply rearranging the above formula algebraically, we get
 \[
-I(0)-\left(I(\frac{h_2}{2})+\frac{I(\frac{h_2}{2})-I(h_s)}{3}\right)=I(0)-a_{s+1}^{(1)}-\frac{a_{s+1}^{(1)}-a_s^{(1)}}{3}=\sum_{i=2}^{\infty}c_{i}^{(2)}h_s^{2i}
+I(0)-\left(I(\frac{h_2}{2})+\frac{I(\frac{h_2}{2})-I(h_s)}{3}\right)=I(0)-a_{s+1}^{(1)}-\frac{a_{s+1}^{(1)}-a_s^{(1)}}{3}=I(0)-a_{s}^{2}=\sum_{i=2}^{\infty}c_{i}^{(2)}h_s^{2i}
+\]
+as required. To eliminate the $O(h^{4})$ term we can again rearrange, this time leaving off some algebra and leaving $c_i^{(3)}$ to be defined in the next part:
+\[
+I(0)-a_{s+1}^{2}+ \frac{a_{s+1}^{2}-a_s^{m-1}}{15}=\sum_{i=3}^{\infty}c_i^{(3)}h_s^{2i}
 .\]
 
+To find the general recursion formula, we follow a similar process to what we just did. We've already shown the result $m=2$, using recursion we just need to prove that the result holds for $m$ given that it holds for $m-1$. Assume that for some $m$,
+\[
+    I(0)-a_{s}^{(m-1)}=\sum_{i=m-1}^{\infty}c_i^{(m-1)}h_s^{2i}
+\]
+and
+\[
+    I(0)-a_{s+1}^{(m-1)}=\sum_{i=m-1}^{\infty}\frac{1}{2^{2i}}c_i^{(m-1)}h_{s}^{2i}
+.\]
+Subtracting these, we get
+\[
+I(0)-\frac{(4^{m-1})a_{s+1}^{(m-1)}-a_s^{(m-1)}}{4^{m-1}-1}=\sum_{i=m}^{\infty}\left((\frac{1}{4^{i-1}}-1)\frac{1}{4^{m-1}-1}c_i^{(m-1)}\right)h_s^{2i}
+.\]
+Define $c_i^{(m)}=\left((\frac{1}{4^{i-1}}-1)\frac{1}{4^{m-1}-1}c_i^{(m-1)}\right)$. Then the previous equation is equivalent to
+\[
+I(0)-a_{s+1}^{(m-1)}-\frac{a_{s+1}^{(m-1)}-a_s^{(m-1)}}{4^{m-1}-1}=\sum_{i=m}^{\infty}c_{i}^{m}h_s^{2i}
+.\]
+Thus clearly we have that $a_s^{(m)}=a_{s+1}^{(m-1)}+\frac{a_{s+1}^{(m-1)}-a_s^{(m-1)}}{4^{m-1}-1}$ as required.
+
+
+{\medskip\noindent\bf Question 3.} Subtracting the first term of the Taylor series is already done for us in the question, so we just need to subtract the three term. $\cos x=1-\frac{x^2}{2}+\ldots$, so we want to evaluate
+\[
+I=\int_0^{\pi/2}x^{-\frac{1}{2}}dx-\int_0^{\pi/2}\frac{1}{2}x^{\frac{3}{2}}dx+\int_0^{\pi/2}x^{-\frac{1}{2}}\left( \cos x-1+\frac{x^2}{2} \right) dx
+\]
+\[
+=(2\pi)^{\frac{1}{2}}-\frac{\pi^{5 /2}}{20\sqrt{2}}+\int_0^{\pi/2}x^{-\frac{1}{2}}\left( \cos x-1+\frac{x^2}{2} \right) dx
+.\]
+
+Plugging in each of the methods previously coded for question 1, we get table \ref{tab:q3}. This is the code used to generate the table:
+\begin{lstlisting}
+f1 = @(x)x^(-0.5)*cos(x);
+f2 = @(x)x^(-0.5)*(cos(x)-1);
+f3 = @(x)x^(-0.5)*(cos(x)-1+x^2/2);
+
+c1 = (2*pi)^0.5
+c2 = (2*pi)^0.5-pi^(5/2)/20/2^0.5
+
+N1 = 2^(4);
+N2 = 2^(6);
+a = eps^0.5;
+b = pi/2;
+
+T = zeros(8,2);
+
+T(1,1) = midpoint_rule(f1,a,b,N1)
+T(1,2) = midpoint_rule(f1,a,b,N2)
+
+T(2,1) = gauss_legendre(f1,a,b,N1)
+T(2,2) = gauss_legendre(f1,a,b,N2)
+
+T(3,1) = midpoint_rule(f2,a,b,N1)+c1
+T(3,2) = midpoint_rule(f2,a,b,N2)+c1
+
+T(4,1) = gauss_legendre(f2,a,b,N1)+c1
+T(4,2) = gauss_legendre(f2,a,b,N2)+c1
+
+T(5,1) = trapezium_rule(f2,a,b,N1)+c1
+T(5,2) = trapezium_rule(f2,a,b,N2)+c1
+
+T(6,1) = midpoint_rule(f3,a,b,N1)+c2
+T(6,2) = midpoint_rule(f3,a,b,N2)+c2
+
+T(7,1) = gauss_legendre(f3,a,b,N1)+c2
+T(7,2) = gauss_legendre(f3,a,b,N2)+c2
+
+T(8,1) = trapezium_rule(f3,a,b,N1)+c2
+T(8,2) = trapezium_rule(f3,a,b,N2)+c2
+
+
+function result = midpoint_rule(f, a, b, N)
+    result = 0;
+    for i = 0:(N-1)
+        point = a+(i+0.5)*(b-a)/N;
+        result = result + f(point);
+    end
+
+    result = result * (b-a)/N;
+end
+
+
+function result = trapezium_rule(f, a, b, N)
+    result = 0;
+    for i = 1:(N-1)
+        point = a+i*(b-a)/N;
+        result = result + 2*f(point);
+    end
+    result = result + f(a) + f(b);
+
+    result = result * (b-a)/N/2;
+end
+
+function result = simpsons_rule(f, a, b, N)
+    result = 0;
+    for i = 1:N
+        left = a+(i-1)*(b-a)/N;
+        right = a+i*(b-a)/N;
+        result = result + 1/3*(b-a)/N/2*(f(left)+4*f((left+right)/2)+f(right));
+    end
+end
+
+function result = gauss_legendre(f, a, b, N)
+    x = [-sqrt(3/5), 0, sqrt(3/5)];
+    w = [5/9, 8/9, 5/9];
+
+    result = 0;
+    for i = 1:N
+        left = a + (i-1)*(b-a) / N;
+        right = a + i*(b-a)/N;
+        for j = 1:3
+            xi = 0.5*(left+right + (right-left) * x(j));
+            result = result+w(j)*f(xi);
+        end
+    end
+    result = 0.5 * (b-a)/N*result;
+end
+\end{lstlisting}
+
+\begin{table}
+\centering
+\begin{tabular}{|l|c|c|}
+\hline
+Integration Rule & \( h = \left(\frac{1}{2}\right)^2 \) & \( h = \left(\frac{1}{2}\right)^6 \) \\
+\hline
+Direct Midpoint & 1.765666283681793 & 1.860155868481409 \\
+\hline
+Direct 3 pt Gauss & 1.876838968734573 & 1.915870385659986 \\
+\hline
+Subtract 1 term Midpoint & 1.955096450266878 & 1.954915723357975 \\
+\hline
+Subtract 1 term 3 pt Gauss & 1.954903132540786 & 1.954902857457019 \\
+\hline
+Subtract 1 term Trapezium & 1.954504413847847 & 1.954876746976996 \\
+\hline
+Subtract 3 terms Midpoint & 1.954743822379750 & 1.954892907353329 \\
+\hline
+Subtract 3 terms 3 pt Gauss & 1.954902848557130 & 1.954902848582609 \\
+\hline
+Subtract 3 terms Trapezium & 1.955220931501738 & 1.954922731169139 \\
+\hline
+\end{tabular}
+\caption{Question 3.}
+\label{tab:q3}
+\end{table}
+
+{\medskip\noindent\bf Question 4.} 
 
 \end{document}
