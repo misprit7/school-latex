@@ -1,0 +1,146 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 320 Homework 5}
+\date{12/10/23}
+\author{Xander Naumenko}
+\maketitle
+
+{\medskip\noindent\bf Question 1.} Both directions will be proven. 
+
+(a) $\Rightarrow$ (b): Let $\epsilon>0$. Then by (a), there exists $N$ with for $n>N$, $\left| x_n-\hat x \right| <\epsilon<20\epsilon$. Since this also works if $n\geq 23N>N$, we're done.
+
+(a) $\Leftarrow$ (b): Let $\epsilon>0$. Then by (b) find an $N$ such that for all $n\geq 23N$, $\left| x_n-\hat x \right|< 20(\frac{\epsilon}{20})$. Let $N'=23N+1$, then for $n>N'$, we have that $\left| x_n-\hat x \right| <\frac{20}{20}\epsilon=\epsilon$ as required.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 2i.} As with the previous questions, both directions will be proven separately.
+
+(i) $\Rightarrow$ (ii): Assume (i) holds. Let $x_n$ be a bounded, monotonic sequence in $\mathbb{R}$ with $x_n<b\forall n\in \mathbb{N}$. For simplicity, without loss generality assume that $x_n$ is non-decreasing. Consider $b-\frac{1}{2^{n}}$ for some $n$. If $b-\frac{1}{2^{n}}$ is no longer an upper bound of $(x_n)$ then stop, otherwise consider $b-2\frac{1}{2^{n}},b-3 \frac{1}{2^{n}}$, etc until we get an element, call it $b_n$ such that $b_n$ is an upper bound of $(x_n)$ but $b_n-\frac{1}{2^{n}}$ isn't (clearly this process terminates since we're subtracting by a constant factor each time). Note that $(b_n)$ is a non-increasing sequence since $b_n=b-k \frac{1}{2^{n}}=b-2k \frac{1}{2^{n+1}}$ is an upper bound for $(x_n)$, so by construction $b_{n+1}\leq b-2k \frac{1}{2^{n+1}}=b_{n}$.
+
+Now consider the nested sequence of intervals $[x_n,b_n]$. By (i), we can find a real number $y$ such that $y\in [x_n,b_n]\forall n\in \mathbb{N}$. $y>x_n\forall n\in \mathbb{N}$ since $y\in [x_{n+1},b_{n+1}]$. Let $\epsilon>0$, I claim there exists an $x_n$ with $y-\epsilon<x_n\leq y$. Let $n$ be a number such that $2^{n}<\epsilon$. Then we have that by our construction of $b_n$, there exists an $m$ such that $x_m\geq b_n-\frac{1}{2^{n}}\geq y-\frac{1}{2^{n}}> y-\epsilon$. Thus we've found a number $y$ that is an upper bound for the non-decreasing sequence $x_n$ that is arbitrarily close to it, so $x_n\to y$ implying (ii).
+
+(i) $\Leftarrow$ (ii): This direction is much simpler, assume (i) holds. Let $I_1=[a_1,b_1],I_2,\ldots$ be a nested sequence of intervals, and consider the sequences $(a_n)$ and $(b_n)$. These are clearly increasing/decreasing (not necessarily strictly) sequences respectively due to the nesting condition, so $a_n\to A$ and $b_n\to B$ by (ii). Since $a_n\leq b_n\forall n$ we have that $A\leq B$. Also for any $x\in [A,B]$ we have that $x\in[A,B]\subset [a_n,b_n]\forall n$, so $\cap_{n\in \mathbb{N}}I_n=[A,B]$. Even if $A=B$ then $[A,B]$ is nonempty, so (i) holds.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 3a.} Trivially we have that $\forall x\in CS(\mathbb{Q}),x\in R[x]$ by definition.
+
+{\medskip\noindent\bf Question 3b.} Both direction will be proven.
+
+($\Rightarrow$): Assume that $R[x]=R[y]$. Then $(x_n-y_n)\to 0$, which by definition means that $y\in R[x]$. Also as stated in part a, $y\in R[y]$. Thus $R[x]\cap R[y]\supset \{y\}\neq \emptyset$.
+
+($\Leftarrow$): Let $z\in R[x]\cap R[y]$. Then $(x_n-z_n)\to 0$ and $(y_n-z_n)\to 0$. Let $\epsilon>0$, and find $N_1,N_2$ s.t. $n>N_1\implies |x_n-z_n|<\frac{\epsilon}{2}$ and $n>N_2\implies|y_n-z_n|<\frac{\epsilon}{2}$. Then for $n>\max(N_1,N_2)$, we have
+\[
+\left| x_n-y_n \right| =\left| x_n-z_n+z_n-y_n \right| \leq \left| x_n-z_n \right| +\left| y_n-z_n \right| <\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon
+.\]
+Thus $(x_n-y_n)\to 0\implies R[x]=R[y]$.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 4a.} Assume that $R[x']<R[y']$, so $\exists r>0,N\in \mathbb{N}$ s.t. $\forall n>N$, $y_n'-x_n'>r$. Since $R[x']=R[x]$ and $R[y']=R[y]$, find $N_1\in \mathbb{N}$ s.t. $n>N_1\implies \left| x_n'-x_n \right|\leq \frac{r}{3}$ and similarly find an analogous $N_2$ for $y'$. Then for $n>\max(N,N_1,N_2)$, we have that
+\[
+y_n-x_n\leq y_n' -\left| y_n'-y_n \right| -x_n - \left| x_n'-x_n \right| < y_n'-x_n' -\frac{r}{3}-\frac{r}{3}<r-\frac{r}{3}-\frac{r}{3}=\frac{r}{3}
+.\]
+Thus there exists a $r'=\frac{r}{3},N'=\max(N,N_1,N_2)$ pair that satisfies the requirements for $<$. By symmetry the result works identically in reverse by replacing $x'\to x$ and $y'\to y$, so we're done.
+
+{\medskip\noindent\bf Question 4b.} Let $x,y,z$ be as in the question. Then find $r_1,N_1$ s.t. $n>N_1\implies y_n-x_n>r_1 $ and likewise $r_2,N_2$ for $y,z$. Then choose $r=r_1+r_2$ and $N=\max(N_1,N_2)$, for $n>N$ we get
+\[
+z_n-x_n>(y_n+r_2)-x_n>r_1+r_2=r
+.\]
+
+{\medskip\noindent\bf Question 4c.} Let $y,z\in R[x]$, and let $r>0,N\in \mathbb{N}$. By definition $(y_n-z_n)\to 0$, so choose $N>0$ s.t. $\forall n>N$, $|y_n-z_n|<\frac{r}{2}$. This implies that $y_n-z_n\leq |y_n-z_n|<\frac{r}{2}$, so $R[y]\not <R[z]$. Since this holds for any two $y,z\in R[x]$, it can't be that $R[x]<R[x]$.
+
+{\medskip\noindent\bf Question 4d.} Both directions:
+
+($\Rightarrow$): Let $p,q\in \mathbb{Q}$ with $p<q$. Let $r=\frac{q-p}{2}$ and $N=1$, then $q_n-p_n=q-p>\frac{q-p}{2}=r$ as required.
+
+($\Leftarrow$): Assume that $\Phi(p)<\Phi(q)$. Then $q_n-p_n=q-p>r$ for some $r>0$, which implies that $q>p+r\implies p<q$.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 5a.} Let $x\in CS(\mathbb{Q})$. Consider three cases (of which there may be overlap, although obviously we're trying to disprove there can be):
+
+{\bf Case $\Phi(0)<R[x]$:} There exists $r>0,N\in \mathbb{N}$ such that $\forall n>N, x_n-0=x_n>r$. But then setting $\epsilon= \frac{r}{2}$ we see that clearly $x_n\not\to 0$ and so $R[x]\neq \Phi(0)$. Let $y$ be such that $R[y]<\Phi(0)$. Then there exists a $N_y,r_y$ fulfilling the $<$ properties for $R[y]$. But then for $n>\max(N,N_y)$ we have that $|x_n-y_n|=\left| x_n-0+0-y_n \right| >r+r_y$, so choosing $\epsilon= \frac{r+r_y}{2}$ means that $R[x]\neq R[y]$.
+
+{\bf Case $\Phi(0)=R[x]$}: Applying question 4c to $\Phi(0)=R[x]$, we know that $\Phi(0)$ can't be less than or greater than itself.
+
+{\bf Case $R[x]<\Phi(0)$}: By symmetry the exact same argument that worked for the first case works here.
+
+\noindent Since we've proven that if one of the cases holds it must be the only one to hold, all that remains to be shown is that at least one of the cases holds. Let $x\in CS(\mathbb{Q})$, if $R[x]=\Phi(0)$ then we're done, so assume it isn't. Let $\epsilon>0$ such that $\forall N\in \mathbb{N}$, $\exists n>N$ with $\left| x_n-0 \right|=|x_n| >\epsilon$. Since $x_n$ does converge since it is a Cauchy sequence, this means that $\exists N'\in \mathbb{N}$ s.t. $\forall n>N'$, $|x_n|>\epsilon$. Let $r=\epsilon$, then either $x_n-0>r$ or $0-x_n>r$, so either $\Phi(0)<R[x]$ or $R[x]<\Phi(0)$.
+
+{\medskip\noindent\bf Question 5b.} Since $x\in CS(\mathbb{Q})$, $\exists N\in \mathbb{N}$ s.t. $n>N,m\in \mathbb{N}\implies \left| x_{n+m}-x_n \right|<1$. Let $q=x_{N+1}-2$ and let $r=1$. Then we have that for $n>N$,
+\[
+x_n-q_n=x_n-x_{N+1}+2>2-\left| x_n-x_{N+1} \right| >2-1=1=r
+,\]
+so $\Phi(q)<R[x]$. By symmetry, this argument works identically to construct an $r$ with the required property for being greater than $R[x]$, so we're done.
+
+{\medskip\noindent\bf Question 5c.} Let $x,y\in CS(\mathbb{Q})$ with $R[x]<R[y]$. Find $r,N$ s.t. $n>N\implies y_n-x_n>r$. Also find $N_x$ s.t. $n>N_x,m\in \mathbb{N}\implies \left| x_{n+m}-x_n \right|<\frac{r}{3}$. Let $N'=\max(N,N_x)$. Choose $q=x_{N'+1}+\frac{r}{2}$, then for $n>N'$ we have that
+\[
+q-x_n=x_{N'+1}+\frac{r}{2}-x_n>\frac{r}{2}-\left| x_{N'+1}-x_n \right|>\frac{r}{2}-\frac{r}{3}=\frac{r}{6}
+\]
+and
+\[
+y_n-q=y_n-x_{N'+1}-\frac{r}{2}>r-\frac{r}{2}=\frac{r}{2}
+.\]
+Since we've proven both sides of the inequality, we've shown that $R[x]<\Phi(q)<R[y]$.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 6.} Since $R[x]\neq \Phi(0)$ and $x$ converges, $\exists \epsilon>0,N>0$ s.t. $\forall n>N,|x_n|>\epsilon$.Define $z$ as
+\[
+z_n=\begin{cases}
+    0&\text{ if }n\leq N\\
+    \frac{1}{x_n}&\text{ otherwise}
+\end{cases}
+.\]
+This is well defined, since for $n>N$, $x_n\neq 0$. Also, for $n>N$, $x_nz_n=x_n \frac{1}{x_n}=1$. Let $\epsilon>0$, then for $n>N$ we have $\left| x_ny_n-1 \right| =\left| 1-1 \right| =0<\epsilon$, so $x_nz_n=\Phi(1)$.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 7.} Let $T_n(x)=\{x_m: m>n\}$ (I'm being a bit loose with indexing, here $x=(x_n)$). Fix $n\in \mathbb{N}$, and consider $T_n(a),T_n(b)$ and $T_n(a+b)$. Note that for every $(a_m+b_m)\in T_n(a+b)$ there exists a combination $a_m\in T_n(a)$ and $b_m\in T_n(b)$ clearly with $a_m+b_m\leq a_m+b_m$. Thus $\sup(T_n(a+b))\leq \sup(T_n(a))+\sup(T_n(b))$. Since this is true for every $n\in \mathbb{N}$, we can take the limit to get
+\[
+\lim_{n\to\infty}\sup(T_n(a+b))\leq \lim_{n\to\infty}(\sup(T_n(a))+\sup(T_n(b))=\lim_{n\to\infty}\sup(T_n(a))+\lim_{n\to\infty}\sup(T_n(b))
+\]
+\[
+\limsup_{n\to\infty}a+b\leq\limsup_{n\to\infty}a_n+\limsup_{n\to\infty}b
+.\]
+As for an example of strict inequality, consider $a_n=(-1)^{n}$ and $b_n=(-1)^{n+1}$. Then $a_n+b_n=(-1)^{n}+(-1)^{n+1}=(-1)^{n}(1-1)=0$, but $\limsup_{n\to\infty}a_n=\limsup_{n\to\infty}b_n=2$.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 8a.} Proof by contradiction. If $\left| \left| cf \right|  \right| >|c\left| \left| f \right|  \right| $, then $\exists x\in[0,1]$ s.t. $cf(x)>c\sup \{|f(x)|: x\in [0,1]\}$, which dividing by $c $ clearly gives a contradiction. Similarly if $| |cf| |< |c| | |f| |$ then there exists an $x\in [0,1]$ such that $\sup \{|cf(x)|: x\in[0,1]\}<|c| | |f| |$, which is also impossible. Thus it must be that $| |cf| |=|c| | |f| |$.
+
+{\medskip\noindent\bf Question 8b.} This is similar to question 7. For every possible $x\in [0,1]$ there exists corresponding $y,z\in[0,1]$, namely $y=z=x$ such that $f(x)+g(x)\leq f(y)+g(z)$. Since this is true of every $x\in[0,1]$ clearly the supremeum of the left side of the inequality can't be greater than the supremum over each part of the right side separately. Thus $\|f+g\|\leq \|f\|+\|g\|$.
+
+For an example where strict inequality holds, consider $f(x)=x$ and $g(x)=1-x)$. Then $f(x)+g(x)=x+1-x=1$ so $\|f+g\|=1$, but $\|f\|+\|g\|=1+1=2$.
+
+{\medskip\noindent\bf Question 8c.} Let $f'=f-g$ and $g'=g-h$. $f,g,h$ are bounded so so are $f',g'$, and applying part b to $f',g'$, we get
+\[
+\|f'+g'\|=\|f-h\|\leq \|f'\|+\|g'\|=\|f-g\|+\|g-h\|\implies \|f-h\|-\|g-h\|\leq \|f-g\|
+.\]
+
+\newpage\phantom{blabla}
+\newpage
+
+\end{document}

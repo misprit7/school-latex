@@ -64,15 +64,25 @@ function result = midpoint_rule(f, a, b, N)
 end
 
 
+% function result = trapezium_rule(f, a, b, N)
+%     result = 0;
+%     for i = 1:(N-1)
+%         point = a+i*(b-a)/N;
+%         result = result + 2*f(point);
+%     end
+%     result = result + f(a) + f(b);
+
+%     result = result * (b-a)/N/2;
+% end
 function result = trapezium_rule(f, a, b, N)
     result = 0;
-    for i = 1:(N-1)
-        point = a+i*(b-a)/N;
-        result = result + 2*f(point);
+    for i = 1:N
+        left = a+(i-1)*(b-a)/N;
+        right = a+i*(b-a)/N;
+        result = result + 0.5*(f(left) + f(right)) *(b-a)/N;
     end
-    result = result + f(a) + f(b);
 
-    result = result * (b-a)/N/2;
+    result = result;
 end
 
 function result = simpsons_rule(f, a, b, N)
