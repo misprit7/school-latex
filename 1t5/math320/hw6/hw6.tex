@@ -1,0 +1,113 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 320 Homework 6}
+\date{18/10/23}
+\author{Xander Naumenko}
+\maketitle
+
+{\medskip\noindent\bf Question 1a.} As the hint suggests, we will use induction to prove that $0<a_n<a_{n+1}<b_{n+1}b_n$.
+
+{\noindent\bf Base case ($n=1$):} Both the geometric and arithmetic mean are between the two elements they're averaging, so $0<a_1< \sqrt{1_nb_1}<\frac{a_1+b_1}{2}<b_1$.
+
+{\noindent\bf Inductive step:} Assume that $0<a_{n-1}<a_n<b_n<b_{n-1}$. Then we have $a_{n+1}=\sqrt{a_nb_n}>\sqrt{a_n^2}=a_n$, and $a_{n+1}=\sqrt{a_nb_n}<\sqrt{b_n^2}=b_n$. Also $b_{n+1}=\frac{a_{n}+b_n}{2}>\frac{2a_n}{2}=a_n$ and $b_{n+1}< \frac{2b_n}{2}=b_n$. Thus we get that $0<a_n<a_{n+1}<b_{n+1}<b_n$ as required.
+
+Since we have that $0<a_{n}<a_{n+1}<b_{n+1}<b_n$ for all $n$, this implies that $a_n$ is an increasing bounded (by $b_1$) sequence, so it must converge. Similarly $b_n$ is a decreasing bounded (by $a_1$) sequence so it also must converge.
+
+{\medskip\noindent\bf Question 1b.} Proof by contradiction, assume that $A=\lim_{n\to\infty}a_n$ and $B=\lim_{n\to\infty}b_n$ with $A\neq B$. Because of the inequality given above we must have that $B>A$. Let $\epsilon=\frac{B-A}{2}$. There exists $N$ s.t. $n\geq N\implies |B-b_n|<\epsilon$ and $|A-a_n|<\epsilon$. However consider $b_{n+1}=\frac{a_n+b_n}{2}$. Then we have that
+\[
+b_{n+1}=\frac{a_n+b_n}{2} < \frac{A+\frac{B-A}{2}+B+\frac{B-A}{2}}{2}=\frac{2B}{2}=B
+.\]
+However this is impossible, since $(b_n)$ is a decreasing sequence and $B$ is supposedly its limit. Thus it must be that $A=B$ after all.
+
+\newpage\phantom{blabla}
+\newpage
+
+
+{\medskip\noindent\bf Question 2a.} By symmetry I'll only show that $\lambda$ is an integer, by symmetry of the integers under $f(x)=-x$, $\mu$ must also be then. By contradiction suppose that it wasn't, suppose that $\lambda\notin \mathbb{Z}$. But then $\lambda'=\left\lceil \lambda \right\rceil$ is also a lower bound of $(z_n)$ because for $z_n\geq \lambda\implies z_n\geq \left\lceil \lambda \right\rceil=\lambda'$, i.e. $z_n$ can't be between $\lambda$ and $\lambda'$. But since $\lambda'>\lambda$ this contradicts that $\lambda$ was maximal, so in fact $\lambda\in \mathbb{Z}$.
+
+For part ii, again by contradiction assume that there were only finitely many integers with $z_n=\lambda$. Let $N$ be the largest $n$ such that $z_N=\lambda$. Then for $n>N$, we have that $z_n>\lambda+1\implies z_n\geq \lambda+1$, since $z_n\geq \lambda$ and $z_n\neq \lambda$. But then $\lambda+1$ shows that $\lambda$ wasn't maximal, so in fact there must have been infinitely many $n$ for which $z_n=\lambda$.
+
+{\medskip\noindent\bf Question 2b.} There are infinitely many primes, since if there were only finitely many one could multiply them together and add one to produce a new prime not included on the list. Let $M>0$, and let $p_1,p_2,\ldots,p_M$ be the first $M$ primes. Consider the following set of congruence relations:
+\[
+\begin{cases}
+    x\equiv 0\mod p_1\\
+    x\equiv -1\mod p_2\\
+    \vdots\\
+    x\equiv -(M-1)\mod p_M
+\end{cases}
+.\]
+Since we chose them to be primes the $p_1,\ldots,p_M$ are clearly pairwise coprime. Thus by the chinese remainder theorem (given you're asking a number theory question in analysis I assume it's fine to use an elementary number theory result like this) there exists a unique solution mod $p_1\cdots p_M$ to these relations, call it $x$. Let $N>0$, and choose $k$ such that $kp_1\cdots p_M>N$ and $k\geq 1$. Let $x' = x+p_1\cdots p_M$. Then we have that for $n>N$, $p_1\mid x', p_2\mid (x'+1),\ldots, p_M|\left( x'+M-1 \right) $. Thus if $p_i$ is the first prime before $x'$, since there is a string of $M$ composite numbers (they must all be composite since $k\geq 1$) after it, we have that $p_{i+1}-p_i>M$. Since we can find arbitrarily large gaps in primes matter where the tail is cut off, $\limsup_{n\to\infty}d_n=+\infty$.
+
+For ii, the statement is equivalent to the twin prime conjecture. It is equivalent, since if there were only finitely many twin primes then by part a(ii) (okay technically switching inf with sup, but by symmetry of the integers these are identical) we would have that $\liminf_{n\to\infty}d_n>2$. Conversely, if the twin prime conjecture was true then $d_{n}=p_{n+1}-p_n=2$ would occur infinitely many times and we would have $\liminf_{n\to\infty}d_n\leq 2$. However the gap between two primes can never be less than 2 because other than 2, all primes are odd. Thus the $\leq$ is actually an $=$, so the statements are equivalent.
+
+\newpage\phantom{blabla}
+\newpage
+
+% {\medskip\noindent\bf Question 3a.} Proof by contradiction: suppose that the expression on the left was greater than that one the right. 
+{\medskip\noindent\bf Question 3a.} Expanding the definition, we have that
+\[
+\limsup_{n\to\infty}(a_nb_n)=\inf_{n\in \mathbb{N}}\sup_{k>n}(a_nb_n)=\inf_{n\in \mathbb{N}}\sup\{a_ib_i: i>n\}\leq \inf_{n\in \mathbb{N}}\sup\{a_ib_j: i>n,j>n\}
+\]
+\[
+=\left( \limsup_{n\to\infty}a_n \right) \left( \limsup_{n\to\infty}b_n \right)
+.\]
+The conversion to $\leq$ in the above equation is justified, since we are expanding the set that we're taking the supremum over which can only increase the result.
+
+{\medskip\noindent\bf Question 3b.} Let $a_n=(-1)^{n}$ and $b_n=(-1)^{n+1}$. Then $a_nb_n=(-1)^{n}(-1)^{n+1}=(-1)^{2n+1}=-1$, but both of their respective limit supremums are $1$.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 4a.} If $r=1$, then the result is vacuously $0\leq 0\leq 0$ which is true, so assume that now that $r>1$. Then we can divide the inequality by $(r-1)$ and expand the geometric series formula to get
+\[
+n\leq \frac{r^{n}-1}{r-1}=\sum_{i=0}^{n-1}r^{i}\leq nr^{n-1}
+.\]
+I will prove both sides separately:
+\[
+\sum_{i=0}^{n-1}r^{i}\geq \sum_{i=0}^{n-1}1=n
+,\]
+\[
+\sum_{i=0}^{n-1}r^{i}\leq \sum_{i=0}^{n-1}r^{n-1}=nr^{n-1}
+.\]
+Thus the original inequality holds.
+
+{\medskip\noindent\bf Question 4b.} Clearly $x_n$ is bounded below by $0$ since it is the product of two positive numbers. I claim that it is decreasing, assuming this is true then the result follows immediately since bounded monotonic sequences are convergent. Expanding:
+\[
+    x_{n+1}-x_n=(n+1)\left( a^{\frac{1}{n+1}}-1 \right) -n\left( a^{\frac{1}{n}}-1 \right) =a^{\frac{1}{n+1}}-1-na^{\frac{1}{n+1}}\left( a^{\frac{1}{n(n+1)}}-1 \right) 
+.\]
+Let $r=a^{\frac{1}{n(n+1)}}$, since $a\geq 1$, $r^{n}\geq r^{n-1}$. Then applying the right half of the inequality from part a we get
+\[
+\leq a^{\frac{1}{n+1}}-1-na^{\frac{n-1}{n(n+1)}}\left( a^{\frac{1}{n(n+1)}}-1 \right)\leq a^{\frac{1}{n+1}} -1 -a^{\frac{1}{n+1}}+1=0
+.\]
+Since $x_{n+1}-x_n\leq 0$, $(x_n)$ is decreasing and it is also bounded, so it must converge.
+
+{\medskip\noindent\bf Question 4c.} Let $a\in(0,1)$ and let $a'=\frac{1}{a}\in [1,\infty)$. Then we have
+\[
+\lim_{n\to\infty}n(a^{1 /n}-1)=\lim_{n\to\infty}n\left(\left(\frac{1}{a'}\right)^{1 /n}-1\right)=\lim_{n\to\infty}-\frac{1}{(a')^{1 /n}}n\left( (a')^{1 /n}-1 \right)
+.\]
+We have that $\lim_{n\to\infty}-\frac{1}{(a')^{1 /n}}=1$ and we just proved that the term on the right side converges, so by the product rule for limits we have that their product also converges.
+
+{\medskip\noindent\bf Question 4d.} Let $a_n=\frac{2}{a^{1 /n}+1}n\left( a^{1 /n}-1 \right)$, $b_n=\frac{2}{b^{1 /n}+1}n\left( b^{1 /n}-1 \right)$ and $c_n=a_n+b_n$. Then we have that
+\[
+c_n=\frac{2}{a^{1 /n}+1}n\left( a^{1 /n}-1 \right)+\frac{2}{b^{1 /n}+1}n\left( b^{1 /n}-1 \right)=\frac{2n}{(a^{1 /n}+1)(b^{1/n}+1)} \left( 2(ab)^{1 /n}-2 \right) 
+.\]
+Since $\frac{2}{a^{1 /n}+1}=\frac{2}{b^{1 /n}+1}=\frac{2}{a^{1 /n}+1}\frac{2}{b^{1 /n}+1}=1$, by the product rule for limits we have that $a_n\to L(a),b_n\to L(b)$ and $c_n\to L(ab)$. Since for every term we also have that $a_n+b_n=c_n$, we can take the limit as $n\to\infty$ to get $L(a)+L(b)=L(ab)$.
+
+\newpage\phantom{blabla}
+\newpage
+
+\end{document}
