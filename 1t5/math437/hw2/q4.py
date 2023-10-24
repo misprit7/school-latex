@@ -2,8 +2,15 @@ from sympy import divisors, totient, factorial, N
 import matplotlib.pyplot as plt
 
 a = []
+f = []
+d = []
+p = []
 for n in range(1, 20):
-    a += [factorial(n)/len(divisors(n))/totient(n)]
+    fac = factorial(n)
+    a += [fac/len(divisors(fac))/totient(fac)]
+    f += [fac]
+    d += [len(divisors(fac))]
+    p += [totient(fac)]
 
 b = []
 # for n in range(1, 15):
@@ -11,5 +18,6 @@ b = []
 
 # plt.semilogy(a)
 # plt.show()
-print(a)
+print(list(zip(a,f,d,p)))
+# print([N(a[i+1]/a[i]) for i in range(len(a)-1)])
 

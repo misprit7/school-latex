@@ -24,13 +24,13 @@ urlcolor=cyan,
 Proof by contradiction, assume that $n=pa$ where $p<n$ is the smallest prime divisor of $n$, with $p+2|n+2$ and $a+2|n+2$. If $2|n$ then we have $\frac{n}{2}+2|n+2$, which is impossible since $\frac{n+2}{2}<\frac{n}{2}+2<n+2$ so $p\neq 2$. Next consider the set of congruence relations:
 \[
     \begin{cases}
-        n'=0\mod p\\
-        n'=-2\mod p+2
+        n'\equiv 0&\mod p\\
+        n'\equiv -2&\mod p+2
     \end{cases}
 .\]
-$p$ is odd so $\gcd(p,p+2)=1$, so by the chinese remainder theorem the solution $n'$ is unique up to multiples of $p(p+2)$. Clearly $n'=p$ fulfills both criteria, so we can express $n=p+kp(p+2),k\in \mathbb{Z}$.
+$p$ is odd so $\gcd(p,p+2)=1$, so by the chinese remainder theorem the solution $n'$ is unique up to multiples of $p(p+2)$. $n'=p$ fulfills both criteria, so we can express $n=p+kp(p+2),k\in \mathbb{Z}$.
 
-Now consider $a=\frac{n}{p}=1+k(p+2)$. By hypothesis $a|n+2\implies (1+k(p+2))|(p+kp(p+2)+2)\implies (1+k(p+2))|2$. Clearly this is impossible for $p>1$ which it is by hypothesis, so this is a contradiction suggesting $n$ can't in fact have more factors than $1$ and itself. Since we've shown that primes of the form $3k+1$ work and any composite numbers don't, all primes of that form are the only numbers that fulfill the requirements. $\square$
+Now consider $a=\frac{n}{p}=1+k(p+2)$. By hypothesis $a+2|n+2\implies (3+k(p+2))|(p+kp(p+2)+2)\implies (1+k(p+2))|2$. Clearly this is impossible for $p>1$ which it is, so this is a contradiction suggesting $n$ can't in fact have more factors than $1$ and itself. Since we've shown that primes of the form $3k+1$ work and any composite numbers don't, all primes of that form are the only numbers that fulfill the requirements. $\square$
 
 {\medskip\noindent\bf Question 2.} Consider the equation mod 3:
 \[
@@ -48,10 +48,10 @@ Using the fact that there are infinitely many take $q_0,\ldots, q_{k-1}$ to be a
 \[
 \begin{cases}
     
-x\equiv 0\mod q_0\\
-x\equiv -1\mod q_1\\
+    x\equiv 0&\mod q_0\\
+    x\equiv -1&\mod q_1\\
 \vdots\\
-x\equiv -k+1\mod q_{k-1}\\
+    x\equiv -k+1&\mod q_{k-1}\\
 \end{cases}
 \]
 up to mod $q_1\cdots q_{k-1}$. Let $m_i=1$ if $\exp_{q_i}(x+i)\equiv 0\mod 2$ and $m_i=\exp_{q_i}(x+i)+1$ otherwise. I claim that the following sequence of $k$ integers satisfies the required properties, where $n$ ranges from 0 to $k-1$:
@@ -62,6 +62,15 @@ Note that the product term does not conflict with the congruence relations found
 
 If instead $\exp_{q_{n}}(x+n)\equiv 1\mod 2$, then we can write $x+n=q_n^{m_n}l$ for $q_n\nmid l$, and $x_n=q_n^{m_n}(l+q_nq_0^{m_0}\cdots q_{k-1}^{m_{k-1}})$. In reverse from the previous case here the first term is not divisible by $l$ and the second is, so $\exp_{q_n}(x_n)\equiv m_n\equiv 1\mod 2$. In either case we have that $\exp_{q_n}(x_n)\equiv 1\mod 2$, so by theorem 13.4 none of the $x_n$ are expressible as $a^2+b^2$. $\square$
 
-{\medskip\noindent\bf Question 4a.} 
+{\medskip\noindent\bf Question 4a.} I claim that the limit is equal to 0. Writing $n!=\prod_{i=1}^{r}p_i^{\alpha_i}$ with $p_1<p_2<\ldots<p_r$, using identities proven in class we have that
+\[
+d(n!)\phi(n!)=\left(\prod_{i=1}^{r}(\alpha_i+1)\right)n!\left(\prod_{i=1}^{r}\left(1-\frac{1}{p_i}\right)\right)=n!\left( \prod_{i=1}^{r}(\alpha_i+1)\left( 1-\frac{1}{p_i} \right)  \right) 
+.\]
+Since $n!|(n+1)!$, each individual term in the product above only increases as $n$ increases. Also since $\alpha_i\geq 1$ and $1-\frac{1}{p_i}\geq \frac{1}{2}$, each individual term in the product is greater or equal to 1. Thus:
+\[
+    \frac{n!}{d(n!)\phi(n!)}\leq \frac{n!}{n! \frac{\exp_2(n!)}{2}}=\frac{2}{\exp_2(n!)} \to 0
+.\]
+
+{\medskip\noindent\bf Question 4b.} 
 
 \end{document}
