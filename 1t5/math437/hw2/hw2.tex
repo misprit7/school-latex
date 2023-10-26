@@ -21,16 +21,18 @@ urlcolor=cyan,
 
 {\medskip\noindent\bf Question 1.} Since $1|n\forall n$, we have that $3|n+2\implies n\equiv 1\mod 3$. Clearly any prime of the form $3k+1$ works and no other prime does, since for such numbers $1$ is the only factor. I claim that primes of that form are the only solution for $n$. 
 
-Proof by contradiction, assume that $n=pa$ where $p<n$ is the smallest prime divisor of $n$, with $p+2|n+2$ and $a+2|n+2$. If $2|n$ then we have $\frac{n}{2}+2|n+2$, which is impossible since $\frac{n+2}{2}<\frac{n}{2}+2<n+2$ so $p\neq 2$. Next consider the set of congruence relations:
-\[
-    \begin{cases}
-        n'\equiv 0&\mod p\\
-        n'\equiv -2&\mod p+2
-    \end{cases}
-.\]
-$p$ is odd so $\gcd(p,p+2)=1$, so by the chinese remainder theorem the solution $n'$ is unique up to multiples of $p(p+2)$. $n'=p$ fulfills both criteria, so we can express $n=p+kp(p+2),k\in \mathbb{Z}$.
+Proof by contradiction, assume that $n=pa$ where $p<n$ is the smallest prime divisor of $n$, with $p+2|n+2$ and $a+2|n+2$. If $2|n$ then we have $\frac{n}{2}+2|n+2$, which is impossible since $\frac{n+2}{2}<\frac{n}{2}+2<n+2$ so $p\neq 2$. Therefore $p\neq 2$. Since $a|n$, there exists an $k$ such that $n+2=k\left( \frac{n}{p}+2 \right)\implies n(p-k)=2p(k-1)\implies 2| (p-k)$ (since $2\nmid n$). Also $p>k$ since the right side is positive, so $p-k>0$. However this implies that $n\leq p(k-1)\leq p(p-2)$. However $n\geq p^2$ since $p$ was supposedly the smallest prime factor of a composite number $n$, so this chain of inequalities is a contradiction and in fact $n$ is a prime of the form $3k+1$.
 
-Now consider $a=\frac{n}{p}=1+k(p+2)$. By hypothesis $a+2|n+2\implies (3+k(p+2))|(p+kp(p+2)+2)\implies (1+k(p+2))|2$. Clearly this is impossible for $p>1$ which it is, so this is a contradiction suggesting $n$ can't in fact have more factors than $1$ and itself. Since we've shown that primes of the form $3k+1$ work and any composite numbers don't, all primes of that form are the only numbers that fulfill the requirements. $\square$
+% Next consider the set of congruence relations:
+% \[
+%     \begin{cases}
+%         n'\equiv 0&\mod p\\
+%         n'\equiv -2&\mod p+2
+%     \end{cases}
+% .\]
+% $p$ is odd so $\gcd(p,p+2)=1$, so by the chinese remainder theorem the solution $n'$ is unique up to multiples of $p(p+2)$. $n'=p$ fulfills both criteria, so we can express $n=p+kp(p+2),k\in \mathbb{Z}$.
+
+% Now consider $a=\frac{n}{p}=1+k(p+2)$. By hypothesis $a+2|n+2\implies (3+k(p+2))|(p+kp(p+2)+2)\implies (1+k(p+2))|2$. Clearly this is impossible for $p>1$ which it is, so this is a contradiction suggesting $n$ can't in fact have more factors than $1$ and itself. Since we've shown that primes of the form $3k+1$ work and any composite numbers don't, all primes of that form are the only numbers that fulfill the requirements. $\square$
 
 {\medskip\noindent\bf Question 2.} Consider the equation mod 3:
 \[

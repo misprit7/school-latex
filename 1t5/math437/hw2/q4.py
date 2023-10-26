@@ -1,4 +1,4 @@
-from sympy import divisors, totient, factorial, N, log
+from sympy import divisors, totient, factorial, N, log, factorint
 import matplotlib.pyplot as plt
 
 # a = []
@@ -22,8 +22,10 @@ d = []
 for n in range(1, 26):
     b += [N(factorial(n)/2**(len(divisors(factorial(n)))))]
     d += [len(divisors(factorial(n)))]
-    if n > 2:
-        print(n, d[-1], d[-1]-d[-2], len([x for x in divisors(factorial(n-1)) if x%2 == 1 and x%3 == 0 and x%5==0]))
+    if n > 4:
+        # print(n, d[-1], d[-1]-d[-2], len([x for x in divisors(factorial(n-1)) if x%2 == 1 and x%3 == 0 and x%5==0]))
+        factors = factorint(factorial(n))
+        print(n, d[-1]-d[-2], factors[3]*factors[5])
 
 # plt.semilogy(a)
 # plt.show()
