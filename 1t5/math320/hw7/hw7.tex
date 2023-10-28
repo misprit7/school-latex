@@ -1,0 +1,182 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 320 Homework 7}
+\date{26/10/23}
+\author{Xander Naumenko}
+\maketitle
+
+{\medskip\noindent\bf Question 1.} Consider the following sum of series:
+\[
+\sum_{n=1}^{\infty}\frac{1}{n^{4}}+2^{-4}\sum_{n=1}^{\infty}\frac{1}{n^{4}}=1+\frac{1}{2^{4}}+\frac{1}{3^{4}}+\ldots-\frac{1}{2^{4}}-\frac{1}{(2\cdot 2)^{4}}-\frac{1}{(2\cdot 3)^{4}}=1+\frac{1}{3^{4}}+\frac{1}{5^{4}}+\ldots
+.\]
+However using the given information we know how to evaluate the sums on the left and the expression on the right is what we're after, so we have that
+\[
+1+\frac{1}{3^{4}}+\frac{1}{5^{4}}+\ldots = \frac{\pi^{4}}{90}-\frac{\pi^{4}}{16\cdot 90}=\frac{\pi^{4}}{96}
+.\]
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 2a.} The series diverges for all $p\in \mathbb{R}$. We know that the logarithm grows slower than any positive power, in specific
+\[
+\lim_{n\to\infty}\frac{\log n}{n^{\frac{1}{p}}}=0
+\]
+(it was specifically stated on Piazza 282 that we could use this fact). Thus applying the comparison test, for $N$ sufficiently large:
+\[
+\sum_{n=N}^{\infty}\frac{1}{(\log n)^{p}}>\sum_{n=N}^{\infty}\frac{1}{(n^{1 /p})^{p}}=\sum_{n=N}^{\infty}\frac{1}{n}=\infty
+.\]
+
+{\medskip\noindent\bf Question 2b.} Applying the root test:
+\[
+    (a_n)^{\frac{1}{n}}=\left( (\log n)^{-n} \right) \frac{1}{n}=\frac{1}{\log n}\to 0
+.\]
+Thus the series converges.
+
+{\medskip\noindent\bf Question 2c.} For $p>1$ clearly the sum converges since $\zeta(p)$ converges. For $p=1$, apply Cauchy's condensation test. Then we have:
+\[
+\sum_{k=0}^{\infty}2^{k} \frac{1}{2^{k}\log 2^{k}}=\sum_{k=0}^{\infty} \frac{1}{k\log 2}=\infty
+.\]
+Finally for $p<1$ each term is strictly greater than when $p=1$ which diverges, so for $p\leq 1$ the sums diverge.
+
+{\medskip\noindent\bf Question 2d.} Applying Cauchy's condensation test:
+\[
+\sum_{k=0}^{\infty}2^{k} \frac{1}{2^{k}(\log 2^{k})^{p}}=\sum_{k=0}^{\infty} \frac{1}{k^{p}(\log 2)^{p}}
+.\]
+Thus since $\zeta(p)$ converges if and only if $p>1$, the given sum also converges if and only if $p>1$.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 3a.} Since $x\in \ell^2,y\in \ell^2$, there exist some upper bound $X$ and $Y$ for $\sum_{n=1}^{\infty}|x_n|^2$ and $\sum_{n=1}^{\infty}|y_n|^2$ respectively. Then we have that
+\[
+0\leq \sum_{n=1}^{\infty}|x_ny_n|\leq \sum_{n=1}^{\infty}\max(|x_n|^2,|y_n|^2)\leq \sum_{n=1}^{\infty}|x_n|^2+\sum_{n=1}^{\infty}|y_n|^2\leq X+Y
+.\]
+Thus $\langle x,y\rangle$ converges, since it converges absolutely.
+
+{\medskip\noindent\bf Question 3b.} Let $N\in \mathbb{N}$ and consider the partial sums:
+\[
+\sqrt{x_1^2+\ldots +x_N^2}\sqrt{y_1^2+\ldots+y_N^2}\geq (|x_1|+\ldots +|x_N|)(|y_1|+\ldots+|y_N|)
+\]
+\[
+\geq x_1y_1+x_2 y_2+\ldots +x_Ny_N=\sum_{n=1}^{N}x_ny_n 
+.\]
+
+Since the inequality is true for all the partial sums, it must also be true in the limit (this isn't necessarily true of strict inequalities, but here we only need $\leq$), so $\left| \langle x,y\rangle \right| \leq \|x\|\|y\|$.
+
+{\medskip\noindent\bf Question 3c.} Again for $N\in \mathbb{N}$ and considering the partial sums:
+\[
+\sum_{n=1}^{N}|x_n+y_n|^2\leq \sum_{n=1}^{N}\left(|x_n|^2+|y_n|^2\right)=\sum_{n=1}^{N}|x_n|^2+\sum_{n=1}^{N}|y_n|^2
+.\]
+Again, since the inequality holds for every partial sum, it holds in the limit so $\|x+y\|\leq \|x\|+\|y\|$.
+
+{\medskip\noindent\bf Question 3d.} Define $x^{(n)}=e_{n}$. Then we have $\|x^{(n)}\|=\sum_{i=1}^{\infty}x_i^{(n)}=0+\ldots+0+1\cdot 1+0+\ldots=1$, but for any $p\in \mathbb{N}$, we have that for $n>p$,
+\[
+    \langle e_p,x^{(n)}\rangle=0+0+\ldots+\underbrace{1\cdot 0}_{p\text{th component}}+0+\ldots+\underbrace{0\cdot 1}_{n\text{th component}}+0+\ldots=0
+.\]
+Thus $\langle e_p,x^{(n)}\rangle\to 0$ as required.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 4.} Assume that $(s_n+2s_{n+1})\to L$. Changing the sequence to $s_n'=s_{n}-\frac{L}{3}$ doesn't change the convergence of either $s_n'$ or $2s_{n+1}'+s_n'$ but does cause $(2s_{n+1}'+s_{n}')\to 0$, so to make the algebra later a bit simpler from now on assume that $L=0$. Let $x_n=2s_{n+1}+s_n$, then we have $s_{n}=\frac{1}{2}x_{n-1}+\frac{1}{2}s_{n-1}$ and $x_{n}\to 0$. Expanding out this recursive expression for $s_n$ as far as possible, we get:
+\[
+    s_n=\frac{1}{2}x_{n-1}-\frac{1}{4}x_{n-2}+\frac{1}{8}x_{n-3}-\ldots-\frac{1}{2^{n-2}}x_2+\frac{1}{2^{n-1}}x_1-\frac{1}{2^{n-1}}s_1=\sum_{i=1}^{n}\frac{1}{2^{i}}x_{n-i}+\frac{(-1)^{n-1}}{2^{n-1}}s_{1}
+.\]
+Let $\epsilon>0$. Since $x_n\to 0$, choose $N$ s.t. $n>N\implies |x_n|<\epsilon$. Splitting the expression above for $s_n$:
+\[
+s_n< \sum_{i=1}^{n-N-1} \frac{\epsilon}{2^{i}}+\sum_{i=N}^{n}\frac{1}{2^{i}}x_{n-i}+\frac{(-1)^{n-1}}{2^{n-1}}s_{1}
+.\]
+Now take the $\limsup_{n\to\infty}$ on both sides of that inequality:
+\[
+\limsup_{n\to\infty}s_n\leq \epsilon \sum_{i=i}^{\infty}\frac{1}{2^{i}}+0+0=\epsilon\left(\frac{1}{1-\frac{1}{4}}-1\right)=\frac{\epsilon}{3}<\epsilon
+.\]
+Note that the $\frac{1}{3}$ means that the limit of $s_n$ is a third of that of $x_n$ without the assumption that $L=0$, although since the question only asks for convergence I won't prove that rigorously. Similarly repeating this whole process for $\liminf_{n\to\infty}$ just involves replacing $\epsilon\to -\epsilon$ and so gives $\liminf_{n\to\infty}s_n> -\epsilon$. Since this is true of all $\epsilon>0$, it must be that $\lim_{n\to\infty}s_n=0$, and in particular it converges.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 5.} This is a straightforward application of question 3a. By hypothesis $a\in l^2$, and as proved in class, $\zeta(2p)=\sum_{n=1}^{\infty}\frac{1}{n^{2p}}$ converges, so $\frac{1}{n^{q}}\in l^2$. Thus by question 3a we have that
+\[
+\langle a,\frac{1}{n^{q}}\rangle =\sum_{n=1}^{\infty}\frac{a_n}{n^{q}}
+\]
+converges.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 6a.} Since $\frac{b_n}{a_n}$ converges, we can find $N$ s.t. $n>N\implies|\frac{b_n}{a_n}-L|<\frac{L}{2}$.Using this, we get the following two inequalities:
+\[
+\sum_{n=N+1}^{\infty}a_{n}>\frac{L}{2}\sum_{n=N+1}^{\infty}b_n\text{ and }\sum_{n=N+1}^{\infty}a_n< \frac{3L}{2}\sum_{n=N+1}^{\infty}b_n
+.\]
+Since we assume $a_n>0,b_n>0$, the sums are increasing sequences. Thus the first inequality proves the forward direction by showing the bound on $\sum_{n=1}^{\infty}b_n<\sum_{n=1}^{N}b_n+\frac{2}{L}\sum_{n=N+1}^{\infty}a_n$, and the second inequality proves the backwards direction by putting a bound on $\sum_{n=1}^{\infty}a_n=\sum_{n=N}^{\infty}a_n+\frac{3L}{2}\sum_{n=N+1}^{\infty}b_n$.
+
+{\medskip\noindent\bf Question 6b.} Rearranging the given inequality, we have that $\frac{a_{n+1}}{b_{n+1}}\leq \frac{a_{n}}{b_n}$, i.e. $\frac{a_n}{b_n}$ is a decreasing sequence. Then we have that
+\[
+A=\sum_{n=1}^{\infty}\frac{a_n}{b_n}b_n\leq \frac{a_1}{b_1}\sum_{n=1}^{\infty}b_n=\frac{a_1}{b_1}B<\infty
+.\]
+For the second inequality given, again rearranging it we get $\frac{a_{n+1}}{b_n}\leq \frac{a_n}{b_{n-1}}$, again implying that the sequence of ratios is a decreasing sequence. Then we get:
+\[
+A=a_1+\sum_{n=2}^{\infty}\frac{a_{n}}{b_{n-1}}b_{n-1}\leq a_1 +\frac{a_2}{b_1}\sum_{n=1}^{\infty}b_{n}<\infty
+.\]
+
+{\medskip\noindent\bf Question 6c.} As the clue suggests, consider $1-px$ and $(1-x)^{p}$ for $0\leq x\leq 1$. At $x=0$ we have $1-px=1=(1-x)^{p}$. Also $(1-px)'=-p<-p(1-x)^{p-1}=\left((1-x)^{p}\right)'$ for all $x\in(0,1)$, so since they start at the same point but $1-px$ decreases faster over the whole interval, $1-px<(1-x)^{p}\forall x\in[0,1]$. Now use this to extend the given inequality for $n$ sufficiently large:
+\[
+\frac{a_{n+1}}{a_n}\leq 1-\frac{p}{n}<\left(1-\frac{1}{n}\right)^{p}=\frac{\frac{1}{n^{p}}}{\frac{1}{(n-1)^{p}}}
+.\]
+Thus applying part b with $B=\zeta(p)$, we conclude that $a_n$ converges.
+
+{\medskip\noindent\bf Question 6d.} Applying Raabe's test:
+\[
+    n\left( \frac{a_n}{a_{n+1}}-1 \right) =n\left( \frac{3n(n+1)^2}{\left( 3n+4 \right) n^2}-1 \right)=\frac{3n(n+1)^2-(3n+4)n^2}{(3n+4)n}
+\]
+\[
+=\frac{2n^2+3n}{(3n+4)n}\to \frac{2}{3}\implies \sum_{n=1}^{\infty}a_n=\infty
+.\]
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 7.} I will prove the contrapositive, so suppose that $S=\sum_{n=1}^{\infty}\frac{a_n}{1+a_n}=L$. Since $S$ converges, there must exist an upper bound $a$ s.t. $a_n\leq a\forall n\in \mathbb{N}$. Then we get
+\[
+\sum_{n=1}^{\infty}a_n=(1+a)\sum_{n=1}^{\infty}\frac{a_n}{1+a}\leq (1+a)\sum_{n=1}^{\infty} \frac{a_n}{1+a_n}=(1+a)L<\infty
+.\]
+Thus the sum $\sum_{n=1}^{\infty}a_n$ converges. Since the contrapositive holds, the original statement is true. The converse also holds by the comparison test. Now assume that $\sum_{n=1}^{\infty} \frac{a_n}{1+a_n}$ diverges, then
+\[
+\sum_{n=1}^{\infty}a_n\geq \sum_{n=1}^{\infty} \frac{a_n}{1+a_n}=\infty
+.\]
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 8a.} Let $N=\frac{2D}{\delta}$, note that this means that $\frac{2D}{\delta}<N+1\implies \delta> \frac{2D}{N+1}$. For $1\leq n\leq N$, define
+\[
+a_{n}=\frac{2nD}{N(N+1)}
+.\]
+Summing these, we get
+\[
+a_1+a_2+\ldots+a_N= \frac{2D}{N(N+1)}\sum_{n=1}^{N}n=D
+.\]
+Also since $\delta>\frac{2D}{N+1}=a_1$ and $a_1>0$, the inequality requirement is also satisfied.
+
+{\medskip\noindent\bf Question 8b.} Begin with $\delta=1$ and $D=\sigma_1$. Using the method described in part a, find a finite sequence $a_1,a_2,\ldots,a_N$ with $\delta>|a_1|>\ldots>|a_n|>0$ with $D=a_1+a_2+\ldots+a_N$ and assign $x_1=a_1,\ldots,x_N=a_N$. Note that this means that $\sum_{n=1}^{N}x_n=\sigma_1$. Now set $\delta'=x_\frac{N}{2}$ and $D'=\sigma_2-\sum_{n=1}^{N}x_n=\sigma_2-\sigma_1$. We can repeat the process described to get a sequence of $a_1',\ldots,a_{N'}'$ with the $a_1'+\ldots+a_{N'}'=D'$, assign them to $x_N+1=a_1',\ldots,x_{N+N'}+a_{N'}'$. By construction $\sum_{n=1}^{N+N'}x_n=\sigma_2$. We can repeat this process infinitely to define the whole sequence $(x_n)$.
+
+Clearly by the way we defined it $s_N$ has $(\sigma_n)_n$ as a subsequence and $|x_{n+1}|<\left| x_n \right| $. Also since each time we redefine $\delta$ we divide the previous value by $2$, $x_{n}\to 0$.
+
+\newpage\phantom{blabla}
+\newpage
+
+\end{document}
