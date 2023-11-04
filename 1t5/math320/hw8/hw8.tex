@@ -1,0 +1,107 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 320 Homework 8}
+\date{03/11/23}
+\author{Xander Naumenko}
+\maketitle
+
+{\medskip\noindent\bf Question 1.} Since $\sum a_n$ converges, $a_n\to 0$. Thus there exists $N\in \mathbb{N}$ s.t. $n\geq N\implies a_n<1$. Then we have that 
+\[
+\sum_{n=N}^{\infty}\left| a_n \right| \left| b_n \right| <\sum_{n=N}^{\infty}|b_n|
+\]
+which converges. Since the sum converges absolutely, the sum $\sum a_nb_n$ also converges.
+
+The statement is no longer true if the ``absolutely'' condition is removed. Consider $a_n=b_n=\frac{(-1)^{n+1}}{\left\lceil n /2 \right\rceil }$. Then for both series the partial sums are $1,0,\frac{1}{2},0,\frac{1}{3},0,\frac{1}{4},\ldots$ and clearly converge to 0. However $\sum a_nb_n=\sum \frac{1}{\left\lceil n/2 \right\rceil}=2\sum \frac{1}{n}=\infty$ and doesn't converge.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 2a.} Clearly For $x=1$ all the terms are zero so it trivially converges, so from now on assume $x\neq 1$. If $c=1$, then the sum reduces to $\sum_{n=1}^{\infty}(x-1)^{n}\implies x\in (0,2)$. If $c<1$ then for $N=\max(1,\lceil\log_c \frac{1}{2(x-1)}\rceil)$, we have $\sum_{n=N+1}^{\infty}(c^{n}(x-1))^{n}<\sum_{n=N+1}^{\infty}\frac{1}{2^{n}}<\infty$. Finally for $c>1$ we have that for $N=\max(1, \left\lceil \log_c \frac{2}{|x-1|} \right\rceil )$, $\left|(c^{n}(x-1))^{n}\right|>2^{n}$, so by the crude divergence test the sum can't converge. In summary for $x=1$ the series converges if and only if [$x=1$], [$c=1$ and $x\in (0,2)$], or [$c<1$].
+
+{\medskip\noindent\bf Question 2b.} For $x\in(-1,1)$, we have $\sum \left|\frac{x^{n}-x^{2n}}{n}\right|<\sum 2|x^{n}|<\infty$, so since it converges absolutely it must converge also. For $|x|>1$ then we have that $\left|\frac{x^{n}(1-x^{n})}{n}\right|> |x^{n}-1| \to\infty$, so by the crude convergence test it diverges for $|x|>1$. Finally if $x=1$ then every term is zero so it trivially converges and $x=-1$ corresponds to $\sum_{n=1}^{\infty} \frac{(-1)^{n}-1}{n}<-\sum_{n=1}^{\infty}\frac{1}{n}=-\infty$ so it diverges. Therefore the set of convergence for the series is $(-1,1]$.
+
+{\medskip\noindent\bf Question 2c.} For $x=0$ then the series turns into $\sum_{n=1}^{\infty}\frac{1}{\sqrt{n}}>\sum_{n=1}^{\infty}\frac{1}{n}=\infty$, so it diverges. For $x\neq 0$ by the ratio test we get
+\[
+\frac{a_{n+1}}{a_n}=\frac{x+1}{2x+1}\left( \frac{\sqrt{n}}{\sqrt{n+1}} \right) \to \frac{x+1}{2x+1}
+.\]
+Solving $\left|\frac{x+1}{2x+1}\right|<1\implies x\in(-\frac{2}{3},1)$ implies convergence and $x\in (-\infty,-\frac{2}{3})\cup (1,\infty)$ makes the series diverge. We already checked $x=1$, and for $x=-\frac{2}{3}$ the series turns into $\sum_{n=1}^{\infty}\frac{(-1)^{n}}{\sqrt{n}}$ which converges by the alternating series test. Thus the set of convergence is $(-\frac{2}{3},0)$.
+
+{\medskip\noindent\bf Question 2d.} For $x=e$ the series trivially converges. Ratio test:
+\[
+\frac{a_{n+1}}{a_n}=\frac{(2n+1)(2n+2)n}{(n+1)^3}(x-e)\to 4(x-e)
+.\]
+Solving $|4(x-e)|<1\implies x\in (e-\frac{1}{4},e+\frac{1}{4})$ implies convergence and $x\in(-\infty,e-\frac{1}{4})\cup(e+\frac{1}{4},\infty)$ implies divergence. The only remaining values to check are $x=e-\frac{1}{4}$ and $x=e+\frac{1}{4}$. I claim both converge, note that $x=e+\frac{1}{4}$ converging implies $x=e-\frac{1}{4}$ converges due to the former representing absolute convergence of the latter. Applying Raabe's test:
+\[
+    n\left( \frac{a_{n}}{a_{n+1}}-1 \right) =n\left( \frac{4(n+1)^3}{(2n+1)(2n+2)n}-1 \right)=\frac{3n+2}{2n+1}\to \frac{3}{2}>1
+.\]
+Thus the region of convergence is $[e-\frac{1}{4},e+\frac{1}{4}]$
+
+%$x=e-\frac{1}{4}$ is easy, since $\sum_{n=1}^{\infty}\frac{1}{4^{n}}\frac{(2n)!(-1)^{n}}{n(n!)^2}$ fulfills the requirements for the alternating series test and thus converges.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 3.} I interpret ``discuss'' to mean state whether each of the series converges or not. For $a_n$, apply the alternating series test:
+\[
+(-1)^{n}a_n= \frac{n^{n}}{(n+1)^{n+1}}<\frac{(n+1)^{n}}{(n+1)^{n+1}}=\frac{1}{(n+1)}\to 0
+.\]
+Thus by the alternating series test the series converges (but not absolutely as $b_n$ shows). For $b_n$, using Cauchy's condensation test we get
+\[
+\sum_{n=1}^{\infty}b_n=\sum_{k=0}^{\infty}\frac{2^{k}(2^{k})^{2^{k}}}{(2^{k}+1)^{2^{k}+1}}=\sum_{k=0}^{\infty}\frac{2^{k(2^{k}+1)}}{(2^{k}+1)^{2^{k}+1}}>\sum_{k=0}^{\infty}\frac{1}{2}=\infty
+.\]
+Thus the $b_n$ series diverges. For $c_n$, the crude convergence test is sufficient since $\frac{(n+1)^{n}}{n^{n}}>1\not\to 0$, so the $c_n$ series doesn't converge. Finally, since $d_n<b_n\forall n$ by the comparison test $d_n$ also diverges.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 4.} Using homework 3 question 8a and the fact that $x_n\to 0$, we have that $a_n=\frac{x_1+x_2+\ldots+x_n}{n}\to 0$. Then then the series we're computing is
+\[
+x_1-\frac{1}{2}(x_1+x_2)+\frac{1}{3}(x_1+x_2+x_3)+\ldots=\sum_{n=1}^{\infty}(-1)^{n+1}a_n
+.\]
+Thus by the alternating series test the series converges.
+
+
+% Using summation by parts:
+% \[
+% \sum_{n=1}^{N}\left(\frac{(-1)^{n+1}}{n}\sum_{m=1}^{n}x_m\right)=\frac{(-1)^{N+1}x_N}{N}-x_1-\sum_{n=1}^{N}\left(x_n\sum_{m=1}^{m}\frac{(-1)^{m+1}}{m}\right)
+% .\]
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 5a.} Proof by contrapositive, assume that $\lim_{n\to\infty}na_n\neq 0$. Then $\exists \epsilon>0$ s.t. $\forall N\in \mathbb{N}$, $\exists n>N$ with $|na_n|\geq\epsilon$. Let $S=\{n\in \mathbb{N}: |na_n|\geq\epsilon\}$, because for every $N$ there is an $n>N$ with $|na_n|\geq\epsilon$, $|S|=\infty$. Then we have
+\[
+\sum_{n=1}^{\infty}a_n>\sum_{n\in S}a_n\geq \epsilon|S|=\infty
+.\]
+Thus since the contrapositive holds the original statement is also true.
+
+{\medskip\noindent\bf Question 5b.} Note that although part a specifies a decreasing sequence, only the fact that it was positive was used in the proof. Thus we can apply part a to $\frac{b_n^2}{n}$ (which is positive but not necessarily decreasing) to get that $b_n^2\to 0\implies b_n\to 0$. Then applying question 8a from homework 3 gives that $s_n=\frac{1}{n}\sum_{m=1}^{n}b_m\to 0$ also.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 6a.} As the hint suggests, consider the geometric sum formula applied to $e^{2i\theta}$
+\[
+e^{i\theta}\sum_{m=0}^{n-1}\left(e^{2i\theta}\right)^{m}=e^{i\theta}\frac{1-e^{2ni\theta}}{1-e^{2i\theta}}=\frac{1-e^{2ni\theta}}{e^{-i\theta}-e^{i\theta}}=\frac{\sin(2n\theta)+i(1-\cos(2n\theta)}{2\sin\theta}
+.\]
+Taking the real and imaginary parts of both sides gives the required identities.
+
+{\medskip\noindent\bf Question 6b.} Let $\theta\in \mathbb{R}$. If $\sin(\theta)=0$ then clearly the series converges, so assume that it doesn't. Apply Dirichlet's theorem to this problem, with $a_k=\frac{1}{2k-1}$ and $b_k=\sin((2k-1)\theta)$. The partial sums of the $b_n$ are bounded since $b_1+b_2+\ldots+b_n=\sin(\theta)+\sin(3\theta)+\ldots+\sin((2n-1)\theta=\frac{1-\cos(2n\theta)}{2\sin\theta}<\frac{2}{2\sin\theta}<\infty$ and the $a_n$ are decreasing and have limit $0$, so Dirichlet's theorem says that $f(\theta)$ converges.
+
+{\medskip\noindent\bf Question 6c.} Let $\theta_n=\frac{\pi}{4n}$. Clearly $\theta_n\to 0$, and $S_n(\theta_n)=\frac{1-\cos(\frac{\pi}{2})}{2\sin\theta_n}=\frac{1}{2\sin(\theta_n)}$. Since $\lim_{x\to0}\frac{1}{\sin(x)}=\infty$ and $\theta_n\to 0$, $S_n(\theta_n)\to \infty$ (I'm being a bit non-rigorous with this given we haven't defined limits on reals yet, but given we haven't rigorously defined $\sin$ or imaginary numbers yet either I assume this is fine). This doesn't contradict part b because the order of what is bounded has been changed. When we used Dirichlet's theorem we had already fixed a $\theta$ and shown that $S_n(\theta)$ was bounded. Here we've shown that $S_n(\theta)$ is not bounded across all combinations of $n$ and $\theta$, but that's a completely different statement.
+
+\end{document}

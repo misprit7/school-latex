@@ -1,0 +1,47 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 322 Homework 8}
+\date{31/10/23}
+\author{Xander Naumenko}
+\maketitle
+
+{\medskip\noindent\bf Question 2.} I claim that valid representatives are $1,$ $(1,2)$, $(1,2,3)$, $(1,2,3,4)$, $(1,2,3,4,5),$ $(1,2)(3,4),$ $(1,2,3)(4,5)$ with number of elements $1,10,20,30,24,15,20$ respectively. Any of these representatives can be converted to others that share the same partition using equation 37 from the textbook for an appropriate $\beta$. Also, again from equation 37 it's clear that conjugation can't change the partition of an element of $S_5$, so none of these conjugate classes overlap. The number of elements can be found by simple counting (e.g. for $(1,2,3)$ it's $2{5\choose 3}=20$).
+
+As for the normal subgroup part of the question, consider a normal subgroup $N$ of $G$. $N$ is the union of the conjugacy classes above, since otherwise it wouldn't be normal. If $N$ is even then it must be composed of only even conjugate classes above, and $|N|\mid |A_5|$, with $|A_5|=60$. But the only even conjugate classes above are $1,(1,2,3),(1,2)(3,4),(1,2,3,4,5)$, and since $1\in N$ this can be hand checked with the only possible partition values that divide $60$ being $N=1$ and $N=S_5$.
+
+If $N$ isn't even, then it is the union of any number of even conjugate classes above and an odd number of odd classes. Manually calculating these out for which of them have order that divides $|S_5|=120$, we find that the only possibility is $N=S_5$.
+
+{\medskip\noindent\bf Question 4.} Consider the left translations of $G$ acting on $G/H$, i.e. for $xH\in G /H$ define $g\to gxH$. This is an action on $G /H$ since $(g_1g_2)(xH)=g_1(g_2xH)$ and $1(xH)=1xH=xH$. By Cayley's theorem $G /H$ is isomorphic to a subgroup of $S_n$, so the kernel $K$ of this transformation is a normal subgroup also isomorphic to a subgroup of $S_n$. Thus $|K|\mid n!$ with $k\subseteq H$ as required.
+
+
+{\medskip\noindent\bf Question 5.} Let $H$ be a subgroup of $G$ with index $p$. Apply question 4, so there exists a normal subgroup $N$ of $H$ with an index that divides $p!$. However since $p$ is the smallest prime that divides $|G|$, the only way that $[G:N]|p!$ is if $[G:N]=p=[G:H]$. Since both $H$ and $N$ have the same index and $N\subseteq H$, in fact $N=H$ and thus $H$ is normal.
+
+{\medskip\noindent\bf Question 6.} If $|C(G)|=p^2$ then $G$ is automatically abelian, so assume that $|C(G)|\neq p$. Then by theorem 1.11 and the fact that $C(G)$ is a subgroup, it must be that $|C(G)|=p$. Let $g\in G\setminus C(G)$. Because $[G:C(G)]=p$, we have $G=\langle g,C(G)\rangle$, so each element in $G$ can be represented as $g^{k}c,c\in C(G),k=0,1,\ldots,p-1$. But this representation immediately gives $(g^{k}c)(g^{k'}c')=g^{k+k'}cc'=(g^{k'}c')(g^{k}c)$, so $G$ is abelian.
+
+For the second part, either $G$ is cyclic or it isn't. If it is then it is clearly abelian and there it is in the form $G=\langle a\rangle$. If it isn't cyclic, then all elements other than $1$ have order $p$. Choose $a,b\in G$ with $b\notin \langle a\rangle$. Then $a$ and $b$ both have order $p$ so $\langle a,b\rangle$ has order $p^2$, so $G=\langle a,b\rangle$ and this uniquely defines $G$ if it is non cyclic.
+
+{\medskip\noindent\bf Question 8.} For this to be an action, it must fulfill the two required properties. First, $(1,1)x=x$ regardless of whether $x\in S$ or $x\in T$, since in either case the identity is applied. The other requirement is $((g_1,h_1)(g_2,h_2))x=(g_1,h_1)((g_2,h_2)x)$. If $x=s\in S$ then $((g_1,h_1)(g_2,h_2))s=g_1(g_2s))=(g_1,h_1)((g_2,h_2)s)$, and if $x=t\in T$ then $((g_1,h_1)(g_2,h_2))t=h_1(h_2t))=(g_1,h_1)((g_2,h_2)t)$. Again in either case it fulfills the action requirements, so it is a valid action.
+
+{\medskip\noindent\bf Question 9.} First it will be shown to be a group. Identity holds since $(1,1)\in G$. It is closed, since for $(k_1,h_1),(k_2,h_2)\in G$, the fact that $H$ acts by automorphisms on $K$ guarantees that $k_1(h_1k_2)\in K$. Finally, it's invertible with $(k,h)^{-1}=(h^{-1}k^{-1},h^{-1})$.
+
+Next, consider the map $\psi:h\to (1,h)$. Computing multiplication we have that $\psi(h_1)\psi(h_2)=(1,h_1)(1,h_2)=(1,h_1h_2)=\psi(h_1h_2)$, and since each $h$ maps to a distinct $(1,h)$ it is a monomorphism also. Now define $\phi: k\to (k,1)$. We have that $\phi(k_1)\phi(k_2)=(k_1,1)(k_2,1)=(k_1k_2,1)=\phi(k_1k_2)$, so $\phi$ is a homomorphism. Also since each $k$ maps to a difference $(k,1)\in G$ it is injective and thus a monomorphism. Now it must be shown that the image of $\phi$ is a normal subgroup. For any $k'\in K$ and $(k,h)\in G$, we have
+\[
+    (k,h)(k',1)(h,k)^{-1}=(k,h)(k',1)(h^{-1}k^{-1},h^{-1})=((h(kk'))(hk)^{-1},1)\in \phi(K)
+\]
+Thus the image of $\phi$ is normal. Finally, as the question notes it is clearly true that $|K\times H|=|K| |H|$ simply by counting the cardinality of finite sets.
+
+\end{document}
