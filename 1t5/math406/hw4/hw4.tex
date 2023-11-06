@@ -1,0 +1,159 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 406 Homework 4}
+\date{05/11/23}
+\author{Xander Naumenko}
+\maketitle
+
+{\medskip\noindent\bf Question 1a.}  
+
+{\medskip\noindent\bf Question 2a.} Integrating:
+\[
+\int_{0}^{1}vLudx=\int_{0}^{1}v\left( x^2u''+3xu'-u \right)=\left[ vx^2u'+3vx \right]_0^{1}-\int_0^{1}(2x^2v)'u'+(3xv)'u+uvdx
+\]
+\[
+    =\left[ 2x^2vu'+3xvu+v'u \right]_0^{1}+\int_0^1 u\left( (2x^2v)''-(3xv)'-v \right) dx
+.\]
+Thus the adjoint operator is $L_s^{*}v=(2s^2v)''-(3sv)'-v=2s^2v''+5sv'\implies L^{*}=2s^2 \frac{d^2}{ds^2}+5s \frac{d}{ds}$. We want to find $v(s,x)$ with $v(0,x)<\infty$ and $v(1,x)=0$ so we can write $u(x)=v_s(1,x)+\int_0^1v(s,x)f(s)ds$. We want to find $v$ such that $L^{*}v(s,x)=\delta(x-s)$. Try $v=s^{r}$ in the homogeneous equation:
+\[
+L^{*}v=2s^2v_{ss}+5sv_s=2r(r-1)s^{r}+5rs^{r}=0\implies 2r(r-1)+5r=r(2r+3)=0\implies r=0\text{ or }-\frac{3}{2}
+.\]
+For non-homogeneous $L^{*}v=\delta(s-x)$, we can solve to the right and left of $x=s$:
+\[
+v(s,x)=\begin{cases}
+    A_-+B_-s^{-\frac{3}{2}}&0<s<x\\
+    A_++B_+s^{-\frac{3}{2}}&x<s<1
+\end{cases}
+.\]
+The regularity condition implies that $B_-=0$, and the $s=1$ condition imposes $B_+=-A_+$.We also need continuity, so $A_-=A_+(1-x^{-\frac{3}{2}})$. Finally, the jump condition:
+\[
+    1=\int_{x-\epsilon}^{x+\epsilon}2s^2v_{ss}+5sv_sds=(2s^2v)_s\big|_{x-\epsilon}^{x+\epsilon}=2s^2v_s\big|_{x-\epsilon}^{x+\epsilon}=2x^2\left(\frac{3}{2}A_+x^{-\frac{5}{2}}-0\right)\implies A_+=\frac{1}{3}\sqrt{x}
+.\]
+Putting this all together, we get
+\[
+v(s,x)=\begin{cases}
+    \frac{1}{3}\left(x^{\frac{1}{2}}-x^{-1}\right)&0<s<x\\
+    \frac{1}{3}\sqrt{x}\left( 1-s^{-\frac{3}{2}} \right)&x<s<1
+\end{cases}
+.\]
+Finally, plugging this into the solution form given above:
+\[
+u(x)=2v_s(1,x)u(1)+\int_{0}^{1}v(s,x)f(s)ds=\int_{0}^{x}\frac{1}{3}\left(x^{\frac{1}{2}}-x^{-1}\right)f(s)ds+\frac{1}{3}\sqrt{x}\int_x^{1}\left(1-s^{-\frac{3}{2}}\right)f(s)ds
+.\]
+The original question asks for $G$, but of course here $G(s,x)=v(s,x)$ since they represent the same thing.
+
+{\medskip\noindent\bf Question 2b.} From class, the factor to multiply the equation by is:
+\[
+F=e^{\int \frac{a_1}{a_0}dx}\frac{1}{a_0}=e^{\int\frac{3}{2x}dx}\frac{1}{2x^2}=\frac{1}{2\sqrt{x}}
+.\]
+Multiplying this, we get:
+\[
+FLu=x^{\frac{3}{2}}u''+\frac{3}{2}x^{\frac{1}{2}}u'-\frac{1}{2}x^{-\frac{1}{2}}u=\frac{1}{2}x^{-\frac{1}{2}}f
+.\]
+Call this new self adjoint operator $L'$. Running through the same process as for part a again, we first find the boundary terms for our expression of $u$. We know that the new operator is self adjoint though, so we can immediately write (choosing $v(1,x)=0$ and $v(0,x)<\infty$:
+\[
+    \int_0^{1}vL'udx=\left[vx^{\frac{3}{2}}u'+\frac{3}{2}x^{\frac{1}{2}}v-\frac{3}{2}x^{\frac{1}{2}}vu-x^{\frac{3}{2}}v'u\right]_0^{1}+\int_0^{1}uL'vdx
+.\]
+From the boundary terms we get that $v(1)=0$ and $v(0)<\infty$ gives enough information for all of the terms, so the operator $L'$ is also essentially self adjoint. To solve the homogeneous case try $v=s^{r}$:
+\[
+L's^{r}=0\implies r(r-1)+\frac{3}{2}r-\frac{1}{2}=0\implies r=-1\text{ or }\frac{1}{2}
+.\]
+Applying the boundary conditions $v(0,x)<\infty$ and $v(1,x)=0$, we can write the solution to $L'v=\delta(x-s)$ as:
+\[
+v(s,x)=\begin{cases}
+    A_-s^{\frac{1}{2}}& 0<s<x\\
+    A_+\left( s^{-1}-s^{\frac{1}{2}} \right) &x<s<1
+\end{cases}
+.\]
+Continuity gives $A_-x^{\frac{1}{2}}=A_+\left(x^{-1}-x^{\frac{1}{2}}\right)\implies A_-=A_+\left( x^{-\frac{3}{2}}-1 \right) $. Finally, the jump condition results in
+\[
+    s^{\frac{3}{2}}v_s\big|_{x-\epsilon}^{x+\epsilon}=1\implies x^{\frac{3}{2}}\left( A_+\left(-x^{-2}-\frac{1}{2}x^{-\frac{1}{2}} \right) -A_+\left( x^{-\frac{3}{2}}-1 \right)\frac{1}{2} x^{-\frac{1}{2}} \right)=1
+.\]
+\[
+\implies A_+=-\frac{2}{3}x^{\frac{1}{2}}
+.\]
+Thus our expression for the Green's function $v(s,x)=G(s,x)$ is
+\[
+v(s,x)=\begin{cases}
+    -\frac{2}{3}\left(x^{-1}-x^{\frac{1}{2}}\right)s^{\frac{1}{2}}&0<s<x\\
+    -\frac{2}{3}x^{\frac{1}{2}}\left( s^{-1}-s^{\frac{1}{2}} \right)&x<s<1
+\end{cases}
+.\]
+Using this to solve for $u$:
+\[
+u(x)=\frac{1}{3}\int_0^{x}\left( 1-x^{-\frac{3}{2}} \right) s^{\frac{1}{2}}f(s)ds+\frac{1}{3}\int_x^{1}\left( s^{\frac{1}{2}}-s^{-1} \right)f(s)ds
+.\]
+
+{\medskip\noindent\bf Question 3.} Because $a_0'=0=a_1$, the operator $L$ is self adjoint. This is a special case of the form $(pu')'+qu=f$ which in class we showed can be expressed as
+\[
+    u(x)=\left[vu'-v'u\right]_{0}^{\infty}+\int_0^{\infty}v(s,x)f(s)ds
+\]
+for $Lv=\delta(s,x)$. The required boundary conditions on $v$ to make each term knowable are $v\to 0,v'\to 0$ as $x\to\infty$. First solving the homogeneous equation, we have
+\[
+Lv=v''+v=0\implies v(s,x)=A\sin(s)+B\cos(s)
+.\]
+Applying this to the non-homogeneous equation $Lv=\delta(s-x)$, we have
+\[
+v(s,x)=\begin{cases}
+    A_-\sin(s)+B_-\cos(s)&0<s<x\\
+    A_+\sin(s)+B_+\cos(s)&s>x
+\end{cases}
+.\]
+The boundary conditions on $v$ at infinity force $A_+=B_+=0$. Continuity forces $A_-\sin(x)+B_-\cos(x)=0\implies B_-=-\tan(x)A_-$. Finally, the jump condition gives:
+\[
+\int_{x-\epsilon}^{x+\epsilon}v_{ss}+vds=1\implies v_s(x^{+},x)-v_s(x^{-},x)=\left( 0-A_-(\cos(x)+\tan(x)\sin(x)) \right) =1\implies A_-=-\cos(x)
+.\]
+Thus our final expression for $v$ is:
+\[
+v(s,x)=\begin{cases}
+    -\cos(x)\sin(s)+\sin(x)\cos(s)&0<s<x\\
+    0&s>x
+\end{cases}
+.\]
+For the boundary terms seen previous, we then have $v(0,x)=-\sin(x)$ and $v_s(0,x)=\cos(x)$. Expressing $u$ in terms of these Green's functions:
+\[
+    u(x)=\left[vu'-v'u\right]_{0}^{\infty}+\int_0^{\infty}v(s,x)f(s)ds=\sin(x)v_0+\cos(x)u_0-\int_0^{x}(\cos x\sin s-\sin x\cos s)f(s)ds
+\]
+
+{\medskip\noindent\bf Question 4a.} The question states to solve it assuming that solutions are in the form $r^{i}$, but as far as I can tell solutions aren't in this form. Instead, I claim that $G_{ij}=ki+c$:
+\[
+k(i+1)-2ki+k(i-1)=0
+.\]
+For the non-homogeneous equation, the boundary conditions and continuity enforce what constants are allowed. Thus solutions are in the form:
+\[
+G_{ij}=\begin{cases}
+    \frac{k}{j}i&0\leq i< j\\
+    k&i=j\\
+    \frac{k}{N-j}(N-i)&j< i\leq N
+\end{cases}
+.\]
+The final condition is that $G_{j+1j}-2G_{jj}+G_{j-1j}=1$, so $1=\frac{k}{j}(j-1)-2k+\frac{k}{N-j}(N-j-1)\implies k=\frac{j(j-N)}{N}$. Thus the explicit solution to (3) is
+\[
+G_{ij}=\begin{cases}
+    \frac{j-N}{N}i&0\leq i< j\\
+    1&i=j\\
+    -\frac{j}{N}(N-i)&j< i\leq N
+\end{cases}
+.\]
+
+% Solving first the homogeneous equation:
+% \[
+% r^{i+1}-2r^{i}+r^{i-1}=0\implies r^{i-1}(r-1)^2=0\implies r=0\text{ or }r=1
+% .\]
+
+
+\end{document}
