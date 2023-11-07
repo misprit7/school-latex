@@ -10,6 +10,14 @@ filecolor=magenta,
 urlcolor=cyan,
 }
 
+\lstset{
+  basicstyle=\ttfamily,
+  columns=fullflexible,
+  frame=single,
+  breaklines=true,
+  postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+}
+
 \graphicspath{ {images/} }
 
 \begin{document}
@@ -19,7 +27,48 @@ urlcolor=cyan,
 \author{Xander Naumenko}
 \maketitle
 
-{\medskip\noindent\bf Question 1a.}  
+{\medskip\noindent\bf Question 1a.} Consider the generalized functions operating on a test function $\phi$:
+
+\[
+  T_{a(x)\delta(x)}(\phi)=\int_{-\infty}^{\infty}a(x)\delta(x)\phi(x)dx=a(0)\phi(0)
+\]
+\[
+  T_{a(0)\delta(x)}(\phi)=\int_{-\infty}^{\infty}a(0)\delta(x)\phi(x)dx=a(0)\phi(0)
+.\]
+Since they act identically on all test functions, we have $a(x)\delta(x)=a(0)\delta(0)$.
+
+{\medskip\noindent\bf Question 1b.} Consider the generalized function operating on a test function $\phi$ (the boundary terms all vanish since $\phi$ vanishes at infinity):
+\[
+T_{x^2\delta^{(3)}(x)}(\phi)=\int_{-\infty}^{\infty}x^2\delta^{(3)}(x)\phi(x)dx=\int_{-\infty}^{\infty}\delta^{(2)}(x)(2x\phi(x)+x^2\phi'(x))dx
+\]
+\[
+=\int_{-\infty}^{\infty}\delta^{(1)}(x)(2\phi(x)+4x\phi'(x)+x^2\phi''(x))dx=\int_{-\infty}^{\infty}\delta(x)\left( 6\phi'(x)+6x\phi''(x)+x^2\phi^{(3)}(x) \right)dx
+\]
+\[
+=\int_{-\infty}^{\infty}6\delta(x)\phi'(x)dx=T_{6\delta'}(\phi)
+.\]
+Thus $x^2\delta^{(3)}(x)=6\delta'(x)$. For the equation $x^2g(x)=0$, the solution must be zero for all $x\neq 0$, so assume that the solution is a linear combination of $\delta$ and it's derivatives. The above computation shows that for any $n>1$, when doing integration by parts there is a non $x$ dependent term in the product $(x^2\delta^{(n)},\phi)$ so the result is non-zero and can't be solutions. Clearly $x^2\delta(x)=0$ (since $x\delta(x)=0$), and for $\delta'(x)$ we have
+\[
+  (x^2\delta'(x),\phi)=\int_{-\infty}^{\infty}x^2\delta'(x)\phi(x)dx=\int_{-\infty}^{\infty}(2x\phi(x)+x^2\phi'(x))\delta(x)=0
+,\]
+so $\delta'(x)$ is also a solution. Thus the general solution to $x^2g(x)=0$ is $g(x)=A\delta(x)+B\delta'(x)$.
+
+{\medskip\noindent\bf Question 1c.} Expanding for a test function $\phi$:
+\[
+  (\delta(\cos(x)),\phi)=\int_{-\infty}^{\infty}\delta(\cos(x))\phi(x)dx=\sum_{k=-\infty}^{\infty}\int_{k\pi}^{(k+1)\pi}\delta(\cos(x))\phi(x)dx=\sum_{k=-\infty}^{\infty}\frac{\phi\left(\left( k+\frac{1}{2} \right) \pi\right)}{\left| \sin\left( \left( k+\frac{1}{2} \right) \pi \right)  \right| }
+\]
+\[
+=\left(\sum_{k=-\infty}^{\infty}\delta\left( \left( k+\frac{1}{2} \right) \pi \right) ,\phi\right)
+.\]
+
+{\medskip\noindent\bf Question 1d.} Again with a test function $\phi$:
+\[
+  \left( f(x)\delta'(x),\phi(x) \right) =\int_{-\infty}^{\infty}f(x)\delta'(x)\phi(x)dx=-\int_{-\infty}^{\infty}\delta(x)(f'(x)\phi(x)+f(x)\phi'(x))dx
+\]
+\[
+=(f(x)\delta'(x)-f'(x)\delta(x),\phi)
+.\]
+Using part (a) we can replace $f(x)$ with $f(0)$ in last line above to get the required result: $f(x)\delta'(x)=f(0)\delta'(x)-f'(0)\delta(x)$.
 
 {\medskip\noindent\bf Question 2a.} Integrating:
 \[
@@ -129,11 +178,7 @@ For the boundary terms seen previous, we then have $v(0,x)=-\sin(x)$ and $v_s(0,
     u(x)=\left[vu'-v'u\right]_{0}^{\infty}+\int_0^{\infty}v(s,x)f(s)ds=\sin(x)v_0+\cos(x)u_0-\int_0^{x}(\cos x\sin s-\sin x\cos s)f(s)ds
 \]
 
-{\medskip\noindent\bf Question 4a.} The question states to solve it assuming that solutions are in the form $r^{i}$, but as far as I can tell solutions aren't in this form. Instead, I claim that $G_{ij}=ki+c$:
-\[
-k(i+1)-2ki+k(i-1)=0
-.\]
-For the non-homogeneous equation, the boundary conditions and continuity enforce what constants are allowed. Thus solutions are in the form:
+{\medskip\noindent\bf Question 4a.} For solutions of the form $G_{ij}=r^{i}$ in the homogeneous equation then we have $G_{i+1j}-2G_{ij}+G_{i-1j}=r^{i+1}-2r^{i}+r^{i-1}=0\implies r=1\text{ or }0$. Since the $r=1$ root has multiplicity 2 solutions are thus in the form $b1^{i}+ai 1^{i}=ai+b$, i.e. linear. For the non-homogeneous equation, the boundary conditions and continuity enforce what constants are allowed. Thus solutions are in the form:
 \[
 G_{ij}=\begin{cases}
     \frac{k}{j}i&0\leq i< j\\
@@ -149,6 +194,61 @@ G_{ij}=\begin{cases}
     -\frac{j}{N}(N-i)&j< i\leq N
 \end{cases}
 .\]
+Note that because $G$ is fixed at the endpoints there's an off-by-one comparison with $A_N$. I had trouble signing into Matlab due to the new cwl two-factor authentication so I did the computation in Python, I hope that's fine:
+
+\begin{lstlisting}
+import numpy as np
+
+n=5
+
+A5 = np.zeros((n, n))
+G = np.zeros((n+2, n+2))
+
+for i in range(n):
+    A5[i][i] = -2
+    if i > 0:
+        A5[i][i-1] = 1
+    if i < n-1:
+        A5[i][i+1] = 1
+
+for i in range(0,n+2):
+    for j in range(0,n+2):
+        k = j*(j-(n+1))/(n+1)
+        if i < j:
+            G[i][j] = k*i/j
+        elif i == j:
+            G[i][j] = k
+        else:
+            G[i][j] = k*((n+1)-i)/((n+1)-j)
+
+print(A5)
+inv = np.linalg.inv(A5)
+print(inv)
+print(G)
+\end{lstlisting}
+
+The output of the program gives the values for $G$ and $A_N^{-1}$ to be:
+\[
+A_5^{-1}\begin{bmatrix}
+-0.83 & -0.67 & -0.50 & -0.33 & -0.17 \\
+-0.67 & -1.33 & -1.00 & -0.67 & -0.33 \\
+-0.50 & -1.00 & -1.50 & -1.00 & -0.50 \\
+-0.33 & -0.67 & -1.00 & -1.33 & -0.67 \\
+-0.17 & -0.33 & -0.50 & -0.67 & -0.83
+\end{bmatrix}
+\]
+\[
+G=\begin{bmatrix}
+0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 \\
+0.00 & -0.83 & -0.67 & -0.50 & -0.33 & -0.17 & 0.00 \\
+0.00 & -0.67 & -1.33 & -1.00 & -0.67 & -0.33 & 0.00 \\
+0.00 & -0.50 & -1.00 & -1.50 & -1.00 & -0.50 & 0.00 \\
+0.00 & -0.33 & -0.67 & -1.00 & -1.33 & -0.67 & 0.00 \\
+0.00 & -0.17 & -0.33 & -0.50 & -0.67 & -0.83 & 0.00 \\
+0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00
+\end{bmatrix}
+.\]
+As expected they're identical except with more entries in G since it's tied down at the endpoints.
 
 % Solving first the homogeneous equation:
 % \[
