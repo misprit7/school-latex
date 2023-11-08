@@ -1,0 +1,80 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\lstset{
+  basicstyle=\ttfamily,
+  columns=fullflexible,
+  frame=single,
+  breaklines=true,
+  postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 437 Homework 3}
+\date{07/11/23}
+\author{Xander Naumenko}
+\maketitle
+
+{\medskip\noindent\bf Question 1.} We are trying to find instances of when $a_n\equiv 0\mod 2023$, so consider the recurrence relation $\mod 2023$. All future values of the sequence are determined by the 5-tuple $(a_n,a_{n+1},a_{n+2},n^2,5^{n})$, each value within being modulo $2023$. There are $2023$ possibilities for the first 4 and $\text{ord}_{2023}5=816$ possibilities for the last, so by the pigeonhole principle the sequence must repeat after at most $2023^{4}\cdot 816\approx 1.367\cdot 10^{16}$ steps. Since it repeats infinitely from then on out, all we must do is show that there is at least one 0 within the repeating section. I claim that $a_0=0$ is in the repeating section which fulfills this requirement.
+
+To see why, let $p$ be the period of repetition (i.e. a number such that $a_m\equiv a_{m+p}, 5^{m}\equiv 5^{m+p}, m^2\equiv (m+p)^2\mod 2023$ for all $m$ sufficiently large, this is guaranteed to exist as shown above) and $n$ be the smallest number such that $a_{m}\equiv a_{m+p},5^{m}\equiv 5^{m+p},m^2=(m+p)^2\mod 2023\forall m\geq n$. In particular, $a_{n}\equiv a_{n+p},a_{n+1}\equiv a_{n+p+1},a_{n+2}\equiv a_{n+p+2}\mod 2023$. Note that $816|p$ and $2023|p$ due to the $5^{m}$ and $m^2$ requirement and the fact that $2023$ isn't a perfect square. Then consider $a_{n-1}$, using the fact that $11\cdot 184=1\mod 2023$:
+\[
+a_{n-1}\equiv 184\left( a_{n+2}-5^{n}a_{n+1}-n^2a_{n} \right)\equiv 184\left( a_{n+p+2}-5^{n+p}a_{n+p+1}-(n+p)^2a_{n+p} \right) \mod 2023
+\]
+\[
+\equiv a_{n+p-1}\mod 2023
+.\]
+Since $5^{n-1}\equiv 1214\cdot 5^{n}\equiv 1214\cdot 5^{n+p}\equiv 5^{n+p-1}\mod 2023$ and $(n-1)^2\equiv n^2-2n+1\equiv (n+p)^2-2(n+p)+1\equiv (n+p-1)^2\mod 2023$, this contradicts our assumption that $n$ was chosen to be minimal. The only way this doesn't lead to a contradiction is if $n=0$ as $a_{n-1}=a_{-1}$ isn't defined. Thus $a_0\equiv 0\mod 2023$ is in the repetition and $2023|a_n$ infinitely many times. $\square$
+
+While this concludes the proof, alternatively to carefully proving that $a_0$ is in the repeating section one also could have just brute force searched for a repeating 5-tuple in the form above and checked that the repeating section contains a zero. Here's some python code to do so, it turns out to repeat with period $p=4660992$ and $n=0$ as expected.
+
+\begin{lstlisting}
+N = 10000000
+a = [0,1,2] + [0]*(N-3)
+
+seen = {}
+repeat_n = -1
+repeat_h = ()
+
+for n in range(0,N-3):
+    a[n+3] = (5**(n%816)*a[n+2]+n**2*a[n+1]+11*a[n])%2023
+    h = (n%816,(n**2)%2023,a[n+2],a[n+1],a[n])
+    if h in seen:
+        print(f'Found at n={n}')
+        repeat_n = n
+        repeat_h = h
+        break
+    seen[h] = n
+
+if repeat_n == -1:
+    print('No repeat found')
+else:
+    n1 = seen[repeat_h]
+    n2 = repeat_n
+    print(f'Found repeat at n1={n1}, n2={n2}')
+    print(repeat_h)
+    print('Searching for zeros...')
+    for n in range(n1,n2+1):
+        if a[n] == 0:
+            print(f'Found zero at n={n}')
+            print(f'Sanity check: n1={n1}, a[{n1}]={a[n1]}, a[{n1}+1]={a[n1+1]}, a[{n1}+2]={a[n1+2]}, (5^({n1}))%2023={(5**n1)%2023}, ({n1}^2)%2023={(5**n1)%2023}')
+            print(f'Sanity check: n2={n2}, a[{n2}]={a[n2]}, a[{n2}+1]={a[n2+1]}, a[{n2}+2]={a[n2+2]}, (5^({n2}))%2023={(5**n2)%2023}, ({n2}^2)%2023={(5**n2)%2023}')
+            break
+\end{lstlisting}
+
+{\medskip\noindent\bf Question 2.} Factoring the equation, we get $(x-1)(x^2+x+1)\equiv 0\mod n$. Thus $x=1$ is always a solution
+
+
+\end{document}

@@ -7,7 +7,7 @@ repeat_h = ()
 
 for n in range(0,N-3):
     a[n+3] = (5**(n%816)*a[n+2]+n**2*a[n+1]+11*a[n])%2023
-    h = (n%816,n%2023,a[n+2],a[n+1],a[n])
+    h = (n%816,(n**2)%2023,a[n+2],a[n+1],a[n])
     # h = (n%816,n%2023,a[n+3],a[n+2],a[n+1])
     if h in seen:
         print(f'Found at n={n}')
