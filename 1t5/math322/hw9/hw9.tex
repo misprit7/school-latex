@@ -1,0 +1,63 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 322 Homework 9}
+\date{09/11/23}
+\author{Xander Naumenko}
+\maketitle
+
+{\medskip\noindent\bf Question 1.} Clearly $N(P)\subseteq N(N(P))$, since a group normalizes itself by closure. For the other direction, let $g\in N(N(G))$. Then consider $g$ acting on $P$: $H=gPg^{-1}$. $H$ is a group and $|H|=|P|=p^{r}$. By the lemma in section 1.13, we then have that $H\subseteq P$, and since they have the same cardinality $H=P$. Since $gPg^{-1}=P$, $g$ normalizes $P$ and so $g\in N(P)$. Since this is true of all $g\in N(N(G))$, $N(N(G))\subseteq N(G)$ and we're done.
+
+{\medskip\noindent\bf Question 2.} Factoring, we have $148=2^2\cdot 37$. Consider Sylow 37-subgroups, by Sylow II we have that $n_{37}\equiv 1\mod 37$ and $n_{37}|4$ (where $n_p$ is the number of $p$-Sylow groups in $G$). The only solution to these equations is $n_{37}=1$. Since there is only one Sylow 37-subgroup $P$ and conjugation preserves group cardinality, we have $gPg^{-1}=P\forall g\in G$, i.e. $P$ is normal and $G$ isn't simple.
+
+For $56=2^{3}\cdot 7$, By Sylow II we have that $n_{7}\equiv 1\mod 7$ and $n_{7}|8$. Thus either $n_7=1$ or $n_7 =8$. If $n_7=1$ then by the same logic as for $148$, the unique Sylow 7-subgroup is normal. If $n_7=8$, then there are 8 distinct Sylow 7-subgroups. Since each of these are cyclic and unique, they don't intersect other than $1$, so there are $6\cdot 8=48$ different elements of order $7$. By Sylow I there's at least one subgroup of order $8$, which must must be comprised of the remaining $7$ elements as well as the identity. But then there is only one subgroup of order $8$, so it is normal and $G$ isn't simple.
+
+{\medskip\noindent\bf Question 3.} If $p=q$ then the group is of order $p^2$ which by exercise 5 from the previous homework implies that $G$ is abelian and thus any subgroup (e.g. subgroup of order $p$) is normal. Without loss of generality assume that $p>q$. Then we have that $n_p\equiv 1\mod p$ and $n_p|q$, but since $p>q$ this means that $n_p=1$. But a unique subgroup of a given order must be normal, so the group is simple.
+
+{\medskip\noindent\bf Question 4.} Let $G$ be a non-abelian group of order 6. Then by Sylow II there is a unique subgroup $H$ of order  $3$ since $n_{3}\equiv 1\mod 3$ \& $n_3|2\implies n_3=1$, so it is normal. Since $|H|=3$ is prime it is cyclic, call it's elements $H=\{1,\sigma,\sigma^2\}$. Then $G/H$ is a subgroup of order 2, so can be written as $G /H=\{H,\tau H\}$. Thus $G$ is given by $G=\{1,\sigma,\sigma^2,\tau,\tau\sigma,\tau\sigma^2\}$. 
+
+The only remaining choice in specifying $G$ is the behavior of $\sigma\tau$, with this any combination of $\sigma$ and $\tau$ can be reduced to one of the forms above. Since $G$ isn't abelian, $\sigma\tau\neq \tau\sigma$. Clearly $\tau\sigma\neq 1,\sigma,\sigma^2,\tau$ since $\sigma$ and $\tau$ are invertible. The only remaining choice is $\sigma\tau=\tau\sigma^2$. This is exactly $S_3$ under the map  $\sigma\to (123)$ and $\tau\to (23)$, so $G$ is isomorphic to $S_3$ using this map. 
+
+{\medskip\noindent\bf Question 5.} Let $G$ be a group of order 15. Using Sylow's theorems there is a unique subgroup $H$ of order $5$ in any group of order 15 (since $n_5\equiv 1\mod 5$ and $n_5|3\implies n_5=1$). Then $H$ is cyclic as it is of prime order and normal since it's the only subgroup of order $5$, and thus $G /H$ is a cyclic group of order 3. We proved in class that $G$ is abelian, so using these facts we can write every element in $G$ as $a^{i}b^{j}$ where $a$ is order $3$ and $b$ is order $5$. Thus $G\cong \mathbb{Z}/3\mathbb{Z}\times \mathbb{Z}/5\mathbb{Z}$, so there is only one possible $G$ up to isomorphisms.
+
+{\medskip\noindent\bf Question 6.} Let $n$ be the order of $uv$. Then I claim that $\langle u,v\rangle$ is isomorphic to $D_n$. Let $\sigma=uv$ and $\tau=u$. Then $|\langle \sigma\rangle|=n$, $|\langle \tau\rangle|=2$, and $(\sigma\tau)^2=(uvu)(uvu)=uvu^2vu=uv^2u=u^2=1$. $D_n$ is generated as $\langle\sigma,\tau\mid \sigma^2=1,\tau^{n}=1,(\sigma\tau)^2=1\rangle$, so since the multiplication and the cardinalities ($2n$) are preserved $\langle u,v\rangle\cong D_n$.
+
+%Define $\phi: D_n\to\langle u,v\rangle$ as $\phi(\sigma)=uv$ and $\phi(\tau)=u$ ($v=u^{-1}(uv)$ so $\langle uv,u\rangle=\langle u,v\rangle$, so this map is ).
+
+{\medskip\noindent\bf Question 7.} Since $u,v$ are order 2 then $u^{-1}=u$ and $v^{-1}=v$. Then using the fact that $(uv)^{-1}=v^{-1}u^{-1}=vu$ we have:
+\[
+    (uv)^{n}=1\implies v=(uv)^{n-1}u=(uv)^{\frac{n-1}{2}}u(uv)^{-\frac{n-1}{2}}
+\]
+Letting $g=(uv)^{\frac{n-1}{2}}$ ($n$ is odd so this is well defined) this fulfills the definition of conjugate.
+
+{\medskip\noindent\bf Question 8.} Assume $(uv)$ has order $2n$ (an unfortunate choice of variable name given I was previously using $n$ to be the order of $uv$). Then we have:
+\[
+uw=u(uv)^{n}=v(uv)^{n-1}=(vu)^{n-1}v=(vu)^{n}u^{-1}=(uv)^{-n}u=(uv)^{n}u=wu
+.\]
+Similarly:
+\[
+vw=v(uv)^{n}=(vu)^{n}v=(uv)^{-n}v=(uv)^{n}v=wv
+.\]
+Thus $\{u,v\}\subseteq C(w)$.
+
+{\medskip\noindent\bf Question 9.} As the hint suggests, we will count the number of ordered pairs $(x,y)$ with $x$ conjugate to $u_1$ and $y$ conjugate to $u_2$ in two different ways. First look at how many choices for $x$ there are. The orbit of $u_1$ under $G$ by conjugation by theorem 1.10 is $[G:C(u_1)]=\frac{|G|}{|C(u_1)|}=\frac{|G|}{c_1}$. By symmetry the same is also true of $y$ and each choice is independent, so the number of such combinations of $x$ and $y$ is $\frac{|G|^2}{c_1c_2}$.
+
+Consider $x,y$ with $x$ conjugate to $u_1$ and $y$ conjugate to $u_2$. If $o(xy)$ is odd then by question 7 we have that $x$ is conjugate to $y$ which isn't possible since $u_1$ isn't conjugate to $u_2$, so $o(xy)$ must be even. But then by question 8 we have that for $n=\frac{o(xy)}{2}$, $(xy)^{n}$ has order 2, and since $G$ only has two conjugacy classes it must either be conjugate to $u_1$ or $u_2$. Then another way of counting the number of possible such $x,y$ is to divide them into two groups: those with $(xy)^{n}$ conjugate to $u_1$ and those with $(xy)^{n}$ conjugate to $u_2$. For each member $g$ of the conjugacy class of $u_i$ we can consider the set $\{(x,y): x\text{ conjugate to }u_1,y\text{ conjugate to }u_2,(xy)^{n}=g\}$. The cardinality of this set is $s_i$ regardless of $g$ and there are $\frac{|G|}{c_i}$ choices for $g$, so the total possible choices of $x,y$ with $(xy)^{n}$ conjugate to $u_i$, $x$ conjugate to $u_1$ and $y$ conjugate to $u_2$ is $\frac{|G|s_i}{c_i}$. Summing over $i=1,2$ and comparing with our previous computation, we arrive at:
+\[
+\frac{|G|^2}{c_1c_2}=\frac{|G|s_1}{c_1}+\frac{|G|s_2}{c_2}\implies |G|=c_1s_2+c_2s_1
+.\]
+
+\end{document}
