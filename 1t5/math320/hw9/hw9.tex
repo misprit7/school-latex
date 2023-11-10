@@ -1,0 +1,95 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 320 Homework 9}
+\date{10/11/23}
+\author{Xander Naumenko}
+\maketitle
+
+{\medskip\noindent\bf Question 1a.} Let $A=\{\frac{1}{n}:n\in \mathbb{N}\}$. Then $\forall x=\frac{1}{n}\in A$, let $\epsilon=\frac{1}{(n+1)^2}$. Then $\forall y=\frac{1}{m}\in A$ with $x\neq y$, we have $\left| x-y \right| =\left| \frac{1}{n}-\frac{1}{m} \right| \geq \left| \frac{1}{n}-\frac{1}{n+1} \right| =\left| \frac{1}{n(n+1)} \right| >\frac{1}{(n+1)^2}$, so $\mathbb B[x;\epsilon)\cap A=\emptyset$ implying $x$ is isolated. However $0\in A'$. To see why, let $U$ be an open set containing $0$, and let $\mathbb B(0;\epsilon)$ be contained in $U$. Then using Archimedes there exists $n\in \mathbb{N}$ with $n>\frac{1}{\epsilon}\implies \epsilon>\frac{1}{n}$, so $\frac{1}{n}\in \mathbb B[0;\epsilon)\cap A\implies \frac{1}{n}\in U\cap A$. Since this is true of any open set $U$ containing $0$, $0$ is a limit point and so $A'\neq \emptyset$.
+
+{\medskip\noindent\bf Question 1b: Construct a bounded set of real numbers with exactly three limit points.}
+
+The construction for part a gives a set with at least one limit point at $0$, I will first prove that this limit point is unique, so let $A$ be as defined in part a. Let $x\in \mathbb{R}$ with $x\neq 0$. Consider the set $S=\{|\frac{1}{n}-x|: n\in \mathbb{N}, \frac{1}{n}\neq x\}$, i.e. the set of distances to each member of $A$ from $x$ except itself if $x$ happens to be in $A$. Let $\epsilon=\inf S$. Note that since $x\neq 0$, $\epsilon\neq 0$. Thus $\mathbb B(x;\epsilon)\cap S=\emptyset\implies x\notin S'$.
+
+Let $X=S\cup (S+2)\cup (S+4)$, where $S+r=\{x+r: x\in S\}$. Clearly $X$ is bounded above by $5$ and below by $0$. Since $S\subset (0,1]$, the three components $S,S+2$ and $S+4$ are disjoint and separated by distance 1. Thus $X$ has exactly three limit points at $0,2$ and $4$.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 2a.} Let $A=(0,1]$ and $B=[1,2)$. Then $\text{int}(A\cup B)=\text{int}((0,2))=(0,2)$, while $\text{int}(A)\cup \text{int}(B)=(0,1)\cup (1,2)\neq (0,2)$ as required.
+
+{\medskip\noindent\bf Question 2b.} Let $A=\mathbb{Q}$ and $B=\sqrt{2}Q=\{\sqrt{2}q:q\in \mathbb{Q}\}$. As stated in the notes $\overline{\mathbb{Q}}=\mathbb{R}$, and also $\overline{B}=\mathbb{R}$ since it is just scaled by a constant. Then we have $\overline{A\cap B}=\overline{\mathbb{Q}\cap \sqrt{2}\mathbb{Q}}=\overline{\{0\}}=\{0\}$ but $\overline{A}\cap \overline{B}=\mathbb{R}\cap \mathbb{R}=\mathbb{R}$.
+
+{\medskip\noindent\bf Question 2c.} Let $C_n=\mathbb B[0;1-\frac{1}{n}]$. Then $\mathbb B[0; 1)=\bigcup_{n=1}^{\infty}C_n$, as for any $x\in \mathbb B[0; 1)$, using Archimedes there exists $n$ such that $1-\frac{1}{n}>|x|\implies x\in C_n$. It is not possible to express $\mathbb B[0;1)$ as the intersection of closed sets as being able to do so would imply that it $A$ is closed. But $\mathbb B[0;1)^{c}$ is not open as $\mathbb B[0;1)\cap e_1\neq \emptyset$ (where $e_1=(1,0,\ldots,0)$) while $e_1\in \mathbb B[0;1)^{c}$, so such a representation couldn't have been possible.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 3a.} $\emptyset$ and $\mathbb{R}$ are clearly open, the former is because there are no points to pick and the latter because every interval sits in $\mathbb{R}$. Let $G$ be a collection of open sets, and let $S=\bigcup G$ and $x\in S$. Choose $U\in S$ arbitrary with $x\in U$. Then $\exists r>0$ s.t. $[x,x+r)\subseteq U\subseteq S$, and since this is true of all $x\in S$, $S$ is open. 
+
+Next let $H=\{U_1,U_2,\ldots,U_N\}$ be a finite collection of open sets, and $T=\bigcap H$. Let $x\in T$, and let $r_n>0$ be such that $[x,x+r_n)\in U_n$, this exists since $x\in T\subseteq U_n$. Let $r=\min \{r_n: 1\leq n\leq N\}$. Then $[x,x+r)\in T$ by construction and thus $T$ is open. 
+
+Finally, for any $x,y\in \mathbb{R}$, without loss of generality assume that $x<y$. Choose $U_x=[x,x+\frac{y-x}{2})$ and $U_y=[y,y+1)$. Both $U_x$ and $U_y$ are open, as for any $z\in U_x$, $[z,x+\frac{y-x}{2})\subseteq U_x$ and likewise for $U_y$. Then $x\in U_x,y\in U_y$ and $U_x\cap U_y=\emptyset$ as required for a Hausdorff space.
+
+{\medskip\noindent\bf Question 3b.} Let $x\in [0,1)$ and choose $r=\frac{1-x}{2}$. Then $[x,x+r)\subseteq [x,1)\subseteq [0,1)$, so it is open.
+
+{\medskip\noindent\bf Question 3c.} $0$ is a boundary point, as for any open set $U$ with $0\in U$, we have that for some $r>0$, $[0,r)\in U$. Since $[0,r)\cap (0,1)=(0,r)\neq \emptyset$ but $0\notin (0,1)$, $0$ meets the definition of boundary point. For any $x\in (0,1)$ we have $[x,\frac{1-x}{2})\subseteq (0,1)$ so they can't be boundary points. For any $x\in [0,\infty)$ we have that $\forall r>0,[x,x+r)\cap (0,1)=\emptyset$ so they aren't boundary points either. Finally for $x<0$ we have $[x,\frac{x}{2})\cap (0,1)= \emptyset$, so the only boundary point is $x=0$.
+
+{\medskip\noindent\bf Question 3d.} First I will show $s_n$ doesn't converge. Let $U=[0,1)$, then $s_n\notin U\forall n$ since $s_n<0\forall n$. Thus $s_n$ doesn't converge to 0. Next to show $t_n$ converges, let $U$ be open with $0\in U$. Then by the definition of open sets there exists $r>0$ with $[0,r)\subseteq U$. By Archimedes there exists $n\in \mathbb{N}$ s.t. $\frac{1}{n}<r$, so $t_n\in [0,r)\subseteq U$ and $t_n$ converges to 0.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 4a.} Let $x\in \partial A$. Then $x\notin (A^{c})^{\circ}$ (since every open subset containing $x$ intersects with both $A$ and it's complement), so $x\in ((A^{c})^{\circ})^{c}=\overline{A}$. By symmetry between $A$ and $A^{c}$ the exact same argument works for $A^{c}$ so $x\in \overline{A^{c}}$. Thus $x\in \overline{A}\cap \overline{A^{c}}$.
+
+For the other direction, let $y\in \overline{A}\cap \overline{A^{c}}$. Since $y\in \overline{A}$, by definition this means that every open set containing $y$ intersects with $A$. Similarly since $y\in \overline{A^{c}}$, this means that every open set containing $y$ intersects with $A^{c}$. This is exactly the definition for $\partial A$ though, so $y\in \partial A$. Since both sets contain one another, we have $\partial A=\overline{A}\cap \overline{A^{c}}$.
+
+{\medskip\noindent\bf Question 4b.} The two directions will be proven separately:
+
+($\Longrightarrow$) Suppose $A$ is closed. Then $A^{c}$ is open. Consider $x\in \partial A$. Since $A^{c}$ is open then for every point in $A^{c}$ there must exist an open subset containing it that is contained in $A^{c}$, but by definition this isn't possible for $x$. Thus $x\notin A^{c}\implies x\in A$, so $\partial A\subseteq A$.
+
+($\Longleftarrow$) Suppose that $\partial A\subseteq A$. Let $x\in A^{c}$. Since $x\notin \partial A$ and any open set containing $x$ intersects with $A^{c}$ (namely $x$ itself), there must exist a open set $U$ with $x\in U$ and $U\cap A=\emptyset$. Since this is true of any $x\in A^{c}$ we have that $A^{c}$ is open implying that $A$ is closed.
+
+{\medskip\noindent\bf Question 4c.} Note that $A$ being open and $A\cap \partial A=\emptyset$ are logically equivalent to $A^{c}$ being closed and $\partial A\subseteq A^{c}$. Since the definition of $\partial A$ was completely symmetric in $A,A^{c}$, we have $\partial A=\partial A^{c}$, so the $\partial A$ in the second equivalent statement can be replaced with $\partial A^{c}$. Thus applying part b to $A^{c}$ we see that the $A$ is open if and only if $A\cap\partial A=\emptyset$.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 5.} By contradiction assume that $(A')^{c}$ isn't open, so assume there exists $x\in(A')^{c}$ such that for all open sets $U$ containing $x$, $U\cap A'\neq\emptyset$. For every such $U$, let $y\in U\cap A'$. Then by the definition of $A'$ applied to the fact that $y\in U$, $U\cap A\neq \emptyset$. Since this is true of every open set containing $x$ though, by definition this means that $x\in A'$. This contradicts the fact that $x\in(A')^{c}$, so it must be that $(A')^{c}$ is open implying $A'$ is closed.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 6.} I will first prove the Bolzano Weierstrass theorem for $\mathbb{R}$: every bounded sequence has a convergent subsequence. Let $x$ be a bounded sequence, I claim that it either has a increasing or decreasing subsequence. If it does, then that subsequence converges and we're done since it is monotone and bounded. If $x$ has a decreasing subsequence then we're done, so assume that it doesn't. There exists $n_1\in \mathbb{N}$ with $x_{n_1}=\inf(x)$, as otherwise one could construct a decreasing subsequence by repeatedly taking closer and closer values to the infimum. Let $y_1=x_{n_1}$, and repeat this process except for $x_{n_2}=\inf \{x_n: n>n_1\}$, which gets us a $y_2=x_{n_2}$ and $y_1\leq y_2$. Applying this process repeatedly generates an infinite increasing subsequence $y$. Thus either $x$ has an increasing or decreasing subsequence, and since it is bounded this subsequence converges.
+
+Now to the question at hand, Apply Bolazano Weierstrass as proven above to $x^{(n)}_1$, this is possible since $-M_1\leq x^{(n)}_1\leq M_1$ (I will assume that $M_k>0\forall k$ since if they ever aren't then that term is trivial). Then there exists a subsequence of $x^{(n)}$, call it $x^{(n),1}$, with $x^{(n),1}_1$ convergent. Applying the same theorem to $x^{(n),1}_2$, we can get a subsequence $x^{(n),2}$ of $x^{(n),1}$ that has $x^{(n),2}_2$ convergent, and since it's a subsequence $x^{(n),2}_1$ is still convergent and converges to the same value. Applying this repeatedly, for any $k\in \mathbb{N}$ we can get a subsequence of $x^{(n)}$ that has $x^{(n),k}_i$ convergent for each $i=1,\ldots,k$. Let $a_k$ be the value that $x^{(n),k}_k$ converges to, since taking subsequences doesn't change the limit value this we also have $x^{(n),i}_k\to a_k\forall i\geq k$. Finally, let $y^{(n)}=x^{(1),n}$. I claim $y^{(n)}$ is the subsequence that fulfills the desired properties.
+
+First, I will show that $y^{(n)}\to a$. For $k\in \mathbb{N}$, we have that for $n>k$, $y^{(n)}_k$ is a subsequence of $x^{(n),k}_k$ which by definition converges to $a_k$. Thus $y^{(n)}_k\to a_k$. To show that $y^{(n)}_k\to a$, first let $\epsilon>0$. Since $\sum_{n=1}^{\infty}M_n^2<\infty$, choose $N_1$ such that $\sum_{n=N_1}^{\infty}M_n^2<\frac{\epsilon^2}{8}$. Since $y^{(n)}_k\to a_k$ for each $k=1,\ldots,N_1$, choose $N_2$ such that $\forall k\in \{1,\ldots, N_1\},n>N_2\implies |y^{(n)}_k-a_k|<\frac{\epsilon}{2\sqrt{N_1}}$. Then we have that for $n>\max(N_1,N_2)$, we have
+\[
+\| y^{(n)}-a \|=\left( \sum_{k=1}^{\infty}(y^{(n)}_k-a_k)^2 \right)^{1 /2} =\left( \sum_{k=1}^{N_1}(y^{(n)}_k-a_k)^2+\sum_{k=N_1+1}^{\infty}(y^{(n)}_k-a_k)^2 \right)^{1 /2}
+\]
+\[
+< \left( N_1 \frac{\epsilon^2}{2N_1}+\sum_{k=N_1+1}^{\infty}(2M_k)^2 \right) ^{1 /2}<\left( \frac{\epsilon^2}{2}+\frac{\epsilon^2}{2} \right) =\epsilon
+.\]
+
+Also, since $\left|y^{(n)}_k\right|\leq M_k$, we have $|a_k|\leq M_k$. Thus $\sum_{k=1}^{\infty}|a_k|^2\leq \sum_{k=1}^{\infty}M_k<\infty \implies a\in S$. Thus $y^{(n)}$ is a convergent subsequence of $x^{(n)}$ whose limit $a$ lies in $S$, as required.
+
+\newpage\phantom{blabla}
+\newpage
+
+
+\end{document}
