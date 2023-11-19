@@ -1,0 +1,34 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 406 Homework 5}
+\date{17/11/23}
+\author{Xander Naumenko}
+\maketitle
+
+{\medskip\noindent\bf Question 1a.} For all functions $v$ in some class, the following must be true:
+\[
+\int_{0}^{1}v(u''+k^2u-f)dx=0
+.\]
+Integrating by parts:
+\[
+\int_0^{1}-u'v'+k^2uv-fvdx+v(1)\beta-v(0)u'(0)=0\implies \int_0^{1}u'v'dx=k^2\int_0^{1}uvdx-\int_0^{1}fvdx+\beta v(1)
+.\]
+Thus the weak form is to find $u\in H_\alpha^{1}$ such that $\int_0^{1}u'v'dx=k^2\int_0^{1}uvdx-\int_0^{1}fvdx+\beta v(1)\forall v\in H_0^{1}$.
+
+{\medskip\noindent\bf Question 1b.} 
+
+\end{document}

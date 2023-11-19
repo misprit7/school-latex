@@ -1,0 +1,81 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 320 Homework 10}
+\date{18/11/23}
+\author{Xander Naumenko}
+\maketitle
+
+{\medskip\noindent\bf Question 1.} Consider the family of sets $\mathcal F$ containing $f^{-1}((-\infty,p])^{c}=f^{-1}((p,\infty))=\{x\in X:f(x)>p\}$ for $p>\inf f(X)$, these are all open since $f$ is lower semicontinuous. By contradiction assume $\inf f(X)=-\infty$, then for any $x\in X$ we have $x\in f^{-1}((-\infty,f(x)-1])^{c}$, so these sets provide an open cover of $X$. The compactness of $X$ guarantees the existence of $F_1=f^{-1}((p_1,\infty)),\ldots,F_n=f^{-1}((p_n,\infty))\in \mathcal F$ which make an open cover of $X$. But then $\min \{p_1,\ldots,p_n\}$ is a lower bound for $f(X)$ which contradicts our assumption that $\inf f(X)=-\infty$, so $f$ must be bounded below.
+
+Next, to show that $f$ attains it's lower bound, consider the set $\mathcal F^{c}=\{F^{c}:F\in \mathcal F\}=\{f^{-1}((-\infty,p]):p>\inf f(X)\}$. $\mathcal F^{c}$ contains only closed sets since $f$ is lower semicontinuous, and the finite intersection property holds since for any $p_1,\ldots,p_n\in \mathbb{R}$ with $p_i>\inf f(X)\forall i$, we have $\bigcap_{i=1}^{n}f^{-1}((-\infty,p_i])=f^{-1}([\inf f(X),\min \{p_1,\ldots,p_i\}])\neq \emptyset$. Then because $X$ is compact, $\mathcal F^{c}$ has nonempty intersection. Thus we have $\bigcap\mathcal F^{c}= f^{-1}((-\infty,\inf f(X)])=f^{-1}(\inf f(X))\neq \emptyset$, so any $z\in f^{-1}(\inf f(X))$ works.
+
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 2.} Let $K\subseteq X$ be a compact set, and assume that $\mathcal G$ is an open cover of $K$. For each $z\in K$, we can find some $G_z\in \mathcal G$ such that $z\in G_z$. Since $\mathcal G$ is comprised of open sets, there exists an $r_z$ s.t. $\mathbb B[z,2r_z)\subseteq G_z$. Consider $\mathcal F=\{\mathbb B[z,r_z): z\in K\}$. $\mathcal F$ is an open covering of $K$ (since $z\in \mathbb B[z,r_z)\forall z\in K$), so by the compactness of $K$ there is a finite collection $z_1,z_2,\ldots,z_n$ such that $\bigcap_{i=1}^{n}\mathbb B[z_i,r_{z_i})=K$. Let $r=\min \{r_{z_1},\ldots,r_{z_n}\}$, I claim that this $r$ fulfills the question's requirements.
+
+Let $x,y\in K$ obeying $d(x,y)<r$. By the construction earlier there is $z_k$ s.t. $x\in \mathbb B[z_k,r_{z_k})$. Then we have $d(z_k,y)\leq d(z_k,x)+d(x,y)<r_{z_k}+r\leq 2r_{z_k}\implies y\in \mathbb B[z_k,2r_{z_k})$. In addition, by construction there exists $G_{z_k}\in\mathcal G$ with $\mathbb B[z_k,2r_{z_k})\subseteq G_{z_k}$, so both $x$ and $y$ are contained in $G_{z_k}$ as required.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 3a.} If $S$ is bounded then $p_1(S)$ is also bounded. To see why, suppose that there exists $D>0$ such that for any $x,y\in \mathbb{R}^{2}$, we have $d(x,y)<D$. Then for any $(x_1,x_2),(y_1,y_2)\in S$, note that $D>d((x_1,x_2),(y_1,y_2))=\sqrt{(x_1-y_1)^2+(x_2-y_2)^2}\geq |x_1-y_1|=d(x_1,y_1)=d(p_1((x_1,x_2)),p_1((y_1,y_2)))$. Thus $D$ is also an bound for $p_1(S)$.
+
+{\medskip\noindent\bf Question 3b.} The statement is not true. Consider $S=\{(x,\frac{1}{x}):x\in \mathbb{R}\setminus \{0\}\}$. For any $(x,y)\in \mathbb{R}^{2}$ with $\frac{1}{x}\neq y$, let $\epsilon$ be the distance between $(x,y)$ and the graph of $y=\frac{1}{x}$, then we have that $\mathbb B[(x,y),\epsilon)\cap S=0$. Thus $S^{c}$ is open and $S$ is closed. However, $p_1(S)=(-\infty,0)\cup (0,\infty)$ isn't closed ($p_1(S)^{c}=\{0\}$ which isn't open).
+
+{\medskip\noindent\bf Question 3c.} The statement is true. From the notes, we proved that an equivalent defintion of compactness is that every subsequence has a convergent subsequence. Assume that $S$ is compact, and let $(x_n)$ be a sequence in $p_1(K)$. Then for each $x_n$ there exists $y_n$ such that $(x_n,y_n)\in S$, so construct a new sequence $((x_n,y_n))$ in $S$ this way. Since $S$ is compact $((x_n,y_n))$ has a convergent subsequence $((x_{n_k},y_{n_k}))$ (where $k$ is now the indexing variable of this sequence rather than $n$). Then by the definition of convergence in $\mathbb{R}^{2}$, $x_{n_k}$ is a converging subsequence of $x_n$ and therefore $p_1(S)$ is compact.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 4a.} Let $V\subseteq \ell^2$ be finite and $x\in\ell^2$. Let $G=\Omega(x;V)$, and choose $y\in G$. By Archimedes let $k$ be a natural number large enough that $\frac{1}{k}<1-\max \{|\langle v,y-x\rangle|: v\in V\}$. Let $V'=kV=\{(kv_n): (v_n)\in V\}$. Consider $z\in \Omega(y;V')$, by the definition of $V'$ we have that $|\langle v,z-y\rangle|<\frac{1}{k}$. Using this, we get
+\[
+|\langle v,z-x\rangle|=\left|\sum_{n=1}^{\infty}v_n(z_n-x_n)\right|=\left|\sum_{n=1}^{\infty}v_n((z_n-y_n)-(x_n-y_n))\right|
+\]
+\[
+\leq |\langle v,z-y\rangle|+|\langle v,x-y\rangle|<\left(1-\frac{1}{k}\right)+\frac{1}{k}=1
+.\]
+Thus $|\langle v,z-x\rangle|<1$ and so $z\in \Omega(x;V)$. Since $z$ was arbitrary we get $y\in\Omega(y;V')\subseteq \Omega(x,V)=G$ as required, so $G\in\mathcal T$.
+
+{\medskip\noindent\bf Question 4b.} Each property will be proven separately:
+
+{\medskip\noindent\bf (HTS1)} Choosing $V=\emptyset$ and $x\in \ell^2$ gives that $\Omega(x;\emptyset)=\ell^2$, as the condition in the definition of $\Omega$ is vacuously true and part a shows that $\Omega(x;\emptyset)\in\mathcal T$. Also $\emptyset\in \mathcal T$, as every point $x\in\emptyset$ satisfies the condition to be in $\mathcal T$ trivially since there aren't any $x$ to choose.
+
+{\medskip\noindent\bf (HTS2)} Let $\mathcal G\subseteq\mathcal T$. Let $x\in\bigcup\mathcal G$, then since $x\in G$ for some $G\in \mathcal G$ we have that $\Omega(x;V)\subseteq G$ for some finite set $V\subseteq \ell^2$. Then since the union only makes the set bigger we also have $\Omega(x;V)\subseteq\bigcup \mathcal G\implies \bigcup \mathcal G\in\mathcal T$.
+
+{\medskip\noindent\bf (HTS3)} Let $U_1,\ldots,U_N\in\mathcal T$. Let $G=\bigcap_{i=1}^{N} U_i$ and $x\in G$. Then for each $i=1,\ldots,N$, we have $x\in\Omega(x;V_i)\subseteq U_i$. Let $V=\bigcup_{i=1}^{N}V_i$. Then $x\in\Omega(x,V)\subseteq U_i\forall i$, so $x\in\Omega(x,V)\subseteq G$ as required.
+
+{\medskip\noindent\bf (HTS4)} Let $x,y\in\ell^2$ with $x\neq y$. Let $U=\Omega(x,\{\frac{1}{|x_1|}\hat e_1\})=\Omega(x,\{(\frac{1}{|x_1|},0,\ldots)\})$ and $V=\Omega(y,\{-\frac{1}{|y_1|}\hat e_1\})$. Then for $z\in U$ we have $|\langle \frac{1}{|x_1|}\hat e_1,x-z\rangle|=|1-z_1|<1\implies z_1>0$, and for $w\in V$ we have $|\langle -\frac{1}{|y_1|}\hat e_1,y-w\rangle|=|-1-w_1|<1\implies w_1<0$. Since their first entries differ in sign $z\neq w\implies U\cap V=\emptyset$, but they are each open sets that contain $x$ and $y$ respectively as required.
+
+{\medskip\noindent\bf Question 4c.} Let $U\in \mathcal N(0)$. Then there exists $V\subseteq \ell^2$ finite such that $\Omega(0;V)\subseteq U$. Let $p\in \mathbb{N}$ be such that $|v_p|<1\forall v\in V$. This is possible since $\|v\|<\infty\forall v\in V$. Then $\langle v,\hat e_p\rangle=|v_p|<1\forall v\in V$, so $\hat e_p\in\Omega(0;V)\subseteq U$, i.e. $U\cap S\supseteq \{e_p\}\neq 0$, so $0\in S'$.
+
+{\medskip\noindent\bf Question 4d.} Let $G\in\mathcal T$ and $x\in G$. Let $V\subseteq \ell^2$ finite be such that $x\in\Omega(x;V)\subseteq G$. Let $r=\frac{1}{\max \{\|v\|: v\in V\}}$. Then using homework 7 question 3b (it states that $|\langle x,y\rangle|\leq \|x\|\|y\|\forall x,y\in\ell^2$), we get that for $y\in \ell^2$ with $\|y-x\|<r$ and $v\in V$,
+\[
+|\langle v,y-x\rangle|\leq \|v\| \|y-x\|<\frac{\|v\|}{\|v\|}=1
+.\]
+Thus $y\in\Omega(x;V)$. Since $y$ was chosen arbitrarily as long as $\|y-x\|<r$, we have $\mathbb B[x;r)\subseteq G$.
+
+{\medskip\noindent\bf Question 4e.} Let $G=\{y\in \ell^2:\|y\|>1\}$, proving that $\mathbb B[0,1]$ is closed is equivalent to proving that $G$ is open. Let $x\in G$ and $\epsilon<\frac{\|x\|^2-1}{2}$. Since $\|x\|<\infty$, let $M=\max \{x_p: p\in \mathbb{N}\}$ and choose $N$ such that $\sum_{n=N+1}^{\infty}|x_n|^2<\frac{\epsilon}{2}$. Choose $V=\{\frac{4NM}{\epsilon}\hat e_p: 1\leq p\leq N\}$. I claim that $\Omega(x;V)\in G$.
+
+Let $y\in \Omega(x;V)$. Then $\left|\langle \frac{4NM}{\epsilon}\hat e_p,y-x\rangle\right|<1\implies |y_p-x_p|<\frac{\epsilon}{4NM}\implies |y_p|>|x_p|-\frac{\epsilon}{4NM}\implies|y_p|^2>|x_p|^2-\frac{\epsilon}{2NM}|x_p|+\left( \frac{\epsilon}{4NM} \right)^2>|x_p|^2-\frac{\epsilon}{2N}$. Thus we have
+\[
+\|y\|^2=\sum_{n=1}^{N}|y_n|^2+\sum_{n=N+1}^{\infty}|y_n|^2>\sum_{n=1}^{N}\left(|x_n|^2-\frac{\epsilon}{2N}\right)+0\geq \|x\|^2-\frac{\epsilon}{2}-\frac{\epsilon}{2}=\|x\|-\epsilon>1
+.\]
+Thus $\|y\|>1$ so $y\in G$, as required. This implies that $x\in\Omega(x;V)\subseteq G$ so $G$ is open, and thus $\mathbb B[0,1]$ is closed.
+
+\end{document}
