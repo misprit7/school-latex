@@ -10,6 +10,14 @@ filecolor=magenta,
 urlcolor=cyan,
 }
 
+\lstset{
+  basicstyle=\ttfamily,
+  columns=fullflexible,
+  frame=single,
+  breaklines=true,
+  postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+}
+
 \graphicspath{ {images/} }
 
 \begin{document}
@@ -29,6 +37,117 @@ Integrating by parts:
 .\]
 Thus the weak form is to find $u\in H_\alpha^{1}$ such that $\int_0^{1}u'v'dx=k^2\int_0^{1}uvdx-\int_0^{1}fvdx+\beta v(1)\forall v\in H_0^{1}$.
 
-{\medskip\noindent\bf Question 1b.} 
+{\medskip\noindent\bf Question 1b.} Since we used the strong form to derive the weak form while relaxing constraints, the strong form always implies the weak form. 
+
+{\medskip\noindent\bf Question 1c.} Let $u^{h}(x)=\sum_{n=0}^{N}u_nN_n(x)$, where $N_n(x)$ are the basis functions. Similarly let $v^{h}(x)=\sum_{n=1}^{N}v_nN_n(x)$. Using the weak form derived above, we need to find $u^{h}\in V_\alpha^{h}$ such that:
+\[
+\int_0^{1}\left(\alpha N_0'+\sum_{n=1}^{N}u_nN_n'\right)\left( \sum_{m=1}^{N}v_mN_m' \right) dx=k^2\int_0^{1}\left( \alpha N_0+\sum_{n=1}^{N}u_nN_n \right) \left( \sum_{m=1}^{N}v_mN_m \right) dx
+\]
+\[
+-\int_0^{1}f\left( \sum_{m=1}^{N}v_mN_m \right) dx+\sum_{m=1}^{N}v_m N_m(1)\beta=0
+.\]
+\[
+    \implies\sum_{m=1}^{N}v_m\bigg[\alpha\int_0^{1}N_0' N_m'dx+\sum_{n=1}^{N}u_n\int_0^{1}N_n' N_m'dx-k^2\left( \alpha\int_0^{1} N_0 N_m dx+\sum_{n=1}^{N}u_n\int_0^{1}N_n N_m dx \right) 
+\]
+\[
++\int_0^{1}fN_mdx-N_m(1)\beta\bigg]=0
+.\]
+\[
+\implies\sum_{n=1}^{N}u_n(K_{mn}-k^2M_{mn})=\delta_{mn}\beta-\alpha(K_{0m}-k^2M_{0m})+\int_0^{1}fN_mdx\implies (K-k^2M)=b
+.\]
+Here $K$ is the stiffness matrix and $M$ is the mass matrix. This derivation was done in class and in the notes so most of the algebra is taken from there.
+
+{\medskip\noindent\bf Question 1d.} To use piecewise linear basis functions with discretization size $h$, all we have to do is construct the stiffness and mass matrices. Consider just a single element $e$ along with the change of coordinates $x(\xi)=x_{e-1}N_1(\xi)+x_eN_2(\xi)$ where $N_1$ and $N_2$ are the two linear basis functions in $[-1,1]$ (with corresponding $N_a(x),N_b(x)$ in the $x$ domain):
+\[
+    \int_{x_{e-1}}^{x_e}N_m'(x)N_n'(x)dx=\int_{-1}^{1}\frac{dN_a}{d\xi}\frac{d\xi}{dx}\frac{dN_b}{d\xi}\frac{d\xi}{dx}\frac{dx}{d\xi}d\xi=\frac{2}{h}\int_{-1}^{1}\frac{\xi_a\xi_b}{4}d\xi=\frac{\xi_a\xi_b}{h}
+\]
+\[
+    \implies K_{ab}^{e}=\frac{1}{h} \begin{pmatrix} 1&-1\\-1&1 \end{pmatrix} 
+.\]
+Similarly for the mass matrix:
+\[
+M_{mn}^{e}=\int_{x_{e-1}}^{x_e}N_mN_ndx=\int_{-1}^{1}\frac{1}{4}\left( 1+\xi_a\xi \right)\left( 1+\xi_b\xi \right) \frac{dx}{d\xi}d\xi=\frac{h}{4}\left( 1+\frac{\xi_a\xi_b}{3} \right) 
+\]
+\[
+    \implies M^{e}=\frac{h}{6}\begin{pmatrix} 2&1\\1&2 \end{pmatrix} 
+.\]
+Putting these together and summing over all the elements (and being careful about summing the correct conditions at the boundary, we get the final matrices to be:
+\[
+    K=\frac{1}{h}\begin{pmatrix} 2&-1&0&0&0&\cdots\\-1&2&-1&0&0&\cdots\\ 0&0&-1&2&-1&\cdots\\ \vdots\\ 0&0&0&0&\cdots&-1&2&-1\\ 0&0&0&0&\cdots&0&-1&1\end{pmatrix} 
+\]
+\[
+    M=\frac{h}{6}\begin{pmatrix} 4&1&0&0&0&\cdots\\1&4&1&0&0&\cdots\\ 0&0&1&4&1&\cdots\\ \vdots\\ 0&0&0&0&\cdots&1&4&1\\ 0&0&0&0&\cdots&0&1&2\end{pmatrix} 
+.\]
+Finally we have also have:
+\[
+b = \begin{pmatrix} -\left(\frac{1}{h}-\frac{k^2h}{6}\right)\alpha-(f,N_1)\\-(f,N_2)\\-(f,N_3)\\\vdots \\\beta-(f,N_N) \end{pmatrix} \text{ where } (f,N_m)=\int_{0}^{1}fN_mdx
+.\]
+Thus the finite element discretization is to solve the equation $(K-k^2M)u=b$ with $K,M$ and $b$ defined as above.
+
+{\medskip\noindent\bf Question 1e.} The solution to the homogeneous equation $u''+10^2u=0$ is $u=A\sin 10x+B\cos 10x$. For the nonhomogeneous equation assume that $u=a_1+a_2x+a_3x^2+a_4x^{3}$, then we have $a_3+a_4x+100a_1+100a_2x+100a_3x^2+100a_4x^{3}=x^{3}\implies u=-\frac{6x}{10^{4}}+\frac{x^{3}}{10^2}$. Thus plugging in boundary conditions, the analytic solution is $u(x)=\frac{\sin 10x}{10\cos 10}\left(1+\frac{6}{10^{4}}-\frac{3}{10^2}\right)-\frac{6x}{10^{4}}+\frac{x^{3}}{10^2}$.
+
+As for the numerical solution, the matrices described above were construction for $N=10,20,30$ and solved. The results can be seen in figure .
+
+{\medskip\noindent\bf Question 1f.} All of the work for the previous parts have been to reduce the problem to one in the given form. Here $f=\alpha=\beta=0$ so $b=0$, and thus $Ku=k^2Mu$. Letting $x=u, A=K,B=M$ and $\lambda=k^2$, we see that this is the desired eigenvalue problem.
+
+{\medskip\noindent\bf Question 2a.} From the main boundary value problem, we have that $\frac{D}{r}(rp_r)_r=0$, which has solutions in the form $p(r)=A+B\log r$. The boundary conditions forces $\lim_{r\to 0}r \frac{\partial p}{\partial r}=B=-\frac{Q_0}{2\pi D}$, and $u(R(t),t)=0\implies A=\frac{Q_0}{2\pi D}\log R(t)$. Putting this together we have $p(r,t)=\frac{Q_0}{2\pi D}\log \frac{R(t)}{r}$.
+
+Using the Stefan condition for front velocity:
+\[
+\dot R(t)= -\frac{w_0^2}{\mu'}\frac{dp}{dr}\bigg]_{r=R(t)}=\frac{w_0^2}{\mu'}\frac{Q_0}{2\pi DR(t)}
+.\]
+Finally using separation of variables we can solve this differential equation:
+\[
+\int R(t)dR(t)=\int_0^{t}\frac{w_0^2}{\mu'}\frac{Q_0}{2\pi D}dt\implies R(t)=\sqrt{\frac{w_0^2Q_0t}{\mu'\pi D}}
+.\]
+
+{\medskip\noindent\bf Question 2bi.} Expanding, the equation to solve is $p_{rr}+\frac{1}{r}p_r=g(r,t)$. As derived in class (lecture 14), we can write the adjoint operator as $L^{*}p=(a_0p)''-(a_1p)'+a_2p=p''-\frac{1}{r}p'+\frac{1}{r^2}p$. Our goal is to find $G(s,r)$ that satisfies $L^{*}_s G(s,r)=\delta(s-r)$. Assume that $G(s,r)=$
+
+% {\medskip\noindent\bf Question 2bi.} We want to find the Green's function solution to $\frac{1}{s}(sG_s(s,r))_s=\delta(s-r)$. We already determined that the solution to the homogeneous equation is $p(r)=A+B\log r$. Thus we can split the Green's function into two parts:
+% \[
+% G(s,r)=\begin{cases}
+%   A_-+B_-\log s&0<s<r\\
+%   A_++B_+\log s&r<s<R(t)
+% \end{cases}
+% .\]
+% The boundary conditions force $B_-= -\frac{Q_0}{2\pi D}$ and $A_+=-B_+\log R(t)$. Continuity forces that $A_--\frac{Q_0}{2\pi D}\log r=B_+\log \frac{r}{R(t)}\implies A_-=B_+\log \frac{r}{R(t)}+\frac{Q_0}{2 \pi D}\log r$. Thus we can write $G$ once again as
+% \[
+% G(s,r)=\begin{cases}
+%   B_+\log \frac{r}{R(t)}+\frac{Q_0}{2\pi D}\log \frac{r}{s}&0<s<r\\
+%   B_+\log \frac{s}{R(t)}&r<s<R(t)
+% \end{cases}
+% \]
+% \[
+% G_s(s,r)=\begin{cases}
+%   -\frac{Q_0}{2\pi Ds}&0<s<r\\
+%   \frac{B_+}{s}&r<s<R(t)
+% \end{cases}
+% .\]
+% The only condition left is the jump condition:
+% \[
+% \int_{r-\epsilon}^{r+\epsilon}\Delta_s G sds=\int_{r-\epsilon}^{r+\epsilon}(sG_s)_sds=sG_s\bigg|_{r-\epsilon}^{r+\epsilon}=r\left( G_s(r_+,r)-G_s(r_-,r) \right)=\int_{r-\epsilon}^{r+\epsilon}s\delta(r-s)ds=r
+% \]
+% \[
+% \implies 1=\frac{1}{r}B_++\frac{Q_0}{2\pi Dr}\implies B_+=r-\frac{Q_0}{2\pi D}
+% .\]
+% We can then get a final formulation for $G$:
+% \[
+% G(s,r)=\begin{cases}
+%   r\log \frac{r}{R(t)}+\frac{Q_0}{2\pi D}\log \frac{R(t)}{s}&0<s<r\\
+%   \left( r-\frac{Q_0}{2\pi D} \right) \log \frac{s}{R(t)}&r<s<R(t)
+% \end{cases}=-\frac{Q_0}{2\pi D}\log \frac{s}{R(t)}+\begin{cases}
+%   r\log \frac{r}{R(t)}&0<s<r\\
+%   r\log \frac{s}{R(t)}&r<s<R(t)
+% \end{cases}
+% .\]
+% Putting this together we can determine an expression for $p(r,t)$ in terms of $R(t)$ and $g(r,t)$. For some variation $v$ :
+% \[
+% p(r,t)=\int_0^{r}r\log \frac{r}{R(t)}g(s)sds+\int_r^{R(t)}r\log \frac{s}{R(t)}g(s)sds-\int_0^{R(t)}\frac{Q_0}{2\pi D}\log \frac{s}{R(t)} g(s)sds
+% .\]
+
+% {\medskip\noindent\bf Question 2bii.} Plugging in $r=R(t)$:
+% \[
+%   p(R(t),t)=
+% .\]
 
 \end{document}
