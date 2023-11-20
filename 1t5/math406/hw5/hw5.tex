@@ -101,53 +101,62 @@ Finally using separation of variables we can solve this differential equation:
 \int R(t)dR(t)=\int_0^{t}\frac{w_0^2}{\mu'}\frac{Q_0}{2\pi D}dt\implies R(t)=\sqrt{\frac{w_0^2Q_0t}{\mu'\pi D}}
 .\]
 
-{\medskip\noindent\bf Question 2bi.} Expanding, the equation to solve is $p_{rr}+\frac{1}{r}p_r=g(r,t)$. As derived in class (lecture 14), we can write the adjoint operator as $L^{*}p=(a_0p)''-(a_1p)'+a_2p=p''-\frac{1}{r}p'+\frac{1}{r^2}p$. Our goal is to find $G(s,r)$ that satisfies $L^{*}_s G(s,r)=\delta(s-r)$. Assume that $G(s,r)=$
+{\medskip\noindent\bf Question 2bi.} Expanding, the equation to solve is $Lp=p_{rr}+\frac{1}{r}p_r=g(r,t)$. We can find the adjoint operator:
+\[
+\int_0^{R(t)}Gfrdr=\int_0^{R(t)}G\cdot (Lu)\cdot rdr=\int_0^{R(t)}G\left( ru''+u' \right) dr
+.\]
+From this point the self adjoint operator and associated boundary terms were derived in class (lecture 14), they are:
+\[
+  =\left[Ga_0u'+Ga_1u-(a_0G)'u\right]_{0}^{R(t)}+\int_{0}^{R(t)}u\left( (a_0G)''-(a_1G)'+a_2G \right) dr
+\]
+\[
+=-+\int_0^{R(t)}u\left( rG''+G' \right) dr
+.\]
+Thus under the radial integration $L$ acts as self adjoint (there's probably some deeper reason for the way the algebra works out with the extra $r$, but from the algebra it works out at least). Thus we want to find $G(s,r)$ such that $sG_{ss}(s,r)+G_s(s,r)=\delta(s-r)$. We already determined that the solution to the homogeneous equation is $p(r)=A+B\log r$. Thus we can split the Green's function into two parts:
+\[
+G(s,r)=\begin{cases}
+  A_-+B_-\log s&0<s<r\\
+  A_++B_+\log s&r<s<R(t)
+\end{cases}
+.\]
+The boundary conditions force $B_-= -\frac{Q_0}{2\pi D}$ and $A_+=-B_+\log R(t)$. Continuity forces that $A_--\frac{Q_0}{2\pi D}\log r=B_+\log \frac{r}{R(t)}\implies A_-=B_+\log \frac{r}{R(t)}+\frac{Q_0}{2 \pi D}\log r$. Thus we can write $G$ once again as
+\[
+G(s,r)=\begin{cases}
+  B_+\log \frac{r}{R(t)}+\frac{Q_0}{2\pi D}\log \frac{r}{s}&0<s<r\\
+  B_+\log \frac{s}{R(t)}&r<s<R(t)
+\end{cases}
+\]
+\[
+G_s(s,r)=\begin{cases}
+  -\frac{Q_0}{2\pi Ds}&0<s<r\\
+  \frac{B_+}{s}&r<s<R(t)
+\end{cases}
+.\]
+The only condition left is the jump condition:
+\[
+\int_{r-\epsilon}^{r+\epsilon}sG_{ss}+G_sds=\int_{r-\epsilon}^{r+\epsilon}(sG_s)_sds=sG_s\bigg|_{r-\epsilon}^{r+\epsilon}=r\left( G_s(r_+,r)-G_s(r_-,r) \right)=\int_{r-\epsilon}^{r+\epsilon}s\delta(r-s)ds=r
+\]
+\[
+\implies 1=\frac{1}{r}B_++\frac{Q_0}{2\pi Dr}\implies B_+=r-\frac{Q_0}{2\pi D}
+.\]
+We can then get a final formulation for $G$:
+\[
+G(s,r)=\begin{cases}
+  r\log \frac{r}{R(t)}+\frac{Q_0}{2\pi D}\log \frac{R(t)}{s}&0<s<r\\
+  \left( r-\frac{Q_0}{2\pi D} \right) \log \frac{s}{R(t)}&r<s<R(t)
+\end{cases}=-\frac{Q_0}{2\pi D}\log \frac{s}{R(t)}+\begin{cases}
+  r\log \frac{r}{R(t)}&0<s<r\\
+  r\log \frac{s}{R(t)}&r<s<R(t)
+\end{cases}
+.\]
+Putting this together we can determine an expression for $p(r,t)$ in terms of $R(t)$ and $g(r,t)$:
+\[
+p(r,t)=\int_0^{r}r\log \frac{r}{R(t)}g(s)sds+\int_r^{R(t)}r\log \frac{s}{R(t)}g(s)sds-\int_0^{R(t)}\frac{Q_0}{2\pi D}\log \frac{s}{R(t)} g(s)sds
+.\]
 
-% {\medskip\noindent\bf Question 2bi.} We want to find the Green's function solution to $\frac{1}{s}(sG_s(s,r))_s=\delta(s-r)$. We already determined that the solution to the homogeneous equation is $p(r)=A+B\log r$. Thus we can split the Green's function into two parts:
-% \[
-% G(s,r)=\begin{cases}
-%   A_-+B_-\log s&0<s<r\\
-%   A_++B_+\log s&r<s<R(t)
-% \end{cases}
-% .\]
-% The boundary conditions force $B_-= -\frac{Q_0}{2\pi D}$ and $A_+=-B_+\log R(t)$. Continuity forces that $A_--\frac{Q_0}{2\pi D}\log r=B_+\log \frac{r}{R(t)}\implies A_-=B_+\log \frac{r}{R(t)}+\frac{Q_0}{2 \pi D}\log r$. Thus we can write $G$ once again as
-% \[
-% G(s,r)=\begin{cases}
-%   B_+\log \frac{r}{R(t)}+\frac{Q_0}{2\pi D}\log \frac{r}{s}&0<s<r\\
-%   B_+\log \frac{s}{R(t)}&r<s<R(t)
-% \end{cases}
-% \]
-% \[
-% G_s(s,r)=\begin{cases}
-%   -\frac{Q_0}{2\pi Ds}&0<s<r\\
-%   \frac{B_+}{s}&r<s<R(t)
-% \end{cases}
-% .\]
-% The only condition left is the jump condition:
-% \[
-% \int_{r-\epsilon}^{r+\epsilon}\Delta_s G sds=\int_{r-\epsilon}^{r+\epsilon}(sG_s)_sds=sG_s\bigg|_{r-\epsilon}^{r+\epsilon}=r\left( G_s(r_+,r)-G_s(r_-,r) \right)=\int_{r-\epsilon}^{r+\epsilon}s\delta(r-s)ds=r
-% \]
-% \[
-% \implies 1=\frac{1}{r}B_++\frac{Q_0}{2\pi Dr}\implies B_+=r-\frac{Q_0}{2\pi D}
-% .\]
-% We can then get a final formulation for $G$:
-% \[
-% G(s,r)=\begin{cases}
-%   r\log \frac{r}{R(t)}+\frac{Q_0}{2\pi D}\log \frac{R(t)}{s}&0<s<r\\
-%   \left( r-\frac{Q_0}{2\pi D} \right) \log \frac{s}{R(t)}&r<s<R(t)
-% \end{cases}=-\frac{Q_0}{2\pi D}\log \frac{s}{R(t)}+\begin{cases}
-%   r\log \frac{r}{R(t)}&0<s<r\\
-%   r\log \frac{s}{R(t)}&r<s<R(t)
-% \end{cases}
-% .\]
-% Putting this together we can determine an expression for $p(r,t)$ in terms of $R(t)$ and $g(r,t)$. For some variation $v$ :
-% \[
-% p(r,t)=\int_0^{r}r\log \frac{r}{R(t)}g(s)sds+\int_r^{R(t)}r\log \frac{s}{R(t)}g(s)sds-\int_0^{R(t)}\frac{Q_0}{2\pi D}\log \frac{s}{R(t)} g(s)sds
-% .\]
-
-% {\medskip\noindent\bf Question 2bii.} Plugging in $r=R(t)$:
-% \[
-%   p(R(t),t)=
-% .\]
+{\medskip\noindent\bf Question 2bii.} Plugging in $r=R(t)$:
+\[
+  p(R(t),t)=
+.\]
 
 \end{document}
