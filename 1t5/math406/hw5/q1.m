@@ -23,18 +23,27 @@ for i=1:3
 
     B = zeros(1,n);
     for m=1:n
-        B(m) = -integral(@(x) f(x).*1/h.*(x-(m-1).*h), (m-1)*h, m*h);
+        % B(m) = -integral(f, (m-1)*h, m*h);
+        x1 = (m-1)*h;
+        x2 = m*h;
+        x3 = (m+1)*h;
+        N1 = @(x) (x-x1)./h;
+        N2 = @(x) (x3-x)./h;
+        B(m) = -integral(@(x) f(x).*N1(x), (m-1)*h, m*h);
+        % B(m) = B(m) - integral(@(x) f(x).*N1(x), (m-1)*h, m*h)
         if m<n
-            B(m) = B(m)-integral(@(x) f(x).*1/h.*((m+1).*h-x), m*h, (m+1)*h);
+            B(m) = B(m)-integral(@(x) f(x).*N2(x), m*h, (m+1)*h);
         end
     end
     B(1) = B(1) - (1/h-k^2*h/6)*alpha;
     B(n) = B(n) + beta;
 
-    u = B / (K-k^2*M);
+    u = [0, B / (K-k^2*M)];
 
-    x = linspace(a, b, n);
+    x = linspace(a, b, n+1);
     xe = linspace(a, b, 1000);
+    figure;
     plot(x, u, xe, exact(xe));
-
+    title("N=" + n);
+    saveas(gcf, "q1aN="+n+".png")
 end
