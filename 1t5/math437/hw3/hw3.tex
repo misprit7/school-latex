@@ -74,10 +74,63 @@ else:
             break
 \end{lstlisting}
 
-{\medskip\noindent\bf Question 2.} Factoring the equation, we get $(x-1)(x^2+x+1)\equiv 0\mod n$. Thus $x=1$ is always a solution
+{\medskip\noindent\bf Question 2.} Factor $n$ as $n=2^{\alpha_0}\prod_{i=1}^{r}p_i^{\alpha_i}$ with the $p_i$ being odd primes. Let $P(x)=x^{3}-1$, as proven in theorem 8.2, it is sufficient to find $N_P(p_i^{\alpha_i})$ and $N_P(2^{\alpha_0})$, then multiply them all together to find $N_P(n)$. Proposition 18.2 from the notes tells us that the number of solutions to $x^{m}\equiv a\mod p^{\alpha}$ is
+\[
+\begin{cases}
+    0&\text{ if }a^\frac{\phi(p^{\alpha})}{\gcd(m,\phi(p^{\alpha}))}\not\equiv 1\mod p^{\alpha}\\
+    \gcd(m,\phi(p^{\alpha}))&\text{ if }a^\frac{\phi(p^{\alpha})}{\gcd(m,\phi(p^{\alpha}))}\equiv 1\mod p^{\alpha}\\
+\end{cases}
+.\]
+Since in this case $a=1,m=3$, this reduces to $N_P(p_i^{\alpha_i})=\gcd\left( 3,\phi(p_i^{\alpha_i}) \right) =3\text{ if }3|p_i^{\alpha_i-1}\left( p_i-1 \right), 1\text{ otherwise}$. For the $2^{\alpha_0}$ factor we can't apply Proposition 18.2 since it only applies to odd primes, so another argument is needed. Consider $\phi(2^{n})$, since half the numbers less than $2^{n}$ are even and the other half are odd, $\phi(2^{n})=2^{n-1}$. However $3\nmid 2^{n-1}\forall n$, so the only solution to $x^{3}\equiv 1\mod 2^{\alpha_0}$ is $x\equiv 1\mod 2^{\alpha_0}$. Multiplying these all together, we get that
+\[
+N_{P}(n)=N_P(2^{\alpha_0})\prod_{i=1}^{r}N_P(p_i^{\alpha_i})=3^{\text{\# of }i\text{ s.t. }3|p_i^{\alpha_i-1}(p_i-1)}
+.\ \square\]
+To double check that this correctly counts everything once again one can write a quick python script:
+\begin{lstlisting}
+from sympy import factorint
+
+n = 2**3 * 3**3 * 5**2 * 7**2 * 79
+
+def brute_force_count(n):
+    count = 0
+    for i in range(n):
+        if i**3 % n == 1:
+            count += 1
+    return count
+
+def smart_count(n):
+    factors = factorint(n)
+    count = 1
+    for p,alpha in factors.items():
+        if p == 2:
+            continue
+        if p**(alpha-1)*(p-1)%3 == 0:
+            count *= 3
+    return count
+
+print(brute_force_count(n), smart_count(n))
+\end{lstlisting}
 
 {\medskip\noindent\bf Question 3.} I will construct the sequence $\{n_k\}_{k\geq 1}$ and show that the sequence is valid. They will be in the form $n_k=\prod_{i=1}^{k}p_i^{a_i}$, $p_i$ is the $i$th prime and $a_i\in \{0,1\}$ are shared between all $n_k$ (i.e. $a_i$ isn't a function of $k$), so the sequence $a_i$ uniquely defines the sequence $n_k$. 
 
-Let $\alpha\in [0,1]$ and $a_1=1$. Note that for $n_k$ in the form above we have $n_k=p_k^{a_k}n_{k-1}$. Let $a_k=1$ if $\prod_{i=1}^{k}$
+Let $\alpha\in [0,1]$. Note that for $n_k$ in the form above we have $n_k=p_k^{a_k}n_{k-1}$. Let $a_k=1$ if $\left( 1-\frac{1}{p_k} \right) \prod_{i=1}^{k-1}\left(1-\frac{1}{p_i}\right)^{a_i}\geq \alpha$ and $a_k=0$ otherwise. I claim that these $a_k$ define a sequence $n_k$ that fulfills the required limit.
+
+If $\alpha=1$ then $n_k=1$ works, so assume $\alpha<1$. Let $\epsilon>0$, and to make some of the algebra later simpler assume that $\epsilon<1-\alpha$. Expanding out the given limit using the fact that $a_i\in \{0,1\}$, we have
+\[
+\lim_{k\to\infty}\frac{\phi(n_k)}{n_k}=\prod_{i=1}^{\infty}\left( \frac{p_i-1}{p_i} \right) ^{a_i}=\prod_{i=1}^{\infty}\left( 1-\frac{1}{p_i} \right) ^{a_i}
+.\]
+The product is decreasing and the $a_i$s were specifically constructed so that each of these partial products are always greater than $\alpha$, so all that needs to be shown is that there is some partial product that is smaller than $\alpha+\epsilon$. Before this can be done, first note that $\prod_{i=1}^{\infty}\left( 1-\frac{1}{p_i} \right) =0$ (this relies on some slightly non-rigorous expansion but something very similar was shown in class so I assume it's fine):
+\[
+    \prod_{i=1}^{\infty}\left( 1-\frac{1}{p_i} \right) =\left(\prod_{i=1}^{\infty}\frac{1}{1-p_i^{-1}}\right)^{-1}=\left(\prod_{i=1}^{\infty}1+p_i^{-1}+p_i^{-2}+\ldots\right)^{-1}=\left( \sum_{i=1}^{\infty}\frac{1}{i} \right) ^{-1}=\frac{1}{\infty}=0
+.\]
+
+Let $K$ be such that $\frac{1}{p_K}<\epsilon$ and denote $A=\prod_{i=1}^{K}\left( 1-\frac{1}{p_i} \right) ^{a_i}$. If $A<\alpha+\epsilon$ already then we're done, so assume it isn't. Then since $\prod_{i=1}^{\infty}\left( 1-\frac{1}{p_i} \right) =0$ there exists an $N$ such that $B=A\prod_{i=K+1}^{N}\left( 1-\frac{1}{p_i} \right)<\alpha+\epsilon$, also assume that $N$ is chosen to be the smallest possible that fulfills this property. By the minimality of $N$ we have that $B\left( 1-\frac{1}{p_N} \right) ^{-1}\geq \alpha+\epsilon$, so using the fact that $\alpha+\epsilon\leq 1$ we get
+\[
+B\geq \left( \alpha+\epsilon \right) \left( 1-\frac{1}{p_N} \right)\geq \left( \alpha+\epsilon \right) \left( 1-\frac{1}{p_K} \right)\geq \left( \alpha+\epsilon \right) (1-\epsilon)\geq \alpha+\epsilon-\epsilon=\alpha
+.\]
+
+Thus $B\in [\alpha, \alpha+\epsilon)$. Then by the construction of $a_i$ we have that $a_{K+1}=\ldots=a_{N}=1$, so $B=A\prod_{i=K+1}^{N}\left( 1-\frac{1}{p_i} \right)=\prod_{i=1}^{N}\left( 1-\frac{1}{p_i} \right) ^{a_i}=\frac{\phi(n_N)}{n_N}\in [\alpha,\alpha+\epsilon)$. Since $\frac{\phi(n_k)}{n_k}$ is bounded below by $\alpha$, is decreasing and comes arbitrarily close to $\alpha$, its limit is $\alpha$. $\square$
+
+
 
 \end{document}
