@@ -29,7 +29,7 @@ urlcolor=cyan,
 
 {\medskip\noindent\bf Question 1.} We are trying to find instances of when $a_n\equiv 0\mod 2023$, so consider the recurrence relation $\mod 2023$. All future values of the sequence are determined by the 5-tuple $(a_n,a_{n+1},a_{n+2},n^2,5^{n})$, each value within being modulo $2023$. There are $2023$ possibilities for the first 4 and $\text{ord}_{2023}5=816$ possibilities for the last, so by the pigeonhole principle the sequence must repeat after at most $2023^{4}\cdot 816\approx 1.367\cdot 10^{16}$ steps. Since it repeats infinitely from then on out, all we must do is show that there is at least one 0 within the repeating section. I claim that $a_0=0$ is in the repeating section which fulfills this requirement.
 
-To see why, let $p$ be the period of repetition (i.e. a number such that $a_m\equiv a_{m+p}, 5^{m}\equiv 5^{m+p}, m^2\equiv (m+p)^2\mod 2023$ for all $m$ sufficiently large, this is guaranteed to exist as shown above) and $n$ be the smallest number such that $a_{m}\equiv a_{m+p},5^{m}\equiv 5^{m+p},m^2=(m+p)^2\mod 2023\forall m\geq n$. In particular, $a_{n}\equiv a_{n+p},a_{n+1}\equiv a_{n+p+1},a_{n+2}\equiv a_{n+p+2}\mod 2023$. Note that $816|p$ and $2023|p$ due to the $5^{m}$ and $m^2$ requirement and the fact that $2023$ isn't a perfect square. Then consider $a_{n-1}$, using the fact that $11\cdot 184=1\mod 2023$:
+To see why, let $p$ be the period of repetition (i.e. the smallest number such that $a_m\equiv a_{m+p}, 5^{m}\equiv 5^{m+p}, m^2\equiv (m+p)^2\mod 2023$ for all $m$ sufficiently large, this is guaranteed to exist as shown above) and $n$ be the smallest number such that $a_{m}\equiv a_{m+p},5^{m}\equiv 5^{m+p},m^2=(m+p)^2\mod 2023\forall m\geq n$. In particular, $a_{n}\equiv a_{n+p},a_{n+1}\equiv a_{n+p+1},a_{n+2}\equiv a_{n+p+2}\mod 2023$. Note that $816|p$ and $2023|p$ due to the $5^{m}$ and $m^2$ requirement and the fact that $2023$ isn't a perfect square. Then consider $a_{n-1}$, using the fact that $11\cdot 184\equiv 1\mod 2023$:
 \[
 a_{n-1}\equiv 184\left( a_{n+2}-5^{n}a_{n+1}-n^2a_{n} \right)\equiv 184\left( a_{n+p+2}-5^{n+p}a_{n+p+1}-(n+p)^2a_{n+p} \right) \mod 2023
 \]
@@ -76,5 +76,8 @@ else:
 
 {\medskip\noindent\bf Question 2.} Factoring the equation, we get $(x-1)(x^2+x+1)\equiv 0\mod n$. Thus $x=1$ is always a solution
 
+{\medskip\noindent\bf Question 3.} I will construct the sequence $\{n_k\}_{k\geq 1}$ and show that the sequence is valid. They will be in the form $n_k=\prod_{i=1}^{k}p_i^{a_i}$, $p_i$ is the $i$th prime and $a_i\in \{0,1\}$ are shared between all $n_k$ (i.e. $a_i$ isn't a function of $k$), so the sequence $a_i$ uniquely defines the sequence $n_k$. 
+
+Let $\alpha\in [0,1]$ and $a_1=1$. Note that for $n_k$ in the form above we have $n_k=p_k^{a_k}n_{k-1}$. Let $a_k=1$ if $\prod_{i=1}^{k}$
 
 \end{document}
