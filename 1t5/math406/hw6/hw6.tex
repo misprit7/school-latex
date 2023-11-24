@@ -1,0 +1,46 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 406 Homework 6}
+\date{23/11/23}
+\author{Xander Naumenko}
+\maketitle
+
+{\medskip\noindent\bf Question 1.} Using the method of variations, we get that for every small perturbation $v$,
+\[
+\int_{\Omega}v\left( \Delta u+\lambda u \right) dv=0
+.\]
+Using the fact that $\nabla (v\nabla  u)=\nabla v \nabla u+v\nabla ^2u$, this is equivalent to:
+\[
+\int_{\Omega}\nabla (v\nabla u)dv-\int_{\Omega}\nabla v \nabla u dv+\lambda \int_{\Omega}uvdv=0
+\]
+\[
+\implies \int_{\Omega}\nabla u\nabla v dv=\lambda \int_{\Omega}uv dv
+.\]
+Thus the weak form of the PDE is to find $u\in H_{0}^{1}=\{u: \int_{\Omega}\left| \nabla  u \right| ^2dv<\infty,u\big|_{\partial \Omega}=0\}$ such that the above equation holds for all $v\in H_{0}^{1}$. Let $u(x,y)=\sum_{n=1}^{N}u_n\psi(x,y)$ and $v(x,y)=\sum_{m=1}^{N}v_m\psi_m(x,y)$. The plugging this into the weak form above and rearranging the sum to bring $v$ to the outside, we get
+\[
+\sum_{m=1}^{N}v_m \left( \sum_{n=1}u_n\int_{\Omega} \nabla \psi_m\nabla \psi_ndv-\lambda\sum_{n=1}^{N}u_n\int_{\Omega}\psi_m\psi_n dv \right)=0
+\]
+\[
+\implies Ku=\lambda Mu
+.\]
+Similarly to the 1d case, $K$ is the stiffness matrix with entries coming from $K_{mn}=\int_{\Omega}\nabla \psi_m\nabla \psi_n dv$ and $M$ is the mass matrix coming from $M_{mn}=\int_{\Omega}\psi_m\psi_ndv$. These entries were derived in class specifically for the linear basis functions, where for an individual triangle $T$ they were found to be
+\[
+    M_{mn}^{e}=\frac{A(T)}{12}\begin{pmatrix} 2&1&1\\1&2&1\\1&1&2 \end{pmatrix},K^{e}_{mn}=\frac{2A(t)}{3}\begin{pmatrix} 2&-1&-1\\-1&2&-1\\-1&-1&2 \end{pmatrix} 
+,\]
+where $A(T)$ is the area of $T$.
+
+\end{document}
