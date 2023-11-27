@@ -1,0 +1,98 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 320 Homework 11}
+\date{26/11/23}
+\author{Xander Naumenko}
+\maketitle
+
+{\medskip\noindent\bf Question 1.} Let $(x_n)$ be a Cauchy sequence in $Y$. For each $n$, if $x_n\in S$ then define $y_n=x_n$. Otherwise, let $z\in S$ with $d(z,x_n)<\frac{1}{n}$ and let $y_n=z$, this is guaranteed to be possible since $S$ is dense in $Y$. Let $\epsilon>0$, and since $(x_n)$ is Cauchy choose $N_1$ with $n,m>N_1\implies d(x_n,x_m)<\frac{\epsilon}{2}$. By Archimedes choose $N_2$ s.t. $\frac{1}{N_2}<\frac{\epsilon}{4}$. Then we have that for $n>\max(N_1,N_2)$,
+\[
+d(y_n,y_m)\leq d(y_n,x_n)+d(x_n,x_m)+d(x_m,y_m)<\frac{\epsilon}{4}+\frac{\epsilon}{2}+\frac{\epsilon}{4}=\epsilon
+.\]
+
+Thus $y_n$ is a Cauchy sequence with values in $S$, so it converges to some $L\in Y$. I claim $x_n\to L$ also. Let $\epsilon>0$, since $y_n\to L$ there is some $M_1$ s.t. $n>M_1\implies d(x_n,L)<\frac{\epsilon}{2}$. Also by Archimedes choose $M_2$ s.t. $\frac{1}{M_2}<\frac{\epsilon}{2}$. Then we have
+\[
+d(x_n,L)\leq d(x_n,y_n)+d(y_n,L)< \frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon
+.\]
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 2a.} Proof by contradiction, suppose that there exists some $(X,d),K$ and $p$ with $d_K(p)\neq d_{\overline{K}}(p)$, since $K\subseteq \overline{K}$ we then have $d_K(p)> d_{\overline{K}}(p)$. For this to be true there must exist $k'\in \overline{K}$ with $d_{K}(p)<d(k',p)\leq d_{\overline{K}}(p)$. Since $k'$ can't be in $K$ it must be in $K'$, so there exists some $k\in K$ with $d(k,k')<d_{K}(p)-d(k',p)$. But then we have
+\[
+d(k,p)\leq d(k,k')+d(k',p)<d_{K}(p)-d(k',p)+d(k',p)=d_{K}(p)
+.\]
+This is impossible though because $k\in K$ and $d_{K}(p)$ was chosen to be the minimum possible using the infimium, so in fact $d_{K}(p)=d_{\overline{K}}(p)$ for all $p\in X$.
+
+% {\medskip\noindent\bf Question 2b.} Again proof by contradiction, assume there are $p,q\in X$ with $\left| d_K(p)-d_K(q) \right| > d(p,q)$. Then there exist $k_1,k_2$ in $K$ with $\left| d(p,k_1)-d(k_2,q) \right| >d(p,q)$, w.l.o.g assume $d(p,k_1)\geq d(k_2,q)$, so $d(p,k_1)-d(k_2,q) >d(p,q)\geq \left| d(p,k_2)-d(p,k_2) \right| $. 
+
+
+
+% Let $k\in K$, by the reverse triangle inequality we have $|d(p,k)-d(k,q)|\leq d(p,q)$. Combining this with the definition of infimum gives
+% \[
+% \left| d_K(p)-d_{K}(q) \right|\leq \left| d(p,k)-d(k,q) \right| \leq d(p,q)
+% .\]
+
+{\medskip\noindent\bf Question 2b.} Without loss of generality assumethat $d_{K}(p)>d_{K}(q)$. Let $\epsilon>0$, by the construction of $d_K(q)$ there exists $k\in K$ with $d(k,q)<d_K(q)+\epsilon$. Also by the minimality of $d_{K}(p)$, we get
+\[
+\left| d_K(p)-d_K(q) \right| =d_K(p)-d_K(q)\leq \left| d(p,k)-d(k,q) \right| +2\epsilon\leq d(p,q)+2\epsilon
+.\]
+Since $\epsilon$ is arbitrarily small, sending it to 0 gives the desired result.
+
+{\medskip\noindent\bf Question 2c.} Let $F_n$ be the set of all $k\in K$ with $d(p,k)<d_K(p)+\frac{1}{n}$. By the definition of $d_K(p)$ each of these sets is nonempty, and clearly $F_1\supseteq F_2\supseteq\ldots$. Thus they have the finite intersection property, and since $K$ is compact $\bigcap_{n=1}^{\infty}F_n\neq \emptyset$, let $\hat x$ be an element of this infinite intersection. Then since $\hat x\in F_n\forall n$, we have $d(\hat x,p)<d_K(p)+\frac{1}{n}\forall n\implies d(\hat x,p)=d_K(p)$.
+
+% {\medskip\noindent\bf Question 2d.} I will prove the contrapositive, so suppose that $K\subseteq \mathbb{R}^{k}$ and $p\in \mathbb{R}^{k}$ with the property that there is no $\hat x\in \mathbb{R}^{k}$ with $d_K(p)=d(p,\hat x)$, I will show that $K$ isn't closed. Another way of saying this is $\mathbb B[p,d_K(p)]\cap K=0$.
+
+{\medskip\noindent\bf Question 2d.} Consider $K^{*}=K\cap \mathbb B[p;d_K(p)+1)$. $K^{*}$ is closed (since $K$ is closed) and bounded (since $K^{*}\in \mathbb B[p,d_K(p)+1)$), so by the Heine-Borel theorem it is compact. Applying part c gives that there exists $\hat x\in K^{*}$ with $d_K(p)=d(p,\hat x)$. Since $K^{*}\subseteq K$ also $\hat x\in K$, so we're done.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 3a.} Both directions:
+
+($\Longrightarrow$) Assume $\overline{A}=\mathbb{R}$, therefore we have $(a,b)=\overline{A}\cap (a,b)=\overline{A\cap (a,b)}$. Clearly $\overline{\emptyset}\neq (a,b)$, so $A\cap (a,b)\neq\emptyset$.
+
+($\Longleftarrow$) Assume that for all nonempty $(a,b)\subseteq \mathbb{R},A\cap (a,b)\neq\emptyset$. Let $x\in \mathbb{R}$ and choose $\epsilon>0$. Then $\mathbb B[x,\epsilon)\cap A=(x-\epsilon,x+\epsilon)\cap A\neq \emptyset\implies x\in A'$. Therefore $\overline{A}=A\cup A'\subseteq A'=\mathbb{R}\implies \overline{A}=\mathbb{R}$.
+
+{\medskip\noindent\bf Question 3b.} Let $(a,b)\subseteq \mathbb{R}$ be nonempty. Since $G_1$ is dense and open, $F_1=G_1\cap (a,b)$ is open and nonempty. Recursively define $F_n=G_n\cap F_{n-1}$, since $G_n$ is dense and open each $F_n$ is a nonempty open set. Clearly $F_1\supseteq F_2\supseteq\ldots$, and by Cantor's Intersection theorem therefore there exists a unique point $x\in\bigcap_{n=1}^{\infty}F_n\subseteq S$, and by construction $x\in (a,b)$. Thus by every interval $(a,b)$ contains an element of $S$, so by the result of part a, $S$ is dense.
+
+{\medskip\noindent\bf Question 3c.} By contradiction assume that it was possible, i.e. $\mathbb{Q}=\bigcap_{n\in \mathbb{N}}A_n$ for open sets $A_n$. Since $\mathbb{Q}$ is dense and $A_n\supset \mathbb{Q}$, each of the $A_n$ are also dense. Next, note that the irrationals also admit a representation as the intersection of countably many open, dense subsets: $\mathbb{R}\setminus \mathbb{Q}=\bigcap_{q\in \mathbb{Q}}\mathbb{R}\setminus \{q\}$. But then $\mathbb{Q}\cap (\mathbb{R}\setminus \mathbb{Q})=\emptyset$ is the intersection of countably many open, dense sets and so by the result of part b, it is also dense. $\emptyset$ obviously can't be dense though so the assumption that $\mathbb{Q}$ admitted such a representation must be incorrect.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 4.} As the hint suggests I will prove the contrapositive, i.e. $E\cap E'=\emptyset\implies E$ is countable. Assume $E\cap E'=\emptyset$, and consider $I=E\cap [0,1)$. If $I$ is countable then by symmetry every other interval of the form $[a,a+1)$ is also countable, so $E$ is the union of countably many countable sets so would also be countable. Thus it suffices to show that $I$ is countable.
+
+For each $x\in I$, define $B(x)=\bigcap_{y\in I}\mathbb B[x,\frac{|y-x|}{2})$, and since $I\cap I'=\emptyset$ each $B(x)$ is nonempty. Also let $r(x)=\inf \{\frac{|y-x|}{2}: y\in I\}$, i.e. the radius of the smallest ball to fit in $B(x)$. By construction each of the $B(x)$ are disjoint, so for any finite subset $X\subseteq I$, we have $\sum_{x\in X}r(x)\leq 1$. Let $A_n=\{x\in I: r(x)>\frac{1}{n}\}$. Each $A_n$ is finite and has less than $n$ elements, since if it wasn't then $\sum_{i=1}^{n}r(a_n)>\frac{1}{n}n=1$ for $a_1,\ldots,a_n\in A_n$ which we said was impossible. Also since $r(x)>0\forall x$ since $I\cap I'=\emptyset$, every $x\in X$ is in $A_n$ for some $n$. Then $I$ is the union of countably many finite sets, so it is countable. Since this applies to every interval of length 1, by extension $E$ is countable as well.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 5.} Let $k_2\in K_2$. For each $k_1\in K_1$, use the Hausdorff property of $(X,\mathcal T)$ to find $U_1^{k_1},U_2^{k_1}$ with $k_1\in U_1^{k_1}$, $k_2\in U_2^{k_1}$ and $U_1^{k_1}\cap U_2^{k_1}=\emptyset$. These $U_1^{k_1}$ cover $K_1$, so since $K_1$ is compact there are $k_{1,1},\ldots,k_{1,n}\in K_1$ such that $K_1\subseteq\bigcup_{i=1}^{n}U_{1}^{k_{1,i}}$, call this union $V_1^{k_2}$. Since $n$ is finite, $V_2^{k_2}=\bigcap_{i=1}^{n}U_2^{k_{1,i}}$ is an open set containing $k_2$, and by its construction it both contains $k_2$ and has null intersection with the union of $U_1^{k_2}$. Thus so far we can distinguish between a point and a compact set using the topology.
+
+To extend this to distinguish between compact sets, now let $k_2$ vary. Since $K_2\in \bigcup_{k_2\in K_2}V_2^{k_2}$, there are finitely many $k_{2,1},\ldots,k_{2,m}\in K_2$ such that $K_2\subseteq \bigcup_{i=1}^{m}V_2^{k_{2,i}}$, call this union $U_2$. Similar to before, since $m$ is finite, $U_1=\bigcap_{i=1}^{m}U_1^{k_{2,m}}$ is open, contains $K_1$ and doesn't intersect with $U_2$. Thus we've constructed $U_1,U_2$ such that $K_1\subseteq U_1$, $K_2\subseteq U_2$ and $U_1\cap U_2=\emptyset$ as desired.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 6.} Clearly $f$ is increasing, since increasing $x$ only increases the number of terms being summed. Thus it is sufficient to show that for any $p,x\in \mathbb{R}$ with $f(x)>p$, there exists $y\in \mathbb{R}$ with $a<x$ such that $f(a)>p$. Let $p,x$ be such that $f(x)>p$, and let $K$ be such that $\sum_{i=K}^{\infty}\frac{1}{2^{i}}=2^{1-K}<f(x)-p$. Let $a<x$ such that $(a,x)\cap \{q_1, q_2,\ldots,q_{K-1}\}=\emptyset$, since there are only finitely many elements in the set on the right this is always possible. Then by our construction of $a$, we have
+\[
+    f(a)=\sum \left\{\frac{1}{2^{k}}: q_k<x\right\}\geq f(x)-\sum_{i=K}^{\infty}\frac{1}{2^{i}}>f(x)-(f(x)-p)=p
+.\]
+Thus $a<x$ with $f(a)>p$, so since $f$ is increasing this implies that $((x-(x-a),x+(x-a))\in f^{-1}((p,+\infty))$ for every $x$, so it is open. Since this is true for all $p\in \mathbb{R}$, $f$ is lower semicontinuous.
+
+\end{document}
