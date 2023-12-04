@@ -1,0 +1,122 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 320 Homework 12}
+\date{03/12/23}
+\author{Xander Naumenko}
+\maketitle
+
+{\medskip\noindent\bf Question 1.} Since the closure only adds points $f(E^{\circ})\subseteq f(\overline{E})$ and $f(E^{\circ})\subseteq \overline{f(E)}$, so we can just consider the boundary points. Let $x\in \partial E$. Let $V\subseteq Y$ be an open set with $f(x)\in V$, then $x\in f^{-1}(V)$. Since $x\in \partial E$ and $f$ being continuous means $f^{-1}(V)$ is open, there exists $y\in f^{-1}(V)$ with $y\in E\implies V\cap f(E)\neq \emptyset$. Since this is true of all such $V$, $f(x)\in \overline{f(E)}$, and as $x$ was chosen arbitrarily, $f(\overline{E})\subseteq \overline{f(E)}$.
+
+To witness a proper subset, consider $f:(1,\infty)\to \mathbb{R}$ defined as $f(x)=\frac{1}{x}$. Then $f(\overline{(1,\infty)})=f([1,\infty))=(0,1]\neq \overline{f((1,\infty))}=\overline{(0,1)}=[0,1]$.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 2a.} Both directions:
+
+(i)$\implies$(ii): Let $\epsilon>0$, and using uniform continuity find a $\delta$ that satisfies the continuity definition for every $x\in X$. Let $(x_n)$ and $(x_n')$ satisfy $d_X(x_n,x_n')\to 0$. Let $N$ be sufficiently large so that $n>N\implies d_X(x_n,x_n')<\delta$. Then by the uniform continuity condition we have that $d_Y(f(x_n),f(x_n'))=d_Y(y_n,y_n')<\epsilon$. This is exactly the definition of convergence so $d_Y(y_n,y_n')\to 0$ as required.
+
+(i)$\impliedby$(ii): Contrapositive, so assume $f$ is not uniformly continuous and let $\epsilon>0$. Since $f$ isn't uniformly continuous, for every $n\in \mathbb{N}$ there exists $x_n,x_n'$ s.t. $d_X(x_n,x_n')<\frac{1}{n}$ but $d_Y(f(x_n),f(x_n'))\geq\epsilon$. These $(x_n),(x_n')$ thus contradict (ii), so not being uniformly continuous implies that statement (ii) is false. By contrapositive (ii)$\implies$(i).
+
+{\medskip\noindent\bf Question 2b.} I claim that $p\in[0,1]$ are the only reals that work. For $p<0$, let $\epsilon=1$. For any $\delta>0$, choose $s=\min \{1,\delta\}$ and $t\in (0,2^{1 /p}s)$. Then $|s-t|=s-t<\delta$, but
+\[
+    \left| t^{p}-s^{p} \right| =t^{p}-s^{p}>2s^{p}-s^{p}=s^{p}>1
+.\]
+Thus $x^{p}$ is not uniformly continuous for $p<0$. For $p>1$, let $\epsilon=1$ also. For any $\delta>0$, choose $s=\left( \frac{2}{p\delta} \right) ^{1 /(p-1)}$ and $t=s+\frac{\delta}{2}$. Then by their definition $|t-s|<\delta$, but we have
+\[
+\left| t ^{p}-s^{p} \right| =t ^{p}-s^{p}> (t-s)\left( x^{p} \right)'\big|_s=\frac{\delta}{2} p \left( \frac{2}{p\delta} \right)=1
+.\]
+Note the derivative part uses the fact that $(x^{p})''=p(p-1)x^{p-2}>0\forall x>0$, so the largest derivative in the range $(s,t)$ occurs at $t$. Thus $x^{p}$ is not uniformly continuous for $p>1$. 
+
+Finally, for $p\in [0,1]$, let $\epsilon>0$ and choose $\delta=\epsilon$. Then for $s,t\in (0,\infty)$ assuming without loss of generality that $t>s$ with $s-t<\delta$, we have
+\[
+|t ^{p}-s^{p}|=t ^{p}-s^{p}< (t-s) (x^{p})'\big|_{x=t}<\epsilon p t^{p-1}<\epsilon\cdot 1\cdot 1=\epsilon
+.\]
+Again the derivative part uses the fact that $(x^{p})''=p(p-1)x^{p-2}>0\forall x>0$. Thus $f(x)=x^{p}$ is uniformly continuous for $p\in[0,1]$ and nowhere else.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 3a.} A set being closed is equivalent to its complement being open, so let $y\in \mathbb B[x;r)$ and let $z\in \mathbb B[y;\frac{r}{2})$. Then using the ultrametric we have
+\[
+d(x,y)=r\leq \max \{d(x,z), d(z,y)\}\leq \max \left\{d(x,z), \frac{r}{2}\right\}
+.\]
+The only way this equation is satisfies is if $d(x,z)\geq r$, so $z\notin \mathbb B[x;r)$. Thus $\mathbb B[y;\frac{r}{2})\subseteq \mathbb B[x;r)^{c}$. Therefore $\mathbb B[x;r)^{c}$ is open and thus the original ball is closed.
+
+{\medskip\noindent\bf Question 3b.} Let $z\in \mathbb B[y;r)$, then by the ultrametric we get
+\[
+d(x,z)\leq \max \{d(x,y),d(y,z)\}\leq \max \{r,r\}=r\implies z\in \mathbb B[x;r)
+.\]
+This gives $\mathbb B[y;r)\subseteq \mathbb B[x;r)$. Next let $w\in \mathbb B[x;r)$. Then 
+\[
+d(w,y)\leq \max \{d(w,x), d(x,y)\}\leq \max \{r,r\}=r\implies w\in \mathbb B[y;r)
+.\]
+Since both sets contain each other, we then get $\mathbb B[y;r)=\mathbb B[x;r)$.
+
+{\medskip\noindent\bf Question 3c.} Suppose without loss of generality that $r_1\leq r_2$. I claim that $\mathbb B[x;r_1)\subseteq \mathbb B[y;r_2)$. By the intersection hypothesis select $z\in X$ that is contained in both balls and let $w\in \mathbb B[x;r_1)$. Then by the distance ultrametric we have
+\[
+d(w,y)\leq \max \{d(w,x), d(x,y)\}\leq \max \{d(w,x), \max \{d(x,z), d(z,y)\}\}\leq \max \{r_1,r_1,r_2\}=r_2
+.\]
+Thus $w\in \mathbb B[y;r)$. Since $w$ was arbitrary this gives the desired inclusion relationship.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 4.} Let $x\in E^{c}$. Use the separation property of $Y$ to find $U,V\in \mathcal T_Y$ with $f(x)\in U, f(y)\in V$ and $U\cap V=\emptyset$. Since $f$ and $g$ are continuous $f^{-1}(U)$ and $f^{-1}(V)$ are also open, let $W\in \mathcal T_X$ be their intersection. Since $U$ and $V$ don't intersect, $f(W)\cap g(W)=\emptyset$, i.e. every $x\in W$ is also in $E^{c}$, implying $W\in E^{c}$. Since we can find an open set containing $x$ that is itself contained in $E^{c}$ for every $x\in E^{c}$, $E^{c}$ is open and $E$ is closed.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 5a.} Plugging in $x=y=0$ gives $f(0)=2f(0)\implies f(0)=0$. Let $m=f(1)$. Note that $f(kx)=f(x)+f((k-1)x)=\ldots=f(x)+f(x)+\ldots+f(x)=kf(x)$ for $k\in \mathbb{N}$, so $f(k)=km$ for the natural numbers at least. Using the previous identity we also have $f(1)=m=nf(\frac{1}{n})\implies f(\frac{1}{n})=\frac{m}{n}, n\in \mathbb{N}$. Putting these two facts together gives $f(\frac{k}{n})=kf(\frac{1}{n})=\frac{km}{n}$, so the function is determined for all positive rationals $\frac{k}{n}$. $f(x-x)=f(0)=0=f(x)+f(-x)\implies f(x)=-f(-x)$, so we've determined $f(q)=mq$ for $q\in\mathbb{Q}$. A continuous function is completely determined by its behavior on a dense subset of its domain however which $\mathbb{Q}$ is, so $f(x)=mx$ for all $x\in \mathbb{R}$ (to be precise to the theorem given in the notes, if $f^{*}$ is another continuous function fulfilling $f(x+y)=f(x)+f(y)$, then $f^{*}(x)=f(x)=mx\forall x\in \mathbb{R}$).
+
+{\medskip\noindent\bf Question 5b.} Consider swapping $x$ and $y$:
+\[
+f(x+y)=g(x)+h(y)=f(y+x)=g(y)+h(x)\implies g(x)-g(0)=h(x)-h(0)
+.\]
+Let $g(0)=b$ and $c=h(0)$, then we have $h(x)=g(x)-b+c$. Plugging this into the identity gives $f(x+y)=g(x)+g(y)-b+c$. Computing $f(x+y)$ two different ways gives
+\[
+f(x+y)=g(x)+g(y)+b-c=g(x+y)+g(0)-b+c\implies g(x+y)=g(x)+g(y)-g(0)
+.\]
+This is almost identical to the identity we saw in part a, so we can solve it in similar manner. Let $g(0)=b$. First note that $g(kx)=g(x)+g((k-1)x)-b=\ldots=kg(x)-(k-1)b$. Using this gives $g(1)=g(n \frac{1}{n})=ng(\frac{1}{n})-(n-1)b\implies g(\frac{1}{n})=\frac{1}{n}(g(1)-b)+b$. Let $m=g(1)-b$. Applying the previous identity once again to this new equation gives 
+\[
+    g\left(\frac{k}{n}\right)=k\left( \frac{m}{n}+b \right)-(k-1)b=m \frac{k}{n}+b
+.\]
+Also $g(x-x)=g(0)=g(x)+g(-x)+g(0)\implies g(x)=-g(-x)$, so we've specified $g(x)$ on the rationals. Since it's continuous, by the same logic as in part a we've also determined it to be $g(x)=mx+b$ for all $x\in \mathbb{R}$. Building the other functions back, the final most generalized form is $g(x)=mx+b$, $h(x)=g(x)-b+c=mx+c$ and $f(x)=g(x)+g(0)-b+c=mx+b+c$.
+
+\newpage\phantom{blabla}
+\newpage
+
+{\medskip\noindent\bf Question 6a.} Since $x\in U$ and $U$ is open, there exists an open interval contained in $U$ that contains $x$, so $I(x)$ is nonempty. Since it's nonempty and $\alpha(x),\beta(x)$ are defined in such a way that $\alpha(x)<x<\beta(x)$, we must have that $x\in I(x)$. Let $y\in I(x)$, suppose for now that $\alpha(x)<y<x$. Since $y>\alpha(x)$ there exists an interval $\left(y-\frac{y-\alpha(x)}{2},b\right)\subseteq U$ if $\alpha(x)>-\infty$ or $(y-1,b)\subseteq U$ otherwise for some $b\in \mathbb{R}$ with $b>x$. $y$ is in that interval, so $y\in U$. If instead $y>x$, the exact same argument works in reverse by symmetry, so $I(x)\subseteq U$.
+
+To show $\alpha(x)\notin U$, by contradiction suppose that it was. Since this statement wouldn't make sense if $|\alpha(x)|=\infty$, assume $|\alpha(x)|<\infty$. Then since $U$ is open, $\exists r\in \mathbb{R}$ s.t. $(\alpha(x)-r,\alpha(x)+r)\subseteq U$. Let $z$ be in this interval such that $z<\alpha(x)$. Then the interval $(z,\beta(x))$ is contained in $U$ with $x\in (z,\beta(x))$, so $\alpha(x)$ wasn't chosen to be minimal, contradiction. Thus $\alpha(x)\notin U$. The exact same argument works with signs flipped to show $\beta(x)$ also isn't contained in $U$.
+
+{\medskip\noindent\bf Question 6b.} By contradiction suppose that it wasn't true. Then there exists two intervals, $I(x),I(y)$, such that $I(x)\cap I(y)\neq\emptyset$ but $I(x)\neq I(y)$. Let $\alpha=\min \{\alpha(x),\alpha(y)\}$ and $\beta=\max \{\beta(x),\beta(y)\}$. Then $x,y\in (\alpha,\beta)$, I claim also $(\alpha,\beta)\subseteq U$. Let $z\in I(x)\cap I(y)$. Then we get 
+\[
+(\alpha,\beta)=(\alpha,z]\cup [z,\beta)\subseteq (\alpha(x),\beta(x))\cup (\alpha(y),\beta(y))\subseteq U
+\]
+Thus $(\alpha,\beta)\subseteq U$ with $x,y\in(\alpha,\beta)$. But by hypothesis either $\alpha(x)\neq\alpha(y)$ or $\beta(x)\neq\beta(y)$, so one of those wasn't chosen to be maximal. This gives a contradiction, so $I(x)=I(y)$ or $I(x)\cap I(y)=\emptyset$ after all.
+
+{\medskip\noindent\bf Question 6c.} By its definition $\mathcal G$ is a set of disjoint open intervals whose union is $U$, so all that remains is to prove that it is countable or finite. Let $S=\left\{\frac{\alpha+\beta}{2}: (\alpha,\beta)\in \mathcal G\right\}$, i.e. the midpoints of all the intervals. $|S|=|\mathcal G|$, so it's sufficient to prove that $S$ is countable. Let $x=\frac{\alpha+\beta}{2}\in S$, and consider whether it's a limit point or not. Since $x$ is a midpoint for the interval $(\alpha,\beta)$ and each interval in $\mathcal G$ is disjoint, we have that $(\alpha,\beta)\cap S=\emptyset$. Thus $x\notin S'\implies S\cap S'=\emptyset$. By the contrapositive of homework 11 question 4, this gives us that $S$ isn't uncountable, i.e. it is countable or finite as required.
+
+% {\medskip\noindent\bf Question 6c.} Let $U_i=(i-1,i+2)$. Then $\mathcal G_i=\{I(x): x\in U_i\}$ provides a open cover of $[i,i+1]$, and since $[i,i+1]$ is closed and bounded it is compact. Thus there is a finite covering of $[i,i+1]$ composed of disjoint open intervals. Since this is true of all $i\in \mathbb{N}$ and $\mathbb{R}=\bigcup_{i=-\infty}^{\infty}[i,i+1]$, we can express $\mathbb{R}$ as a countable union of elements from such sets that are each finite, so the number of disjoint open intervals required to cover $\mathbb{R}$ is finite or countable. 
+
+% Let $I_1,I_2,\ldots$ be disjoint open intervals with $\bigcup_{n=1}^{\infty}I_n=\mathbb{R}$. Let $U\neq\emptyset$ be an open set. Then $I_1\cap U, I_2\cap U,\ldots$ is a countable sequence of disjoint open intervals whose union is $U$ as required (if you don't want to include empty intervals one can discard each interval if .
+
+\newpage\phantom{blabla}
+\newpage
+
+\end{document}
