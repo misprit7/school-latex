@@ -1,0 +1,36 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Math 437 Homework 4}
+\date{05/12/23}
+\author{Xander Naumenko}
+\maketitle
+
+{\medskip\noindent\bf Question 1.} Without loss of generality assume that $a\geq b$. If $a=b$ then the problem reduces to $n^2=2^{a+1}\implies n=2^{\frac{a+1}{2}}\implies n=2^{m}$ works for all $m\in \mathbb{N}$ by choosing $a=b=2m-1$. Otherwise for $a>b$, rearranging gives $n^2=2^{b}\left( 2^{a-b}+1 \right)$. Since the rightmost term is odd, it must be that $\exp_2 n^2=b\implies 2|b$, define $k^2=\frac{n^2}{2^{b}}= \left( \frac{n}{2^{b /2}} \right)^2\in \mathbb{N}$. Then we have $k^2=2^{a-b}+1\implies 2^{a-b}=(k-1)(k+1)$. The only $k$ for which $k+1$ and $k-1$ are powers of $2$ is $k=3$, so for $a>b$, $n=3\cdot 2^{m}, m\in \mathbb{N}$ works with $a=2m+3,b=2m$ witnessing the desired equality. Thus the general solution is that any $n\in \mathbb{N}$ in the form $n=2^{m}$ or $n=3\cdot 2^{m},m\in \mathbb{N}$ works. $\square$
+
+\medskip
+
+{\medskip\noindent\bf Question 2.} There are no solutions, by contradiction suppose that there were. If $x$ is even then $y^2\equiv -1\mod 8$ which is impossible since $7$ isn't a perfect square mod 8, so $x$ is odd and $y$ is even. Moreover since $x$ is odd, $x^{3}\equiv x\mod 4$, so $x^{3}\equiv x\equiv y^2+9\equiv 1\mod 4$. Consider the rearrangement of the equation $x^{3}-8=(x-2)(x^2+2x+4)=y^2+1$. Taking the $(x-2)$ factor mod 4 gives $x-2\equiv 1-2\equiv 3\mod 4$, and since $x= \sqrt[3]{y^2+9}\geq \sqrt[3]{9}>2$, we have $x-2>0$. Thus there must exist a prime $p$ in the form $p=4k+3$ such that $p|x-2$ (if all the factors of $x-2$ were in the form $4k+1$ then $x-2$ would also be in that form but we just saw it isn't), and so $p|y^2+1$ also. But then $y^2=-1\mod p$ which contradicts proposition 12.1\footnote{There's a minor typo in the notes in proposition 12.1, it should say $x^2\equiv -1\mod p$ is unsolvable instead of $x^2\equiv -1\mod 4$.}, so in fact no such $x$ and $y$ exist. $\square$
+
+\medskip
+
+{\medskip\noindent\bf Question 3.} For their fractional parts to be equal, it must be that $\{\sqrt[3]{y}\}=\{\sqrt{x}\}\implies \sqrt[3]{y}-[\sqrt[3]{y}]=\sqrt{x}-[\sqrt{x}]\implies\sqrt[3]{y}=\sqrt{x}+c$, where $c=[y]-[x]\in \mathbb{Z}$. Raising the last equality to the third power gives
+\[
+y=\left( \sqrt{x}+c \right)^{3}=x^{\frac{3}{2}}+3cx+3c^2x^{\frac{1}{2}}+c^{3}=(3cx+c^{3})+\sqrt{x}\left( x+3c^2 \right) \implies \sqrt{x}=\frac{y-3cx+c^{3}}{x+3c^2}
+.\]
+Note that the final division is valid since $x>0\implies x+3c^2\neq 0$. Thus $\sqrt{x}\in \mathbb{Q}$, so by proposition 24.1, $\sqrt{x}\in \mathbb{N}$. Also $\sqrt[3]{y}=\sqrt{x}+c\in \mathbb{N}$, so $x$ is a perfect square and $y$ is a perfect cube. $\square$
+
+\end{document}
