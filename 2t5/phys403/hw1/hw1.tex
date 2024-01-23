@@ -1,0 +1,81 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Phys 403 Homework 1}
+\date{19/01/24}
+\author{Xander Naumenko}
+\maketitle
+
+{\medskip\noindent\bf Question I1.}
+\[
+I_0^2=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}e^{-(x^2+y^2) /2}dxdy=\int_{-\infty}^{\infty}\int_{0}^{2\pi}re^{-r^2 /2}d\phi dr
+\]
+\[
+=2\pi\int_{0}^{\infty}e^{-u}du=2\pi \implies I_0=\sqrt{2\pi}
+.\]
+
+{\medskip\noindent\bf Question I2.} 
+
+\[
+    I(\mu, \sigma)=\int_{-\infty}^{\infty}e^{-(x-\mu)^2 /2\sigma^2}dx=\int_{-\infty}^{\infty}e^{-(y /\sigma)^2 /2}dy = \int_{-\infty}^{\infty}=\sigma\int_{-\infty}^{\infty}e^{-z^2 /2}dz
+\]
+\[
+=\sigma I_0=\sigma \sqrt{2\pi}
+.\]
+
+{\medskip\noindent\bf Question I3.}
+\[
+Z(\kappa)=\int_{-\infty}^{\infty} e^{\kappa x}e^{-x^2 /2\sigma ^2} \frac{1}{\sqrt{2\pi\sigma^2}}dx=\int_{-\infty}^{\infty} e^{\kappa x}e^{-x^2 /2\sigma ^2} \frac{1}{\sqrt{2\pi\sigma^2}}dx
+\]
+\[
+=\int_{-\infty}^{\infty}e^{\left(\left( x-\sigma^2\kappa \right)^2-\sigma^{4}\kappa^2\right) /(2\sigma ^2) } \frac{1}{\sqrt{2\pi\sigma^2}}dx=\int_{-\infty}^{\infty}e^{\sigma^2\kappa^2/2}e^{\left( x-\sigma^2\kappa \right)^2 /(2\sigma ^2) } \frac{1}{\sqrt{2\pi\sigma^2}}dx=e^{\sigma^2\kappa^2 /2}
+.\]
+
+{\medskip\noindent\bf Question II1.} 
+
+\[
+    \int_{0}^{\infty}\frac{1}{\mathcal N}e^{-\lambda x}dx=-\frac{1}{\lambda\mathcal N} e^{-\lambda x}\bigg|_0^{\infty}=\frac{1}{\lambda\mathcal N}=1\implies \mathcal N = \frac{1}{\lambda}
+.\]
+
+{\medskip\noindent\bf Question II2.} 
+
+\[
+\tilde p(k) = \langle e^{-ikx} \rangle =\int_{0}^{\infty}\lambda e^{-\lambda x}e^{-ikx}dx=\frac{\lambda}{\lambda+ik}= \frac{1}{1-(-\frac{ki}{\lambda})} =\sum_{j=0}^{\infty}\frac{(-ik)^{j}}{j!}\left( \frac{j!}{\lambda^{j}} \right) 
+\]
+\[
+\implies \langle x^{j} \rangle =\frac{j!}{\lambda^{j}} \implies \langle x^{1} \rangle =\frac{1}{\lambda}, \langle x^{2} \rangle =\frac{2}{\lambda^2}, \langle x^{3} \rangle =\frac{6}{\lambda^3}, \langle x^{4} \rangle =\frac{24}{\lambda^{4}}
+.\]
+
+{\medskip\noindent\bf Question II3.} 
+\[
+\log\tilde p(k)=-\log \left( 1-\left(- \frac{ki}{\lambda}\right) \right)=\sum_{j=1}^{\infty}\frac{(-ki)^{j}}{j!}\frac{(j-1)!}{\lambda^{j}}
+\]
+\[
+\implies \langle x^{j} \rangle _c= \frac{(j-1)!}{\lambda^{j}}\implies \langle x^{1} \rangle_c =\frac{1}{\lambda}, \langle x^{2} \rangle_c =\frac{1}{\lambda^2}, \langle x^{3} \rangle_c =\frac{2}{\lambda^3}, \langle x^{4} \rangle_c =\frac{6}{\lambda^{4}}
+.\]
+
+{\medskip\noindent\bf Question III.} 
+\[
+    h[p] = \langle -\log p \rangle =\int_{-\infty}^{\infty}e^{-(x-\mu)^2 /2\sigma^2} \frac{1}{\sqrt{2\pi\sigma^2}}\left( (x-\mu)^2 /2\sigma^2+\log\sqrt{2\pi\sigma^2} \right) dx=\frac{1}{2\sigma^2}\langle (x-\mu)^2 \rangle +\frac{1}{2}\log 2\pi\sigma^2
+\]
+\[
+=\frac{1}{2}\log 2\pi\sigma^2 + \frac{1}{2}
+.\]
+Shannon coding theorem says that that optimal storage size depends linearly with entropy, and the above expression shows that entropy is quadratic with standard deviation (linear with variance). Thus a quadrupling of standard deviation would result in a 16 fold increase in storage space, so approximately 16GB.
+
+{\medskip\noindent\bf Question IV.} From the central limit theorem the standard error is proportional to $\frac{1}{\sqrt{N}}$ ($\epsilon= \sqrt{\frac{\langle X \rangle _c}{N}}$), so to reduce it by a factor of 10, we would need to increase the number of repetitions by a factor of 100. Thus $10000$ repetitions would be necessary.
+
+\end{document}
