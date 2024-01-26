@@ -1,0 +1,75 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Phys 408 Homework 1}
+\date{25/01/24}
+\author{Xander Naumenko}
+\maketitle
+
+{\medskip\noindent\bf Question 1a.} From the Gaussian beam derivation, we have that $w(z)=w_0\sqrt{1+\left( \frac{z}{z_0} \right) ^2}$, where $w_0=\sqrt{\frac{\lambda z_0}{\pi}}$. The smallest spot on the screen occurs when $w(z)$ is minimized, which occurs when $\sqrt{\frac{\lambda}{\pi}\left( z_0+ \frac{d^2}{z_0} \right) }$ is minimized, which is equivalent to minimizing $z_0+\frac{d^2}{z_0}$:
+\[
+    \frac{d}{dz_0}\left( z_0 + \frac{d^2}{z_0}\right) =0 \implies 1-\frac{d^2}{z_0^2}=0 \implies z_0=d
+.\]
+This corresponds to a beam waist parameter of $w_0= \sqrt{\frac{\lambda d}{\pi}}$. This is a $1 /e^2$ beam radius of $\sqrt{2}w_0= \sqrt{\frac{2\lambda d}{\pi}}$.
+
+{\medskip\noindent\bf Question 1b.} Plugging into the above expression:
+\[
+\sqrt{\frac{2\lambda d}{\pi}}= \sqrt{\frac{2\cdot 600\cdot 10^{-9}\cdot 0.1}{\pi}}\approx 0.1954 \text{mm}
+.\]
+
+{\medskip\noindent\bf Question 2.} To derive the first equation, use the relation $R(z)=z \left( 1+\left( \frac{z_0}{z} \right) ^2 \right) $:
+\[
+R_1=z_1 \left( 1+\left( \frac{z_0}{z_1} \right) ^2 \right), R_2=\left( z_1+d \right)  \left( 1+\left( \frac{z_0}{z_1+d} \right) ^2 \right)
+\]
+\[
+\implies R_1z_1-z_1^2=R_2\left( z_1+d \right) -(z_1+d)^2
+\]
+\[
+\implies z_1\left( R_2-R_1-2d \right) =-d\left( R_2-d \right) \implies z_1= \frac{-d\left( R_2-d \right) }{R_2-R_1-2d}
+.\]
+For the second, plug this result back into the original:
+\[
+z_0^2=z_1(R_1-z_1)= \frac{-d(R_2-d)}{R_2-R_1-2d}\left( R_1+\frac{d(R_2-d)}{R_2-R_1-2d} \right) 
+\]
+\[
+\implies z_0^2= \frac{-d(R_1+d)(R_2-d)(R_2-R_1-d)}{\left( R_2-R_1-2d \right) ^2}
+.\]
+
+{\medskip\noindent\bf Question 3.} Substituting:
+\[
+\nabla_T^2 E(r)+2ik \frac{\partial E(r)}{\partial z}=(-k^2x^2+2ik-k^2y^2) \frac{1}{z}E(r)+2ik\left( -\frac{1}{z}+ik(x^2+y^2) \frac{1}{2z^2} \right)E(r)=(0)E(r)=0
+.\]
+
+{\medskip\noindent\bf Question 4.} We can find the final transfer function by combining the matrices of the parts:
+\[
+    \begin{pmatrix} 1&0\\-\frac{1}{f}&1 \end{pmatrix} \begin{pmatrix} 1&f\\0&1 \end{pmatrix}\begin{pmatrix} 1&0\\0&1 \end{pmatrix} \begin{pmatrix} 1&f\\0&1 \end{pmatrix}\begin{pmatrix} 1&0\\-\frac{1}{f}&1 \end{pmatrix}=\begin{pmatrix} 1&0\\-\frac{1}{f}&1 \end{pmatrix} \begin{pmatrix}1&2f\\0&1\end{pmatrix}\begin{pmatrix} 1&0\\-\frac{1}{f}&1 \end{pmatrix} 
+\]
+\[
+    =\begin{pmatrix} 1&0\\-\frac{1}{f}&1 \end{pmatrix}\begin{pmatrix} -1&2f\\-\frac{1}{f}&1 \end{pmatrix}=\begin{pmatrix} -1&2f\\0&-1 \end{pmatrix} 
+.\]
+We can try seeing what the result of an incoming beam with a given slope is:
+\[
+    \begin{pmatrix} -1&2f\\0&-1 \end{pmatrix}\begin{pmatrix} 0\\m \end{pmatrix} =\begin{pmatrix} 2fm\\ -m \end{pmatrix} 
+.\]
+As expected, the resulting beam is parallel.
+
+{\medskip\noindent\bf Question 5.} I assume that all angles/distances involved are small, so $\sin(\theta)\approx\theta$. Then from Snell's law, we have $n_1\left( \theta_1+ \frac{y}{R} \right) =n_2\left( -\theta_2 - \frac{y}{R} \right) $. Rearranging, we get
+\[
+\theta_2= \frac{n_1}{n_2}\left( \theta_1+ \frac{y}{R} \right) -\frac{y}{R}= -\frac{n_2-n_1}{n_2R}y+ \frac{n_1}{n_2}\theta_1 
+.\]
+This is exactly the second line of the given matrix, and the first line is obvious since it's just a material boundary so doesn't translate the beam.
+
+\end{document}
