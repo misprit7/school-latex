@@ -74,7 +74,10 @@ Z(\kappa)=\int_{-\infty}^{\infty} e^{\kappa x}e^{-x^2 /2\sigma ^2} \frac{1}{\sqr
 \[
 =\frac{1}{2}\log 2\pi\sigma^2 + \frac{1}{2}
 .\]
-Shannon coding theorem says that that optimal storage size depends linearly with entropy, and the above expression shows that entropy is quadratic with standard deviation (linear with variance). Thus a quadrupling of standard deviation would result in a 16 fold increase in storage space, so approximately 16GB.
+Shannon coding theorem says that that optimal storage size depends linearly with entropy, and the above expression shows that entropy is proportional to the log of standard deviation. Calculating explicitly:
+\[
+    \frac{\frac{1}{2}\log_2 2\pi+\frac{5}{2}}{\frac{1}{2}\log 2\pi+\frac{1}{2}}\approx 2.095\text{GB}
+.\]
 
 {\medskip\noindent\bf Question IV.} From the central limit theorem the standard error is proportional to $\frac{1}{\sqrt{N}}$ ($\epsilon= \sqrt{\frac{\langle X \rangle _c}{N}}$), so to reduce it by a factor of 10, we would need to increase the number of repetitions by a factor of 100. Thus $10000$ repetitions would be necessary.
 
