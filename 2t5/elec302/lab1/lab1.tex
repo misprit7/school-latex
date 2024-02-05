@@ -42,4 +42,13 @@ These can found at the following urls:
 
 {\medskip\noindent\bf Question 4:} For Task 3, draw the circuit diagram of a 5.1-V Zener voltage regulator. Calculate the resistance coupled in series with the Zener diode so to have a standby (no load) current of 66.7 mA. Assume the input voltage to the regulator is around 15 V.
 
+See figure \ref{fig:q4} and it's caption for the circuit diagram. To size the resistor, $R_L=\infty$ and the zener diode can be modeled as a $1.5\Omega$ resistor (given in it's datasheet above) and a $V_{ZD}$ voltage supply. Again from the datasheet, we have $V_{ZD}=V_Z-Z_{ZT}I_{ZT}=5.1-0.24\cdot 1.5=4.74\text{V}$. Then we have that $R=\frac{V}{I}-Z_{ZT}=\frac{15-4.74}{0.0667}-1.5=152.3\Omega$.
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.3\textwidth]{q4}
+    \caption{Circuit diagram for question 4. The diode is the 5.1-V IN5338B.}
+    \label{fig:q4}
+\end{figure}
+
 \end{document}
