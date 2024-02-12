@@ -1,0 +1,52 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{ELEC 302 Lab 1}
+\date{05/02/24}
+\author{Xander Naumenko}
+\maketitle
+
+\section{Task 1}
+
+{\medskip\noindent\bf Part 1.} 
+
+{\medskip\noindent\bf Part 2.} 
+
+For the capacitor, we can use the formula given in class to calculate the value:
+\[
+C = \frac{V_p-V_d}{fR_LV_r}=\frac{16.8-0.7}{60\cdot 1000\cdot 1}=268.3\mu\text{F}
+.\]
+Since we don't have any capacitor values close to that, we instead used one 220$\mu$F and two $33\mu$F capacitors in parallel which has an equivalent capacitance of $286\mu$F.
+
+\section{Task 2}
+
+{\medskip\noindent\bf Part 1.} 
+
+For the capacitor using the equation:
+\[
+C = \frac{V_p-2V_d}{2fR_LV_r}=\frac{33.2-1.4}{2\cdot 60\cdot 1000\cdot 1}=265\mu\text{F}
+.\]
+Again we used the same capacitor configuration as before of $286\mu$F since we didn't have a single capacitor of the correct value.
+
+{\medskip\noindent\bf Part 2.} 
+
+Again, the capacitor comes from the equation:
+\[
+C = \frac{V_p-V_d}{2fR_LV_r}=\frac{16.8-0.7}{2\cdot 60\cdot 1000\cdot 1}=134\mu\text{F}
+.\]
+Three 33$\mu$F capacitors were used in parallel to simulate this.
+
+\end{document}
