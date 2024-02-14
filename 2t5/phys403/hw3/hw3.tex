@@ -10,6 +10,15 @@ filecolor=magenta,
 urlcolor=cyan,
 }
 
+\lstset{
+  basicstyle=\ttfamily,
+  columns=fullflexible,
+  frame=single,
+  breaklines=true,
+  postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+}
+
+
 \graphicspath{ {images/} }
 
 \begin{document}
@@ -119,18 +128,57 @@ plt.show()
 
 {\medskip\noindent\bf Question III1.} All that's relevant here is the energy levels:
 \[
-Z = \sum_{n=0}^{\infty}e^{-\hbar\omega(n+1 /2)/(k_BT)}=e^{-\hbar\omega/(2k_BT)} \frac{1}{1-e^{-\hbar\omega /(k_BT)}}
+Z = \sum_{n=0}^{\infty}e^{-\hbar\omega(n+1 /2)/(k_BT)}=e^{-\hbar\omega/(2k_BT)} \frac{1}{1-e^{-\hbar\omega /(k_BT)}}=\frac{1}{2\sinh\left( \frac{\hbar\omega}{2k_BT} \right) }
 .\]
 
 {\medskip\noindent\bf Question III2.}
 \[
-\langle E \rangle = -\frac{\partial}{\partial \beta}\log Z=\frac{\hbar\omega}{2}+\frac{\partial}{\partial \beta}\log\left( 1-e^{-\beta\hbar\omega}\right)=\frac{\hbar\omega}{2}+ \frac{\hbar\omega}{e^{\beta\hbar\omega}-1}
+\langle E \rangle = -\frac{\partial}{\partial \beta}\log Z=\frac{\hbar\omega}{2}\coth\left( \frac{\hbar\omega}{2k_BT} \right) 
 .\]
 
 {\medskip\noindent\bf Question III3.} 
 \[
-C=\frac{\partial}{\partial T}\langle E \rangle = \frac{(\hbar\omega)^2e^{\hbar\omega/(k_BT)}}{k_BT^2\left( e^{(\hbar\omega)/(k_BT)}-1 \right) ^2}
+  C=\frac{\partial}{\partial T}\langle E \rangle = k_B \left( \frac{\hbar\omega}{2k_BT} \right) ^2 \frac1{\sinh^2\left( \frac{\hbar\omega}{2k_BT} \right) }
 .\]
+See figure \ref{fig:III3} for the graph, here is the code used to plot it:
+\begin{lstlisting}
+import numpy as np
+import matplotlib.pyplot as plt
 
+T = np.linspace(0.01, 300, 1000)
+hbar = 1.055e-24
+omega = 1e3
+kb = 1.381e-23
+
+C = kb*(hbar*omega/(2*kb*T))**2/np.sinh(hbar*omega/(2*kb*T))**2
+
+plt.plot(T, C)
+plt.plot(T, T*0+kb)
+plt.axvline(x=hbar*omega/2/kb, color='g', linestyle='-')
+plt.title("Heat Capacity of Quantum Harmonic Oscillator")
+plt.xlabel("Temperature (K)")
+plt.ylabel("Heat Capacity (J/K)")
+plt.show()
+
+\end{lstlisting}
+
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.8\textwidth]{III3}
+    \caption{Graph for question III3. Here $\omega=1000$rad/s, the orange line is $C=k_B$ and the green line is $T=\frac{\hbar\omega}{2k_B}$.}
+    \label{fig:III3}
+\end{figure}
+
+{\medskip\noindent\bf Question III4.} From figure \ref{fig:III3}, we can see that the heat capacity increases monotonically to the classical prediction, which from the equipartition theorem is $k_B$ (we're in 1 dimension with position and momentum). Roughly speaking this occurs when $\sinh$ is behaves linearly, which is when (order of magnitude) $T\approx \frac{\hbar\omega}{2k_B}$. This is confirmed from the graph, where the green line represents this transition.
+
+{\medskip\noindent\bf Question III5.} From the given graphs, it appears that the translational modes always behave classically and so contribute $\frac{3}{2}k_B$ to the heat capacity. The lowest modes from the rotation corresponds to $\lambda^{-1}\approx 0.2\text{cm}^{-1}\implies E=\frac{hc}{\lambda}=0.2hc$. Similarly for the vibration modes we see that $E=\frac{hc}{\lambda}=23.3hc$. The heat capacity is additive and we can get $\omega$ from $E$ with $\omega=\frac{E}{\hbar}$, so using our previous result we can plot the total heat capacity in figure \ref{fig:III5}.
+
+\begin{figure}[htpb]
+  \centering
+  \includegraphics[width=0.8\textwidth]{III5}
+  \caption{III5}
+  \label{fig:III5}
+\end{figure}
 
 \end{document}
