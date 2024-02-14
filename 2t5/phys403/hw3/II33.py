@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 T = np.linspace(0.01, 300, 1000)
-hbar = 1.055e-24
+hbar = 1.055e-34
 omega = 1e3
 kb = 1.381e-23
 
