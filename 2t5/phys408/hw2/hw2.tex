@@ -43,9 +43,9 @@ Using this we get the following:
 \[
     \tilde E(k_x, k_y) = d_xd_y \text{sinc}\left(\frac{d_xk_x}{2\pi}\right)\text{sinc}\left(\frac{d_yk_y}{2\pi}\right)\left( e^{i\Delta k_y /2}+e^{-i\Delta k_y /2} \right) 
 .\]
-Intensity is proportional to electric field squared:
+Intensity is proportional to electric field squared, and since the question just asks for the distribution the constant factors can be discarded:
 \[
-I(x',y') = \frac{1}{2}\epsilon_0 |E(x',y')|^2c=\frac{c\epsilon_0d_xd_y}{\lambda z} \text{sinc}\left(\frac{d_xk_x}{2\pi}\right)\text{sinc}\left(\frac{d_yk_y}{2\pi}\right)\sin\left( \frac{\Delta k_y}{2} \right) 
+I(x',y') \propto |E(x',y')|^2=\frac{1}{(\lambda z)^2} \text{sinc}^2\left(\frac{d_xk_x}{2\pi}\right)\text{sinc}^2\left(\frac{d_yk_y}{2\pi}\right)\sin^2\left( \frac{\Delta k_y}{2} \right) 
 \]
 where as usual $k_x= \frac{kx'}{z}$ and $k_y=\frac{ky'}{z}$.
 
@@ -62,17 +62,14 @@ z = 50
 
 k = 2*np.pi/lam
 
-c = 3e8
-eps = 8.85e-12
-
 x = np.linspace(-0.05, 0.05, 1000)
 y = np.linspace(-0.05, 0.05, 1000)
 
 kx = k*x/z
 ky = k*y/z
 
-Ix = c*eps*dx*dy/lam/z*np.sinc(dx*kx/(2*np.pi))
-Iy = c*eps*dx*dy/lam/z*np.sinc(dy*ky/(2*np.pi))*np.sin(delta*ky/2)
+Ix = (lam/z*np.sinc(dx*kx/(4*np.pi)))**2
+Iy = (lam/z*np.sinc(dy*ky/(4*np.pi))*np.sin(delta*ky/2))**2
 
 plt.plot(x, Ix)
 plt.title("Intensity of Double Slit for y=0 Axis")
@@ -86,7 +83,6 @@ plt.xlabel("y' (m)")
 plt.ylabel("I (W/m$^2$)")
 
 plt.show()
-
 \end{lstlisting}
 
 \begin{figure}[htpb]

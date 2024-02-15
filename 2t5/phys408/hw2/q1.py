@@ -9,17 +9,14 @@ z = 50
 
 k = 2*np.pi/lam
 
-c = 3e8
-eps = 8.85e-12
-
 x = np.linspace(-0.05, 0.05, 1000)
 y = np.linspace(-0.05, 0.05, 1000)
 
 kx = k*x/z
 ky = k*y/z
 
-Ix = c*eps*dx*dy/4/lam/z*np.sinc(dx*kx/(4*np.pi))
-Iy = c*eps*dx*dy/4/lam/z*np.sinc(dy*ky/(4*np.pi))*np.sin(delta*ky/2)
+Ix = (lam/z*np.sinc(dx*kx/(4*np.pi)))**2
+Iy = (lam/z*np.sinc(dy*ky/(4*np.pi))*np.sin(delta*ky/2))**2
 
 plt.plot(x, Ix)
 plt.title("Intensity of Double Slit for y=0 Axis")
