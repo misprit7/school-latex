@@ -104,8 +104,40 @@ plt.show()
 % .\]
 % The Fourier transform of the left hand side is 
 
-{\medskip\noindent\bf Question 2a.} The phase function is 
+{\medskip\noindent\bf Question 2a.} The phase function is going to be proportional to the thickness, so assuming no transmission occurs outside of $d_x$, we have
+\[
+t(x) = \text{rect}\left(\frac{x}{d_x}\right)e^{ikn\left(\overline{d}+\frac{d_0}{2}\sin(2\pi x /\Lambda)\right)}e^{-ik \frac{d_0}{2}\sin\left( 2\pi x /\Lambda \right) }=\text{rect}\left(\frac{x}{d_x}\right)e^{ikn\overline{d}+ik(n-1)\frac{d_0}{2}\sin(2\pi x /\Lambda)}
+.\]
 
+{\medskip\noindent\bf Question 2b.} The incoming plane wave can be represented as $E=E_0 e^{ik\theta_i x}$. Thus the transmitted waves are:
+\[
+E_t(x)=E(x)\cdot t(x)E_0 e^{ik\theta_i x} e^{ikn\overline{d}+ik(n-1)\frac{d_0}{2}\sin(2\pi x /\Lambda)}
+\]
+\[
+=E_0\sum_{q=-\infty}^{\infty}J_q\left(k(n-1) \frac{d_0}{2}\right)e^{i 2\pi qx /\Lambda+ik\theta_ix+ikn\overline{d}}
+\]
+\[
+=E_0'\sum_{q=-\infty}^{\infty}J_q\left(k(n-1) \frac{d_0}{2}\right)e^{i 2\pi qx /\Lambda+ik\theta_ix} 
+\]
+\[
+=E_0'\sum_{q=-\infty}^{\infty}J_q\left(k(n-1) \frac{d_0}{2}\right)e^{ikx(\lambda qx /\Lambda+\theta_i)} 
+.\]
+This is exactly an infinite combination of plane waves with angles $\theta_q=\theta_i+\frac{q\lambda}{\Lambda}$, as required.
+
+{\medskip\noindent\bf Question 3.} For the image plane to be a reproduction of the original object, the transfer function of the whole system between the object plane and the image plane must be be a constant (there can potentially be a constant factor scaling, but there can't be any $x,y$ dependent phase terms). There are three optical components in play: the free space before the lens, the lens, and the free space after the lens. Ignoring the constant factors since they're not relevant, the total transfer function is then:
+\[
+    H(x',y')\propto e^{-i \frac{k}{2}(x'^2+y'^2) \frac{1}{d_o}}e^{-i \frac{k}{2}(x'^2+y'^2) \frac{1}{d_i}}e^{i \frac{k}{2}(x'^2+y'^2) \frac{1}{f}}=e^{-i \frac{k}{2}(x'^2+y'^2)\left( \frac{1}{d_0}+\frac{1}{d_i}-\frac{1}{f} \right) }
+.\]
+The only way that there is no $x',y'$ dependence is if the rightmost bracketed term is 0, which gives:
+\[
+\frac{1}{d_o}+\frac{1}{d_i}=\frac{1}{f}
+.\]
+
+{\medskip\noindent\bf Question 4.} From lecture, we know that the $E(x',y')\propto \mathcal F(\overline{E}(x,y))$, so if we want $E(x',y')$ to be proportional to $\tilde t(x,y)$, we need $\overline{E}$ to have a small phase factor. The expression for $\overline{E}$ is
+\[
+\overline{E}=E_0 t_0(x,y) e^{-i \frac{k}{2}(x^2+y^2)\left( \frac{1}{f}-\frac{1}{f-\Delta} \right) }
+.\]
+Since $\Delta \ll f$, we can say $\frac{1}{f}-\frac{1}{f-\Delta}= -\frac{\Delta}{f(f-\Delta)}\approx \frac{\Delta}{f^2}$. The Fourier transform of $\overline{E}$ only turns into $\tilde t(x,y)$ if the phase factor is very small while $x^2+y^2<D^2$, which occurs when $\frac{k}{2}(x^2+y^2) \frac{\Delta}{f^2}\ll 1\implies \Delta \ll \frac{2f^2}{kD^2}$.
 
 
 \end{document}
