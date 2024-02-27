@@ -1,0 +1,60 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\lstset{
+basicstyle=\ttfamily,
+columns=fullflexible,
+frame=single,
+breaklines=true,
+postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{PHYS 403 Homework 4}
+\date{26/02/24}
+\author{Xander Naumenko}
+\maketitle
+
+{\medskip\noindent\bf Question I.} As the hint suggests, first compute $\langle N_{\vec p} \rangle $. Since the polarization only changes things by a constant factor 2 as we saw in class, this factor is multiplied at the beginning and the polarization is ignored.
+\[
+    \langle N_{\vec p} \rangle =2\frac{\sum_{N=0}^{\infty}Ne^{-\beta cpN}}{\sum_{N=0}^{\infty}e^{-\beta cpN}}=- 2\frac{\partial}{\partial (\beta cp)}\log \left( \frac{1}{1-e^{-\beta cp}} \right) =\frac{2}{e^{\beta cp}-1}
+.\]
+We can convert the sum given in the hint to an integral similarly to how we did in class, by adding a factor of $(2\pi \hbar)^3$ and integrating over continuous momentum:
+\[
+\langle N \rangle = 2V\int \frac{dp^{3}}{(2\pi \hbar)^3} \frac{1}{e^{\beta cp}-1}=T^{3} \frac{2Vk_B^{3}}{(2\pi \hbar)^3}\int \frac{dx^{3}}{e^{x}-1}
+.\]
+The value of the integral doesn't matter, it's clearly bounded so it's just a constant factor. Thus the $T^{3}$ dependence in $\langle N \rangle $ is clear.
+
+\medskip
+
+{\medskip\noindent\bf Question II1.} From the geometry of the planets, the sun absorbs $\frac{\pi (6.371\cdot 10^{6})^2}{4\pi (1.5\cdot 10^{11})^2}=4.51\cdot 10^{-10}$ of the sun's radiation.
+\[
+\frac{dE_{earth}}{dt}=P_{in}-P_{out}=\sigma\cdot \left( 4\pi\cdot (7\cdot 10^{8})^2 \right)  T_{s}^{4}\cdot 4.51\cdot 10^{-10}- \sigma\cdot \left( 4\pi\cdot (6.371\cdot 10^{6})^2 \right) T_{e}^{4}
+.\]
+\[
+=1.5696\cdot 10^{2}T_{s}^{4}- 2.892\cdot 10^{7}T_e^{4}
+.\]
+
+{\medskip\noindent\bf Question II2.} The steady state corresponds to when the left side the above equation is 0, so plugging in $T_s=6000$K and solving for $T_e$ gives $T_e=289.6$K.
+
+{\medskip\noindent\bf Question III1.} Recall from in class, the expression for energy in three dimensions is (similarly to question 1):
+\[
+\langle E \rangle = 2V\int \frac{dp^{3}}{(2\pi \hbar)^3} \frac{cp}{e^{\beta cp}-1}=T^{4}A \int \frac{dx^{3}}{e^{x}-1}
+.\]
+Here $A$ is just an arbitrary constant since we just care about functional dependence. Note that $3$ of the powers of $T$ came from the change of variables from $x=\beta cp$, and the last one is from the additional factor of $\beta$ needed to make the numerator $cp$ into $\beta cp$. Thus for $d$ dimensions this expression is identical except $3$ replaced with $d$, so $\langle E \rangle \propto T^{d+1}$.
+
+{\medskip\noindent\bf Question III2.} The key to converting the sums to integrals like we did in question 1 and in the derivation of $\langle E \rangle $ was to send $V\to \infty$ so that the spacing of the momenta were small. However for very small dimensions this isn't valid, so for such dimensions there is no contribution to the integral.
+
+\end{document}
