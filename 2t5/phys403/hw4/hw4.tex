@@ -29,11 +29,11 @@ postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
 
 {\medskip\noindent\bf Question I.} As the hint suggests, first compute $\langle N_{\vec p} \rangle $. Since the polarization only changes things by a constant factor 2 as we saw in class, this factor is multiplied at the beginning and the polarization is ignored.
 \[
-    \langle N_{\vec p} \rangle =2\frac{\sum_{N=0}^{\infty}Ne^{-\beta cpN}}{\sum_{N=0}^{\infty}e^{-\beta cpN}}=- 2\frac{\partial}{\partial (\beta cp)}\log \left( \frac{1}{1-e^{-\beta cp}} \right) =\frac{2}{e^{\beta cp}-1}
+    \langle N_{\vec p} \rangle =2V\frac{\sum_{N=0}^{\infty}Ne^{-\beta cpN}}{\sum_{N=0}^{\infty}e^{-\beta cpN}}=- 2V\frac{\partial}{\partial (\beta cp)}\log \left( \frac{1}{1-e^{-\beta cp}} \right) =\frac{2V}{e^{\beta cp}-1}
 .\]
 We can convert the sum given in the hint to an integral similarly to how we did in class, by adding a factor of $(2\pi \hbar)^3$ and integrating over continuous momentum:
 \[
-\langle N \rangle = 2V\int \frac{dp^{3}}{(2\pi \hbar)^3} \frac{1}{e^{\beta cp}-1}=T^{3} \frac{2Vk_B^{3}}{(2\pi \hbar)^3}\int \frac{dx^{3}}{e^{x}-1}
+\langle N \rangle = 2V\int \frac{dp^{3}}{(2\pi \hbar)^3} \frac{1}{e^{\beta cp}-1}= \int \frac{\omega^2V}{\pi^2 c^{3}\hbar}\frac{1}{e^{\beta \hbar\omega}-1}d\omega= \frac{(k_B T)^{3}V}{\pi^2 c^3 \hbar^{4}} \int \frac{u^2}{e^{u}-1}du
 .\]
 The value of the integral doesn't matter, it's clearly bounded so it's just a constant factor. Thus the $T^{3}$ dependence in $\langle N \rangle $ is clear.
 
@@ -51,10 +51,15 @@ The value of the integral doesn't matter, it's clearly bounded so it's just a co
 
 {\medskip\noindent\bf Question III1.} Recall from in class, the expression for energy in three dimensions is (similarly to question 1):
 \[
-\langle E \rangle = 2V\int \frac{dp^{3}}{(2\pi \hbar)^3} \frac{cp}{e^{\beta cp}-1}=T^{4}A \int \frac{dx^{3}}{e^{x}-1}
+\langle E \rangle = 2V(4\pi)\int \frac{p^2dp}{(2\pi \hbar)^3} \frac{cp}{e^{\beta cp}-1}=AT^{4}
 .\]
-Here $A$ is just an arbitrary constant since we just care about functional dependence. Note that $3$ of the powers of $T$ came from the change of variables from $x=\beta cp$, and the last one is from the additional factor of $\beta$ needed to make the numerator $cp$ into $\beta cp$. Thus for $d$ dimensions this expression is identical except $3$ replaced with $d$, so $\langle E \rangle \propto T^{d+1}$.
+Here $A$ is just an arbitrary constant since we just care about functional dependence. Note that $2$ of the powers of $T$ came from the $p^2$ in front which is from the conversion from the $3$ dimensional to the 1 dimensional integral, 1 is from the change of variables of $u=\beta cp$, and the last one is from the additional factor of $p$. Thus for $d$ dimensions this expression is identical except with the $p^2$ replaced with $p^{d-1}$, so $\langle E \rangle \propto T^{d-1}\cdot T\cdot T=T^{d+1}$.
 
-{\medskip\noindent\bf Question III2.} The key to converting the sums to integrals like we did in question 1 and in the derivation of $\langle E \rangle $ was to send $V\to \infty$ so that the spacing of the momenta were small. However for very small dimensions this isn't valid, so for such dimensions there is no contribution to the integral.
+% {\medskip\noindent\bf Question III1.} We can calculate the energy like so:
+% \[
+% \langle E \rangle =- \frac{\partial}{\partial \beta}\log Z=\frac{\partial}{\partial \beta}
+% .\]
+
+{\medskip\noindent\bf Question III2.} The key to converting the sums to integrals like we did in question 1 and in the derivation of $\langle E \rangle $ was to send $V\to \infty$ so that the spacing of the momenta were small. However for very small dimensions this isn't valid as $\frac{2\pi \hbar}{l_p}\approx 10$, so for such dimensions there is only one momentum state and there is no contribution to the integral.
 
 \end{document}
