@@ -1,0 +1,91 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\lstset{
+basicstyle=\ttfamily,
+columns=fullflexible,
+frame=single,
+breaklines=true,
+postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{PHYS 408 Homework 3}
+\date{27/02/24}
+\author{Xander Naumenko}
+\maketitle
+
+{\medskip\noindent\bf Question 1.} From Snell's law, we have $\sin \theta_t= \frac{n_i}{n_t}\sin\theta_i$. For $\theta_i\geq \theta_c=\text{arcsin}\left( \frac{n_t}{n_i} \right) $, we then have that $\sin\theta_t=\frac{n_i}{n_t}\sin\theta_i> \frac{n_in_t}{n_tn_i}=1$. This is clearly impossible for $\theta_t\in \mathbb{R}$. To reconcile, this, recall that in the derivation of Snell's law we used that $\hat{u}_n\times \vec E_i+\hat u_n\times \vec E_r=\hat u_n\times \vec E_t$ to then derive that $\vec k_r\vec r=\vec k_t\vec r$. Given that the second statement results in a contradiction for $\theta_i>\theta_c$, it must instead be that $\vec E_t=0$. In that case the boundary conditions for the $S$ and $P$ polarization turn into $E_{0i}=-E_{0r}$ and $E_{0i}\cos\theta_i=E_{0r}\cos\theta_r$ respectively. Given that $\theta_i=\theta_r$, this clearly results in $|r_{\perp}|^2=|r_{\parallel}|^2=1$.
+
+{\medskip\noindent\bf Question 2.} Calculating the reflection coefficients:
+\[
+n_i\sin\theta_i=n_t\sin\theta_t \implies \theta_t = 19.47^{\circ}
+.\]
+\[
+r_{\perp}= \frac{n_i\cos\theta_i-n_t\cos\theta_t}{n_i\cos\theta_i+n_t\cos\theta_t}=-0.24
+.\]
+\[
+r_{\parallel}=\frac{n_t\cos\theta_i-n_i\cos\theta_t}{n_t\cos\theta_i+n_i\cos\theta_t}=0.159
+.\]
+We can decomposed unpolarized light into the $S$ and $P$ basis and intensity is proportional to $E^2$, so the degree of polarization will be the difference in intensity of the two components over the total intensiy. Thus we have:
+\[
+\text{Degree of Polarization }=\frac{|r_{\perp}|^2-|r_{\parallel}|^2}{|r_{\perp}|^2+|r_{\parallel}|^2}=0.39
+.\]
+
+{\medskip\noindent\bf Question 3a.} The KDP crystal is effectively a wave plate with an adjustable phase, for now just refer to it as $\phi(V)$. Then the Jones matrix for the whole system for the transverse axes being rotated by $\theta$ is:
+\[
+    T=T_p^{(x)} R_{\theta}^{-1}T_{KDP}R_{\theta} T_{p}^{(y)}= \begin{pmatrix} 0&0\\0&1 \end{pmatrix}\begin{pmatrix} \cos\theta&-\sin\theta\\\sin\theta&\cos\theta \end{pmatrix}\begin{pmatrix} 1&0\\0&e^{i\phi} \end{pmatrix} \begin{pmatrix} \cos\theta&\sin\theta\\-\sin\theta&\cos\theta \end{pmatrix}  \begin{pmatrix} 1&0\\0&0 \end{pmatrix} 
+\]
+\[
+=\begin{pmatrix} 0 & 0 \\ \cos(\theta)\sin(\theta)(1 - e^{i\phi}) & 0 \end{pmatrix} 
+.\]
+For an amplitude modulator we want maximum transmission when it is ``open,'' which occurs when $\frac{d}{d\theta}\left( \cos\theta\sin\theta \right)=\sin^2\theta-\cos^2\theta=0 \implies \theta=\frac{\pi}{2}+n \frac{\pi}{2}, n\in \mathbb{Z}$. Thus the $x_1$ and $x_2$ axis would be aligned $-45^{\circ}$ and $45^{\circ}$ offset respectively from the $x$ axis.
+
+{\medskip\noindent\bf Question 3b.} From the above matrix, we see that the intensity will be $I_{out}=I_{in}\left| \frac{1}{2}\left( 1-e^{i\phi} \right) \right| ^2$ (squared because the Jones matrix gives electric field, not intensity). From the textbook we have that $n_1(E)=n_0 - \frac{1}{2}n_{0}^3r_{63}E$ and $n_2(E)=n_0 + \frac{1}{2}n_{0}^3r_{63}E$, so $\phi=kd\Delta n=kdn_0^3r_{63} \frac{V}{d}$. Then we have:
+\[
+I_{out}=I_{in} \frac{1}{4}\left| 1-e^{ikn_{0}^3r_{63}V}\right|^2=I_{in}\sin^2\left( \frac{1}{2}kn_0^3r_{63}V \right) 
+.\]
+
+{\medskip\noindent\bf Question 3c.} Maximum transmission occurs when the $\sin$ in the above expression is 1, which for example occurs when
+\[
+\frac{\pi}{2}= \frac{1}{2}kn_0^3r_{63}V\implies V=11\text{kV}
+.\]
+
+{\medskip\noindent\bf Question 4.} For a perfect mirror, we have $r_{\perp}=-1$ and $r_{\parallel}=1$ (even without doing the calculations explicitly, by definition a mirror has no transmission so by conservation of energy $|r_{\perp}|=|r_{\parallel}|=1$, and in class we derived that $S$ light flips polarization but $P$ doesn't). Circularly polarized light can be represented by a Jones vector of $E_0\begin{pmatrix} 1\\ \pm e^{i \frac{\pi}{2}} \end{pmatrix}$, without loss of generality choose coordinates so that $x$ is parallel and $y$ is perpendicular to the plan of incidence. Then the Jones vector of the reflected light is $E_0 \begin{pmatrix} 1\cdot r_{\perp}\\ \pm e^{i \frac{\pi}{2}}r_{\parallel} \end{pmatrix} =E_0 \begin{pmatrix} 1\\ \mp e^{i \frac{\pi}{2}} \end{pmatrix} $, which is exactly the opposite handedness of light.
+
+{\medskip\noindent\bf Question 5a.} Forward:
+\[
+    \frac{1}{2\sqrt{2}}\begin{pmatrix} 1&1\\1&1 \end{pmatrix} \begin{pmatrix} 1&-1\\1&1 \end{pmatrix}\begin{pmatrix} 1&0\\0&0 \end{pmatrix}\begin{pmatrix} 1\\0 \end{pmatrix} =\frac{1}{\sqrt{2}}\begin{pmatrix} 1\\1 \end{pmatrix} 
+.\]
+Backwards:
+\[
+\frac{1}{2\sqrt{2}}\begin{pmatrix} 1&0\\0&0 \end{pmatrix}\begin{pmatrix} 1&-1\\1&1 \end{pmatrix}\begin{pmatrix} 1&1\\1&1 \end{pmatrix}\begin{pmatrix} x\\y \end{pmatrix}=\begin{pmatrix} 0\\0 \end{pmatrix} 
+.\]
+
+{\medskip\noindent\bf Question 5b.} Forward:
+\[
+    \frac{1}{2} \begin{pmatrix} 1&-1\\1&1 \end{pmatrix} \begin{pmatrix} 1&0\\0&i \end{pmatrix} \begin{pmatrix} 1&1\\-1&1 \end{pmatrix} \begin{pmatrix} 1&0\\0&0 \end{pmatrix} \begin{pmatrix} 1\\0 \end{pmatrix} =\frac{1}{2}\begin{pmatrix} 1+i\\1-i \end{pmatrix} 
+.\]
+When going backwards after a mirror reflection, the polarization flips but also the quarter wave plate rotates in the opposite direction.
+\[
+\frac{1}{2\sqrt{2}} \begin{pmatrix} 1&0\\0&0 \end{pmatrix} \begin{pmatrix} 1&-1\\1&1 \end{pmatrix} \begin{pmatrix} 1&0\\0&-i \end{pmatrix} \begin{pmatrix} 1&1\\-1&1 \end{pmatrix}\begin{pmatrix} 1+i\\-1+i \end{pmatrix} =\begin{pmatrix} 0\\0 \end{pmatrix} 
+.\]
+However, for example for linear light, this system doesn't block it completely:
+\[
+\frac{1}{\sqrt{2}} \begin{pmatrix} 1&0\\0&0 \end{pmatrix} \begin{pmatrix} 1&-1\\1&1 \end{pmatrix} \begin{pmatrix} 1&0\\0&-i \end{pmatrix} \begin{pmatrix} 1&1\\-1&1 \end{pmatrix}\begin{pmatrix} 1\\0 \end{pmatrix} =\frac{1}{\sqrt{2}}\begin{pmatrix} 1-i\\0 \end{pmatrix} 
+.\]
+
+
+\end{document}
