@@ -1,0 +1,75 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\lstset{
+basicstyle=\ttfamily,
+columns=fullflexible,
+frame=single,
+breaklines=true,
+postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{PHYS 403 Homework 3}
+\date{18/03/24}
+\author{Xander Naumenko}
+\maketitle
+
+{\medskip\noindent\bf Question I.} Taking the derivative with respect to a specific $p_k$:
+% \[
+% -\sum_{n}p_n \left( \log p_n +\alpha+\beta E_n+\gamma N_n \right)- \left( \alpha+\beta \bar E+\gamma\bar N \right) 
+% .\]
+\[
+    \frac{\partial}{\partial p_k} \left( S[p_n]-\alpha\left(\sum_{n}p_n-1\right)-\beta \left( \sum_n p_n-\bar E \right) -\gamma\left( \sum_n p_n N_n-\bar N \right) \right) 
+\]
+\[
+=-\log p_k-1-\alpha-\beta E_n-\gamma N_n=0\implies p_k=e^{-(1+\alpha+\beta E_n+\gamma N_n)}
+.\]
+By comparing this expression to what we derived in class ($p_k= \frac{1}{Z}e^{-\beta(E_n-\mu N_n)}$), we conclude that $e^{-1-\alpha}=\frac{1}{Z}$, $\beta=\frac{1}{k_BT}$ and $\gamma=- \frac{\mu}{k_B T}$.
+
+% {\medskip\noindent\bf Question II.} Consider a change of radius $dR$. Then the surface area changes by $dA=(R+dR)^2-R^2=2RdR+dR^2\approx 2RdR$. Thus $dW=2R\sigma dR$
+{\medskip\noindent\bf Question II.} Assume the balloon initially at a radius $R$, and consider a small change $dR$ in the radius. Let $P_i$ be the pressure inside the balloon and $P_o$ to be that outside. Then we have:
+\[
+P_odA=P_idA-\sigma dV\implies P_i-P_o= \sigma \frac{dA}{dV}
+.\]
+We have that $V=\frac{4}{3}\pi R^3$, so $dV=\frac{4}{3}\pi((R+dR)^3-R^3)=\frac{4}{3}\pi \left( 3R^2dR+3RdR^2+dR^3 \right)\approx 4\pi R^2dR$. Similarly, we have $dA=4\pi \left( (R+dR)^2-R^2 \right) \approx 8\pi RdR$. Plugging this into the above expression, we get $P_i-P_o= \frac{2\sigma}{R}$ as required.
+
+{\medskip\noindent\bf Question III.1.}
+\[
+Z_{G.C.}^{(d)}(\mu, T)= \sum_{N=0}^{\infty} \frac{1}{N!}\int \frac{d^{3}r_1\cdots d^{3}r_Nd^{3}p_1\cdots d^{3}p_N}{(2\pi \hbar)^{dN}}e^{-\beta \left( \sum_{i=1}^{N} \frac{p_i^2}{2m}-(\mu-\epsilon_d) N \right) }
+\]
+\[
+    =\sum_{N=0}^\infty e^{\beta(\mu-\epsilon_d) N}\frac{1}{N!} \left( \frac{R^{dN}}{\lambda^d} \right)^{N}=\text{exp}\left( \frac{e^{\beta(\mu-\epsilon_d)}R^{dN}}{\lambda^d} \right) 
+.\]
+
+{\medskip\noindent\bf Question III.2.} Using the derivative of the partition function:
+\[
+\langle N \rangle = \frac{1}{\mu} \frac{\partial}{\partial \beta}\log Z=\frac{e^{\beta\mu}R^{3N}}{\lambda^{3}}=\frac{e^{\beta\mu}V}{\lambda ^{3}}
+\]
+\[
+\implies n_V= \frac{\langle N \rangle }{V}= \frac{e^{\beta\mu}}{\lambda^3}
+.\]
+
+{\medskip\noindent\bf Question III.3.} Using same technique as before:
+\[
+\langle N \rangle = \frac{1}{\mu} \frac{\partial}{\partial \beta}\log Z=\frac{A}{\lambda^2}e^{\beta\left( \mu+\epsilon_0 \right)}
+.\]
+\[
+\implies n_S= \frac{e^{\beta(\mu+\epsilon_0)}}{\lambda^2}
+.\]
+
+{\medskip\noindent\bf Question III.4.} The total change to surface tension, as stated in the question of part 3, is $\Delta\sigma=-\epsilon_0 n_s$. Since $n_S$ is strictly decreasing with temperature (since $\beta=\frac{1}{k_B T}$), this means that increasing temperature causes the surfactant to mix oil and water less effectively.
+
+\end{document}
