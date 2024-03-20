@@ -1,0 +1,41 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{ELEC 302 Lab 3}
+\date{18/03/24}
+\author{Xander Naumenko}
+\maketitle
+
+{\medskip\noindent\bf Question 1.} $V_{R_B}=4.27V$, $V_{R_C}=3.29$, $V_{CE}=1.75$. $I_B=\frac{4.27}{43\cdot 10^{3}}=I_B=99.3\mu$A, $I_C=16.5$mA. $\beta=166.2$
+
+{\medskip\noindent\bf Question 2.} 
+\[
+I_B=\frac{I_C}{\beta}=30.1\mu\text{A}
+\]
+\[
+V_E=470\cdot \frac{\beta+1}{\beta} I_C=2.364\text{V}
+\]
+\[
+10=2\cdot 2.364+R\cdot \frac{0.005}{166.2}\implies R=129k\Omega
+.\]
+
+Used $R=130k\Omega$, $R_C=1k\Omega$
+
+For the values: $V_{R_C}=5.14V\implies I_C=5.14$mA. $V_{R_E}=2.44\text{V}\implies I_E=5.19$mA. $V_{R_1}=6.93\text{V}, V_{R_2}=3.14\text{V}\implies I_B=29.15\mu$A, $V_C=4.94$
+
+{\medskip\noindent\bf Question 3.} 
+
+\end{document}
