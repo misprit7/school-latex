@@ -28,7 +28,7 @@ postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
 
 \vspace*{\stretch{2}}
 
-\Large Investigation of HeNe Laser Properties
+\Large Investigation of HeNe Laser Emission Spectra
 
 \normalsize
 
@@ -63,6 +63,26 @@ Notes &  N/A
 \section{Research Note}
 
 \subsection{Introduction}
+
+When set up in a cavity, stimulated emission causes excited HeNe gas to emit a laser at a frequency of 632.8nm. When such lasing occurs the emission spectrum of the gas also changes slightly due to a shift in occupied energy levels. A study was conducted to determine the exact nature of this emission spectrum change. The theoretical frequencies lines that share similar energy levels with 632.8nm laser were recovered successfully.
+
+\subsection{Methods}
+
+A HeNe laser was obtained using the gas, and electrode and two concave mirrors. Using a series of mirrors, the emission of the gas itself was directed to a monochromator. By using a spinning disk to periodically start at stop the lasing process and connecting the output of the monochromator to a lock-in amplifier, a high resolution measurement of the change in emission spectrum between lasing and no lasing was obtained.
+
+\subsection{Results}
+
+See figure \ref{fig:rn} for the change in emission spectrum caused by the lasing process. The frequencies that had the largest modulation were 594.5nm, 607.4nm and 609.6nm. From a theoretical standpoint, this makes sense. Using NIST data, the lower energy level of the 632.8nm lasing process is $150858\text{cm}^{-1}$, which is the upper energy level of the 594.5nm and 609.6nm transitions. The upper energy level of $607.4$nm is $150917\text{cm}^{-1}$, which while not exactly the same, is close enough that it is also modulated by the lasing process (although as seen by the graph it is to a lower extent).
+
+The process by which this modulation occurs is that when lasing occurs, the 632.8 transition becomes amplified significantly. This results in many atoms with energies the bottom of its transition level. This larger than previously number of atoms then spontaneously emit, causing the modulation seen experimentally. 
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.45\textwidth]{4A}
+    \includegraphics[width=0.45\textwidth]{4F}
+    \caption{Emission spectrum between lasing and unstimulated HeNe gas (left) and a higher resolution difference between the two collected using an op-amp (right).}
+    \label{fig:rn}
+\end{figure}
 
 \newpage
 
@@ -177,7 +197,7 @@ This is very close to the 0.36mm we experimentally found previously. An small di
 
 \noindent \textcolor{red}{2.3.3B.} It is expected that the laser is polarized. When stimulated emission happens, the resulting photon is exactly identical to the photon that stimulated the original emission. This includes polarization, so whatever photons end up dominating the lasing process will all have the same polarization.
 
-\noindent \textcolor{red}{2.3.4A.} See figure \ref{fig:4A}. The peaks don't react the same, only three peaks show large noticeable differences. The peaks that change are at approximately 593.8nm, 607nm and 609.1nm. These peaks will be investigated more thoroughly shortly.
+\noindent \textcolor{red}{2.3.4A.} See figure \ref{fig:4A}. The peaks don't react the same, only three peaks show large noticeable differences. The peaks that change are at approximately 594.5nm, 607.4nm and 609.5nm. These peaks will be investigated more thoroughly shortly.
 
 \begin{figure}[htpb]
     \centering
@@ -186,9 +206,16 @@ This is very close to the 0.36mm we experimentally found previously. An small di
     \label{fig:4A}
 \end{figure}
 
-\noindent \textcolor{red}{2.3.4B.} [TODO]
+\noindent \textcolor{red}{2.3.4B.} See figure \ref{fig:4B}. 
 
-\noindent \textcolor{red}{2.3.4C.} See figure \ref{fig:4C}. We only see one laser line. This makes sense, since by the nature of stimulated emission, all of the resulting photons will be at the same frequency. Thus only one laser line at a specific frequency will be seen
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.8\textwidth]{4B}
+    \caption{Diagram for question 2.3.4B. These are the transitions for HeNe. The number inside the level boxes is the energy of that state, while the nm in the arrows is the wavelength of the photon emitted for those levels. The 587.3nm is the largest peak in the spectorgram. The 632.8nm transition is shown, along with three others that share similar energy levels with it. 594.5 and 609.6nm (green) share the exact same spectrum, while 607.4nm (blue) shares an extremely close energy level, which is why experimentally we also see a change at that peak in figure \ref{fig:4A}.}
+    \label{fig:4B}
+\end{figure}
+
+\noindent \textcolor{red}{2.3.4C.} See figure \ref{fig:4C}. We only see one laser line, corresponding to the 632.8nm transition we saw previously in figure \ref{fig:4B}. This makes sense, since by the nature of stimulated emission, all of the resulting photons will be at the same frequency. Thus only one laser line at a specific frequency will be seen
 
 \begin{figure}[htpb]
     \centering
@@ -207,7 +234,13 @@ This integral has a maximum when $\phi$ and $\psi$ are in phase and is zero when
 
 \noindent \textcolor{red}{2.3.4E.} The sign of the lock in amplifier did change sign. This is entirely expected. Before we removed blocked the laser, the line at 632.8nm was incredibly strong from the laser. In contrast, when the laser is blocked we're looking at the difference in spontaneous emission at 632.8nm between lasing and no lasing. This has the opposite effect, of where during lasing no spontaneous emission can occur at 632.8nm because all Ne atoms that could spontaneously emit are undergoing stimulated emission instead. Note that the magnitude of this effect is much smaller than the laser directly pointed at the monochromator, and this is seen by the lock in as a much smaller magnitude of its output signal.
 
-\noindent \textcolor{red}{2.3.4F.}
+\noindent \textcolor{red}{2.3.4F.} See figure \ref{fig:4F}. The lock-in output is proportional to the difference between the on and off lasing state of the HeNe. This is a much lower noise measurement than just subtracting them if we were to do so in part 2.3.4F. This confirms the results of part 2.3.4B, as the affected lines are at almost the exact frequencies we saw in figure \ref{fig:4B}: 594.5nm, 607.4nm and 609.6nm. The reason that these lines are modulated is that, as the hint suggests, the stimulated emission causes many more emissions at the 632.8nm level, the result of which is many more atoms at energy levels amenable to spontaneous emission at the frequencies just listed.
 
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.8\textwidth]{4F}
+    \caption{Lock-in output for question 2.3.4F. The three peaks that occur are almost exactly the peaks identified earlier in part 2.3.4A.}
+    \label{fig:4F}
+\end{figure}
 
 \end{document}
