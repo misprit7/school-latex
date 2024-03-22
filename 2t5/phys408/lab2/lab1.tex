@@ -102,7 +102,7 @@ Our measured value was 65cm, which was very difference than the expected of 113.
     \label{fig:table1}
     \end{minipage}
     \hfill
-    % \includegraphics[width=0.8\text width]{1A}
+    \includegraphics[width=0.5\textwidth]{1B}
     \caption{Plot and table for 2.3.1B. The theoretical values were found from 2.3.1B and the mirror box.}
     \label{fig:1A}
 \end{figure}
@@ -120,6 +120,94 @@ Our measured value was 65cm, which was very difference than the expected of 113.
     \label{fig:2A}
 \end{figure}
 
-\noindent \textcolor{red}{2.3.2B.} See figure \ref{fig:2B}. We started with the TEM$_{22}$ mode, and as can be seen in the figure the modes decreased in complexity until we reached the TEM$_{00}$ mode. This can be explained by the nature of stimulated emission. When a light passes through the HeNe and causes stimulated emission, the resulting photon is in the exact same mode as the first. Therefore if any light is blocked during lasing, this causes an exponential suppression of 
+\noindent \textcolor{red}{2.3.2B.} See figure \ref{fig:2B}. We started with the TEM$_{22}$ mode, and as can be seen in the figure the modes decreased in complexity until we reached the TEM$_{00}$ mode. This can be explained by the nature of stimulated emission. When a light passes through the HeNe and causes stimulated emission, the resulting photon is in the exact same mode as the first. Therefore if any light is blocked during lasing, this causes an exponential suppression of that mode. By closing the iris, any modes with any light in these higher modes (which is further away from the center of the beam) are suppressed, so by the time the iris is small enough only the TEM$_{00}$ mode remains.
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.3\textwidth]{data/2B/im_0229_20240301_175322.jpg}
+    \includegraphics[width=0.3\textwidth]{data/2B/im_0227_20240301_175136.jpg}
+    \includegraphics[width=0.3\textwidth]{data/2B/im_0228_20240301_175138.jpg}
+    \caption{Intensity distributions for question 2.3.2B, from left to right starting from a complex mode as we close the iris. As the higher modes get cut off they stop lasing, and by the end only the TEM$_{00}$ mode is left.}
+    \label{fig:2B}
+\end{figure}
+
+\noindent \textcolor{blue}{2.3.2i.} Generally we see only one mode at once, although occasionally there were definitely more complex shapes. This can be explained by the same reasoning as the previous question. The nature of the gain of a given mode occurs exponentially as more photons are emitted at that frequency, which means that once a given node dominates it will usually suppress all the others.
+
+\noindent \textcolor{red}{2.3.2B and C.} When the wire was inserted, we observed the following modes as we moved the wire slowly across the range: TEM$_{00}$, TEM$_{30}$, TEM$_{20}$, TEM$_{10}$, TEM$_{20}$, TEM$_{00}$. This is expected for the exact same reason as what we saw in 2.2B. The wire blocks a certain part of the lasing to happen. If a given node has a nonzero brightness at the point the wire blocks, then each time the light bounces in the cavity some of it will be lost and lasing won't occur at that mode. In the center we see TEM$_{10}$ since that's dark in the middle for example, and at the edges we see TEM$_{00}$ since that's dark at the edges. It's not entirely clear why we see TEM$_{30}$ only on one side (we repeated a few times to make sure it wasn't just that we were moving the wire too fast). It's probably due to slight misalignment of the mirror, as this has a large effect on which modes can resonate. Also they're all $m=0$ modes because the wire's vertical position blocks the large portion of the light in the $m$ axis regardless of what mode is present. See table \ref{tab:2C} for the results in a table.
+
+\begin{table}[htpb]
+    \centering
+    \caption{Table for question 2.3.2C. These are the positions of the wire at which each mode was seen. These were taken when the cavity mirrors were 62cm apart and the wire was 47.5cm from the end of the cavity.}
+    \label{tab:label}
+    \begin{tabular}{|c|c|}
+    \hline
+    Mode&Distance (mm)\\
+    \hline
+    00&7.32\\
+    20&7.62\\
+    10&7.8\\
+    20&7.94\\
+    30&8.1\\
+    00&8.43\\
+    \hline
+    \end{tabular}
+\end{table}
+
+\noindent \textcolor{red}{2.3.2E.} We can assume that the 10 mode occurs in the middle which is at $7.8$cm. From equation 3.3-12 from Saleh and Teich, the 20 mode's intensity is proportional to $\mathbb G_{2}\left(\frac{\sqrt{2}x}{w(z)}\right)$. The place where this mode is apparent with wire is when this expression is zero, so using $\mathbb G_2$'s definition:
+\[
+\mathbb G_2(u)=(4u^2-2)e^{-u^2 /2}=0\implies u=\frac{1}{\sqrt{2}}\implies w(z_{\text{wire}})=2x=2\left( 7.8-7.62 \right) =0.36\text{mm}
+.\]
+
+\noindent \textcolor{red}{2.3.2F.} From equation 11.2-15 from Saleh and Teich:
+\[
+z_0^2= \frac{-d(R_1+d)(R_2+d)(R_2+R_1+d)}{\left( R_2+R_1+2d \right) ^2}\implies z_0\implies z_0=21.7\text{cm}
+.\]
+Similarly from 11.2-14, where $z_1$ is the coordinate of the HR mirror relative to the focus (expected to be negative):
+\[
+z_1= \frac{-d(R_2+d)}{R_2+R_1+2d}\implies z_1=-11.3
+.\]
+
+\noindent \textcolor{red}{2.3.2G.} The wire taken at 47.5cm from the HR mirror, so $z_\text{wire}=34.4$. Calculating for $w(z_{\text{wire}})$.
+\[
+w(z)=\sqrt{\frac{\lambda z_0}{\pi}\left( 1+\left( \frac{z}{z_0} \right) ^2 \right) }=0.39\text{mm}
+.\]
+This is very close to the 0.36mm we experimentally found previously. An small discrepancies probably come from the range of values where the modes were visible. For example for the 10 mode there was around 0.2mm of turning the micrometer that the mode was visible. Since we only turned the micrometer in one direction to avoid backlash it was hard to choose the exact middle of when it was visible, so this likely explains any discrepancy.
+
+\noindent \textcolor{red}{2.3.3A.} The beam being polarized means that the electric field for all light in the laser is pointing in the same direction as the light propagates. Using the polarizer, we found that the laser is completely polarized. By rotating the polarizer, there was one angle that resulted in no light going through, and at 90$^{\circ}$ from this angle the (subjective) maximum light was let through.
+
+\noindent \textcolor{red}{2.3.3B.} It is expected that the laser is polarized. When stimulated emission happens, the resulting photon is exactly identical to the photon that stimulated the original emission. This includes polarization, so whatever photons end up dominating the lasing process will all have the same polarization.
+
+\noindent \textcolor{red}{2.3.4A.} See figure \ref{fig:4A}. The peaks don't react the same, only three peaks show large noticeable differences. The peaks that change are at approximately 593.8nm, 607nm and 609.1nm. These peaks will be investigated more thoroughly shortly.
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.8\textwidth]{4A}
+    \caption{Graph for question 2.3.4A. This is the spectogram of the HeNe gas with and without lasing occuring. The spectrum is almost identical, except for a few specific peaks. These peaks with significant changes are at approximately 593.8nm, 607nm and 609.1nm.}
+    \label{fig:4A}
+\end{figure}
+
+\noindent \textcolor{red}{2.3.4B.} [TODO]
+
+\noindent \textcolor{red}{2.3.4C.} See figure \ref{fig:4C}. We only see one laser line. This makes sense, since by the nature of stimulated emission, all of the resulting photons will be at the same frequency. Thus only one laser line at a specific frequency will be seen
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.8\textwidth]{4C}
+    \caption{Graph for question 2.3.4C. This is the emission spectrum of the HeNe with and without the laser directly being diffused into the monochromator. The large laser line is the frequency that the laser is lasing at.}
+    \label{fig:4C}
+\end{figure}
+
+\noindent \textcolor{blue}{2.3.4i.} The lasing line does not correspond to the largest fluorescence peak. The frequency that the light lases from is driven by the state that population inversion at occurs that, so there's no reason to think that the lasing peak would also happen to be the largest fluorescence peak.
+
+\noindent \textcolor{red}{2.3.4D.} We set the chopper to 120Hz. The phase at which zero occurs is 320 degrees. Flipping by 180 degrees does nothing, the signal is still 0. The maximum signal is found at 50 degrees which is 90 degrees from the zero found previously, and flipping the phase from the maximum just flips the sign of the signal (which gives the minimum). The 90 degree difference between the zero and the max can be easily seen from the basics of op-amp function, since the signal is modulated by $\sin(\omega t+\phi)$. The op-amp averages this signal, so assuming that the input signal is $\sin(\omega t+\psi)$, the output of the op amp is
+\[
+\frac{1}{T}\int_{0}^{T}\sin(\omega t+\phi)\sin(\omega t+\psi)dt
+.\]
+This integral has a maximum when $\phi$ and $\psi$ are in phase and is zero when $\phi$ and $\psi$ are 90 degrees offset, perfectly explaining the observed behavior.
+
+\noindent \textcolor{red}{2.3.4E.} The sign of the lock in amplifier did change sign. This is entirely expected. Before we removed blocked the laser, the line at 632.8nm was incredibly strong from the laser. In contrast, when the laser is blocked we're looking at the difference in spontaneous emission at 632.8nm between lasing and no lasing. This has the opposite effect, of where during lasing no spontaneous emission can occur at 632.8nm because all Ne atoms that could spontaneously emit are undergoing stimulated emission instead. Note that the magnitude of this effect is much smaller than the laser directly pointed at the monochromator, and this is seen by the lock in as a much smaller magnitude of its output signal.
+
+\noindent \textcolor{red}{2.3.4F.}
+
 
 \end{document}
