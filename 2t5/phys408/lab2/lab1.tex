@@ -74,7 +74,7 @@ A HeNe laser was obtained using the gas, and electrode and two concave mirrors. 
 
 See figure \ref{fig:rn} for the change in emission spectrum caused by the lasing process. The frequencies that had the largest modulation were 594.5nm, 607.4nm and 609.6nm. From a theoretical standpoint, this makes sense. Using NIST data, the lower energy level of the 632.8nm lasing process is $150858\text{cm}^{-1}$, which is the upper energy level of the 594.5nm and 609.6nm transitions. The upper energy level of $607.4$nm is $150917\text{cm}^{-1}$, which while not exactly the same, is close enough that it is also modulated by the lasing process (although as seen by the graph it is to a lower extent).
 
-The process by which this modulation occurs is that when lasing occurs, the 632.8 transition becomes amplified significantly. This results in many atoms with energies the bottom of its transition level. This larger than previously number of atoms then spontaneously emit, causing the modulation seen experimentally. 
+The process by which this modulation occurs is that when lasing occurs, the 632.8 transition becomes amplified significantly. This results in many atoms with energies the bottom of its transition level. This larger than previously number of atoms then spontaneously emit, causing the modulation seen experimentally.
 
 \begin{figure}[htpb]
     \centering
@@ -106,7 +106,7 @@ These points can be explained theoretically. The first disappearance corresponds
 .\]
 Our measured value was 65cm, which was very difference than the expected of 113. In fact, given where the raspberry pi camera was located and the length of the slide we shouldn't have even seen a reappearance at all. The most likely cause for this discrepancy is misalignment of the mirrors. Even if everything else in the setup was perfect, the mirrors have finite size, so a small misalignment could cause the reflected laser to strike outside the mirror when distances are far enough. Something like alignment would also explain the inconsistencies with seeing exactly where the laser reappears. See figure \ref{fig:1A} for the plot and table.
 
-\begin{figure}[htpb]
+\begin{figure}[tb]
     \centering
     \begin{minipage}[b]{0.45\textwidth}
     \begin{tabular}{|l|l|l|}
@@ -142,7 +142,7 @@ Our measured value was 65cm, which was very difference than the expected of 113.
 
 \noindent \textcolor{red}{2.3.2B.} See figure \ref{fig:2B}. We started with the TEM$_{22}$ mode, and as can be seen in the figure the modes decreased in complexity until we reached the TEM$_{00}$ mode. This can be explained by the nature of stimulated emission. When a light passes through the HeNe and causes stimulated emission, the resulting photon is in the exact same mode as the first. Therefore if any light is blocked during lasing, this causes an exponential suppression of that mode. By closing the iris, any modes with any light in these higher modes (which is further away from the center of the beam) are suppressed, so by the time the iris is small enough only the TEM$_{00}$ mode remains.
 
-\begin{figure}[htpb]
+\begin{figure}[tb]
     \centering
     \includegraphics[width=0.3\textwidth]{data/2B/im_0229_20240301_175322.jpg}
     \includegraphics[width=0.3\textwidth]{data/2B/im_0227_20240301_175136.jpg}
@@ -155,7 +155,7 @@ Our measured value was 65cm, which was very difference than the expected of 113.
 
 \noindent \textcolor{red}{2.3.2B and C.} When the wire was inserted, we observed the following modes as we moved the wire slowly across the range: TEM$_{00}$, TEM$_{30}$, TEM$_{20}$, TEM$_{10}$, TEM$_{20}$, TEM$_{00}$. This is expected for the exact same reason as what we saw in 2.2B. The wire blocks a certain part of the lasing to happen. If a given node has a nonzero brightness at the point the wire blocks, then each time the light bounces in the cavity some of it will be lost and lasing won't occur at that mode. In the center we see TEM$_{10}$ since that's dark in the middle for example, and at the edges we see TEM$_{00}$ since that's dark at the edges. It's not entirely clear why we see TEM$_{30}$ only on one side (we repeated a few times to make sure it wasn't just that we were moving the wire too fast). It's probably due to slight misalignment of the mirror, as this has a large effect on which modes can resonate. Also they're all $m=0$ modes because the wire's vertical position blocks the large portion of the light in the $m$ axis regardless of what mode is present. See table \ref{tab:2C} for the results in a table.
 
-\begin{table}[htpb]
+\begin{table}[tb]
     \centering
     \caption{Table for question 2.3.2C. These are the positions of the wire at which each mode was seen. These were taken when the cavity mirrors were 62cm apart and the wire was 47.5cm from the end of the cavity.}
     \label{tab:label}
@@ -199,16 +199,16 @@ This is very close to the 0.36mm we experimentally found previously. An small di
 
 \noindent \textcolor{red}{2.3.4A.} See figure \ref{fig:4A}. The peaks don't react the same, only three peaks show large noticeable differences. The peaks that change are at approximately 594.5nm, 607.4nm and 609.5nm. These peaks will be investigated more thoroughly shortly.
 
-\begin{figure}[htpb]
+\begin{figure}[tb]
     \centering
     \includegraphics[width=0.8\textwidth]{4A}
     \caption{Graph for question 2.3.4A. This is the spectogram of the HeNe gas with and without lasing occuring. The spectrum is almost identical, except for a few specific peaks. These peaks with significant changes are at approximately 593.8nm, 607nm and 609.1nm.}
     \label{fig:4A}
 \end{figure}
 
-\noindent \textcolor{red}{2.3.4B.} See figure \ref{fig:4B}. 
+\noindent \textcolor{red}{2.3.4B.} See figure \ref{fig:4B}. The strongest peaks are at around 586.3nm, 585.2nm and 640.2nm. The 586.3nm transition is shown in \ref{fig:4B}, along with the transitions that share an energy level with 632.8.
 
-\begin{figure}[htpb]
+\begin{figure}[tb]
     \centering
     \includegraphics[width=0.8\textwidth]{4B}
     \caption{Diagram for question 2.3.4B. These are the transitions for HeNe. The number inside the level boxes is the energy of that state, while the nm in the arrows is the wavelength of the photon emitted for those levels. The 587.3nm is the largest peak in the spectorgram. The 632.8nm transition is shown, along with three others that share similar energy levels with it. 594.5 and 609.6nm (green) share the exact same spectrum, while 607.4nm (blue) shares an extremely close energy level, which is why experimentally we also see a change at that peak in figure \ref{fig:4A}.}
@@ -217,7 +217,7 @@ This is very close to the 0.36mm we experimentally found previously. An small di
 
 \noindent \textcolor{red}{2.3.4C.} See figure \ref{fig:4C}. We only see one laser line, corresponding to the 632.8nm transition we saw previously in figure \ref{fig:4B}. This makes sense, since by the nature of stimulated emission, all of the resulting photons will be at the same frequency. Thus only one laser line at a specific frequency will be seen
 
-\begin{figure}[htpb]
+\begin{figure}[tb]
     \centering
     \includegraphics[width=0.8\textwidth]{4C}
     \caption{Graph for question 2.3.4C. This is the emission spectrum of the HeNe with and without the laser directly being diffused into the monochromator. The large laser line is the frequency that the laser is lasing at.}
@@ -236,7 +236,7 @@ This integral has a maximum when $\phi$ and $\psi$ are in phase and is zero when
 
 \noindent \textcolor{red}{2.3.4F.} See figure \ref{fig:4F}. The lock-in output is proportional to the difference between the on and off lasing state of the HeNe. This is a much lower noise measurement than just subtracting them if we were to do so in part 2.3.4F. This confirms the results of part 2.3.4B, as the affected lines are at almost the exact frequencies we saw in figure \ref{fig:4B}: 594.5nm, 607.4nm and 609.6nm. The reason that these lines are modulated is that, as the hint suggests, the stimulated emission causes many more emissions at the 632.8nm level, the result of which is many more atoms at energy levels amenable to spontaneous emission at the frequencies just listed.
 
-\begin{figure}[htpb]
+\begin{figure}[tb]
     \centering
     \includegraphics[width=0.8\textwidth]{4F}
     \caption{Lock-in output for question 2.3.4F. The three peaks that occur are almost exactly the peaks identified earlier in part 2.3.4A.}
