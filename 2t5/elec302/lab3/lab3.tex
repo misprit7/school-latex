@@ -19,7 +19,31 @@ urlcolor=cyan,
 \author{Xander Naumenko}
 \maketitle
 
-{\medskip\noindent\bf Question 1.} $V_{R_B}=4.27V$, $V_{R_C}=3.29$, $V_{CE}=1.75$. $I_B=\frac{4.27}{43\cdot 10^{3}}=I_B=99.3\mu$A, $I_C=16.5$mA. $\beta=166.2$
+{\medskip\noindent\bf Question 1.} From the prelab, we found that to achieve the target values, $R_c=200\Omega$ and $R_B=43k\Omega$. After putting these resistors in the circuit, the desired parameters were measured using the digital multimeter and can be seen in table \ref{tab:q1}. To get the currents, the voltages across $R_B$ and $R_C$ were measured then divided by their measured resistance values.
+
+\begin{table}[htpb]
+    \centering
+    \caption{Measured values for Question 1.}
+    \label{tab:q1}
+    \begin{tabular}{|c|c|}
+    \hline
+    Parameter & Value \\
+    $I_B$ & $99.3\mu $A \\
+    $I_C$ & 16.5mA \\
+    $V_{CE}$ & 1.75V \\
+    \hline
+    \end{tabular}
+\end{table}
+
+% $V_{R_B}=4.27V$, $V_{R_C}=3.29$, $V_{CE}=1.75$. $I_B=\frac{4.27}{43\cdot 10^{3}}=99.3\mu$A, $I_C=16.5$mA. $\beta=166.2$
+From these values, we can get a value for $\beta$ by dividing the currents: $\beta = \frac{I_C}{I_B}=166.2$. See figure \ref{fig:q1} for the circuit diagram with the resistor parameters used.
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.8\textwidth]{q1}
+    \caption{Circuit diagram for question 3. Mostly taken from the lab manual given it's the same circuit with the actual resistances used.}
+    \label{fig:q1}
+\end{figure}
 
 {\medskip\noindent\bf Question 2.} 
 \[
