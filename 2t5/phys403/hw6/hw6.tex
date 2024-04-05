@@ -1,0 +1,44 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{PHYS 403 Homework 6}
+\date{27/03/24}
+\author{Xander Naumenko}
+\maketitle
+
+{\medskip\noindent\bf Question 2a.} In class, we derived $N_F$ for a Fermi gas, and we can simplify it using $E_C-\mu \gg k_BT$:
+\[
+N_F= \frac{1}{e^{\beta\left( \varepsilon+E_C-\mu \right) }+1}\approx e^{-\beta\left( \varepsilon+E_C-\mu \right) }
+.\]
+We can then calculated $n_e$:
+\[
+n_e=n_d=g_c\int_0^{\infty}d\varepsilon D_C(\varepsilon) N_F\left( \varepsilon+E_C, \mu \right)=g_c e^{-\beta\left( E_C-\mu \right) }\int_0^{\infty} d\varepsilon D_C(\varepsilon) e^{-\beta\varepsilon}
+.\]
+\[
+\implies n_e=g_c\frac{1}{\lambda(T)^{3}}e^{-\beta\left( E_C-\mu \right) }\implies \mu=E_C-\frac{1}{\beta}\log \frac{n_d\lambda^3}{g_c}
+.\]
+Here $\lambda=\left( \frac{2\pi\hbar^2}{m_c k_BT} \right) ^{3 /2}$ as usual.
+
+{\medskip\noindent\bf Question 2b.} Ionization has energy $E_C-\mu$, whereas being occupied has energy $\varepsilon_b$. Thus computing probability:
+\[
+p_{\text{ionized}}= 1-p_{\text{occ}}=1-\frac{1}{e^{\beta\left( E_C-\mu-\varepsilon_b \right) }+1}=\frac{1}{\frac{n_d\lambda^3}{g_c}e^{-\beta\left( E_C-\varepsilon_b \right) }+1}
+.\]
+When $n_d$ is large or $E_C-\varepsilon_b \gg k_BT$, the probability of ionization goes to 1. Of course because of the exponential, the $E_C-\varepsilon$ condition will asymptotically outpace the magnitude of $n_d$.
+
+{\medskip\noindent\bf Question 2c.} 
+
+
+\end{document}

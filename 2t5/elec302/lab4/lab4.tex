@@ -1,0 +1,37 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{Lab 4}
+\date{04/04/24}
+\author{Xander Naumenko}
+\maketitle
+
+\section{Task 1}
+{\medskip\noindent\bf Question 1.} High: 32.7mV, low: 2.55V.
+
+{\medskip\noindent\bf Question 2.} Does control as expects, start turning around 0.5V.
+
+\section{Task 2}
+
+{\medskip\noindent\bf Question 1.} 25mV, 10mV for 2 and 5mm respectively.
+
+{\medskip\noindent\bf Question 2.} 1.9V for 2mm, 0.96 for 5mm. Across $V_{RC}$ was 4.7V for 2mm and 4.7 again for 5mm.
+
+{\medskip\noindent\bf Question 4.} Went from 0.7V to 1.2V from 5mm to 2mm. However going back, changes much more slowly as capacitor discharges. No ripple, some noise on the order of 100mV but this is motor noise not ripple.
+
+{\medskip\noindent\bf Question 5.} 5mm: 270mV, motor is fast. 2mm: 640mV, motor is slow.
+
+\end{document}
