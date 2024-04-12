@@ -54,7 +54,7 @@ postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
 
 {\medskip\noindent\bf Question 1d.} Using the cross section formula:
 \[
-\sigma= \frac{\gamma_{sp}\lambda^2}{4\Delta\omega}=5.2\cdot 10^{-18}\text{m}
+\sigma= \frac{\gamma_{sp}\lambda^2}{4\Delta\omega}=8.3\cdot 10^{-19}\text{m}
 .\]
 
 % {\medskip\noindent\bf Question 2a.} Using the relations derived in class we can solve for $I_{sat}$:
@@ -75,22 +75,35 @@ Since $g_0l_g$ are the same in both cases, we can solve for $I_{sat}$:
 g_0= \frac{1}{l_g}\left( \log \frac{I_2}{I_1}+\frac{I_2-I_1}{I_{sat}} \right)=2.95\text{cm}^{-1}
 .\]
 
-{\medskip\noindent\bf Question 2c.} Again using the formula derived in class:
+% {\medskip\noindent\bf Question 2c.} Again using the formula derived in class:
+% \[
+% I_{ss}=I_{sat} \frac{g_0}{a}=3.01 \frac{5.29}{0.01 /1}=4100.5\text{W/cm}^2
+% .\]
+
+{\medskip\noindent\bf Question 2c.} Above we saturation, we have $\frac{d}{dz}I_{out}(z)=g_0I_{sat}$. Integrating this over the gain medium, we get
 \[
-I_{ss}=I_{sat} \frac{g_0}{a}=3.01 \frac{5.29}{0.01 /1}=4100.5\text{W/cm}^2
+I_{2}-I_1=g_0I_{sat}l_g=41\text{W/cm}^2
 .\]
 
-{\medskip\noindent\bf Question 2d.} Using $I_{2}=I_{ss}/2$ and solving for $I_1$, we can solve the following equation numerically:
+{\medskip\noindent\bf Question 2d.} Using $I_2-I_1=\frac{41}{2}=20.5\text{W/cm}^2$ and solving for $I_1$, we can solve the following equation numerically:
 \[
-\log \frac{I_{ss}}{2I_1}+ \frac{I_{ss}-2I_1}{2I_{sat}}=g_0l_g\implies I_1=2009.5\text{W/m}^2
+\log \frac{20.5+I_1}{I_1}+ \frac{20.5}{I_{sat}}=g_0l_g\implies I_1=6.08\text{W/cm}^2
 .\]
+
+% {\medskip\noindent\bf Question 2d.} Writing out the requirement in equation:
+% \[
+%     g(I_1)l_gI_1= \frac{41}{2}+I_1
+% \]
+% \[
+% \implies \frac{g_0I_1}{1+I_1/I_{sat}}=20.5+I_1\implies 
+% .\]
 
 {\medskip\noindent\bf Question 2e.} Again, we derived expressions for both of these values in class:
 \[
 T^{(opt)}_{oc}=\sqrt{g_0l_ga}-a=0.162
 .\]
 \[
-I^{(opt)}_{out}=I_{sat}\left( \sqrt{g_0l_g}-\sqrt{a} \right) ^2=36.4
+P^{(opt)}=I^{(opt)}_{out}\cdot A=10^{-6}\cdot I_{sat}\left( \sqrt{g_0l_g}-\sqrt{a} \right) ^2=0.364\text{W}
 .\]
 
 {\medskip\noindent\bf Question 3a.} For question 3, as question suggests we use the weak pump approximation. This means that $R_{p}\tau\ll 1$, and so $g(I)= \frac{g_{0,weak}}{1+I/I_{sat}}$. Note that $g\propto N_2$ and $P\propto N_2$, so $\frac{g(I)}{g_{0,weak}}=\frac{P_l}{P_0}$ (since $g_{0,weak}$ and $P_0$ are when no lasing occurs, while $g(I)$ and $P_0$ are for when it does). Plugging this into the original equation:
