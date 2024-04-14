@@ -1,0 +1,106 @@
+\documentclass[letterpaper, reqno,11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb,graphicx,float,listings,tikz}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=magenta,
+filecolor=magenta,
+urlcolor=cyan,
+}
+
+\lstset{
+basicstyle=\ttfamily,
+columns=fullflexible,
+frame=single,
+breaklines=true,
+postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+\pagenumbering{arabic}
+\title{PHYS 403 Homework 7}
+\date{14/04/24}
+\author{Xander Naumenko}
+\maketitle
+
+{\medskip\noindent\bf Question I1.} To calculate the partition function we can sum over possible states:
+\[
+Z=\sum_{s_1\in \{-1,1\}}\cdots \sum_{s_N\in \{-1,1\}}e^{\beta Js_1s_2}\cdots e^{\beta Js_{N-1}s_N}
+.\]
+
+Note that for general $2\times 2$ matrices $A,B$ and $i,k\in \{1,2\}$, it's true that $\sum_{j\in \{1,2\}}A_{ij}B_{jk}=(AB)_{ik}$. In particular we have $\sum_{s_2\in \{-1,1\}}M_{s_1s_2}M_{s_2s_3}=\left( M^2 \right)_{s_1s_3}$, where $M$ here and later is being indexed with $1$ for it's first entry and $-1$ for the second. Since $M_{ij}=e^{\beta Jij}$ appears in the sum, we can repeatedly apply this identity to get
+\[
+Z=\sum_{s_1\in \{-1,1\}}(M^{N})_{s_1s_1}=\text{tr} M^{N}
+.\]
+
+{\medskip\noindent\bf Question I2.} This is just some computation with linear algebra:
+\[
+    \begin{vmatrix} e^{\beta J}-\lambda&e^{-\beta J}\\e^{-\beta J}&e^{\beta J}-\lambda \end{vmatrix} =0\implies \lambda^2-2e^{\beta J}\lambda+\left( e^{2\beta J}-e^{-2\beta J} \right)=0
+\]
+\[
+\implies \lambda_{\pm} = e^{\beta J}\pm e^{-\beta J}
+.\]
+For the eigenvectors the system is easy enough to just guess and check the correct vectors:
+\[
+M \vec v_{\pm}=\lambda_{\pm} \vec v_{\pm}\implies \vec v_{\pm}= \frac{1}{\sqrt{2}}\begin{pmatrix} 1\\ \pm 1 \end{pmatrix} 
+.\]
+
+{\medskip\noindent\bf Question I3.} Since all the $i$s are symmetric (since we're using periodic boundary conditions), the expression is unchanged if we assume that $i=1$. Then we have
+\[
+    \langle s_{i+x}s_i \rangle =\langle s_{x+1}s_1 \rangle =\frac{1}{Z}\sum_{s} s_1 s_{x+1}e^{-\beta H(s)}=\frac{1}{Z}\sum_{s} s_1 s_{x+1}e^{\beta Js_1s_2}\cdots e^{\beta Js_{N-1}s_N}
+.\]
+Using the same trick as in part 1, for $i\neq 1, i\neq x+1$, we can use the fact that $M_{ij}=e^{\beta J ij}$ to get
+\[
+    \langle s_{i+x}s_i \rangle= \frac{1}{Z}\sum_{s_1\in \{-1,1\}}\sum_{s_{x+1}\in \{-1,1\}}s_1s_{x+1}(M^{x})_{s_1s_{x+1}}(M^{N-x})_{s_{x+1}s_1}
+.\]
+To simplify this, note that $s_i=\left( \sigma^{z} \right)_{s_is_i}$, and since the matrix combination argument from part 1 doesn't rely on the specific form of $M$, it applies to $\sigma^{z}$ as well:
+\[
+    \langle s_{i+x}s_i \rangle= \frac{1}{Z}\sum_{s_1\in \{-1,1\}}\left( \sigma^{z}M^{x}\sigma^{z}M^{N-x} \right)_{s_is_i}=\frac{1}{Z}\text{tr}\left[ \sigma^{z}M^{x}\sigma^{z}M^{N-x} \right]
+\]
+\[
+=\frac{1}{Z}\text{tr}\left[ \left(\sigma^{z}M^{x}\sigma^{z}M^{N-x}\right)^{T} \right]=\frac{1}{Z}\text{tr}\left[ M^{N-x}\sigma^{z}M^{x}\sigma^{z} \right]
+.\]
+The last step uses the fact that all the matrices in question are symmetric. To evaluate it, as the hint suggests we work in the eigen basis of $M$. From the result of part 2, we have that $\sigma^{z}\vec v_+=v_-, \sigma^{z}\vec v_-=v_+$. Computing the trace:
+\[
+\frac{1}{Z}\text{tr}\left[ M^{N-x}\sigma^{z}M^{x}\sigma^{z} \right]=\frac{1}{Z}\left( \vec v_+^{T}(M^{N-x}\sigma^{z}M^{x}\sigma^{z})\vec v_++\vec v_-^{T}(M^{N-x}\sigma^{z}M^{x}\sigma^{z})\vec v_- \right)
+\]
+\[
+ =\frac{1}{Z}\left( \lambda_-^{N-x}\lambda_+^{x}+\lambda_-^{x}\lambda_+^{N-x} \right)
+.\]
+We can compute $Z$ using the same method:
+\[
+Z=\vec v_+^{T}M^{N}\vec v_+ + \vec v_-^{T}M^{N}\vec v_- = \lambda_+^{N}+\lambda_-^{N}
+.\]
+Putting it together we get
+\[
+\langle s_{i+x}s_i \rangle = \frac{1}{\lambda_-^{N}+\lambda_+^{N}} \left( \lambda_-^{N-x}\lambda_+^{x}+\lambda_-^{x}\lambda_+^{N-x} \right)
+\]
+where $\lambda_+$ and $\lambda_-$ are defined as in part 2.
+
+{\medskip\noindent\bf Question I4.} In the limit of $N\to\infty$, we have that $Z=\lambda_-^{N}+\lambda_+^{N}\to \lambda_+^{N}\left( 1+\left(\frac{\lambda_-}{\lambda_+}\right)^{N} \right) \to\lambda_+^{N}$ and
+\[
+\langle s_{i+x}s_i \rangle = \frac{\lambda_+^{N-x}}{Z}\left( \left(\frac{\lambda_-}{\lambda_+}\right)^{N-x}\lambda_+^{x}+\lambda_-^{x} \right) =\frac{\lambda_+^{N-x}\lambda_-^{x}}{\lambda_+^{N}}=\left( \frac{\lambda_+}{\lambda_-} \right) ^{-x}=e^{-x\log \frac{\lambda_+}{\lambda_-}}
+.\]
+From this expression we see that $\xi=\left(\log \frac{e^{\beta J}+e^{-\beta J}}{e^{\beta J}-e^{-\beta J}}\right)^{-1}=\left(\log \frac{e^{2\beta J}+1}{e^{2\beta J}-1}\right)^{-1}$. In the low temperature limit, we asymptotically get
+\[
+\xi = \left(\log \frac{e^{2\beta J}+1}{e^{2\beta J}-1}\right)^{-1}\to \frac{1}{2}e^{\frac{2J}{k_BT}}\to\infty
+.\]
+Interestingly $\xi$ is a finite number for all positive temperatures, so there is no critical temperature at which the magnet spontaneously organizes itself.
+
+{\medskip\noindent\bf Question I5.} From the partition function in the low temperature limit:
+\[
+\langle E \rangle =- \frac{\partial}{\partial\beta}\log Z=-N\frac{\partial}{\partial\beta}\log\left( e^{\beta J}+e^{-\beta J} \right)=-N \frac{Je^{\beta J}-Je^{-\beta J}}{e^{\beta J}+e^{-\beta J}}
+\]
+\[
+\implies \frac{\Delta E}{N}= -J\left(\frac{e^{2\beta J}-1}{e^{2\beta J}+1}-1\right)= \frac{2J}{e^{2\beta J}+1}
+.\]
+Each domain wall has energy $J$ (since it involves one spin flip), so the density is just $n_{DW}= \frac{2}{e^{2\beta J}+1}$. Since we're in 1 dimension the length is just the inverse of density, so $l_{DW}=\frac{1}{2}\left( e^{2\beta J}+1 \right) $. This is almost the same form we found for $\xi$ above, just with an offset of $\frac{1}{2}$. The physical reason that these are related is that the distance between domain walls is, almost by definition, the distance at which the spin is expected to flip. Once the distance is far enough for that the spins start flipping the correlation between those spins will decrease, so effectively $l_{DW}$ and $\xi$ measure the same thing.
+
+
+
+
+\end{document}
